@@ -140,6 +140,8 @@ for language in LANGUAGES:
             stop = min(start + bs, len(prompts))
 
             prompts_batch = prompts[start:stop]
+            if len(prompts_batch) < bs:
+                break
 
             encodings = tokenizer(
                 prompts_batch, return_tensors="pt", padding="longest", truncation=False
