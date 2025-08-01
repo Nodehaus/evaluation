@@ -2,9 +2,12 @@ import json
 import os
 
 import torch
+import torch._dynamo
 from datasets import load_dataset
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
+torch._dynamo.config.cache_size_limit = 64
 
 LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_Latn"]
 
@@ -140,8 +143,6 @@ for language in LANGUAGES:
             stop = min(start + bs, len(prompts))
 
             prompts_batch = prompts[start:stop]
-            if len(prompts_batch) < bs:
-                break
 
             encodings = tokenizer(
                 prompts_batch, return_tensors="pt", padding="longest", truncation=False
