@@ -7,6 +7,8 @@ from tqdm import tqdm
 
 LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_Latn"]
 
+MODELS = ["google/gemma-3-1b-it"]
+
 # Do we need this?
 GENERATION_CONFIG = {
     "temperature": 0.7,
@@ -26,7 +28,7 @@ Answer C: {mc_answer3}
 Answer D: {mc_answer4}
 Correct answer: {correct_answer}"""
 
-MODELS = ["google/gemma-3-1b-it"]
+CHOICES = ["A", "B", "C", "D"]
 
 
 def parse_choice(response):
