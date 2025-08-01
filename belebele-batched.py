@@ -151,6 +151,10 @@ for language in LANGUAGES:
                 output_ids = model.generate(**encodings)
 
             responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+            
+            # Free GPU memory
+            del encodings, output_ids
+            torch.cuda.empty_cache()
 
             for i, response_raw in enumerate(responses):
                 sample_no = i + start
@@ -196,3 +200,7 @@ for language in LANGUAGES:
             "results/belebe-{}_{}.json".format(model_name.split("/")[-1], language),
             result,
         )
+        
+        # Free model memory between models
+        del model, tokenizer
+        torch.cuda.empty_cache()
