@@ -100,14 +100,14 @@ for language in LANGUAGES:
         ]
     )
 
-    for model in MODELS:
-        print(f"Evaluating model {model} with language {language}")
+    for model_name in MODELS:
+        print(f"Evaluating model {model_name} with language {language}")
 
-        tokenizer = AutoTokenizer.from_pretrained(model)
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
         tokenizer.add_special_tokens({"pad_token": "<pad>"})
 
         model = AutoModelForCausalLM.from_pretrained(
-            model,
+            model_name,
             device_map="auto",
             torch_dtype=torch.bfloat16,
             trust_remote_code=True,
@@ -190,5 +190,6 @@ for language in LANGUAGES:
         )
 
         write_pretty_json(
-            "results/belebe-{}_{}.json".format(model.split("/")[-1], language), result
+            "results/belebe-{}_{}.json".format(model_name.split("/")[-1], language),
+            result,
         )
