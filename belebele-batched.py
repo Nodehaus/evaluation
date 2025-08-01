@@ -1,4 +1,5 @@
 import json
+import os
 
 import torch
 from datasets import load_dataset
@@ -10,62 +11,64 @@ LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_La
 MODELS = ["google/gemma-3-1b-it"]
 
 
-PROMPT_TEMPLATE = {}
-PROMPT_TEMPLATE["deu_Latn"] = """{flores_passage}
+PROMPT_TEMPLATE = {
+    "deu_Latn": """{flores_passage}
 Frage: {question}
 Antwort A: {mc_answer1}
 Antwort B: {mc_answer2}
 Antwort C: {mc_answer3}
 Antwort D: {mc_answer4}
-Richtige Antwort: {correct_answer}"""
-PROMPT_TEMPLATE["eng_Latn"] = """{flores_passage}
+Richtige Antwort: {correct_answer}""",
+    "eng_Latn": """{flores_passage}
 Question: {question}
 Answer A: {mc_answer1}
 Answer B: {mc_answer2}
 Answer C: {mc_answer3}
 Answer D: {mc_answer4}
-Correct answer: {correct_answer}"""
-PROMPT_TEMPLATE["fra_Latn"] = """{flores_passage}
+Correct answer: {correct_answer}""",
+    "fra_Latn": """{flores_passage}
 Question: {question}
 Réponse A: {mc_answer1}
 Réponse B: {mc_answer2}
 Réponse C: {mc_answer3}
 Réponse D: {mc_answer4}
-Réponse correcte: {correct_answer}"""
-PROMPT_TEMPLATE["spa_Latn"] = """{flores_passage}
+Réponse correcte: {correct_answer}""",
+    "spa_Latn": """{flores_passage}
 Pregunta: {question}
 Respuesta A: {mc_answer1}
 Respuesta B: {mc_answer2}
 Respuesta C: {mc_answer3}
 Respuesta D: {mc_answer4}
-Respuesta correcta: {correct_answer}"""
-PROMPT_TEMPLATE["ita_Latn"] = """{flores_passage}
+Respuesta correcta: {correct_answer}""",
+    "ita_Latn": """{flores_passage}
 Domanda: {question}
 Risposta A: {mc_answer1}
 Risposta B: {mc_answer2}
 Risposta C: {mc_answer3}
 Risposta D: {mc_answer4}
-Risposta corretta: {correct_answer}"""
-PROMPT_TEMPLATE["pol_Latn"] = """{flores_passage}
+Risposta corretta: {correct_answer}""",
+    "pol_Latn": """{flores_passage}
 Pytanie: {question}
 Odpowiedź A: {mc_answer1}
 Odpowiedź B: {mc_answer2}
 Odpowiedź C: {mc_answer3}
 Odpowiedź D: {mc_answer4}
-Prawidłowa odpowiedź: {correct_answer}"""
-PROMPT_TEMPLATE["por_Latn"] = """{flores_passage}
+Prawidłowa odpowiedź: {correct_answer}""",
+    "por_Latn": """{flores_passage}
 Pergunta: {question}
 Resposta A: {mc_answer1}
 Resposta B: {mc_answer2}
 Resposta C: {mc_answer3}
 Resposta D: {mc_answer4}
-Resposta correta: {correct_answer}"""
+Resposta correta: {correct_answer}""",
+}
 CHOICES = ["A", "B", "C", "D"]
 
 bs = 6
 
 
 def write_pretty_json(file_path, data):
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as write_file:
         json.dump(data, write_file, indent=4)
     print(f"wrote {file_path}")
@@ -134,7 +137,7 @@ for language in LANGUAGES:
 
         q_correct = q_total = 0
         for start in tqdm(range(0, len(prompts), bs)):
-            stop = min(start + bs, len(prompts) - 1)
+            stop = min(start + bs, len(prompts))
 
             prompts_batch = prompts[start:stop]
 
