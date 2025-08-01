@@ -126,7 +126,7 @@ for language in LANGUAGES:
 
         result = {
             "dataset": dataset_config,
-            "model": model,
+            "model": model_name,
             "total": 0,
             "correct": 0,
             "correct_percent": None,
