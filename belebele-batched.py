@@ -3,11 +3,66 @@ import json
 import torch
 from datasets import load_dataset
 from tqdm import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_Latn"]
 
 MODELS = ["google/gemma-3-1b-it"]
+
+
+PROMPT_TEMPLATE = {}
+PROMPT_TEMPLATE["deu_Latn"] = """{flores_passage}
+Frage: {question}
+Antwort A: {mc_answer1}
+Antwort B: {mc_answer2}
+Antwort C: {mc_answer3}
+Antwort D: {mc_answer4}
+Richtige Antwort: {correct_answer}"""
+PROMPT_TEMPLATE["eng_Latn"] = """{flores_passage}
+Question: {question}
+Answer A: {mc_answer1}
+Answer B: {mc_answer2}
+Answer C: {mc_answer3}
+Answer D: {mc_answer4}
+Correct answer: {correct_answer}"""
+PROMPT_TEMPLATE["fra_Latn"] = """{flores_passage}
+Question: {question}
+Réponse A: {mc_answer1}
+Réponse B: {mc_answer2}
+Réponse C: {mc_answer3}
+Réponse D: {mc_answer4}
+Réponse correcte: {correct_answer}"""
+PROMPT_TEMPLATE["spa_Latn"] = """{flores_passage}
+Pregunta: {question}
+Respuesta A: {mc_answer1}
+Respuesta B: {mc_answer2}
+Respuesta C: {mc_answer3}
+Respuesta D: {mc_answer4}
+Respuesta correcta: {correct_answer}"""
+PROMPT_TEMPLATE["ita_Latn"] = """{flores_passage}
+Domanda: {question}
+Risposta A: {mc_answer1}
+Risposta B: {mc_answer2}
+Risposta C: {mc_answer3}
+Risposta D: {mc_answer4}
+Risposta corretta: {correct_answer}"""
+PROMPT_TEMPLATE["pol_Latn"] = """{flores_passage}
+Pytanie: {question}
+Odpowiedź A: {mc_answer1}
+Odpowiedź B: {mc_answer2}
+Odpowiedź C: {mc_answer3}
+Odpowiedź D: {mc_answer4}
+Prawidłowa odpowiedź: {correct_answer}"""
+PROMPT_TEMPLATE["por_Latn"] = """{flores_passage}
+Pergunta: {question}
+Resposta A: {mc_answer1}
+Resposta B: {mc_answer2}
+Resposta C: {mc_answer3}
+Resposta D: {mc_answer4}
+Resposta correta: {correct_answer}"""
+CHOICES = ["A", "B", "C", "D"]
+
+bs = 6
 
 
 def write_pretty_json(file_path, data):
@@ -20,66 +75,12 @@ def parse_choice(response):
     if len(response) == 0:
         return None
     elif len(response) == 1:
-        return choices.index(response[0]) + 1 if response[0] in choices else None
-    elif response[0] in choices and not response[1].isalpha():
-        return choices.index(response[0]) + 1
+        return CHOICES.index(response[0]) + 1 if response[0] in CHOICES else None
+    elif response[0] in CHOICES and not response[1].isalpha():
+        return CHOICES.index(response[0]) + 1
     else:
         return None
 
-
-prompt_template = {}
-prompt_template["deu_Latn"] = """{flores_passage}
-Frage: {question}
-Antwort A: {mc_answer1}
-Antwort B: {mc_answer2}
-Antwort C: {mc_answer3}
-Antwort D: {mc_answer4}
-Richtige Antwort: {correct_answer}"""
-prompt_template["eng_Latn"] = """{flores_passage}
-Question: {question}
-Answer A: {mc_answer1}
-Answer B: {mc_answer2}
-Answer C: {mc_answer3}
-Answer D: {mc_answer4}
-Correct answer: {correct_answer}"""
-prompt_template["fra_Latn"] = """{flores_passage}
-Question: {question}
-Réponse A: {mc_answer1}
-Réponse B: {mc_answer2}
-Réponse C: {mc_answer3}
-Réponse D: {mc_answer4}
-Réponse correcte: {correct_answer}"""
-prompt_template["spa_Latn"] = """{flores_passage}
-Pregunta: {question}
-Respuesta A: {mc_answer1}
-Respuesta B: {mc_answer2}
-Respuesta C: {mc_answer3}
-Respuesta D: {mc_answer4}
-Respuesta correcta: {correct_answer}"""
-prompt_template["ita_Latn"] = """{flores_passage}
-Domanda: {question}
-Risposta A: {mc_answer1}
-Risposta B: {mc_answer2}
-Risposta C: {mc_answer3}
-Risposta D: {mc_answer4}
-Risposta corretta: {correct_answer}"""
-prompt_template["pol_Latn"] = """{flores_passage}
-Pytanie: {question}
-Odpowiedź A: {mc_answer1}
-Odpowiedź B: {mc_answer2}
-Odpowiedź C: {mc_answer3}
-Odpowiedź D: {mc_answer4}
-Prawidłowa odpowiedź: {correct_answer}"""
-prompt_template["por_Latn"] = """{flores_passage}
-Pergunta: {question}
-Resposta A: {mc_answer1}
-Resposta B: {mc_answer2}
-Resposta C: {mc_answer3}
-Resposta D: {mc_answer4}
-Resposta correta: {correct_answer}"""
-choices = ["A", "B", "C", "D"]
-
-bs = 6
 
 for language in LANGUAGES:
     dataset_config = {"path": "facebook/belebele", "name": language, "split": "test"}
@@ -89,8 +90,8 @@ for language in LANGUAGES:
 
     prompt_examples = "\n\n".join(
         [
-            prompt_template[language].format(
-                **item, correct_answer=choices[int(item["correct_answer_num"]) - 1]
+            PROMPT_TEMPLATE[language].format(
+                **item, correct_answer=CHOICES[int(item["correct_answer_num"]) - 1]
             )
             for item in dataset_examples
         ]
@@ -115,7 +116,7 @@ for language in LANGUAGES:
             (
                 prompt_examples
                 + "\n\n"
-                + prompt_template[language].format(**prompt, correct_answer="")
+                + PROMPT_TEMPLATE[language].format(**prompt, correct_answer="")
             ).strip()
             for prompt in dataset_prompts
         ]
@@ -126,7 +127,7 @@ for language in LANGUAGES:
             "total": 0,
             "correct": 0,
             "correct_percent": None,
-            "prompt_template": prompt_template[language],
+            "prompt_template": PROMPT_TEMPLATE[language],
             "examples": prompt_examples,
             "questions": [],
         }
@@ -139,7 +140,7 @@ for language in LANGUAGES:
 
             encodings = tokenizer(
                 prompts_batch, return_tensors="pt", padding="longest", truncation=False
-            )
+            ).to(model.device)
             with torch.no_grad():
                 output_ids = model.generate(**encodings)
 
