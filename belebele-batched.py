@@ -1,3 +1,4 @@
+import gc
 import json
 import os
 
@@ -88,35 +89,39 @@ def parse_choice(response):
         return None
 
 
-for language in LANGUAGES:
-    dataset_config = {"path": "facebook/belebele", "name": language, "split": "test"}
-    dataset = load_dataset(**dataset_config)
-    dataset_examples = dataset.select(range(0, 5))
-    dataset_prompts = dataset.select(range(5, len(dataset)))
+for model_name in MODELS:
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer.add_special_tokens({"pad_token": "<pad>"})
 
-    prompt_examples = "\n\n".join(
-        [
-            PROMPT_TEMPLATE[language].format(
-                **item, correct_answer=CHOICES[int(item["correct_answer_num"]) - 1]
-            )
-            for item in dataset_examples
-        ]
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        device_map="auto",
+        torch_dtype=torch.bfloat16,
+        trust_remote_code=True,
     )
+    model.resize_token_embeddings(len(tokenizer))
+    model.config.pad_token_id = tokenizer.pad_token_id
 
-    for model_name in MODELS:
+    for language in LANGUAGES:
         print(f"Evaluating model {model_name} with language {language}")
 
-        tokenizer = AutoTokenizer.from_pretrained(model_name)
-        tokenizer.add_special_tokens({"pad_token": "<pad>"})
+        dataset_config = {
+            "path": "facebook/belebele",
+            "name": language,
+            "split": "test",
+        }
+        dataset = load_dataset(**dataset_config)
+        dataset_examples = dataset.select(range(0, 5))
+        dataset_prompts = dataset.select(range(5, len(dataset)))
 
-        model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            device_map="auto",
-            torch_dtype=torch.bfloat16,
-            trust_remote_code=True,
+        prompt_examples = "\n\n".join(
+            [
+                PROMPT_TEMPLATE[language].format(
+                    **item, correct_answer=CHOICES[int(item["correct_answer_num"]) - 1]
+                )
+                for item in dataset_examples
+            ]
         )
-        model.resize_token_embeddings(len(tokenizer))
-        model.config.pad_token_id = tokenizer.pad_token_id
 
         prompts = [
             (
@@ -151,9 +156,10 @@ for language in LANGUAGES:
                 output_ids = model.generate(**encodings)
 
             responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-            
+
             # Free GPU memory
             del encodings, output_ids
+            gc.collect()
             torch.cuda.empty_cache()
 
             for i, response_raw in enumerate(responses):
@@ -200,7 +206,8 @@ for language in LANGUAGES:
             "results/belebe-{}_{}.json".format(model_name.split("/")[-1], language),
             result,
         )
-        
-        # Free model memory between models
-        del model, tokenizer
-        torch.cuda.empty_cache()
+
+    # Free model memory between models
+    del model, tokenizer
+    gc.collect()
+    torch.cuda.empty_cache()
