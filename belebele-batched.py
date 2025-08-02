@@ -1,6 +1,7 @@
 import gc
 import json
 import os
+import time
 
 import torch
 import torch._dynamo
@@ -71,7 +72,7 @@ Resposta correta: {correct_answer}""",
 }
 CHOICES = ["A", "B", "C", "D"]
 
-bs = 6
+BATCH_SIZE = 6
 
 
 def write_pretty_json(file_path, data):
@@ -141,14 +142,19 @@ for model_name in MODELS:
             "vram_total_gb": None,
             "cuda_version": None,
         }
-        
+
         if torch.cuda.is_available():
             try:
-                gpu_info.update({
-                    "gpu_model": torch.cuda.get_device_name(0),
-                    "vram_total_gb": round(torch.cuda.get_device_properties(0).total_memory / 1024**3, 2),
-                    "cuda_version": torch.version.cuda,
-                })
+                gpu_info.update(
+                    {
+                        "gpu_model": torch.cuda.get_device_name(0),
+                        "vram_total_gb": round(
+                            torch.cuda.get_device_properties(0).total_memory / 1024**3,
+                            2,
+                        ),
+                        "cuda_version": torch.version.cuda,
+                    }
+                )
             except Exception:
                 pass
 
@@ -165,16 +171,21 @@ for model_name in MODELS:
         }
 
         q_correct = q_total = 0
-        for start in tqdm(range(0, len(prompts), bs)):
-            stop = min(start + bs, len(prompts))
+        for start in tqdm(range(0, len(prompts), BATCH_SIZE)):
+            stop = min(start + BATCH_SIZE, len(prompts))
 
             prompts_batch = prompts[start:stop]
 
             encodings = tokenizer(
                 prompts_batch, return_tensors="pt", padding="longest", truncation=False
             ).to(model.device)
+
+            start_time = time.time()
             with torch.no_grad():
                 output_ids = model.generate(**encodings)
+            end_time = time.time()
+
+            batch_inference_time = end_time - start_time
 
             responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
 
@@ -203,6 +214,8 @@ for model_name in MODELS:
                         f"Could not parse {response_raw[len(prompts[sample_no]) + 1 :]}"
                     )
 
+                question_inference_time = batch_inference_time / len(responses)
+
                 result["questions"].append(
                     {
                         "question": prompts[sample_no],
@@ -213,14 +226,23 @@ for model_name in MODELS:
                         ),
                         "correct": choice
                         == int(dataset_prompts[sample_no]["correct_answer_num"]),
+                        "inference_time_seconds": round(question_inference_time, 3),
                     }
                 )
-                result["total"] = q_total
-                result["correct"] = q_correct
-                result["correct_percent"] = q_correct / q_total * 100
+
+        result["total"] = q_total
+        result["correct"] = q_correct
+        result["correct_percent"] = q_correct / q_total * 100
+        total_inference_time = sum(
+            q["inference_time_seconds"] for q in result["questions"]
+        )
+        result["average_inference_time_seconds"] = round(
+            total_inference_time / len(result["questions"]), 3
+        )
 
         print(
-            f"{q_total} questions, {q_correct} correct ({round(q_correct / q_total * 100, 1)}%)"
+            f"{q_total} questions, {q_correct} correct "
+            f"({round(q_correct / q_total * 100, 1)}%)"
         )
 
         write_pretty_json(
