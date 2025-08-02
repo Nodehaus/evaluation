@@ -103,8 +103,8 @@ for model_name in MODELS:
         device_map="auto",
         torch_dtype=torch.bfloat16,
         trust_remote_code=True,
+        pad_token_id=tokenizer.pad_token_id,
     )
-    model.config.pad_token_id = tokenizer.pad_token_id
 
     for language in LANGUAGES:
         print(f"Evaluating model {model_name} with language {language}")
