@@ -135,6 +135,23 @@ for model_name in MODELS:
             for prompt in dataset_prompts
         ]
 
+        gpu_info = {
+            "gpu_available": torch.cuda.is_available(),
+            "gpu_model": None,
+            "vram_total_gb": None,
+            "cuda_version": None,
+        }
+        
+        if torch.cuda.is_available():
+            try:
+                gpu_info.update({
+                    "gpu_model": torch.cuda.get_device_name(0),
+                    "vram_total_gb": round(torch.cuda.get_device_properties(0).total_memory / 1024**3, 2),
+                    "cuda_version": torch.version.cuda,
+                })
+            except Exception:
+                pass
+
         result = {
             "dataset": dataset_config,
             "model": model_name,
@@ -144,6 +161,7 @@ for model_name in MODELS:
             "prompt_template": PROMPT_TEMPLATE[language],
             "examples": prompt_examples,
             "questions": [],
+            "gpu_info": gpu_info,
         }
 
         q_correct = q_total = 0
