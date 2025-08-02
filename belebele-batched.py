@@ -72,7 +72,34 @@ Resposta correta: {correct_answer}""",
 }
 CHOICES = ["A", "B", "C", "D"]
 
-BATCH_SIZE = 6
+
+def calculate_batch_size(model, vram_gb):
+    """Calculate optimal batch size based on model size and available VRAM."""
+    # Get actual model size and memory usage
+    total_params = sum(p.numel() for p in model.parameters())
+    model_size_b = total_params / 1e9
+
+    # Get bytes per parameter from dtype
+    sample_param = next(model.parameters())
+    bytes_per_param = sample_param.element_size()
+    model_memory_gb = total_params * bytes_per_param / 1e9
+
+    if vram_gb is None or vram_gb < 4:
+        return 1, model_size_b, model_memory_gb
+
+    # Calculate batch size based on available memory after model loading
+    # Reserve some VRAM for model overhead, activations, and safety margin
+    available_memory_gb = vram_gb - model_memory_gb - 1  # 1GB safety margin
+
+    if available_memory_gb <= 0:
+        batch_size = 1
+    else:
+        # Estimate memory per batch item (rough approximation for inference)
+        # Each batch item uses roughly 0.5GB for a typical prompt length
+        memory_per_batch_item = 0.5
+        batch_size = max(1, int(available_memory_gb / memory_per_batch_item))
+
+    return batch_size, model_size_b, model_memory_gb
 
 
 def write_pretty_json(file_path, data):
@@ -103,8 +130,8 @@ for model_name in MODELS:
         device_map="auto",
         torch_dtype=torch.bfloat16,
         trust_remote_code=True,
-        pad_token_id=tokenizer.pad_token_id,
     )
+    model.generation_config.pad_token_id = tokenizer.pad_token_id
 
     for language in LANGUAGES:
         print(f"Evaluating model {model_name} with language {language}")
@@ -158,6 +185,10 @@ for model_name in MODELS:
             except Exception:
                 pass
 
+        batch_size, model_size_b, model_memory_gb = calculate_batch_size(
+            model, gpu_info["vram_total_gb"]
+        )
+
         result = {
             "dataset": dataset_config,
             "model": model_name,
@@ -168,11 +199,18 @@ for model_name in MODELS:
             "examples": prompt_examples,
             "questions": [],
             "gpu_info": gpu_info,
+            "batch_size": batch_size,
+            "model_size_billions": round(model_size_b, 2),
+            "model_memory_gb": round(model_memory_gb, 2),
         }
 
         q_correct = q_total = 0
-        for start in tqdm(range(0, len(prompts), BATCH_SIZE)):
-            stop = min(start + BATCH_SIZE, len(prompts))
+        print(
+            f"Model: {model_size_b:.2f}B parameters ({model_memory_gb:.2f}GB), "
+            f"batch size: {batch_size}"
+        )
+        for start in tqdm(range(0, len(prompts), batch_size)):
+            stop = min(start + batch_size, len(prompts))
 
             prompts_batch = prompts[start:stop]
 
