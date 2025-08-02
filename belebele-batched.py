@@ -12,7 +12,10 @@ torch._dynamo.config.cache_size_limit = 64
 
 LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_Latn"]
 
-MODELS = ["google/gemma-3-1b-it"]
+MODELS = [
+    "mistralai/Mistral-7B-v0.1",
+    # "google/gemma-3-1b-it",
+]
 
 
 PROMPT_TEMPLATE = {
