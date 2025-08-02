@@ -95,7 +95,8 @@ def parse_choice(response):
 
 for model_name in MODELS:
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    tokenizer.add_special_tokens({"pad_token": "<pad>"})
+    if tokenizer.pad_token is None:
+        tokenizer.add_special_tokens({"pad_token": "<pad>"})
 
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
@@ -103,7 +104,8 @@ for model_name in MODELS:
         torch_dtype=torch.bfloat16,
         trust_remote_code=True,
     )
-    model.resize_token_embeddings(len(tokenizer))
+    if tokenizer.pad_token is not None and len(tokenizer) != model.config.vocab_size:
+        model.resize_token_embeddings(len(tokenizer))
     model.config.pad_token_id = tokenizer.pad_token_id
 
     for language in LANGUAGES:
