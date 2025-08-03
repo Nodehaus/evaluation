@@ -159,6 +159,7 @@ for model_name, language_variants in MODELS.items():
                 del model, tokenizer
                 gc.collect()
                 torch.cuda.empty_cache()
+                torch.cuda.synchronize()
 
             logger.info(f"Loading model: {actual_model_name}")
             tokenizer = AutoTokenizer.from_pretrained(actual_model_name)
@@ -284,6 +285,7 @@ for model_name, language_variants in MODELS.items():
             del encodings, output_ids
             gc.collect()
             torch.cuda.empty_cache()
+            torch.cuda.synchronize()
 
             for i, response_raw in enumerate(responses):
                 sample_no = i + start
@@ -342,8 +344,8 @@ for model_name, language_variants in MODELS.items():
 
         write_pretty_json(output_file_name, result)
 
-# Free final model memory
-if model is not None:
-    del model, tokenizer
-    gc.collect()
-    torch.cuda.empty_cache()
+        if hasattr(model, "past_key_values"):
+            model.past_key_values = None
+        gc.collect()
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
