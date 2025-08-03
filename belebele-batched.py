@@ -23,7 +23,9 @@ LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_La
 MODELS = {
     "mistralai/Mistral-7B-v0.1": {},
     "google/gemma-3-4b-pt": {},
+    "google/gemma-3-4b-it": {},
     "google/gemma-3-12b-pt": {},
+    "google/gemma-3-12b-it": {},
     "hplt-monolingual": {
         "deu_Latn": "HPLT/hplt2c_deu_checkpoints",
         "fra_Latn": "HPLT/hplt2c_fra_checkpoints",
@@ -171,6 +173,16 @@ for model_name, language_variants in MODELS.items():
             )
             model.generation_config.pad_token_id = tokenizer.pad_token_id
             current_model_name = actual_model_name
+
+        output_file_name = "results/belebe-{}_{}.json".format(
+            current_model_name.split("/")[-1], language
+        )
+        if os.path.exists(output_file_name):
+            logger.info(
+                f"Skipping model {model_name} with language {language},"
+                " results file exists"
+            )
+            continue
 
         logger.info(f"Evaluating model {model_name} with language {language}")
 
@@ -328,12 +340,7 @@ for model_name, language_variants in MODELS.items():
             f"({round(q_correct / q_total * 100, 1)}%)"
         )
 
-        write_pretty_json(
-            "results/belebe-{}_{}.json".format(
-                current_model_name.split("/")[-1], language
-            ),
-            result,
-        )
+        write_pretty_json(output_file_name, result)
 
 # Free final model memory
 if model is not None:
