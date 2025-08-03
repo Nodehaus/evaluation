@@ -1,5 +1,6 @@
 import gc
 import json
+import logging
 import os
 import time
 
@@ -10,6 +11,12 @@ from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 torch._dynamo.config.cache_size_limit = 64
+
+# Setup logger
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 
 LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_Latn"]
 
@@ -116,7 +123,6 @@ def write_pretty_json(file_path, data):
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as write_file:
         json.dump(data, write_file, indent=4)
-    print(f"wrote {file_path}")
 
 
 def parse_choice(response):
@@ -141,7 +147,9 @@ for model_name, language_variants in MODELS.items():
         elif not language_variants:
             actual_model_name = model_name
         else:
-            print(f"Skipping {language} for {model_name} (no variant available)")
+            logger.warning(
+                f"Skipping {language} for {model_name} (no variant available)"
+            )
             continue
 
         if current_model_name != actual_model_name:
@@ -150,7 +158,7 @@ for model_name, language_variants in MODELS.items():
                 gc.collect()
                 torch.cuda.empty_cache()
 
-            print(f"Loading model: {actual_model_name}")
+            logger.info(f"Loading model: {actual_model_name}")
             tokenizer = AutoTokenizer.from_pretrained(actual_model_name)
             if tokenizer.pad_token is None:
                 tokenizer.pad_token = tokenizer.eos_token
@@ -164,7 +172,7 @@ for model_name, language_variants in MODELS.items():
             model.generation_config.pad_token_id = tokenizer.pad_token_id
             current_model_name = actual_model_name
 
-        print(f"Evaluating model {model_name} with language {language}")
+        logger.info(f"Evaluating model {model_name} with language {language}")
 
         dataset_config = {
             "path": "facebook/belebele",
@@ -235,11 +243,14 @@ for model_name, language_variants in MODELS.items():
         }
 
         q_correct = q_total = 0
-        print(
+        logger.info(
             f"Model: {model_size_b:.2f}B parameters ({model_memory_gb:.2f}GB), "
             f"batch size: {batch_size}"
         )
         for start in tqdm(range(0, len(prompts), batch_size)):
+            logger.info(
+                f"GPU memory before: {torch.cuda.memory_allocated() / 1024**3:.2f}GB"
+            )
             stop = min(start + batch_size, len(prompts))
 
             prompts_batch = prompts[start:stop]
@@ -278,7 +289,7 @@ for model_name, language_variants in MODELS.items():
                     q_correct += 1
                 q_total += 1
                 if choice is None:
-                    print(
+                    logger.warning(
                         f"Could not parse {response_raw[len(prompts[sample_no]) + 1 :]}"
                     )
 
@@ -298,6 +309,10 @@ for model_name, language_variants in MODELS.items():
                     }
                 )
 
+            logger.info(
+                f"GPU memory after: {torch.cuda.memory_allocated() / 1024**3:.2f}GB"
+            )
+
         result["total"] = q_total
         result["correct"] = q_correct
         result["correct_percent"] = q_correct / q_total * 100
@@ -308,7 +323,7 @@ for model_name, language_variants in MODELS.items():
             total_inference_time / len(result["questions"]), 3
         )
 
-        print(
+        logger.info(
             f"{q_total} questions, {q_correct} correct "
             f"({round(q_correct / q_total * 100, 1)}%)"
         )
