@@ -13,7 +13,20 @@ torch._dynamo.config.cache_size_limit = 64
 
 LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_Latn"]
 
-MODELS = ["mistralai/Mistral-7B-v0.1", "google/gemma-3-4b-pt", "google/gemma-3-12b-pt"]
+MODELS = {
+    "mistralai/Mistral-7B-v0.1": {},
+    "google/gemma-3-4b-pt": {},
+    "google/gemma-3-12b-pt": {},
+    "hplt-monolingual": {
+        "deu_Latn": "HPLT/hplt2c_deu_checkpoints",
+        "fra_Latn": "HPLT/hplt2c_fra_checkpoints",
+        "spa_Latn": "HPLT/hplt2c_spa_checkpoints",
+        "ita_Latn": "HPLT/hplt2c_ita_checkpoints",
+        "pol_Latn": "HPLT/hplt2c_pol_checkpoints",
+        "por_Latn": "HPLT/hplt2c_por_checkpoints",
+        "eng_Latn": "HPLT/hplt2c_eng_checkpoints",
+    },
+}
 
 
 PROMPT_TEMPLATE = {
@@ -117,20 +130,40 @@ def parse_choice(response):
         return None
 
 
-for model_name in MODELS:
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
+current_model_name = None
+model = None
+tokenizer = None
 
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        device_map="auto",
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
-    )
-    model.generation_config.pad_token_id = tokenizer.pad_token_id
-
+for model_name, language_variants in MODELS.items():
     for language in LANGUAGES:
+        if language_variants and language in language_variants:
+            actual_model_name = language_variants[language]
+        elif not language_variants:
+            actual_model_name = model_name
+        else:
+            print(f"Skipping {language} for {model_name} (no variant available)")
+            continue
+
+        if current_model_name != actual_model_name:
+            if model is not None:
+                del model, tokenizer
+                gc.collect()
+                torch.cuda.empty_cache()
+
+            print(f"Loading model: {actual_model_name}")
+            tokenizer = AutoTokenizer.from_pretrained(actual_model_name)
+            if tokenizer.pad_token is None:
+                tokenizer.pad_token = tokenizer.eos_token
+
+            model = AutoModelForCausalLM.from_pretrained(
+                actual_model_name,
+                device_map="auto",
+                torch_dtype=torch.bfloat16,
+                trust_remote_code=True,
+            )
+            model.generation_config.pad_token_id = tokenizer.pad_token_id
+            current_model_name = actual_model_name
+
         print(f"Evaluating model {model_name} with language {language}")
 
         dataset_config = {
@@ -188,7 +221,7 @@ for model_name in MODELS:
 
         result = {
             "dataset": dataset_config,
-            "model": model_name,
+            "model": current_model_name,
             "total": 0,
             "correct": 0,
             "correct_percent": None,
@@ -281,11 +314,14 @@ for model_name in MODELS:
         )
 
         write_pretty_json(
-            "results/belebe-{}_{}.json".format(model_name.split("/")[-1], language),
+            "results/belebe-{}_{}.json".format(
+                current_model_name.split("/")[-1], language
+            ),
             result,
         )
 
-    # Free model memory between models
+# Free final model memory
+if model is not None:
     del model, tokenizer
     gc.collect()
     torch.cuda.empty_cache()
