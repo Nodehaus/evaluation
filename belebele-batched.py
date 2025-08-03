@@ -95,8 +95,8 @@ def calculate_batch_size(model, vram_gb):
         batch_size = 1
     else:
         # Estimate memory per batch item (rough approximation for inference)
-        # Each batch item uses roughly 0.5GB for a typical prompt length
-        memory_per_batch_item = 0.5
+        # Each batch item uses roughly 0.7GB for a typical prompt length
+        memory_per_batch_item = 0.8
         batch_size = max(1, int(available_memory_gb / memory_per_batch_item))
 
     return batch_size, model_size_b, model_memory_gb
