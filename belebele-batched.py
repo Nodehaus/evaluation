@@ -19,7 +19,15 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 
-LANGUAGES = ["deu_Latn", "fra_Latn", "spa_Latn", "ita_Latn", "pol_Latn", "por_Latn"]
+LANGUAGES = [
+    "eng_Latn",
+    "deu_Latn",
+    "fra_Latn",
+    "spa_Latn",
+    "ita_Latn",
+    "pol_Latn",
+    "por_Latn",
+]
 
 MODELS = {
     "mistralai/Mistral-7B-v0.1": {},
@@ -304,9 +312,6 @@ for model_name, language_variants in MODELS.items():
             f"batch size: {batch_size}"
         )
         for start in tqdm(range(0, len(prompts), batch_size)):
-            logger.info(
-                f"GPU memory before: {torch.cuda.memory_allocated() / 1024**3:.2f}GB"
-            )
             stop = min(start + batch_size, len(prompts))
 
             prompts_batch = prompts[start:stop]
@@ -361,10 +366,6 @@ for model_name, language_variants in MODELS.items():
                         "inference_time_seconds": round(question_inference_time, 3),
                     }
                 )
-
-            logger.info(
-                f"GPU memory after: {torch.cuda.memory_allocated() / 1024**3:.2f}GB"
-            )
 
         result["total"] = q_total
         result["correct"] = q_correct
