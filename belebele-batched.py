@@ -219,7 +219,7 @@ for model_name, language_variants in MODELS.items():
                 torch.cuda.empty_cache()
                 torch.cuda.synchronize()
 
-            clear_huggingface_cache()
+                clear_huggingface_cache()
 
             model, tokenizer = load_model_and_tokenizer(actual_model_name)
             current_model_name = actual_model_name
@@ -317,18 +317,14 @@ for model_name, language_variants in MODELS.items():
 
             start_time = time.time()
             with torch.no_grad():
-                output_ids = model.generate(**encodings)
+                output_ids = model.generate(
+                    **encodings, cache_implementation="offloaded"
+                )
             end_time = time.time()
 
             batch_inference_time = end_time - start_time
 
             responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-
-            # Free GPU memory
-            del encodings, output_ids
-            gc.collect()
-            torch.cuda.empty_cache()
-            torch.cuda.synchronize()
 
             for i, response_raw in enumerate(responses):
                 sample_no = i + start
