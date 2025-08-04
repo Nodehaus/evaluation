@@ -151,6 +151,31 @@ def clear_huggingface_cache():
         logger.info("HuggingFace cache directory not found")
 
 
+def results_exist(model_name, language):
+    """Check if results file already exists for a model and language combination."""
+    output_file_name = "results/belebe-{}_{}.json".format(
+        model_name.split("/")[-1], language
+    )
+    return os.path.exists(output_file_name)
+
+
+def load_model_and_tokenizer(actual_model_name):
+    """Load model and tokenizer for the given model name."""
+    logger.info(f"Loading model: {actual_model_name}")
+    tokenizer = AutoTokenizer.from_pretrained(actual_model_name)
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
+    model = AutoModelForCausalLM.from_pretrained(
+        actual_model_name,
+        device_map="auto",
+        torch_dtype=torch.bfloat16,
+        trust_remote_code=True,
+    )
+    model.generation_config.pad_token_id = tokenizer.pad_token_id
+    return model, tokenizer
+
+
 def parse_choice(response):
     if len(response) == 0:
         return None
@@ -178,6 +203,15 @@ for model_name, language_variants in MODELS.items():
             )
             continue
 
+        # Check if results already exist before loading model
+        if results_exist(actual_model_name, language):
+            logger.info(
+                f"Skipping model {model_name} with language {language},"
+                " results file exists"
+            )
+            continue
+
+        # Load model only if needed and different from current
         if current_model_name != actual_model_name:
             if model is not None:
                 del model, tokenizer
@@ -187,31 +221,14 @@ for model_name, language_variants in MODELS.items():
 
             clear_huggingface_cache()
 
-            logger.info(f"Loading model: {actual_model_name}")
-            tokenizer = AutoTokenizer.from_pretrained(actual_model_name)
-            if tokenizer.pad_token is None:
-                tokenizer.pad_token = tokenizer.eos_token
-
-            model = AutoModelForCausalLM.from_pretrained(
-                actual_model_name,
-                device_map="auto",
-                torch_dtype=torch.bfloat16,
-                trust_remote_code=True,
-            )
-            model.generation_config.pad_token_id = tokenizer.pad_token_id
+            model, tokenizer = load_model_and_tokenizer(actual_model_name)
             current_model_name = actual_model_name
 
-        output_file_name = "results/belebe-{}_{}.json".format(
-            current_model_name.split("/")[-1], language
-        )
-        if os.path.exists(output_file_name):
-            logger.info(
-                f"Skipping model {model_name} with language {language},"
-                " results file exists"
-            )
-            continue
-
         logger.info(f"Evaluating model {model_name} with language {language}")
+
+        output_file_name = "results/belebe-{}_{}.json".format(
+            actual_model_name.split("/")[-1], language
+        )
 
         dataset_config = {
             "path": "facebook/belebele",
