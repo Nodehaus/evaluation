@@ -36,6 +36,8 @@ MODELS = {
     "mistralai/Mixtral-8x7B-Instruct-v0.1": {},
     "utter-project/EuroLLM-9B": {},
     "utter-project/EuroLLM-1.7B": {},
+    "google/gemma-3-1b-pt": {},
+    "google/gemma-3-1b-it": {},
     "google/gemma-3-4b-pt": {},
     "google/gemma-3-4b-it": {},
     "google/gemma-3-12b-pt": {},
