@@ -52,6 +52,12 @@ MODELS = {
         "eng_Latn": "HPLT/hplt2c_eng_checkpoints",
         "est_Latn": "HPLT/hplt2c_est_checkpoints",
     },
+    "allenai/OLMo-2-1124-13B-Instruct": {},
+    "allenai/OLMo-2-1124-13B": {},
+    "allenai/OLMo-2-1124-7B-Instruct": {},
+    "allenai/OLMo-2-1124-7B": {},
+    "HuggingFaceTB/SmolLM3-3B-Base": {},
+    "HuggingFaceTB/SmolLM3-3B": {},
 }
 
 
