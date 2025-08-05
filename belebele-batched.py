@@ -27,10 +27,15 @@ LANGUAGES = [
     "ita_Latn",
     "pol_Latn",
     "por_Latn",
+    "est_Latn",
 ]
 
 MODELS = {
     "mistralai/Mistral-7B-v0.1": {},
+    "mistralai/Mistral-7B-Instruct-v0.3": {},
+    "mistralai/Mixtral-8x7B-Instruct-v0.1": {},
+    "utter-project/EuroLLM-9B": {},
+    "utter-project/EuroLLM-1.7B": {},
     "google/gemma-3-4b-pt": {},
     "google/gemma-3-4b-it": {},
     "google/gemma-3-12b-pt": {},
