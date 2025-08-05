@@ -48,6 +48,7 @@ MODELS = {
         "pol_Latn": "HPLT/hplt2c_pol_checkpoints",
         "por_Latn": "HPLT/hplt2c_por_checkpoints",
         "eng_Latn": "HPLT/hplt2c_eng_checkpoints",
+        "est_Latn": "HPLT/hplt2c_est_checkpoints",
     },
 }
 
