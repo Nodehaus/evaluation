@@ -102,6 +102,13 @@ Resposta B: {mc_answer2}
 Resposta C: {mc_answer3}
 Resposta D: {mc_answer4}
 Resposta correta: {correct_answer}""",
+    "est_Latn": """{flores_passage}
+Küsimus: {question}
+Vastus A: {mc_answer1}
+Vastus B: {mc_answer2}
+Vastus C: {mc_answer3}
+Vastus D: {mc_answer4}
+Õige vastus: {correct_answer}""",
 }
 CHOICES = ["A", "B", "C", "D"]
 
