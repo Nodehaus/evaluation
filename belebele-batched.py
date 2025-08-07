@@ -196,7 +196,7 @@ def load_model_and_tokenizer(actual_model_name):
         tokenizer.pad_token = tokenizer.eos_token
 
     # Set left padding for decoder-only models like OLMo
-    if "olmo" in actual_model_name.lower():
+    if "olmo" in actual_model_name.lower() or "smollm3" in actual_model_name.lower():
         tokenizer.padding_side = "left"
 
     model = AutoModelForCausalLM.from_pretrained(
