@@ -1,12 +1,12 @@
 # The Great European AI Language Championship: A Comprehensive Analysis of Multilingual AI Performance
 
-_European Tech Sovereignty Meets Global AI Competition - A Comprehensive Analysis by Nodehaus_
+_European Tech Sovereignty Meets Global AI Competition - A Survey by Nodehaus_
 
 ---
 
 ## Advancing Global AI Accessibility Through Linguistic Diversity
 
-Picture this: In one corner, we have the heavyweight champions from Silicon Valley - Google's Gemma models flexing their massive parameter counts. In the opposite corner, Europe's rising stars - EuroLLM and HPLT models - representing European tech sovereignty and linguistic diversity. And entering from the open-source corner, we have the scrappy underdogs: Allen AI's OLMo and HuggingFace's SmolLM3, fighting with full transparency and reproducible training.
+Picture this: In one corner, we have the heavyweight champions from Silicon Valley - Google's Gemma models flexing their massive training data and different parameter counts. In the opposite corner, Europe's rising stars - EuroLLM and HPLT models - representing European tech sovereignty and linguistic diversity. And entering from the open-source corner, we have the scrappy underdogs: Allen AI's OLMo and HuggingFace's SmolLM3, fighting with full transparency and reproducible training.
 
 At **Nodehaus**, we're an AI agency that builds custom platforms using specialized AI models in your own workflows. We're particularly focused on developing solutions for AI support in EU languages within the legal sector. This isn't just academic research for us - it's about **European digital sovereignty** and ensuring that European businesses and institutions can deploy AI systems locally, protecting their data and intellectual property while serving their linguistic communities effectively.
 
