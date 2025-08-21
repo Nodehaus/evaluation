@@ -4,6 +4,7 @@ import time
 
 import datasets
 import torch
+import transformers
 from evaluation import evaluate
 from tqdm.auto import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -36,43 +37,22 @@ def load_model_and_tokenizer(model_name: str):
     return model, tokenizer
 
 
-def query_model(prompt: str, model, tokenizer, max_new_tokens: int = 20) -> str:
+def query_model(prompt: str, pipeline, max_new_tokens: int = 20) -> str:
     """
     Query the model with a prompt and return the generated text.
 
     Args:
         prompt: Input prompt
-        model: The loaded model
-        tokenizer: The loaded tokenizer
+        pipeline: The transformers pipeline
         max_new_tokens: Maximum number of tokens to generate
 
     Returns:
         Generated text response
     """
-    # Tokenize input
-    inputs = tokenizer(prompt, return_tensors="pt", padding=True, truncation=True)
-
-    # Move to same device as model
-    if torch.cuda.is_available():
-        inputs = {k: v.cuda() for k, v in inputs.items()}
-
-    # Generate response
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs,
-            max_new_tokens=max_new_tokens,
-            do_sample=False,  # Deterministic for evaluation
-            temperature=0.0,
-            pad_token_id=tokenizer.pad_token_id,
-            eos_token_id=tokenizer.eos_token_id,
-        )
-
-    # Decode the response (only the new tokens)
-    input_length = inputs["input_ids"].shape[1]
-    generated_tokens = outputs[0][input_length:]
-    response = tokenizer.decode(generated_tokens, skip_special_tokens=True).strip()
-
-    return response
+    response = pipeline(prompt, max_new_tokens=max_new_tokens)[0]["generated_text"][
+        len(prompt) :
+    ]
+    return response.strip()
 
 
 def extract_answer(response: str) -> str:
@@ -121,8 +101,13 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
     """
     print(f"Running evaluation for task '{task_name}' using model '{model_name}'")
 
-    # Load model and tokenizer
-    model, tokenizer = load_model_and_tokenizer(model_name)
+    # Create pipeline like belebele.py
+    pipeline = transformers.pipeline(
+        "text-generation",
+        model=model_name,
+        torch_dtype=torch.bfloat16,
+        device_map="auto",
+    )
 
     # Load the dataset
     print("Loading dataset...")
@@ -163,9 +148,9 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
             pass
 
     # Get model size information
-    total_params = sum(p.numel() for p in model.parameters())
+    total_params = sum(p.numel() for p in pipeline.model.parameters())
     model_size_b = total_params / 1e9
-    sample_param = next(model.parameters())
+    sample_param = next(pipeline.model.parameters())
     bytes_per_param = sample_param.element_size()
     model_memory_gb = total_params * bytes_per_param / 1e9
 
@@ -188,7 +173,7 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
     responses = []
     for i, prompt in enumerate(tqdm(prompts, desc="Processing prompts")):
         start_time = time.time()
-        response = query_model(prompt, model, tokenizer)
+        response = query_model(prompt, pipeline)
         end_time = time.time()
 
         responses.append(response)
