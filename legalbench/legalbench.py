@@ -4,55 +4,35 @@ import time
 
 import datasets
 import torch
-import transformers
 from evaluation import evaluate
 from tqdm.auto import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer
 from utils import generate_prompts
 
-
-def load_model_and_tokenizer(model_name: str):
-    """
-    Load the transformers model and tokenizer.
-
-    Args:
-        model_name: HuggingFace model name
-
-    Returns:
-        Tuple of (model, tokenizer)
-    """
-    print(f"Loading model and tokenizer: {model_name}")
-
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
-        device_map="auto" if torch.cuda.is_available() else None,
-    )
-
-    # Add pad token if missing
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-
-    return model, tokenizer
+from model_utils import (
+    calculate_batch_size,
+    generate_batch_responses,
+    generate_single_response,
+    get_gpu_info,
+    get_model_size_info,
+    load_model_and_tokenizer,
+)
 
 
-def query_model(prompt: str, pipeline, max_new_tokens: int = 20) -> str:
+def query_model(prompt: str, model, tokenizer, max_new_tokens: int = 20) -> str:
     """
     Query the model with a prompt and return the generated text.
+    Uses the same generation approach as belebele-batched.py.
 
     Args:
         prompt: Input prompt
-        pipeline: The transformers pipeline
+        model: The loaded model
+        tokenizer: The loaded tokenizer
         max_new_tokens: Maximum number of tokens to generate
 
     Returns:
         Generated text response
     """
-    response = pipeline(prompt, max_new_tokens=max_new_tokens)[0]["generated_text"][
-        len(prompt) :
-    ]
-    return response.strip()
+    return generate_single_response(model, tokenizer, prompt, max_new_tokens)
 
 
 def extract_answer(response: str) -> str:
@@ -101,13 +81,8 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
     """
     print(f"Running evaluation for task '{task_name}' using model '{model_name}'")
 
-    # Create pipeline like belebele.py
-    pipeline = transformers.pipeline(
-        "text-generation",
-        model=model_name,
-        torch_dtype=torch.bfloat16,
-        device_map="auto",
-    )
+    # Load model and tokenizer using the same approach as belebele-batched.py
+    model, tokenizer = load_model_and_tokenizer(model_name)
 
     # Load the dataset
     print("Loading dataset...")
@@ -117,7 +92,8 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
     test_df = dataset["test"].to_pandas()
 
     # Load the prompt template
-    prompt_template_path = f"tasks/{task_name}/base_prompt.txt"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    prompt_template_path = os.path.join(script_dir, f"tasks/{task_name}/base_prompt.txt")
     with open(prompt_template_path, "r") as f:
         prompt_template = f.read()
 
@@ -125,34 +101,17 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
     print("Generating prompts...")
     prompts = generate_prompts(prompt_template=prompt_template, data_df=test_df)
 
-    # Get GPU information
-    gpu_info = {
-        "gpu_available": torch.cuda.is_available(),
-        "gpu_model": None,
-        "vram_total_gb": None,
-        "cuda_version": None,
-    }
+    # Get GPU and model information
+    gpu_info = get_gpu_info()
+    model_size_info = get_model_size_info(model)
 
-    if torch.cuda.is_available():
-        try:
-            gpu_info.update(
-                {
-                    "gpu_model": torch.cuda.get_device_name(0),
-                    "vram_total_gb": round(
-                        torch.cuda.get_device_properties(0).total_memory / 1024**3, 2
-                    ),
-                    "cuda_version": torch.version.cuda,
-                }
-            )
-        except Exception:
-            pass
-
-    # Get model size information
-    total_params = sum(p.numel() for p in pipeline.model.parameters())
-    model_size_b = total_params / 1e9
-    sample_param = next(pipeline.model.parameters())
-    bytes_per_param = sample_param.element_size()
-    model_memory_gb = total_params * bytes_per_param / 1e9
+    # Calculate optimal batch size for batch processing
+    batch_size, model_size_b, model_memory_gb = calculate_batch_size(
+        model, gpu_info["vram_total_gb"]
+    )
+    
+    print(f"Model: {model_size_info['model_size_billions']}B parameters "
+          f"({model_size_info['model_memory_gb']}GB), batch size: {batch_size}")
 
     # Initialize result structure
     result = {
@@ -164,37 +123,49 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
         "prompt_template": prompt_template,
         "questions": [],
         "gpu_info": gpu_info,
-        "model_size_billions": round(model_size_b, 2),
-        "model_memory_gb": round(model_memory_gb, 2),
+        "model_size_billions": model_size_info["model_size_billions"],
+        "model_memory_gb": model_size_info["model_memory_gb"],
+        "batch_size": batch_size,
     }
 
-    # Query the model for all prompts
+    # Query the model for all prompts using batch processing
     print(f"Querying model for {len(prompts)} samples...")
     responses = []
-    for i, prompt in enumerate(tqdm(prompts, desc="Processing prompts")):
+    
+    for start in tqdm(range(0, len(prompts), batch_size), desc="Processing batches"):
+        stop = min(start + batch_size, len(prompts))
+        prompts_batch = prompts[start:stop]
+        
         start_time = time.time()
-        response = query_model(prompt, pipeline)
-        end_time = time.time()
-
-        responses.append(response)
-        inference_time = end_time - start_time
-
-        # Extract answer and check correctness
-        prediction = extract_answer(response)
-        ground_truth = test_df.iloc[i]["answer"]
-        is_correct = prediction == ground_truth
-
-        # Add question data to result
-        result["questions"].append(
-            {
-                "question": prompt,
-                "answer_raw": response,
-                "answer": prediction,
-                "correct_answer": ground_truth,
-                "correct": is_correct,
-                "inference_time_seconds": round(inference_time, 3),
-            }
+        batch_responses = generate_batch_responses(
+            model, tokenizer, prompts_batch, batch_size
         )
+        end_time = time.time()
+        
+        batch_inference_time = end_time - start_time
+        responses.extend(batch_responses)
+        
+        # Process each response in the batch
+        for i, response in enumerate(batch_responses):
+            sample_no = start + i
+            question_inference_time = batch_inference_time / len(batch_responses)
+            
+            # Extract answer and check correctness
+            prediction = extract_answer(response)
+            ground_truth = test_df.iloc[sample_no]["answer"]
+            is_correct = prediction == ground_truth
+
+            # Add question data to result
+            result["questions"].append(
+                {
+                    "question": prompts[sample_no],
+                    "answer_raw": response,
+                    "answer": prediction,
+                    "correct_answer": ground_truth,
+                    "correct": is_correct,
+                    "inference_time_seconds": round(question_inference_time, 3),
+                }
+            )
 
     # Extract answers from responses
     print("Extracting answers...")

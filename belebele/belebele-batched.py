@@ -9,7 +9,15 @@ import torch
 import torch._dynamo
 from datasets import load_dataset
 from tqdm import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer
+
+from model_utils import (
+    calculate_batch_size,
+    cleanup_model,
+    generate_batch_responses,
+    get_gpu_info,
+    get_model_size_info,
+    load_model_and_tokenizer,
+)
 
 torch._dynamo.config.cache_size_limit = 64
 
@@ -122,33 +130,6 @@ Vastus D: {mc_answer4}
 CHOICES = ["A", "B", "C", "D"]
 
 
-def calculate_batch_size(model, vram_gb):
-    """Calculate optimal batch size based on model size and available VRAM."""
-    # Get actual model size and memory usage
-    total_params = sum(p.numel() for p in model.parameters())
-    model_size_b = total_params / 1e9
-
-    # Get bytes per parameter from dtype
-    sample_param = next(model.parameters())
-    bytes_per_param = sample_param.element_size()
-    model_memory_gb = total_params * bytes_per_param / 1e9
-
-    if vram_gb is None or vram_gb < 4:
-        return 1, model_size_b, model_memory_gb
-
-    # Calculate batch size based on available memory after model loading
-    # Reserve some VRAM for model overhead, activations, and safety margin
-    available_memory_gb = vram_gb - model_memory_gb - 1  # 1GB safety margin
-
-    if available_memory_gb <= 0:
-        batch_size = 1
-    else:
-        # Estimate memory per batch item (rough approximation for inference)
-        # Each batch item uses roughly 0.7GB for a typical prompt length
-        memory_per_batch_item = 0.8
-        batch_size = max(1, int(available_memory_gb / memory_per_batch_item))
-
-    return batch_size, model_size_b, model_memory_gb
 
 
 def write_pretty_json(file_path, data):
@@ -188,25 +169,6 @@ def results_exist(model_name, language):
     return os.path.exists(output_file_name)
 
 
-def load_model_and_tokenizer(actual_model_name):
-    """Load model and tokenizer for the given model name."""
-    logger.info(f"Loading model: {actual_model_name}")
-    tokenizer = AutoTokenizer.from_pretrained(actual_model_name)
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-
-    # Set left padding for decoder-only models like OLMo
-    if "olmo" in actual_model_name.lower() or "smollm3" in actual_model_name.lower():
-        tokenizer.padding_side = "left"
-
-    model = AutoModelForCausalLM.from_pretrained(
-        actual_model_name,
-        device_map="auto",
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
-    )
-    model.generation_config.pad_token_id = tokenizer.pad_token_id
-    return model, tokenizer
 
 
 def parse_choice(response):
@@ -247,11 +209,7 @@ for model_name, language_variants in MODELS.items():
         # Load model only if needed and different from current
         if current_model_name != actual_model_name:
             if model is not None:
-                del model, tokenizer
-                gc.collect()
-                torch.cuda.empty_cache()
-                torch.cuda.synchronize()
-
+                cleanup_model(model, tokenizer)
                 clear_huggingface_cache()
 
             model, tokenizer = load_model_and_tokenizer(actual_model_name)
@@ -290,28 +248,9 @@ for model_name, language_variants in MODELS.items():
             for prompt in dataset_prompts
         ]
 
-        gpu_info = {
-            "gpu_available": torch.cuda.is_available(),
-            "gpu_model": None,
-            "vram_total_gb": None,
-            "cuda_version": None,
-        }
-
-        if torch.cuda.is_available():
-            try:
-                gpu_info.update(
-                    {
-                        "gpu_model": torch.cuda.get_device_name(0),
-                        "vram_total_gb": round(
-                            torch.cuda.get_device_properties(0).total_memory / 1024**3,
-                            2,
-                        ),
-                        "cuda_version": torch.version.cuda,
-                    }
-                )
-            except Exception:
-                pass
-
+        gpu_info = get_gpu_info()
+        model_size_info = get_model_size_info(model)
+        
         batch_size, model_size_b, model_memory_gb = calculate_batch_size(
             model, gpu_info["vram_total_gb"]
         )
@@ -327,44 +266,29 @@ for model_name, language_variants in MODELS.items():
             "questions": [],
             "gpu_info": gpu_info,
             "batch_size": batch_size,
-            "model_size_billions": round(model_size_b, 2),
-            "model_memory_gb": round(model_memory_gb, 2),
+            "model_size_billions": model_size_info["model_size_billions"],
+            "model_memory_gb": model_size_info["model_memory_gb"],
         }
 
         q_correct = q_total = 0
         logger.info(
-            f"Model: {model_size_b:.2f}B parameters ({model_memory_gb:.2f}GB), "
-            f"batch size: {batch_size}"
+            f"Model: {model_size_info['model_size_billions']}B parameters "
+            f"({model_size_info['model_memory_gb']}GB), batch size: {batch_size}"
         )
         for start in tqdm(range(0, len(prompts), batch_size)):
             stop = min(start + batch_size, len(prompts))
-
             prompts_batch = prompts[start:stop]
 
-            encodings = tokenizer(
-                prompts_batch, return_tensors="pt", padding="longest", truncation=False
-            ).to(model.device)
-
             start_time = time.time()
-            with torch.no_grad():
-                output_ids = model.generate(
-                    **encodings, cache_implementation="offloaded"
-                )
+            batch_responses = generate_batch_responses(
+                model, tokenizer, prompts_batch, batch_size
+            )
             end_time = time.time()
 
             batch_inference_time = end_time - start_time
 
-            responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-
-            for i, response_raw in enumerate(responses):
-                sample_no = i + start
-
-                response = response_raw[len(prompts[sample_no]) :]
-                response = (
-                    response.split("\n")[0].strip()
-                    if "\n" in response
-                    else response.strip()
-                )
+            for i, response in enumerate(batch_responses):
+                sample_no = start + i
 
                 choice = parse_choice(response)
 
@@ -372,16 +296,14 @@ for model_name, language_variants in MODELS.items():
                     q_correct += 1
                 q_total += 1
                 if choice is None:
-                    logger.warning(
-                        f"Could not parse {response_raw[len(prompts[sample_no]) + 1 :]}"
-                    )
+                    logger.warning(f"Could not parse {response}")
 
-                question_inference_time = batch_inference_time / len(responses)
+                question_inference_time = batch_inference_time / len(batch_responses)
 
                 result["questions"].append(
                     {
                         "question": prompts[sample_no],
-                        "answer_raw": response_raw[len(prompts[sample_no]) + 1 :],
+                        "answer_raw": response,
                         "answer": choice,
                         "correct_answer": int(
                             dataset_prompts[sample_no]["correct_answer_num"]
@@ -409,6 +331,7 @@ for model_name, language_variants in MODELS.items():
 
         write_pretty_json(output_file_name, result)
 
+        # Clear model cache after each language
         if hasattr(model, "past_key_values"):
             model.past_key_values = None
         gc.collect()
