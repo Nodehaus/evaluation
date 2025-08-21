@@ -1,27 +1,54 @@
 import gc
 import logging
-import os
-import time
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 logger = logging.getLogger(__name__)
 
+MODELS = {
+    "mistralai/Mistral-7B-v0.1": {},
+    "mistralai/Mistral-7B-Instruct-v0.3": {},
+    "utter-project/EuroLLM-9B": {},
+    "utter-project/EuroLLM-1.7B": {},
+    "google/gemma-3-1b-pt": {},
+    "google/gemma-3-1b-it": {},
+    "google/gemma-3-4b-pt": {},
+    "google/gemma-3-4b-it": {},
+    "google/gemma-3-12b-pt": {},
+    "google/gemma-3-12b-it": {},
+    "hplt-monolingual": {
+        "deu_Latn": "HPLT/hplt2c_deu_checkpoints",
+        "fra_Latn": "HPLT/hplt2c_fra_checkpoints",
+        "spa_Latn": "HPLT/hplt2c_spa_checkpoints",
+        "ita_Latn": "HPLT/hplt2c_ita_checkpoints",
+        "pol_Latn": "HPLT/hplt2c_pol_checkpoints",
+        "por_Latn": "HPLT/hplt2c_por_checkpoints",
+        "eng_Latn": "HPLT/hplt2c_eng_checkpoints",
+        "est_Latn": "HPLT/hplt2c_est_checkpoints",
+    },
+    "allenai/OLMo-2-1124-13B-Instruct": {},
+    "allenai/OLMo-2-1124-13B": {},
+    "allenai/OLMo-2-1124-7B-Instruct": {},
+    "allenai/OLMo-2-1124-7B": {},
+    "HuggingFaceTB/SmolLM3-3B-Base": {},
+    "HuggingFaceTB/SmolLM3-3B": {},
+}
+
 
 def load_model_and_tokenizer(model_name: str):
     """
     Load model and tokenizer for the given model name.
     Uses the same approach as belebele-batched.py for consistent generation behavior.
-    
+
     Args:
         model_name: HuggingFace model name
-        
+
     Returns:
         Tuple of (model, tokenizer)
     """
     logger.info(f"Loading model: {model_name}")
-    
+
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -37,7 +64,7 @@ def load_model_and_tokenizer(model_name: str):
         trust_remote_code=True,
     )
     model.generation_config.pad_token_id = tokenizer.pad_token_id
-    
+
     return model, tokenizer
 
 
@@ -73,18 +100,18 @@ def calculate_batch_size(model, vram_gb):
 def generate_batch_responses(model, tokenizer, prompts, batch_size=1):
     """
     Generate responses for a batch of prompts using the same approach as belebele-batched.py.
-    
+
     Args:
         model: The loaded model
         tokenizer: The loaded tokenizer
         prompts: List of prompt strings
         batch_size: Batch size for generation
-        
+
     Returns:
         List of response strings (without the original prompt)
     """
     all_responses = []
-    
+
     for start in range(0, len(prompts), batch_size):
         stop = min(start + batch_size, len(prompts))
         prompts_batch = prompts[start:stop]
@@ -94,20 +121,21 @@ def generate_batch_responses(model, tokenizer, prompts, batch_size=1):
         ).to(model.device)
 
         with torch.no_grad():
-            output_ids = model.generate(
-                **encodings, 
-                cache_implementation="offloaded"
-            )
+            output_ids = model.generate(**encodings, cache_implementation="offloaded")
 
         responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-        
+
         # Extract only the generated part (remove original prompt)
         for i, response_raw in enumerate(responses):
-            response = response_raw[len(prompts[start + i]):]
+            response = response_raw[len(prompts[start + i]) :]
             # Clean up response (take first line if multiple lines)
-            response = response.split("\n")[0].strip() if "\n" in response else response.strip()
+            response = (
+                response.split("\n")[0].strip()
+                if "\n" in response
+                else response.strip()
+            )
             all_responses.append(response)
-    
+
     return all_responses
 
 
@@ -115,13 +143,13 @@ def generate_single_response(model, tokenizer, prompt, max_new_tokens=20):
     """
     Generate a single response using the batched approach with batch_size=1.
     This ensures consistent behavior with the batched generation.
-    
+
     Args:
         model: The loaded model
         tokenizer: The loaded tokenizer
         prompt: Single prompt string
         max_new_tokens: Maximum number of tokens to generate (for compatibility)
-        
+
     Returns:
         Generated response string (without the original prompt)
     """
@@ -152,16 +180,18 @@ def get_gpu_info():
 
     if torch.cuda.is_available():
         try:
-            gpu_info.update({
-                "gpu_model": torch.cuda.get_device_name(0),
-                "vram_total_gb": round(
-                    torch.cuda.get_device_properties(0).total_memory / 1024**3, 2
-                ),
-                "cuda_version": torch.version.cuda,
-            })
+            gpu_info.update(
+                {
+                    "gpu_model": torch.cuda.get_device_name(0),
+                    "vram_total_gb": round(
+                        torch.cuda.get_device_properties(0).total_memory / 1024**3, 2
+                    ),
+                    "cuda_version": torch.version.cuda,
+                }
+            )
         except Exception:
             pass
-    
+
     return gpu_info
 
 
@@ -172,9 +202,9 @@ def get_model_size_info(model):
     sample_param = next(model.parameters())
     bytes_per_param = sample_param.element_size()
     model_memory_gb = total_params * bytes_per_param / 1e9
-    
+
     return {
         "model_size_billions": round(model_size_b, 2),
         "model_memory_gb": round(model_memory_gb, 2),
-        "total_params": total_params
+        "total_params": total_params,
     }

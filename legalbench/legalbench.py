@@ -1,4 +1,6 @@
+import gc
 import json
+import logging
 import os
 import time
 
@@ -9,13 +11,17 @@ from tqdm.auto import tqdm
 from utils import generate_prompts
 
 from model_utils import (
+    MODELS,
     calculate_batch_size,
+    cleanup_model,
     generate_batch_responses,
     generate_single_response,
     get_gpu_info,
     get_model_size_info,
     load_model_and_tokenizer,
 )
+
+LANGUAGES = ["eng_Latn"]
 
 
 def query_model(prompt: str, model, tokenizer, max_new_tokens: int = 20) -> str:
@@ -71,18 +77,32 @@ def write_pretty_json(file_path: str, data: dict):
         json.dump(data, write_file, indent=4)
 
 
-def run_evaluation(model_name: str, task_name: str = "abercrombie"):
+def results_exist(model_name, language, task_name):
+    """Check if results file already exists for a model, language, and task combination."""
+    output_file_name = (
+        f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json"
+    )
+    return os.path.exists(output_file_name)
+
+
+def run_evaluation(
+    model,
+    tokenizer,
+    model_name: str,
+    language: str = "eng_Latn",
+    task_name: str = "abercrombie",
+):
     """
     Run evaluation for the abercrombie task using transformers.
 
     Args:
+        model: The loaded model
+        tokenizer: The loaded tokenizer
         model_name: HuggingFace model name
+        language: Language code for evaluation
         task_name: Name of the task to evaluate
     """
     print(f"Running evaluation for task '{task_name}' using model '{model_name}'")
-
-    # Load model and tokenizer using the same approach as belebele-batched.py
-    model, tokenizer = load_model_and_tokenizer(model_name)
 
     # Load the dataset
     print("Loading dataset...")
@@ -93,7 +113,9 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
 
     # Load the prompt template
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    prompt_template_path = os.path.join(script_dir, f"tasks/{task_name}/base_prompt.txt")
+    prompt_template_path = os.path.join(
+        script_dir, f"tasks/{task_name}/base_prompt.txt"
+    )
     with open(prompt_template_path, "r") as f:
         prompt_template = f.read()
 
@@ -109,9 +131,11 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
     batch_size, model_size_b, model_memory_gb = calculate_batch_size(
         model, gpu_info["vram_total_gb"]
     )
-    
-    print(f"Model: {model_size_info['model_size_billions']}B parameters "
-          f"({model_size_info['model_memory_gb']}GB), batch size: {batch_size}")
+
+    print(
+        f"Model: {model_size_info['model_size_billions']}B parameters "
+        f"({model_size_info['model_memory_gb']}GB), batch size: {batch_size}"
+    )
 
     # Initialize result structure
     result = {
@@ -131,25 +155,25 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
     # Query the model for all prompts using batch processing
     print(f"Querying model for {len(prompts)} samples...")
     responses = []
-    
+
     for start in tqdm(range(0, len(prompts), batch_size), desc="Processing batches"):
         stop = min(start + batch_size, len(prompts))
         prompts_batch = prompts[start:stop]
-        
+
         start_time = time.time()
         batch_responses = generate_batch_responses(
             model, tokenizer, prompts_batch, batch_size
         )
         end_time = time.time()
-        
+
         batch_inference_time = end_time - start_time
         responses.extend(batch_responses)
-        
+
         # Process each response in the batch
         for i, response in enumerate(batch_responses):
             sample_no = start + i
             question_inference_time = batch_inference_time / len(batch_responses)
-            
+
             # Extract answer and check correctness
             prediction = extract_answer(response)
             ground_truth = test_df.iloc[sample_no]["answer"]
@@ -191,7 +215,7 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
 
     # Save results to JSON file
     output_file_name = (
-        f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_eng_Latn.json"
+        f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json"
     )
     write_pretty_json(output_file_name, result)
     print(f"Results saved to {output_file_name}")
@@ -208,6 +232,13 @@ def run_evaluation(model_name: str, task_name: str = "abercrombie"):
 
 
 if __name__ == "__main__":
+    # Setup logger
+    logger = logging.getLogger(__name__)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    )
+
     # Check available devices
     if torch.cuda.is_available():
         print(f"CUDA available: {torch.cuda.device_count()} GPU(s)")
@@ -215,11 +246,57 @@ if __name__ == "__main__":
     else:
         print("CUDA not available, using CPU")
 
-    model_name = "google/gemma-3-1b-it"
+    task_name = "abercrombie"
+    current_model_name = ""
+    model = None
+    tokenizer = None
 
-    print(f"Using model: {model_name}")
+    for model_name, language_variants in MODELS.items():
+        for language in LANGUAGES:
+            if language_variants and language in language_variants:
+                actual_model_name = language_variants[language]
+            elif not language_variants:
+                actual_model_name = model_name
+            else:
+                logger.warning(
+                    f"Skipping {language} for {model_name} (no variant available)"
+                )
+                continue
 
-    # Run the evaluation
-    score, predictions, answers = run_evaluation(model_name=model_name)
+            # Check if results already exist before loading model
+            if results_exist(actual_model_name, language, task_name):
+                logger.info(
+                    f"Skipping model {model_name} with language {language},"
+                    " results file exists"
+                )
+                continue
 
-    print(f"Final score: {score:.4f}")
+            # Load model only if needed and different from current
+            if current_model_name != actual_model_name:
+                if model is not None:
+                    cleanup_model(model, tokenizer)
+
+                model, tokenizer = load_model_and_tokenizer(actual_model_name)
+                current_model_name = actual_model_name
+
+            logger.info(f"Evaluating model {model_name} with language {language}")
+
+            # Run the evaluation
+            score, predictions, answers = run_evaluation(
+                model,
+                tokenizer,
+                model_name=actual_model_name,
+                language=language,
+                task_name=task_name,
+            )
+
+            logger.info(
+                f"Final score for {actual_model_name} ({language}): {score:.4f}"
+            )
+
+            # Clear model cache after each evaluation
+            if hasattr(model, "past_key_values"):
+                model.past_key_values = None
+            gc.collect()
+            torch.cuda.empty_cache()
+            torch.cuda.synchronize()

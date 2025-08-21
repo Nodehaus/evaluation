@@ -11,6 +11,7 @@ from datasets import load_dataset
 from tqdm import tqdm
 
 from model_utils import (
+    MODELS,
     calculate_batch_size,
     cleanup_model,
     generate_batch_responses,
@@ -37,36 +38,6 @@ LANGUAGES = [
     "por_Latn",
     "est_Latn",
 ]
-
-MODELS = {
-    "mistralai/Mistral-7B-v0.1": {},
-    "mistralai/Mistral-7B-Instruct-v0.3": {},
-    # "mistralai/Mixtral-8x7B-Instruct-v0.1": {},
-    "utter-project/EuroLLM-9B": {},
-    "utter-project/EuroLLM-1.7B": {},
-    "google/gemma-3-1b-pt": {},
-    "google/gemma-3-1b-it": {},
-    "google/gemma-3-4b-pt": {},
-    "google/gemma-3-4b-it": {},
-    "google/gemma-3-12b-pt": {},
-    "google/gemma-3-12b-it": {},
-    "hplt-monolingual": {
-        "deu_Latn": "HPLT/hplt2c_deu_checkpoints",
-        "fra_Latn": "HPLT/hplt2c_fra_checkpoints",
-        "spa_Latn": "HPLT/hplt2c_spa_checkpoints",
-        "ita_Latn": "HPLT/hplt2c_ita_checkpoints",
-        "pol_Latn": "HPLT/hplt2c_pol_checkpoints",
-        "por_Latn": "HPLT/hplt2c_por_checkpoints",
-        "eng_Latn": "HPLT/hplt2c_eng_checkpoints",
-        "est_Latn": "HPLT/hplt2c_est_checkpoints",
-    },
-    "allenai/OLMo-2-1124-13B-Instruct": {},
-    "allenai/OLMo-2-1124-13B": {},
-    "allenai/OLMo-2-1124-7B-Instruct": {},
-    "allenai/OLMo-2-1124-7B": {},
-    "HuggingFaceTB/SmolLM3-3B-Base": {},
-    "HuggingFaceTB/SmolLM3-3B": {},
-}
 
 
 PROMPT_TEMPLATE = {
@@ -130,8 +101,6 @@ Vastus D: {mc_answer4}
 CHOICES = ["A", "B", "C", "D"]
 
 
-
-
 def write_pretty_json(file_path, data):
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     with open(file_path, "w") as write_file:
@@ -167,8 +136,6 @@ def results_exist(model_name, language):
         model_name.split("/")[-1], language
     )
     return os.path.exists(output_file_name)
-
-
 
 
 def parse_choice(response):
@@ -250,7 +217,7 @@ for model_name, language_variants in MODELS.items():
 
         gpu_info = get_gpu_info()
         model_size_info = get_model_size_info(model)
-        
+
         batch_size, model_size_b, model_memory_gb = calculate_batch_size(
             model, gpu_info["vram_total_gb"]
         )
