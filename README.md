@@ -9,7 +9,13 @@ $ curl -LsSf https://astral.sh/uv/install.sh | sh
 $ uv sync
 ```
 
-## Run script
+## Run belebele scripts
+
+First change to the belebele folder:
+
+```
+$ cd belebele
+```
 
 We have a simplifed Belebele evaluation runner to test individual models and learn about the behaviour:
 
