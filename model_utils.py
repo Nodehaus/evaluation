@@ -1,5 +1,7 @@
 import gc
 import logging
+import os
+import shutil
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -167,6 +169,29 @@ def cleanup_model(model, tokenizer):
     gc.collect()
     torch.cuda.empty_cache()
     torch.cuda.synchronize()
+
+
+def clear_huggingface_cache():
+    """Clear HuggingFace model cache to free up disk space."""
+    cache_dir = os.path.expanduser("~/.cache/huggingface")
+    if os.path.exists(cache_dir):
+        try:
+            # Clear transformers cache
+            transformers_cache = os.path.join(cache_dir, "transformers")
+            if os.path.exists(transformers_cache):
+                shutil.rmtree(transformers_cache)
+                logger.info("Cleared HuggingFace transformers cache")
+
+            # Clear hub cache (downloaded models)
+            hub_cache = os.path.join(cache_dir, "hub")
+            if os.path.exists(hub_cache):
+                shutil.rmtree(hub_cache)
+                logger.info("Cleared HuggingFace hub cache")
+
+        except Exception as e:
+            logger.warning(f"Failed to clear HuggingFace cache: {e}")
+    else:
+        logger.info("HuggingFace cache directory not found")
 
 
 def get_gpu_info():

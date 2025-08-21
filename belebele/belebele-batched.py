@@ -2,7 +2,6 @@ import gc
 import json
 import logging
 import os
-import shutil
 import time
 
 import torch
@@ -14,6 +13,7 @@ from model_utils import (
     MODELS,
     calculate_batch_size,
     cleanup_model,
+    clear_huggingface_cache,
     generate_batch_responses,
     get_gpu_info,
     get_model_size_info,
@@ -106,28 +106,6 @@ def write_pretty_json(file_path, data):
     with open(file_path, "w") as write_file:
         json.dump(data, write_file, indent=4)
 
-
-def clear_huggingface_cache():
-    """Clear HuggingFace model cache to free up disk space."""
-    cache_dir = os.path.expanduser("~/.cache/huggingface")
-    if os.path.exists(cache_dir):
-        try:
-            # Clear transformers cache
-            transformers_cache = os.path.join(cache_dir, "transformers")
-            if os.path.exists(transformers_cache):
-                shutil.rmtree(transformers_cache)
-                logger.info("Cleared HuggingFace transformers cache")
-
-            # Clear hub cache (downloaded models)
-            hub_cache = os.path.join(cache_dir, "hub")
-            if os.path.exists(hub_cache):
-                shutil.rmtree(hub_cache)
-                logger.info("Cleared HuggingFace hub cache")
-
-        except Exception as e:
-            logger.warning(f"Failed to clear HuggingFace cache: {e}")
-    else:
-        logger.info("HuggingFace cache directory not found")
 
 
 def results_exist(model_name, language):

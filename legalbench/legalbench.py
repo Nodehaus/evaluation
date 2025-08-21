@@ -14,6 +14,7 @@ from model_utils import (
     MODELS,
     calculate_batch_size,
     cleanup_model,
+    clear_huggingface_cache,
     generate_batch_responses,
     generate_single_response,
     get_gpu_info,
@@ -275,6 +276,7 @@ if __name__ == "__main__":
             if current_model_name != actual_model_name:
                 if model is not None:
                     cleanup_model(model, tokenizer)
+                    clear_huggingface_cache()
 
                 model, tokenizer = load_model_and_tokenizer(actual_model_name)
                 current_model_name = actual_model_name
