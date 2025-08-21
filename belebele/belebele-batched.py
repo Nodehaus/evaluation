@@ -110,8 +110,10 @@ def write_pretty_json(file_path, data):
 
 def results_exist(model_name, language):
     """Check if results file already exists for a model and language combination."""
-    output_file_name = "results/belebe-{}_{}.json".format(
-        model_name.split("/")[-1], language
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_file_name = os.path.join(
+        script_dir,
+        "results/belebe-{}_{}.json".format(model_name.split("/")[-1], language)
     )
     return os.path.exists(output_file_name)
 
@@ -162,8 +164,10 @@ for model_name, language_variants in MODELS.items():
 
         logger.info(f"Evaluating model {model_name} with language {language}")
 
-        output_file_name = "results/belebe-{}_{}.json".format(
-            actual_model_name.split("/")[-1], language
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        output_file_name = os.path.join(
+            script_dir,
+            "results/belebe-{}_{}.json".format(actual_model_name.split("/")[-1], language)
         )
 
         dataset_config = {
