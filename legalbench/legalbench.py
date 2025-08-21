@@ -80,7 +80,9 @@ def write_pretty_json(file_path: str, data: dict):
 
 def results_exist(model_name, language, task_name):
     """Check if results file already exists for a model, language, and task combination."""
-    output_file_name = (
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_file_name = os.path.join(
+        script_dir, 
         f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json"
     )
     return os.path.exists(output_file_name)
@@ -215,7 +217,9 @@ def run_evaluation(
     result["balanced_accuracy"] = score
 
     # Save results to JSON file
-    output_file_name = (
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    output_file_name = os.path.join(
+        script_dir,
         f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json"
     )
     write_pretty_json(output_file_name, result)
