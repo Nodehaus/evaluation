@@ -4,12 +4,16 @@ import os
 import shutil
 
 import torch
+from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 logger = logging.getLogger(__name__)
 
+BASE_MODELS = {"pbouda/finetune-cpt-test": "unsloth/mistral-7b-v0.3"}
+
 MODELS = {
-    "mistralai/Mistral-7B-v0.1": {},
+    "mistralai/Mistral-7B-v0.3": {},
+    "pbouda/finetune-cpt-test": {},
     "mistralai/Mistral-7B-Instruct-v0.3": {},
     "utter-project/EuroLLM-9B": {},
     "utter-project/EuroLLM-1.7B": {},
@@ -42,6 +46,7 @@ def load_model_and_tokenizer(model_name: str):
     """
     Load model and tokenizer for the given model name.
     Uses the same approach as belebele-batched.py for consistent generation behavior.
+    Supports LoRA models via PEFT library.
 
     Args:
         model_name: HuggingFace model name
@@ -51,20 +56,29 @@ def load_model_and_tokenizer(model_name: str):
     """
     logger.info(f"Loading model: {model_name}")
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    # Determine the model name to use for tokenizer and base model
+    is_lora = model_name in BASE_MODELS
+    base_model_name = BASE_MODELS[model_name] if is_lora else model_name
+
+    tokenizer = AutoTokenizer.from_pretrained(base_model_name)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
     # Set left padding for decoder-only models like OLMo
-    if "olmo" in model_name.lower() or "smollm3" in model_name.lower():
+    if "olmo" in base_model_name.lower() or "smollm3" in base_model_name.lower():
         tokenizer.padding_side = "left"
 
     model = AutoModelForCausalLM.from_pretrained(
-        model_name,
+        base_model_name,
         device_map="auto",
         torch_dtype=torch.bfloat16,
         trust_remote_code=True,
     )
+
+    # Load LoRA adapter if this is a LoRA model
+    if is_lora:
+        model = PeftModel.from_pretrained(model, model_name)
+
     model.generation_config.pad_token_id = tokenizer.pad_token_id
 
     return model, tokenizer
