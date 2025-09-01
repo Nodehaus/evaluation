@@ -11,7 +11,6 @@ from tqdm.auto import tqdm
 from utils import generate_prompts
 
 from model_utils import (
-    MODELS,
     calculate_batch_size,
     cleanup_model,
     clear_huggingface_cache,
@@ -23,6 +22,10 @@ from model_utils import (
 )
 
 LANGUAGES = ["eng_Latn"]
+MODELS = {
+    "mistralai/Mistral-7B-Instruct-v0.3": {},
+    "google/gemma-3-12b-it": {},
+}
 
 
 def query_model(prompt: str, model, tokenizer, max_new_tokens: int = 20) -> str:
