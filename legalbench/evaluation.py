@@ -1,15 +1,12 @@
 """Functions for evaluating model outputs."""
 
-
-from typing import List
-import string
-
-from sklearn.metrics import balanced_accuracy_score
-
-from nltk.stem.porter import *
 import re
+import string
+from typing import List
 
 import numpy as np
+from nltk.stem.porter import *
+from sklearn.metrics import balanced_accuracy_score
 
 # These tasks are evaluated using exact-match balanced-accuracy
 EXACT_MATCH_BALANCED_ACC_TASKS = [
@@ -182,7 +179,7 @@ def normalize(text: str, stem: bool) -> str:
     Args:
         - text: text to normalize
         - stem: whether or not to apply a stemmer
-    
+
     Returns: normalized text
     """
 
@@ -209,7 +206,7 @@ def evaluate(task: str, generations: List[str], answers: List[str]):
         task: name of task
         generations: list of LLM outputs
         answers: list of correct answers (i.e., ground truth)
-    
+
     Returns: score for generations on given task
     """
 
@@ -304,8 +301,8 @@ def evaluate_definition_extraction(generations: List[str], answers: List[str]):
     Possible correct answers:
         - authorize
         - authorized
-    
-        
+
+
     For definition_extraction, we normalize both the generation and answers by
     applying a stemmer. We then report accuracy over the number of times the generation
     matches ground truth.
@@ -329,7 +326,7 @@ def evaluate_definition_extraction(generations: List[str], answers: List[str]):
 
 def evaluate_citation_open(generations: List[str], answers: List[str]):
     """
-    For the open citation prediction task, we only check if the correct case name is generated. 
+    For the open citation prediction task, we only check if the correct case name is generated.
     We verify this by stripping punctuation, and then checking if the answer is contained in the generation.
 
     NOTE: we do not check if the reporter citation/circuit is correct!
@@ -354,7 +351,6 @@ def evaluate_ssla(generations: List[str], answers: List[str]):
     fp = 0
     fn = 0
     for i in range(len(generations)):
-
         answers_split = answers[i].split(",")
         generations_split = str(generations[i]).split(",")
         normalized_answers = [normalize(a, stem=False) for a in answers_split]

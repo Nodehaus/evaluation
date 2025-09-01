@@ -1,0 +1,6 @@
+The folder legalbench/tasks contains a list of tasks for the legalbench evaluation system. The evaluation scores will tell me how good an LLM will handle legal questions and tasks. I want to find out:
+
+1) What tasks are suitable for automatic evaluation? I know already that some tasks require human evaluation of the output, but I do not know which ones. Most tasks will output a value that I can automatically compare to a true value, but I do not know which ones.
+2) Is the task specific to a jurisdiction and if yes, which one?
+
+Your task is to go through all the legalbench tasks and write a JSON file with three fields: "task", "automatic_evaluation", "jurisdiction". The value for "task" is the folder name of the task. The values for "automatic_evaluation" are "true" or "false". The jurisdiction can be a country, "global" or "unsure". Each folder has a file `base_prompt.txt` and `README.md` or `README.MD` that help you to find the information about "automatic" and "jurisdiction".
