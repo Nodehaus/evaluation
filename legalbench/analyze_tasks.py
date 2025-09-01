@@ -157,7 +157,9 @@ def main():
         json.dump(results, f, indent=2)
 
     print(f"\nAnalyzed {len(results)} tasks")
-    print(f"Results also saved to: /home/pbouda/Projects/poio-eval/task_analysis.json")
+    print(
+        "Results also saved to: /home/pbouda/Projects/poio-eval/legalbench/task_analysis.json"
+    )
 
 
 if __name__ == "__main__":

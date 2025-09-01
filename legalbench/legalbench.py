@@ -309,7 +309,7 @@ def get_global_automatic_tasks():
         List of task names
     """
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    task_analysis_path = os.path.join(script_dir, "legalbench_task_analysis.json")
+    task_analysis_path = os.path.join(script_dir, "task_analysis.json")
 
     with open(task_analysis_path, "r") as f:
         tasks = json.load(f)
