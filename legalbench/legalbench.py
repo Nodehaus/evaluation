@@ -42,33 +42,89 @@ def query_model(prompt: str, model, tokenizer, max_new_tokens: int = 20) -> str:
     return generate_single_response(model, tokenizer, prompt, max_new_tokens)
 
 
-def extract_answer(response: str) -> str:
+def extract_answer(response: str, task_name: str) -> str:
     """
-    Extract the classification answer from the model response.
-    Expected answers: generic, descriptive, suggestive, arbitrary, fanciful
+    Extract the answer from the model response based on the task type.
 
     Args:
         response: The raw model response
+        task_name: The name of the task to determine extraction method
 
     Returns:
-        The extracted answer (one of the 5 valid classes)
+        The extracted answer
     """
-    response = response.lower().strip()
+    response = response.strip()
 
-    # Valid answers
-    valid_answers = ["generic", "descriptive", "suggestive", "arbitrary", "fanciful"]
+    # Task-specific answer extraction
+    if task_name == "abercrombie":
+        response_lower = response.lower()
+        valid_answers = [
+            "generic",
+            "descriptive",
+            "suggestive",
+            "arbitrary",
+            "fanciful",
+        ]
+        for answer in valid_answers:
+            if answer in response_lower:
+                return answer
+        # Fallback to first word
+        words = response_lower.split()
+        return words[0] if words else "unknown"
 
-    # Check if any valid answer appears in the response
-    for answer in valid_answers:
-        if answer in response:
-            return answer
+    elif (
+        task_name
+        in [
+            "definition_classification",
+            "hearsay",
+            "textualism_tool_dictionaries",
+            "overruling",
+        ]
+        or task_name.startswith("cuad_")
+        or task_name.startswith("maud_")
+        or task_name.startswith("opp115_")
+    ):
+        # Binary classification tasks that expect Yes/No answers
+        response_lower = response.lower().strip()
+        if "yes" in response_lower:
+            return "Yes"
+        elif "no" in response_lower:
+            return "No"
+        # Fallback to first word
+        words = response.split()
+        return words[0] if words else "No"
 
-    # If no valid answer found, return the first word as fallback
-    words = response.split()
-    if words:
-        return words[0]
+    elif task_name == "international_citizenship_questions":
+        # This task may have multiple choice answers, extract first word/phrase
+        words = response.strip().split()
+        return words[0] if words else "unknown"
 
-    return "unknown"
+    elif task_name == "privacy_policy_entailment":
+        response_lower = response.lower().strip()
+        if "entailment" in response_lower and "not" not in response_lower:
+            return "Entailment"
+        elif "contradiction" in response_lower:
+            return "Contradiction"
+        elif "not_entailment" in response_lower or "not entailment" in response_lower:
+            return "Not_entailment"
+        # Fallback to first word
+        words = response.split()
+        return words[0] if words else "Not_entailment"
+
+    elif task_name.startswith("ssla_"):
+        # SSLA tasks expect names/entities, return the response as-is for complex evaluation
+        return response.strip()
+
+    elif task_name == "definition_extraction":
+        # Return the response as-is for complex evaluation
+        return response.strip()
+
+    else:
+        # Generic extraction - return first word or the whole response if short
+        words = response.strip().split()
+        if len(words) == 1 or len(response.strip()) < 50:
+            return response.strip()
+        return words[0] if words else "unknown"
 
 
 def write_pretty_json(file_path: str, data: dict):
@@ -82,8 +138,8 @@ def results_exist(model_name, language, task_name):
     """Check if results file already exists for a model, language, and task combination."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     output_file_name = os.path.join(
-        script_dir, 
-        f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json"
+        script_dir,
+        f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json",
     )
     return os.path.exists(output_file_name)
 
@@ -96,7 +152,7 @@ def run_evaluation(
     task_name: str = "abercrombie",
 ):
     """
-    Run evaluation for the abercrombie task using transformers.
+    Run evaluation for a specific legalbench task using transformers.
 
     Args:
         model: The loaded model
@@ -106,6 +162,12 @@ def run_evaluation(
         task_name: Name of the task to evaluate
     """
     print(f"Running evaluation for task '{task_name}' using model '{model_name}'")
+
+    # Check if task folder exists
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    task_dir = os.path.join(script_dir, f"tasks/{task_name}")
+    if not os.path.exists(task_dir):
+        raise FileNotFoundError(f"Task directory not found: {task_dir}")
 
     # Load the dataset
     print("Loading dataset...")
@@ -178,7 +240,7 @@ def run_evaluation(
             question_inference_time = batch_inference_time / len(batch_responses)
 
             # Extract answer and check correctness
-            prediction = extract_answer(response)
+            prediction = extract_answer(response, task_name)
             ground_truth = test_df.iloc[sample_no]["answer"]
             is_correct = prediction == ground_truth
 
@@ -196,7 +258,7 @@ def run_evaluation(
 
     # Extract answers from responses
     print("Extracting answers...")
-    predictions = [extract_answer(response) for response in responses]
+    predictions = [extract_answer(response, task_name) for response in responses]
 
     # Get ground truth answers
     answers = test_df["answer"].tolist()
@@ -220,7 +282,7 @@ def run_evaluation(
     script_dir = os.path.dirname(os.path.abspath(__file__))
     output_file_name = os.path.join(
         script_dir,
-        f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json"
+        f"results/legalbench-{task_name}-{model_name.split('/')[-1]}_{language}.json",
     )
     write_pretty_json(output_file_name, result)
     print(f"Results saved to {output_file_name}")
@@ -234,6 +296,28 @@ def run_evaluation(
     )
 
     return score, predictions, answers
+
+
+def get_global_automatic_tasks():
+    """
+    Get all tasks that have automatic_evaluation=true and jurisdiction=global.
+
+    Returns:
+        List of task names
+    """
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    task_analysis_path = os.path.join(script_dir, "legalbench_task_analysis.json")
+
+    with open(task_analysis_path, "r") as f:
+        tasks = json.load(f)
+
+    global_tasks = [
+        task["task"]
+        for task in tasks
+        if task["automatic_evaluation"] == "true" and task["jurisdiction"] == "global"
+    ]
+
+    return global_tasks
 
 
 if __name__ == "__main__":
@@ -251,7 +335,10 @@ if __name__ == "__main__":
     else:
         print("CUDA not available, using CPU")
 
-    task_name = "abercrombie"
+    # Get all global automatic tasks
+    tasks_to_evaluate = get_global_automatic_tasks()
+    print(f"Found {len(tasks_to_evaluate)} global automatic evaluation tasks")
+
     current_model_name = ""
     model = None
     tokenizer = None
@@ -268,41 +355,42 @@ if __name__ == "__main__":
                 )
                 continue
 
-            # Check if results already exist before loading model
-            if results_exist(actual_model_name, language, task_name):
+            for task_name in tasks_to_evaluate:
+                # Check if results already exist before loading model
+                if results_exist(actual_model_name, language, task_name):
+                    logger.info(
+                        f"Skipping task {task_name} for model {model_name} with language {language},"
+                        " results file exists"
+                    )
+                    continue
+
+                # Load model only if needed and different from current
+                if current_model_name != actual_model_name:
+                    if model is not None:
+                        cleanup_model(model, tokenizer)
+                        clear_huggingface_cache()
+
+                    model, tokenizer = load_model_and_tokenizer(actual_model_name)
+                    current_model_name = actual_model_name
+
                 logger.info(
-                    f"Skipping model {model_name} with language {language},"
-                    " results file exists"
+                    f"Evaluating model {model_name} with language {language} on task {task_name}"
                 )
-                continue
 
-            # Load model only if needed and different from current
-            if current_model_name != actual_model_name:
-                if model is not None:
-                    cleanup_model(model, tokenizer)
-                    clear_huggingface_cache()
+                # Run the evaluation
+                score, predictions, answers = run_evaluation(
+                    model,
+                    tokenizer,
+                    model_name=actual_model_name,
+                    language=language,
+                    task_name=task_name,
+                )
 
-                model, tokenizer = load_model_and_tokenizer(actual_model_name)
-                current_model_name = actual_model_name
+                logger.info(f"Task {task_name} - Score: {score:.4f}")
 
-            logger.info(f"Evaluating model {model_name} with language {language}")
-
-            # Run the evaluation
-            score, predictions, answers = run_evaluation(
-                model,
-                tokenizer,
-                model_name=actual_model_name,
-                language=language,
-                task_name=task_name,
-            )
-
-            logger.info(
-                f"Final score for {actual_model_name} ({language}): {score:.4f}"
-            )
-
-            # Clear model cache after each evaluation
-            if hasattr(model, "past_key_values"):
-                model.past_key_values = None
-            gc.collect()
-            torch.cuda.empty_cache()
-            torch.cuda.synchronize()
+                # Clear model cache after each evaluation
+                if hasattr(model, "past_key_values"):
+                    model.past_key_values = None
+                gc.collect()
+                torch.cuda.empty_cache()
+                torch.cuda.synchronize()
