@@ -160,21 +160,76 @@ def generate_batch_responses(model, tokenizer, prompts, batch_size=1):
     return all_responses
 
 
-def generate_single_response(model, tokenizer, prompt, max_new_tokens=20):
+def chat_batch_responses(model, tokenizer, conversations, batch_size=1, tools=None):
     """
-    Generate a single response using the batched approach with batch_size=1.
-    This ensures consistent behavior with the batched generation.
+    Generate chat responses for a batch of conversations using chat templates.
+    Uses the same approach as generate_batch_responses() but with chat templates.
 
     Args:
         model: The loaded model
         tokenizer: The loaded tokenizer
-        prompt: Single prompt string
-        max_new_tokens: Maximum number of tokens to generate (for compatibility)
+        conversations: List of conversation histories, where each conversation is a list of messages
+                      Each message is a dict with 'role' and 'content' keys
+                      Example: [
+                          [{"role": "user", "content": "Hello"}],
+                          [{"role": "user", "content": "What's the weather?"},
+                           {"role": "assistant", "content": "I'll check that for you."}]
+                      ]
+        batch_size: Batch size for generation
+        tools: Optional list of tool definitions for tool calling. Each tool should be a dict with:
+               - name: Tool name (string)
+               - description: Tool description (string)
+               - parameters: Tool parameter schema (dict)
+               Example: [{"name": "weather", "description": "Get weather", "parameters": {...}}]
 
     Returns:
-        Generated response string (without the original prompt)
+        List of response strings (only the generated assistant response)
     """
-    return generate_batch_responses(model, tokenizer, [prompt], batch_size=1)[0]
+    all_responses = []
+
+    # Check if tokenizer has chat template
+    if not hasattr(tokenizer, "chat_template") or tokenizer.chat_template is None:
+        raise ValueError(
+            f"Tokenizer {tokenizer.__class__.__name__} does not have a chat template. "
+            "Use generate_batch_responses() for models without chat templates."
+        )
+
+    for start in range(0, len(conversations), batch_size):
+        stop = min(start + batch_size, len(conversations))
+        conversations_batch = conversations[start:stop]
+
+        # Apply chat template to each conversation
+        formatted_prompts = []
+        for conversation in conversations_batch:
+            formatted_prompt = tokenizer.apply_chat_template(
+                conversation, tools=tools, tokenize=False, add_generation_prompt=True
+            )
+            formatted_prompts.append(formatted_prompt)
+
+        # Tokenize the formatted prompts
+        encodings = tokenizer(
+            formatted_prompts, return_tensors="pt", padding="longest", truncation=False
+        ).to(model.device)
+
+        # Generate responses using same approach as generate_batch_responses
+        with torch.no_grad():
+            output_ids = model.generate(**encodings, cache_implementation="offloaded")
+
+        # Decode responses using same approach as generate_batch_responses
+        responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+
+        # Extract only the generated part (remove original prompt)
+        for i, response_raw in enumerate(responses):
+            response = response_raw[len(formatted_prompts[start + i]) :]
+            # Clean up response (take first line if multiple lines)
+            response = (
+                response.split("\n")[0].strip()
+                if "\n" in response
+                else response.strip()
+            )
+            all_responses.append(response)
+
+    return all_responses
 
 
 def cleanup_model(model, tokenizer):

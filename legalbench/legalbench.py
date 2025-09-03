@@ -15,7 +15,6 @@ from model_utils import (
     cleanup_model,
     clear_huggingface_cache,
     generate_batch_responses,
-    generate_single_response,
     get_gpu_info,
     get_model_size_info,
     load_model_and_tokenizer,
@@ -26,23 +25,6 @@ MODELS = {
     "mistralai/Mistral-7B-Instruct-v0.3": {},
     "google/gemma-3-12b-it": {},
 }
-
-
-def query_model(prompt: str, model, tokenizer, max_new_tokens: int = 20) -> str:
-    """
-    Query the model with a prompt and return the generated text.
-    Uses the same generation approach as belebele-batched.py.
-
-    Args:
-        prompt: Input prompt
-        model: The loaded model
-        tokenizer: The loaded tokenizer
-        max_new_tokens: Maximum number of tokens to generate
-
-    Returns:
-        Generated text response
-    """
-    return generate_single_response(model, tokenizer, prompt, max_new_tokens)
 
 
 def extract_answer(response: str, task_name: str) -> str:
