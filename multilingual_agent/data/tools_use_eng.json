@@ -1,0 +1,290 @@
+{
+  "dataset": {
+    "name": "tools_use_eng",
+    "description": "Evaluation dataset for agentic tool use in English with weather forecast tool",
+    "language": "eng",
+    "tool_definition": {
+      "name": "weather_forecast",
+      "description": "Get weather forecast for a specific city and date",
+      "parameters": {
+        "city": {
+          "type": "string",
+          "description": "Name of the city"
+        },
+        "date": {
+          "type": "string", 
+          "description": "Date in YYYY-MM-DD format"
+        }
+      },
+      "returns": {
+        "type": "object",
+        "properties": {
+          "temperature": {"type": "integer", "description": "Temperature in Celsius"},
+          "humidity": {"type": "integer", "description": "Humidity percentage"},
+          "wind_speed": {"type": "integer", "description": "Wind speed in km/h"}
+        }
+      }
+    }
+  },
+  "conversations": [
+    {
+      "id": 1,
+      "requires_tool_use": false,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "What are the main factors that influence weather patterns?"
+        },
+        {
+          "role": "assistant", 
+          "content": "The main factors that influence weather patterns include:\n\n1. **Temperature** - Differences in temperature create pressure variations that drive wind and air movement\n2. **Humidity** - The amount of water vapor in the air affects precipitation and cloud formation\n3. **Air pressure** - High and low pressure systems create different weather conditions\n4. **Wind patterns** - Air movement distributes heat and moisture around the globe\n5. **Geographical features** - Mountains, oceans, and landmasses affect local weather\n6. **Solar radiation** - The sun's energy drives all weather processes\n7. **Ocean currents** - These distribute heat around the planet and influence regional climates\n8. **Seasonal changes** - Earth's tilt creates varying conditions throughout the year\n\nThese factors work together in complex ways to create the weather we experience daily."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "requires_tool_use": false,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "How do meteorologists make weather predictions?"
+        },
+        {
+          "role": "assistant",
+          "content": "Meteorologists make weather predictions through a sophisticated process:\n\n1. **Data Collection**\n   - Weather stations measure temperature, humidity, pressure, wind speed\n   - Satellites provide atmospheric imagery and temperature data\n   - Weather balloons collect upper atmosphere conditions\n   - Radar systems track precipitation and storms\n\n2. **Computer Models**\n   - Numerical weather prediction models process vast amounts of data\n   - Global models like GFS and ECMWF simulate atmospheric conditions\n   - High-resolution local models provide detailed forecasts\n\n3. **Analysis and Interpretation**\n   - Meteorologists analyze model output and identify patterns\n   - They consider local geographic effects and historical trends\n   - Multiple models are compared for consistency\n\n4. **Human Expertise**\n   - Experienced meteorologists adjust model predictions\n   - They account for local knowledge and unusual patterns\n   - Final forecasts combine automated models with human judgment\n\nThe accuracy of forecasts decreases with time - generally reliable for 3-5 days, with useful information up to about 10 days."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "requires_tool_use": false,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "What's the difference between weather and climate?"
+        },
+        {
+          "role": "assistant",
+          "content": "Weather and climate are related but distinct concepts:\n\n**Weather** refers to:\n- Short-term atmospheric conditions (hours to weeks)\n- What's happening right now or in the immediate future\n- Daily variations in temperature, precipitation, humidity, wind\n- Specific conditions at a particular time and place\n- Example: \"It's sunny and 75°F today\"\n\n**Climate** refers to:\n- Long-term average weather patterns (typically 30+ years)\n- Statistical summary of weather over extended periods\n- Expected conditions for a region during different seasons\n- General atmospheric patterns for an area\n- Example: \"Southern California has a Mediterranean climate with mild, wet winters and warm, dry summers\"\n\n**Key Differences:**\n- **Time scale**: Weather is immediate, climate is long-term averages\n- **Variability**: Weather changes daily, climate describes typical patterns\n- **Predictability**: Weather forecasts are useful for days, climate projections span decades\n- **Purpose**: Weather helps you decide what to wear today, climate helps you choose where to live\n\nAs the saying goes: \"Climate is what you expect, weather is what you get.\""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "requires_tool_use": true,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "I'm planning a picnic in Central Park, New York City for this Saturday. Can you check what the weather will be like?"
+        },
+        {
+          "role": "assistant",
+          "content": "I'd be happy to help you check the weather for your picnic in Central Park! Let me get the forecast for New York City this Saturday.",
+          "tool_calls": [
+            {
+              "name": "weather_forecast",
+              "parameters": {
+                "city": "New York City",
+                "date": "2025-09-06"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"temperature\": 26, \"humidity\": 65, \"wind_speed\": 13}"
+        },
+        {
+          "role": "assistant",
+          "content": "Great news for your picnic! Saturday looks like a lovely day in Central Park:\n\n- **Temperature**: 26°C (79°F) - Perfect picnic weather!\n- **Humidity**: 65% - Comfortable, not too humid\n- **Wind**: 13 km/h (8 mph) - A gentle breeze, ideal for outdoor activities\n\nThis is excellent weather for a picnic! You might want to bring a light blanket and perhaps a pop-up canopy if you want guaranteed shade. The gentle breeze should keep things comfortable. Have a wonderful time in Central Park!"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "requires_tool_use": true,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "I'm traveling to London next week for business meetings. What will the weather be like on Tuesday, September 10th?"
+        },
+        {
+          "role": "assistant",
+          "content": "I'll check the weather forecast for London on Tuesday, September 10th for your business trip.",
+          "tool_calls": [
+            {
+              "name": "weather_forecast",
+              "parameters": {
+                "city": "London",
+                "date": "2025-09-10"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"temperature\": 16, \"humidity\": 82, \"wind_speed\": 19}"
+        },
+        {
+          "role": "assistant",
+          "content": "Here's what to expect for your business meetings in London on Tuesday:\n\n- **Temperature**: 16°C (61°F) - Quite cool, typical for London in early September\n- **Humidity**: 82% - High humidity, which is normal for the UK\n- **Wind**: 19 km/h (12 mph) - Moderate breeze\n\n**Recommendations for your business attire:**\n- Bring a waterproof jacket or coat - the high humidity suggests possible rain\n- Pack a compact umbrella\n- Wear closed-toe shoes that can handle wet conditions\n- Consider layers since it will be cool\n- A light sweater or blazer would be appropriate for indoor meetings\n\nTypical London weather - don't let the conditions dampen your business trip! Most locals are well-prepared for this type of weather."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "requires_tool_use": true,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "My daughter's outdoor wedding is planned for September 8th in San Francisco. Should we be concerned about the weather?"
+        },
+        {
+          "role": "assistant",
+          "content": "Let me check the weather forecast for San Francisco on September 8th for your daughter's special day!",
+          "tool_calls": [
+            {
+              "name": "weather_forecast",
+              "parameters": {
+                "city": "San Francisco",
+                "date": "2025-09-08"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"temperature\": 22, \"humidity\": 70, \"wind_speed\": 24}"
+        },
+        {
+          "role": "assistant",
+          "content": "Wonderful news for the wedding! Here's what to expect:\n\n- **Temperature**: 22°C (72°F) - Perfect weather for an outdoor celebration\n- **Humidity**: 70% - Comfortable levels\n- **Wind**: 24 km/h (15 mph) - Typical San Francisco breeze (consider this for decorations and hair/makeup)\n\n**Wedding day recommendations:**\n- The weather looks ideal - no major concerns!\n- The moderate wind is normal for SF, but secure any light decorations\n- Consider wraps or light jackets for guests, especially if the ceremony extends into evening\n- The temperature is perfect for most wedding attire\n- If there are elderly guests, they might appreciate having shawls available\n\nThis is actually fantastic weather for a San Francisco outdoor wedding - comfortable temperature with the city's characteristic gentle breeze. Your daughter picked a perfect day!"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "requires_tool_use": true,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "I'm organizing a company outdoor team building event in Denver on September 12th. What should I expect weather-wise?"
+        },
+        {
+          "role": "assistant",
+          "content": "Let me check the weather forecast for Denver on September 12th for your company team building event.",
+          "tool_calls": [
+            {
+              "name": "weather_forecast",
+              "parameters": {
+                "city": "Denver",
+                "date": "2025-09-12"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"temperature\": 24, \"humidity\": 45, \"wind_speed\": 16}"
+        },
+        {
+          "role": "assistant",
+          "content": "Excellent conditions for your outdoor team building event!\n\n- **Temperature**: 24°C (75°F) - Ideal for outdoor activities\n- **Humidity**: 45% - Low humidity, very comfortable\n- **Wind**: 16 km/h (10 mph) - Light breeze, perfect for outdoor games\n\n**Perfect for team building activities:**\n- Great temperature for physical activities without overheating\n- Low humidity means less sweating during active games\n- Light breeze will keep everyone comfortable\n\n**Event planning tips:**\n- Provide sunscreen - the Denver sun is strong at high altitude\n- Have water stations available for hydration\n- Consider pop-up tents for breaks/shade if needed\n- Perfect weather for activities like obstacle courses, scavenger hunts, or outdoor games\n\nThis is absolutely perfect weather for outdoor team building in Denver. Your employees are going to love it!"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "requires_tool_use": true,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "I want to go hiking in Seattle this weekend. Can you tell me what the weather will be like on Sunday, September 7th?"
+        },
+        {
+          "role": "assistant",
+          "content": "I'd be happy to help you plan your hiking trip! Let me check the weather forecast for Seattle on Sunday, September 7th.",
+          "tool_calls": [
+            {
+              "name": "weather_forecast",
+              "parameters": {
+                "city": "Seattle",
+                "date": "2025-09-07"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"temperature\": 20, \"humidity\": 88, \"wind_speed\": 10}"
+        },
+        {
+          "role": "assistant",
+          "content": "Here's what to expect for your Seattle hiking adventure:\n\n- **Temperature**: 20°C (68°F) - Great hiking temperature, not too hot\n- **Humidity**: 88% - Very high humidity, typical for Seattle and suggests likely rain\n- **Wind**: 10 km/h (6 mph) - Very light breeze\n\n**Hiking recommendations:**\n- **Essential gear**: Waterproof jacket and waterproof hiking boots (high humidity strongly suggests rain)\n- **Layers**: Bring moisture-wicking base layers and a fleece or light insulating layer\n- **Rain protection**: Pack a waterproof cover for your backpack\n- **Trail conditions**: Expect muddy and potentially slippery trails\n- **Visibility**: May be reduced due to low clouds on higher elevation hikes\n\n**Trail suggestions**: Consider lower elevation trails or ones with good tree cover. Popular options like Rattlesnake Ledge or trails in the Cascade foothills should be enjoyable in these conditions.\n\nDon't let the high humidity and likely rain stop you - this is classic Pacific Northwest hiking weather! Just come prepared and you'll have a great time."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "requires_tool_use": true,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "I'm flying to Miami for a beach vacation on Friday, September 5th. What's the beach weather going to be like?"
+        },
+        {
+          "role": "assistant",
+          "content": "Let me check the beach weather for your Miami vacation on Friday, September 5th!",
+          "tool_calls": [
+            {
+              "name": "weather_forecast",
+              "parameters": {
+                "city": "Miami",
+                "date": "2025-09-05"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"temperature\": 29, \"humidity\": 78, \"wind_speed\": 23}"
+        },
+        {
+          "role": "assistant",
+          "content": "Here's your Miami beach forecast:\n\n- **Temperature**: 29°C (85°F) - Perfect beach temperature!\n- **Humidity**: 78% - Typical tropical humidity\n- **Wind**: 23 km/h (14 mph) - Nice ocean breeze to keep you cool\n\n**Beach day expectations:**\n- **Great beach weather** overall - warm and tropical\n- The **ocean breeze** will make the heat more comfortable\n- **UV levels** will be high - sunscreen essential\n- High humidity is normal for Miami and may bring brief afternoon showers\n\n**Beach bag essentials:**\n- High SPF sunscreen and reapply frequently\n- Beach umbrella for shade\n- Waterproof bag for phone/valuables\n- Hydration is key in this humidity\n- Light, breathable clothing for when you're not swimming\n- Consider a light rain jacket for potential brief showers\n\nThis is classic perfect Miami beach weather - warm, breezy, and ideal for swimming and sunbathing. You're going to have an amazing beach vacation!"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "requires_tool_use": true,
+      "conversation": [
+        {
+          "role": "user",
+          "content": "I'm planning to visit my family in Chicago next Tuesday, September 9th. My elderly parents want to know if they should prepare for cold weather."
+        },
+        {
+          "role": "assistant",
+          "content": "I'll check the weather forecast for Chicago on Tuesday, September 9th to help your elderly parents prepare appropriately.",
+          "tool_calls": [
+            {
+              "name": "weather_forecast",
+              "parameters": {
+                "city": "Chicago",
+                "date": "2025-09-09"
+              }
+            }
+          ]
+        },
+        {
+          "role": "tool",
+          "content": "{\"temperature\": 18, \"humidity\": 72, \"wind_speed\": 29}"
+        },
+        {
+          "role": "assistant",
+          "content": "Here's what your parents should expect:\n\n- **Temperature**: 18°C (64°F) - Cool but not cold\n- **Humidity**: 72% - Moderate humidity levels\n- **Wind**: 29 km/h (18 mph) - Quite breezy, typical for the Windy City\n\n**For elderly parents, I'd recommend:**\n- **Light layers** - a sweater or light jacket will be perfect\n- **Windbreaker or light coat** - the 29 km/h wind will make it feel cooler\n- **Long pants** rather than shorts\n- **Comfortable walking shoes** with good grip\n- **Light scarf or wrap** if they're sensitive to wind\n\n**Not cold weather preparation needed** - this is mild autumn weather rather than cold. A cozy sweater and light jacket should be perfectly adequate. The main consideration is the wind, which might make it feel a bit cooler than the actual temperature.\n\nIt's lovely early fall weather in Chicago - comfortable for visiting and spending time together!"
+        }
+      ]
+    }
+  ]
+}

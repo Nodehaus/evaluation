@@ -106,7 +106,6 @@ class MultilingualAgent:
 
         # Generate system prompt dynamically from tool definitions
         self.system_prompt = self._generate_system_prompt()
-        print(self.system_prompt)
 
     def _generate_system_prompt(self) -> str:
         """Generate system prompt dynamically from available tools."""
@@ -184,8 +183,6 @@ Be conversational and helpful. Always explain the weather data in a user-friendl
 
             if not tool_line:
                 return None
-
-            print(tool_line)
 
             # Parse tool name and parameters
             if "(" not in tool_line or ")" not in tool_line:
