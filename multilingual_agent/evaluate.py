@@ -130,15 +130,20 @@ class AgentEvaluator:
             progress = f"{i + 1}/{conversations_count}"
             print(f"Processing conversation {eval_item['id']} ({progress})")
 
+            # Skip conversations that don't require tool use
+            if not eval_item["requires_tool_use"]:
+                print("  Skipped (no tools required)")
+                skipped += 1
+                continue
+
             test_case = self.evaluate_conversation(eval_item)
             test_cases.append(test_case)
-            tool_status = "with tools" if eval_item["requires_tool_use"] else "no tools"
-            print(f"  Processed ({tool_status})")
+            print("  Processed (with tools)")
 
         print(
             f"\nEvaluating {len(test_cases)} test cases with Tool Correctness metric..."
         )
-        print(f"Skipped {skipped} conversations")
+        print(f"Skipped {skipped} conversations without tool calls")
 
         # Run evaluation
         result = evaluate(test_cases, [self.tool_correctness_metric])
