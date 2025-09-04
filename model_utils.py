@@ -206,8 +206,10 @@ def chat_responses(model, tokenizer, conversations, tools=None):
 
         with torch.no_grad():
             output_ids = model.generate(
-                **tokenized_prompt.to(model.device), max_new_tokens=1000
-            )  # cache_implementation="offloaded"
+                **tokenized_prompt.to(model.device),
+                max_new_tokens=1000,
+                cache_implementation="offloaded",
+            )
 
         # Decode responses using same approach as generate_batch_responses
         # responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
