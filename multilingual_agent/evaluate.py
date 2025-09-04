@@ -1,7 +1,7 @@
 import argparse
 import json
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from deepeval import evaluate
 from deepeval.evaluate.types import EvaluationResult
@@ -14,7 +14,7 @@ from multilingual_agent.agent import MultilingualAgent
 class AgentEvaluator:
     """Evaluator for the multilingual agent using DeepEval metrics."""
 
-    def __init__(self, model_name: str = "google/gemma-3-1b-it"):
+    def __init__(self, model_name: str = "HuggingFaceTB/SmolLM3-3B"):
         self.agent = MultilingualAgent(model_name=model_name)
         self.tool_correctness_metric = ToolCorrectnessMetric(threshold=0.7)
 
@@ -97,9 +97,7 @@ class AgentEvaluator:
 
         return test_case
 
-    def run_evaluation(
-        self, data_path: str, output_path: Optional[str] = None
-    ) -> EvaluationResult:
+    def run_evaluation(self, data_path: str) -> EvaluationResult:
         """Run full evaluation on the dataset."""
         print(f"Loading evaluation data from {data_path}")
         eval_data = self.load_evaluation_data(data_path)
@@ -138,9 +136,8 @@ def main():
     )
 
     parser.add_argument(
-        "--model", default="google/gemma-3-1b-it", help="HuggingFace model name"
+        "--model", default="HuggingFaceTB/SmolLM3-3B", help="HuggingFace model name"
     )
-    parser.add_argument("--output", help="Path to save evaluation results JSON file")
 
     args = parser.parse_args()
 
@@ -153,7 +150,7 @@ def main():
     evaluator = AgentEvaluator(args.model)
 
     # Run evaluation
-    evaluator.run_evaluation(args.data, args.output)
+    evaluator.run_evaluation(args.data)
 
 
 if __name__ == "__main__":

@@ -71,7 +71,7 @@ def get_current_date() -> str:
 class MultilingualAgent:
     """Agent that can use tools and respond to user queries."""
 
-    def __init__(self, model_name: str = "google/gemma-3-1b-it"):
+    def __init__(self, model_name: str = "HuggingFaceTB/SmolLM3-3B"):
         self.model_name = model_name
         self.model = None
         self.tokenizer = None
@@ -87,38 +87,37 @@ class MultilingualAgent:
     def _load_model(self):
         """Load the model and tokenizer."""
         self.model, self.tokenizer = load_model_and_tokenizer(self.model_name)
-    
+
     def _extract_tool_calls_from_text(self, text: str) -> List[Dict[str, Any]]:
         """Extract tool calls from model response text."""
-        
+
         tool_calls = []
-        
+
         # Pattern to match <tool_call>...</tool_call>
-        pattern = r'<tool_call>\s*(\{.*?\})\s*</tool_call>'
+        pattern = r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
         matches = re.findall(pattern, text, re.DOTALL)
-        
+
         for i, match in enumerate(matches):
             try:
                 # Parse the JSON inside tool_call tags
                 tool_data = json.loads(match)
-                
+
                 # Convert to HuggingFace format
                 tool_call = {
                     "type": "function",
                     "function": {
                         "name": tool_data.get("name", ""),
-                        "arguments": tool_data.get("arguments", {})
+                        "arguments": tool_data.get("arguments", {}),
                     },
-                    "id": f"call_{i + 1}"
+                    "id": f"call_{i + 1}",
                 }
                 tool_calls.append(tool_call)
-                
+
             except json.JSONDecodeError:
                 # Skip invalid JSON
                 continue
-                
+
         return tool_calls
-    
 
     def chat(self, user_message: str) -> List[Dict[str, Any]]:
         """
@@ -142,37 +141,35 @@ class MultilingualAgent:
         # Handle multiple rounds of tool calls
         max_tool_rounds = 5  # Prevent infinite loops
         tool_round = 0
-        
+
         while tool_round < max_tool_rounds:
             # Generate response from model
             responses = chat_responses(
                 self.model, self.tokenizer, [conversation], tools
             )
             response_text = (
-                responses[0] if responses 
+                responses[0]
+                if responses
                 else "Sorry, I could not answer your question."
             )
-            
+
             # Extract tool calls from response text
             tool_calls = self._extract_tool_calls_from_text(response_text)
-            
+
             if self.supports_tools and tool_calls:
                 tool_round += 1
-                
+
                 # Add assistant message with only tool calls (no content)
-                assistant_message = {
-                    "role": "assistant", 
-                    "tool_calls": tool_calls
-                }
+                assistant_message = {"role": "assistant", "tool_calls": tool_calls}
                 conversation.append(assistant_message)
-                
+
                 # Execute each tool call
                 unknown_tool_called = False
                 for tool_call in tool_calls:
                     function_info = tool_call.get("function", {})
                     function_name = function_info.get("name")
                     function_args = function_info.get("arguments", {})
-                    
+
                     # Execute the tool
                     if function_name == "weather_forecast":
                         result = weather_forecast(**function_args)
@@ -181,19 +178,18 @@ class MultilingualAgent:
                     else:
                         unknown_tool_called = True
                         break
-                        
+
                     # Add tool result to conversation
-                    conversation.append({
-                        "role": "tool", 
-                        "content": json.dumps(result)
-                    })
-                
+                    conversation.append({"role": "tool", "content": json.dumps(result)})
+
                 # If unknown tool was called, return error message
                 if unknown_tool_called:
-                    conversation.append({
-                        "role": "assistant", 
-                        "content": "Sorry, I cannot answer your question."
-                    })
+                    conversation.append(
+                        {
+                            "role": "assistant",
+                            "content": "Sorry, I cannot answer your question.",
+                        }
+                    )
                     break
             else:
                 # No tool calls, add final response and break
@@ -209,7 +205,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Multilingual Agent with Tool Support")
     parser.add_argument(
-        "--model", default="google/gemma-3-1b-it", help="HuggingFace model name"
+        "--model", default="HuggingFaceTB/SmolLM3-3B", help="HuggingFace model name"
     )
     parser.add_argument("--message", required=True, help="User message")
 
