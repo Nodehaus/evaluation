@@ -60,12 +60,16 @@ class AgentEvaluator:
         for turn in conversation:
             if turn["role"] == "assistant" and "tool_calls" in turn:
                 for tool_call in turn["tool_calls"]:
-                    tools.append(
-                        ToolCall(
-                            name=tool_call["name"],
-                            input_parameters=tool_call["parameters"],
+                    # Check if required keys exist
+                    if "name" in tool_call and "parameters" in tool_call:
+                        tools.append(
+                            ToolCall(
+                                name=tool_call["name"],
+                                input_parameters=tool_call["parameters"],
+                            )
                         )
-                    )
+                    else:
+                        print(f"Wrong tool_call format: {tool_call}")
 
         return tools
 
