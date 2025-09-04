@@ -19,8 +19,8 @@ MODELS = {
     "Qwen/Qwen3-4B": {},
     "Qwen/Qwen3-8B": {},
     "Qwen/Qwen3-14B": {},
-    "mistralai/Mistral-Nemo-Instruct-2407": {},
-    "openai/gpt-oss-20b": {},
+    # "mistralai/Mistral-Nemo-Instruct-2407": {},
+    # "openai/gpt-oss-20b": {},
 }
 
 
@@ -80,7 +80,9 @@ class AgentEvaluator:
 
         return tools
 
-    def evaluate_conversation(self, eval_item: Dict[str, Any]) -> LLMTestCase:
+    def evaluate_conversation(
+        self, eval_item: Dict[str, Any]
+    ) -> tuple[LLMTestCase, List[Dict[str, Any]]]:
         """Evaluate a single conversation item."""
         conversation = eval_item["conversation"]
         requires_tool_use = eval_item["requires_tool_use"]
@@ -116,7 +118,7 @@ class AgentEvaluator:
             expected_tools=expected_tools,
         )
 
-        return test_case
+        return test_case, agent_conversation
 
     def run_evaluation(self, data_path: str) -> EvaluationResult:
         """Run full evaluation on the dataset."""
@@ -124,6 +126,8 @@ class AgentEvaluator:
         eval_data = self.load_evaluation_data(data_path)
 
         test_cases = []
+        agent_conversations = []
+        eval_item_ids = []
         skipped = 0
 
         conversations_count = len(eval_data["conversations"])
@@ -139,8 +143,10 @@ class AgentEvaluator:
                 skipped += 1
                 continue
 
-            test_case = self.evaluate_conversation(eval_item)
+            test_case, agent_conversation = self.evaluate_conversation(eval_item)
             test_cases.append(test_case)
+            agent_conversations.append(agent_conversation)
+            eval_item_ids.append(eval_item["id"])
             print("  Processed (with tools)")
 
         print(
@@ -152,12 +158,19 @@ class AgentEvaluator:
         result = evaluate(test_cases, [self.tool_correctness_metric])
 
         # Save results to JSON file
-        self._save_results(result, eval_data, data_path)
+        self._save_results(
+            result, eval_data, data_path, agent_conversations, eval_item_ids
+        )
 
         return result
 
     def _save_results(
-        self, result: EvaluationResult, eval_data: Dict[str, Any], data_path: str
+        self,
+        result: EvaluationResult,
+        eval_data: Dict[str, Any],
+        data_path: str,
+        agent_conversations: List[List[Dict[str, Any]]],
+        eval_item_ids: List[str],
     ):
         """Save evaluation results to JSON file."""
         # Extract language code from dataset (default to 'eng')
@@ -179,7 +192,9 @@ class AgentEvaluator:
             "model_name": self.agent.model_name,
             "language": language_code,
             "dataset_path": data_path,
-            "evaluation_results": self._serialize_evaluation_result(result),
+            "evaluation_results": self._serialize_evaluation_result(
+                result, agent_conversations, eval_item_ids
+            ),
         }
 
         # Save to file
@@ -188,13 +203,24 @@ class AgentEvaluator:
 
         print(f"Results saved to: {filepath}")
 
-    def _serialize_evaluation_result(self, result: EvaluationResult) -> Dict[str, Any]:
+    def _serialize_evaluation_result(
+        self,
+        result: EvaluationResult,
+        agent_conversations: List[List[Dict[str, Any]]],
+        eval_item_ids: List[str],
+    ) -> Dict[str, Any]:
         """Convert EvaluationResult to JSON-serializable dictionary."""
         return {
             "test_results": [
                 {
                     "name": test_result.name,
                     "success": test_result.success,
+                    "eval_item_id": eval_item_ids[i]
+                    if i < len(eval_item_ids)
+                    else None,
+                    "agent_conversation": (
+                        agent_conversations[i] if i < len(agent_conversations) else None
+                    ),
                     "metrics_data": [
                         {
                             "name": metric.name,
@@ -206,7 +232,7 @@ class AgentEvaluator:
                         for metric in test_result.metrics_data
                     ],
                 }
-                for test_result in result.test_results
+                for i, test_result in enumerate(result.test_results)
             ]
         }
 
@@ -273,7 +299,8 @@ def main():
                     current_model_name = actual_model_name
                 except ModelNotSupported:
                     logger.warning(
-                        f"Skipping evaluation for unsupported model: {actual_model_name}"
+                        f"Skipping evaluation for unsupported model: "
+                        f"{actual_model_name}"
                     )
                     continue
 
