@@ -160,7 +160,7 @@ def generate_batch_responses(model, tokenizer, prompts, batch_size=1):
     return all_responses
 
 
-def chat_batch_responses(model, tokenizer, conversations, batch_size=1, tools=None):
+def chat_responses(model, tokenizer, conversations, tools=None):
     """
     Generate chat responses for a batch of conversations using chat templates.
     Uses the same approach as generate_batch_responses() but with chat templates.
@@ -194,40 +194,26 @@ def chat_batch_responses(model, tokenizer, conversations, batch_size=1, tools=No
             "Use generate_batch_responses() for models without chat templates."
         )
 
-    for start in range(0, len(conversations), batch_size):
-        stop = min(start + batch_size, len(conversations))
-        conversations_batch = conversations[start:stop]
+    for conversation in conversations:
+        tokenized_prompt = tokenizer.apply_chat_template(
+            conversation,
+            tools=tools,
+            tokenize=True,
+            add_generation_prompt=True,
+            return_dict=True,
+            return_tensors="pt",
+        )
 
-        # Apply chat template to each conversation
-        formatted_prompts = []
-        for conversation in conversations_batch:
-            formatted_prompt = tokenizer.apply_chat_template(
-                conversation, tools=tools, tokenize=False, add_generation_prompt=True
-            )
-            formatted_prompts.append(formatted_prompt)
-
-        # Tokenize the formatted prompts
-        encodings = tokenizer(
-            formatted_prompts, return_tensors="pt", padding="longest", truncation=False
-        ).to(model.device)
-
-        # Generate responses using same approach as generate_batch_responses
         with torch.no_grad():
-            output_ids = model.generate(**encodings, cache_implementation="offloaded")
+            output_ids = model.generate(
+                **tokenized_prompt.to(model.device), max_new_tokens=1000
+            )  # cache_implementation="offloaded"
 
         # Decode responses using same approach as generate_batch_responses
-        responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-
-        # Extract only the generated part (remove original prompt)
-        for i, response_raw in enumerate(responses):
-            response = response_raw[len(formatted_prompts[start + i]) :]
-            # Clean up response (take first line if multiple lines)
-            response = (
-                response.split("\n")[0].strip()
-                if "\n" in response
-                else response.strip()
-            )
-            all_responses.append(response)
+        # responses = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+        all_responses.append(
+            tokenizer.decode(output_ids[0][len(tokenized_prompt["input_ids"][0]) :])
+        )
 
     return all_responses
 
@@ -307,3 +293,47 @@ def get_model_size_info(model):
         "model_memory_gb": round(model_memory_gb, 2),
         "total_params": total_params,
     }
+
+
+def check_tool_calling_support(tokenizer) -> bool:
+    """
+    Check if a tokenizer supports tool calling via chat templates.
+
+    Args:
+        tokenizer: Loaded tokenizer instance
+
+    Returns:
+        True if tokenizer supports tool calling, False otherwise
+    """
+    # Check if tokenizer has chat template
+    if not hasattr(tokenizer, "chat_template") or tokenizer.chat_template is None:
+        return False
+
+    try:
+        # Test with a simple tool to see if it's actually supported
+        test_conversation = [{"role": "user", "content": "Hello"}]
+        test_tools = [
+            {"name": "test_tool", "description": "Test tool", "parameters": {}}
+        ]
+
+        # Apply chat template with tools
+        with_tools = tokenizer.apply_chat_template(
+            test_conversation,
+            tools=test_tools,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+
+        # Apply chat template without tools
+        without_tools = tokenizer.apply_chat_template(
+            test_conversation,
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+
+        # If tool support exists, the templates should be different
+        return with_tools != without_tools
+
+    except Exception:
+        # If tools parameter is not supported, it will raise an exception
+        return False
