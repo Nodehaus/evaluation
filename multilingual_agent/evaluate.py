@@ -1,24 +1,27 @@
-import argparse
+import gc
 import json
+import logging
 import os
 from typing import Any, Dict, List
 
+import torch
 from deepeval import evaluate
 from deepeval.evaluate.types import EvaluationResult
 from deepeval.metrics import ToolCorrectnessMetric
 from deepeval.test_case import LLMTestCase, ToolCall
 
+from model_utils import cleanup_model, clear_huggingface_cache
 from multilingual_agent.agent import ModelNotSupported, MultilingualAgent
 
-# LANGUAGES = ["eng"]
-# MODELS = {
-#     "HuggingFaceTB/SmolLM3-3B": {},
-#     "Qwen/Qwen3-4B": {},
-#     "Qwen/Qwen3-8B": {},
-#     "Qwen/Qwen3-14B": {},
-#     "mistralai/Mistral-Nemo-Instruct-2407": {},
-#     "openai/gpt-oss-20b": {},
-# }
+LANGUAGES = ["eng"]
+MODELS = {
+    "HuggingFaceTB/SmolLM3-3B": {},
+    "Qwen/Qwen3-4B": {},
+    "Qwen/Qwen3-8B": {},
+    "Qwen/Qwen3-14B": {},
+    "mistralai/Mistral-Nemo-Instruct-2407": {},
+    "openai/gpt-oss-20b": {},
+}
 
 
 class AgentEvaluator:
@@ -208,14 +211,22 @@ class AgentEvaluator:
         }
 
 
-def main():
-    """Main evaluation function."""
-    parser = argparse.ArgumentParser(description="Evaluate Multilingual Agent Tool Use")
-    parser.add_argument(
-        "--model", default="HuggingFaceTB/SmolLM3-3B", help="HuggingFace model name"
+def results_exist(model_name: str, language: str) -> bool:
+    """Check if results file already exists for a model and language combination."""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    model_name_clean = model_name.split("/")[-1]
+    output_file_name = os.path.join(
+        script_dir, f"results/agent_{model_name_clean}_{language}_Latn.json"
     )
+    return os.path.exists(output_file_name)
 
-    args = parser.parse_args()
+
+def main():
+    logger = logging.getLogger(__name__)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    )
 
     # Use default data path with script directory as prefix
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -226,15 +237,67 @@ def main():
         print(f"Error: Data file not found: {data_path}")
         return
 
-    # Create evaluator
-    try:
-        evaluator = AgentEvaluator(args.model)
-    except ModelNotSupported:
-        print("Skipping evaluation for unsupported model.")
-        return
+    current_model_name = ""
+    evaluator = None
 
-    # Run evaluation
-    evaluator.run_evaluation(data_path)
+    for model_name, language_variants in MODELS.items():
+        for language in LANGUAGES:
+            if language_variants and language in language_variants:
+                actual_model_name = language_variants[language]
+            elif not language_variants:
+                actual_model_name = model_name
+            else:
+                logger.warning(
+                    f"Skipping {language} for {model_name} (no variant available)"
+                )
+                continue
+
+            # Check if results already exist
+            if results_exist(actual_model_name, language):
+                logger.info(
+                    f"Skipping model {model_name} with language {language}, "
+                    "results file exists"
+                )
+                continue
+
+            # Load model only if needed and different from current
+            if current_model_name != actual_model_name:
+                if evaluator is not None:
+                    # Clean up previous model
+                    cleanup_model(evaluator.agent.model, evaluator.agent.tokenizer)
+                    clear_huggingface_cache()
+
+                # Create new evaluator
+                try:
+                    evaluator = AgentEvaluator(actual_model_name)
+                    current_model_name = actual_model_name
+                except ModelNotSupported:
+                    logger.warning(
+                        f"Skipping evaluation for unsupported model: {actual_model_name}"
+                    )
+                    continue
+
+            logger.info(f"Evaluating model {model_name} with language {language}")
+
+            # Run evaluation
+            try:
+                evaluator.run_evaluation(data_path)
+            except Exception as e:
+                logger.error(f"Error evaluating {model_name} with {language}: {e}")
+                continue
+
+            # Clear model cache after each evaluation
+            if hasattr(evaluator.agent.model, "past_key_values"):
+                evaluator.agent.model.past_key_values = None
+            gc.collect()
+            torch.cuda.empty_cache()
+            if torch.cuda.is_available():
+                torch.cuda.synchronize()
+
+    # Final cleanup
+    if evaluator is not None:
+        cleanup_model(evaluator.agent.model, evaluator.agent.tokenizer)
+        clear_huggingface_cache()
 
 
 if __name__ == "__main__":
