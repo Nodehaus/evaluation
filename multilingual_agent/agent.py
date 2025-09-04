@@ -11,6 +11,11 @@ from model_utils import (
 )
 
 
+class ModelNotSupported(Exception):
+    """Exception raised when a model does not support tool calling."""
+    pass
+
+
 def weather_forecast(city: str, date: str) -> Dict[str, int]:
     """
     Get weather forecast for a specific city and date.
@@ -82,7 +87,7 @@ class MultilingualAgent:
         # Check tool calling support after loading tokenizer
         self.supports_tools = check_tool_calling_support(self.tokenizer)
         if not self.supports_tools:
-            raise ValueError(f"Error: Model {model_name} does not support tool calling")
+            raise ModelNotSupported(f"Model {model_name} does not support tool calling")
 
     def _load_model(self):
         """Load the model and tokenizer."""

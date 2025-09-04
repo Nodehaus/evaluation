@@ -8,7 +8,16 @@ from deepeval.evaluate.types import EvaluationResult
 from deepeval.metrics import ToolCorrectnessMetric
 from deepeval.test_case import LLMTestCase, ToolCall
 
-from multilingual_agent.agent import MultilingualAgent
+from multilingual_agent.agent import ModelNotSupported, MultilingualAgent
+
+# MODELS = {
+#     "HuggingFaceTB/SmolLM3-3B": {},
+#     "Qwen/Qwen3-4B": {},
+#     "Qwen/Qwen3-8B": {},
+#     "Qwen/Qwen3-14B": {},
+#     "mistralai/Mistral-Nemo-Instruct-2407": {},
+#     "openai/gpt-oss-20b": {},
+# }
 
 
 class AgentEvaluator:
@@ -123,7 +132,8 @@ class AgentEvaluator:
         print(f"Skipped {skipped} conversations")
 
         # Run evaluation
-        return evaluate(test_cases, [self.tool_correctness_metric])
+        result = evaluate(test_cases, [self.tool_correctness_metric])
+        return result
 
 
 def main():
@@ -147,7 +157,11 @@ def main():
         return
 
     # Create evaluator
-    evaluator = AgentEvaluator(args.model)
+    try:
+        evaluator = AgentEvaluator(args.model)
+    except ModelNotSupported:
+        print("Skipping evaluation for unsupported model.")
+        return
 
     # Run evaluation
     evaluator.run_evaluation(args.data)
