@@ -139,6 +139,17 @@ class MultilingualAgent:
                 continue
 
         return tool_calls
+    
+    def _remove_thinking_tags(self, text: str) -> str:
+        """Remove <think>...</think> blocks from text."""
+        # Remove <think>...</think> blocks
+        cleaned = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
+        
+        # Remove other common special tokens that might appear in final responses
+        cleaned = re.sub(r'<\|im_end\|>', '', cleaned)
+        cleaned = re.sub(r'<\|.*?\|>', '', cleaned)
+        
+        return cleaned.strip()
 
     def chat(self, user_message: str) -> List[Dict[str, Any]]:
         """
@@ -151,7 +162,10 @@ class MultilingualAgent:
         conversation = [
             {
                 "role": "system",
-                "content": "You are a bot that responds to weather queries.",
+                "content": (
+                    "You are a bot that responds to weather queries. Your final answer "
+                    "to the user question must be in natural language."
+                ),
             },
             {"role": "user", "content": user_message},
         ]
@@ -213,8 +227,9 @@ class MultilingualAgent:
                     )
                     break
             else:
-                # No tool calls, add final response and break
-                conversation.append({"role": "assistant", "content": response_text})
+                # No tool calls, clean thinking tags and add final response
+                clean_response = self._remove_thinking_tags(response_text)
+                conversation.append({"role": "assistant", "content": clean_response})
                 break
 
         return conversation
@@ -234,13 +249,9 @@ def main():
 
     agent = MultilingualAgent(model_name=args.model)
 
-    try:
-        conversation = agent.chat(args.message)
-        print("\n=== JSON Output ===")
-        print(json.dumps(conversation, indent=2))
-
-    except Exception as e:
-        print(f"Error: {e}")
+    conversation = agent.chat(args.message)
+    print("\n=== JSON Output ===")
+    print(json.dumps(conversation, indent=2))
 
 
 if __name__ == "__main__":
