@@ -7,7 +7,7 @@ from typing import Any, Dict, List
 import torch
 from deepeval import evaluate
 from deepeval.evaluate.types import EvaluationResult
-from deepeval.metrics import ToolCorrectnessMetric
+from deepeval.metrics import ArgumentCorrectnessMetric, ToolCorrectnessMetric
 from deepeval.test_case import LLMTestCase, ToolCall
 
 from model_utils import cleanup_model, clear_huggingface_cache
@@ -30,6 +30,9 @@ class AgentEvaluator:
     def __init__(self, model_name: str = "HuggingFaceTB/SmolLM3-3B"):
         self.agent = MultilingualAgent(model_name=model_name)
         self.tool_correctness_metric = ToolCorrectnessMetric(threshold=0.7)
+        self.argument_correctness_metric = ArgumentCorrectnessMetric(
+            threshold=0.7, strict_mode=False
+        )
 
     def load_evaluation_data(self, data_path: str) -> Dict[str, Any]:
         """Load evaluation dataset from JSON file."""
@@ -150,12 +153,15 @@ class AgentEvaluator:
             print("  Processed (with tools)")
 
         print(
-            f"\nEvaluating {len(test_cases)} test cases with Tool Correctness metric..."
+            f"\nEvaluating {len(test_cases)} test cases with Tool Correctness "
+            "and Argument Correctness metrics..."
         )
         print(f"Skipped {skipped} conversations without tool calls")
 
         # Run evaluation
-        result = evaluate(test_cases, [self.tool_correctness_metric])
+        result = evaluate(
+            test_cases, [self.tool_correctness_metric, self.argument_correctness_metric]
+        )
 
         # Save results to JSON file
         self._save_results(
