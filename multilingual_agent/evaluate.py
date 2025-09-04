@@ -10,6 +10,7 @@ from deepeval.test_case import LLMTestCase, ToolCall
 
 from multilingual_agent.agent import ModelNotSupported, MultilingualAgent
 
+# LANGUAGES = ["eng"]
 # MODELS = {
 #     "HuggingFaceTB/SmolLM3-3B": {},
 #     "Qwen/Qwen3-4B": {},
@@ -133,7 +134,64 @@ class AgentEvaluator:
 
         # Run evaluation
         result = evaluate(test_cases, [self.tool_correctness_metric])
+
+        # Save results to JSON file
+        self._save_results(result, eval_data, data_path)
+
         return result
+
+    def _save_results(
+        self, result: EvaluationResult, eval_data: Dict[str, Any], data_path: str
+    ):
+        """Save evaluation results to JSON file."""
+        # Extract language code from dataset (default to 'eng')
+        language_code = eval_data.get("dataset", {}).get("language", "eng")
+
+        model_name_clean = self.agent.model_name.split("/")[-1]
+
+        # Create results directory
+        results_dir = "multilingual_agents/results"
+        os.makedirs(results_dir, exist_ok=True)
+
+        # Create filename
+        filename = f"agent_{model_name_clean}_{language_code}_Latn.json"
+        filepath = os.path.join(results_dir, filename)
+
+        # Convert result to JSON-serializable format
+        results_dict = {
+            "model_name": self.agent.model_name,
+            "language": language_code,
+            "dataset_path": data_path,
+            "evaluation_results": self._serialize_evaluation_result(result),
+        }
+
+        # Save to file
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(results_dict, f, indent=2)
+
+        print(f"Results saved to: {filepath}")
+
+    def _serialize_evaluation_result(self, result: EvaluationResult) -> Dict[str, Any]:
+        """Convert EvaluationResult to JSON-serializable dictionary."""
+        return {
+            "test_results": [
+                {
+                    "name": test_result.name,
+                    "success": test_result.success,
+                    "metrics_data": [
+                        {
+                            "name": metric.name,
+                            "threshold": metric.threshold,
+                            "success": metric.success,
+                            "score": metric.score,
+                            "reason": metric.reason,
+                        }
+                        for metric in test_result.metrics_data
+                    ],
+                }
+                for test_result in result.test_results
+            ]
+        }
 
 
 def main():
