@@ -88,13 +88,34 @@ class MultilingualAgent:
         """Load the model and tokenizer."""
         self.model, self.tokenizer = load_model_and_tokenizer(self.model_name)
 
+    def _get_tool_call_pattern_from_template(self) -> str:
+        """Extract the tool call pattern from the chat template."""
+        if not hasattr(self.tokenizer, "chat_template"):
+            return r"<tool_call>\s*(\{.*?\})\s*</tool_call>"  # Default fallback
+
+        template = self.tokenizer.chat_template.lower()
+
+        # Check for different tool call formats based on template content
+        if "<tool_call>" in template and "</tool_call>" in template:
+            # SmolLM3 format: <tool_call>{"name": ..., "arguments": ...}</tool_call>
+            return r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
+        elif "<function_call>" in template and "</function_call>" in template:
+            # Some models might use different XML-like tags
+            return r"<function_call>\s*(\{.*?\})\s*</function_call>"
+        elif "```json" in template:
+            # Some models use JSON code blocks
+            return r"```json\s*(\{.*?\})\s*```"
+        else:
+            # Default pattern
+            return r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
+
     def _extract_tool_calls_from_text(self, text: str) -> List[Dict[str, Any]]:
-        """Extract tool calls from model response text."""
+        """Extract tool calls from model response using template-derived pattern."""
 
         tool_calls = []
 
-        # Pattern to match <tool_call>...</tool_call>
-        pattern = r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
+        # Get pattern from chat template
+        pattern = self._get_tool_call_pattern_from_template()
         matches = re.findall(pattern, text, re.DOTALL)
 
         for i, match in enumerate(matches):
