@@ -12,16 +12,25 @@
           "description": "Name of the city"
         },
         "date": {
-          "type": "string", 
+          "type": "string",
           "description": "Date in YYYY-MM-DD format"
         }
       },
       "returns": {
         "type": "object",
         "properties": {
-          "temperature": {"type": "integer", "description": "Temperature in Celsius"},
-          "humidity": {"type": "integer", "description": "Humidity percentage"},
-          "wind_speed": {"type": "integer", "description": "Wind speed in km/h"}
+          "temperature": {
+            "type": "integer",
+            "description": "Temperature in Celsius"
+          },
+          "humidity": {
+            "type": "integer",
+            "description": "Humidity percentage"
+          },
+          "wind_speed": {
+            "type": "integer",
+            "description": "Wind speed in km/h"
+          }
         }
       }
     }
@@ -36,7 +45,7 @@
           "content": "What are the main factors that influence weather patterns?"
         },
         {
-          "role": "assistant", 
+          "role": "assistant",
           "content": "The main factors that influence weather patterns include:\n\n1. **Temperature** - Differences in temperature create pressure variations that drive wind and air movement\n2. **Humidity** - The amount of water vapor in the air affects precipitation and cloud formation\n3. **Air pressure** - High and low pressure systems create different weather conditions\n4. **Wind patterns** - Air movement distributes heat and moisture around the globe\n5. **Geographical features** - Mountains, oceans, and landmasses affect local weather\n6. **Solar radiation** - The sun's energy drives all weather processes\n7. **Ocean currents** - These distribute heat around the planet and influence regional climates\n8. **Seasonal changes** - Earth's tilt creates varying conditions throughout the year\n\nThese factors work together in complex ways to create the weather we experience daily."
         }
       ]
@@ -83,7 +92,7 @@
           "tool_calls": [
             {
               "name": "weather_forecast",
-              "parameters": {
+              "arguments": {
                 "city": "New York City",
                 "date": "2025-09-06"
               }
@@ -114,7 +123,7 @@
           "tool_calls": [
             {
               "name": "weather_forecast",
-              "parameters": {
+              "arguments": {
                 "city": "London",
                 "date": "2025-09-10"
               }
@@ -145,7 +154,7 @@
           "tool_calls": [
             {
               "name": "weather_forecast",
-              "parameters": {
+              "arguments": {
                 "city": "San Francisco",
                 "date": "2025-09-08"
               }
@@ -176,7 +185,7 @@
           "tool_calls": [
             {
               "name": "weather_forecast",
-              "parameters": {
+              "arguments": {
                 "city": "Denver",
                 "date": "2025-09-12"
               }
@@ -207,7 +216,7 @@
           "tool_calls": [
             {
               "name": "weather_forecast",
-              "parameters": {
+              "arguments": {
                 "city": "Seattle",
                 "date": "2025-09-07"
               }
@@ -238,7 +247,7 @@
           "tool_calls": [
             {
               "name": "weather_forecast",
-              "parameters": {
+              "arguments": {
                 "city": "Miami",
                 "date": "2025-09-05"
               }
@@ -269,7 +278,7 @@
           "tool_calls": [
             {
               "name": "weather_forecast",
-              "parameters": {
+              "arguments": {
                 "city": "Chicago",
                 "date": "2025-09-09"
               }

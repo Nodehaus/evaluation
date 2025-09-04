@@ -61,11 +61,11 @@ class AgentEvaluator:
             if turn["role"] == "assistant" and "tool_calls" in turn:
                 for tool_call in turn["tool_calls"]:
                     # Check if required keys exist
-                    if "name" in tool_call and "parameters" in tool_call:
+                    if "name" in tool_call and "arguments" in tool_call:
                         tools.append(
                             ToolCall(
                                 name=tool_call["name"],
-                                input_parameters=tool_call["parameters"],
+                                input_parameters=tool_call["arguments"],
                             )
                         )
                     else:
