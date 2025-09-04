@@ -45,7 +45,7 @@ class AgentEvaluator:
                     tools.append(
                         ToolCall(
                             name=tool_call["name"],
-                            input_parameters=tool_call["parameters"],
+                            input_parameters=tool_call["arguments"],
                         )
                     )
 
