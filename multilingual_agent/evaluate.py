@@ -2,17 +2,9 @@ import gc
 import json
 import logging
 import os
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 import torch
-from deepeval import evaluate
-from deepeval.evaluate.types import EvaluationResult
-from deepeval.metrics import (
-    ArgumentCorrectnessMetric,
-    TaskCompletionMetric,
-    ToolCorrectnessMetric,
-)
-from deepeval.test_case import LLMTestCase, ToolCall
 
 from model_utils import cleanup_model, clear_huggingface_cache
 from multilingual_agent.agent import ModelNotSupported, MultilingualAgent
@@ -28,25 +20,69 @@ MODELS = {
 }
 
 
+class ToolCall:
+    """Represents a tool call for evaluation."""
+
+    def __init__(self, name: str, arguments: Dict[str, Any]):
+        self.name = name
+        self.arguments = arguments
+
+    def __eq__(self, other):
+        if not isinstance(other, ToolCall):
+            return False
+        return self.name == other.name and self.arguments == other.arguments
+
+    def __repr__(self):
+        return f"ToolCall(name={self.name}, arguments={self.arguments})"
+
+
+class MetricResult:
+    """Result of a single metric evaluation."""
+
+    def __init__(self, name: str, score: float, success: bool, reason: str = ""):
+        self.name = name
+        self.score = score
+        self.success = success
+        self.reason = reason
+
+
+class TestResult:
+    """Result of evaluating a single test case."""
+
+    def __init__(
+        self,
+        test_id: str,
+        success: bool,
+        metrics: List[MetricResult],
+        agent_conversation: List[Dict[str, Any]],
+        eval_item_id: Optional[str] = None,
+    ):
+        self.test_id = test_id
+        self.success = success
+        self.metrics = metrics
+        self.agent_conversation = agent_conversation
+        self.eval_item_id = eval_item_id
+
+
+class EvaluationResult:
+    """Overall evaluation results."""
+
+    def __init__(self, test_results: List[TestResult]):
+        self.test_results = test_results
+
+
 class AgentEvaluator:
-    """Evaluator for the multilingual agent using DeepEval metrics."""
+    """Evaluator for the multilingual agent using custom metrics."""
 
     def __init__(self, model_name: str = "HuggingFaceTB/SmolLM3-3B"):
         self.agent = MultilingualAgent(model_name=model_name)
-        self.tool_correctness_metric = ToolCorrectnessMetric(threshold=0.7)
-        self.argument_correctness_metric = ArgumentCorrectnessMetric(
-            threshold=0.7, strict_mode=False
-        )
-        self.task_completion_metric = TaskCompletionMetric(
-            threshold=0.7, include_reason=True, strict_mode=False
-        )
 
     def load_evaluation_data(self, data_path: str) -> Dict[str, Any]:
         """Load evaluation dataset from JSON file."""
         with open(data_path, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def extract_tools_from_conversation(
+    def extract_expected_tools_from_conversation(
         self, conversation: List[Dict[str, Any]]
     ) -> List[ToolCall]:
         """Extract expected tool calls from reference conversation."""
@@ -58,7 +94,7 @@ class AgentEvaluator:
                     tools.append(
                         ToolCall(
                             name=tool_call["name"],
-                            input_parameters=tool_call["arguments"],
+                            arguments=tool_call["arguments"],
                         )
                     )
 
@@ -82,7 +118,7 @@ class AgentEvaluator:
                         tools.append(
                             ToolCall(
                                 name=tool_call["function"]["name"],
-                                input_parameters=tool_call["function"]["arguments"],
+                                arguments=tool_call["function"]["arguments"],
                             )
                         )
                     else:
@@ -90,45 +126,166 @@ class AgentEvaluator:
 
         return tools
 
-    def evaluate_conversation(
-        self, eval_item: Dict[str, Any]
-    ) -> tuple[LLMTestCase, List[Dict[str, Any]]]:
+    def calculate_tool_correctness(
+        self, expected_tools: List[ToolCall], actual_tools: List[ToolCall]
+    ) -> MetricResult:
+        """Calculate tool correctness metric."""
+        if not expected_tools and not actual_tools:
+            return MetricResult(
+                "Tool Correctness", 1.0, True, "No tools expected or called"
+            )
+
+        if not expected_tools and actual_tools:
+            return MetricResult(
+                "Tool Correctness",
+                0.0,
+                False,
+                f"No tools expected but {len(actual_tools)} were called",
+            )
+
+        if expected_tools and not actual_tools:
+            return MetricResult(
+                "Tool Correctness",
+                0.0,
+                False,
+                f"Expected {len(expected_tools)} tools but none were called",
+            )
+
+        # Check tool names match
+        expected_names = [tool.name for tool in expected_tools]
+        actual_names = [tool.name for tool in actual_tools]
+
+        correct_tools = 0
+        total_expected = len(expected_tools)
+
+        for expected_name in expected_names:
+            if expected_name in actual_names:
+                correct_tools += 1
+
+        score = correct_tools / total_expected if total_expected > 0 else 0.0
+        success = score >= 0.7  # 70% threshold
+
+        reason = f"Called {correct_tools}/{total_expected} expected tools"
+        return MetricResult("Tool Correctness", score, success, reason)
+
+    def calculate_argument_correctness(
+        self, expected_tools: List[ToolCall], actual_tools: List[ToolCall]
+    ) -> MetricResult:
+        """Calculate argument correctness metric."""
+        if not expected_tools and not actual_tools:
+            return MetricResult(
+                "Argument Correctness", 1.0, True, "No arguments to check"
+            )
+
+        if not expected_tools or not actual_tools:
+            return MetricResult("Argument Correctness", 0.0, False, "Tool mismatch")
+
+        correct_args = 0
+        total_tools = 0
+
+        # Match tools by name and check arguments
+        for expected_tool in expected_tools:
+            matching_actual = [t for t in actual_tools if t.name == expected_tool.name]
+            if matching_actual:
+                total_tools += 1
+                actual_tool = matching_actual[0]  # Take first match
+                if expected_tool.arguments == actual_tool.arguments:
+                    correct_args += 1
+
+        score = correct_args / total_tools if total_tools > 0 else 0.0
+        success = score >= 0.7  # 70% threshold
+
+        reason = f"Correct arguments for {correct_args}/{total_tools} tools"
+        return MetricResult("Argument Correctness", score, success, reason)
+
+    def calculate_task_completion(
+        self,
+        user_message: str,
+        agent_conversation: List[Dict[str, Any]],
+        requires_tool_use: bool,
+    ) -> MetricResult:
+        """Calculate task completion metric."""
+        # Simple heuristic: task is completed if:
+        # 1. For tool-required tasks: tools were used and final response is present
+        # 2. For non-tool tasks: a reasonable response was provided
+
+        final_response = ""
+        tools_used = False
+
+        for turn in agent_conversation:
+            if turn["role"] == "assistant":
+                if "tool_calls" in turn:
+                    tools_used = True
+                if "content" in turn and turn["content"]:
+                    final_response = turn["content"]
+
+        if requires_tool_use:
+            if tools_used and final_response.strip():
+                score = 1.0
+                reason = "Tools used and response provided"
+            elif tools_used:
+                score = 0.7
+                reason = "Tools used but incomplete response"
+            else:
+                score = 0.0
+                reason = "Required tools not used"
+        else:
+            if final_response.strip() and len(final_response.strip()) > 10:
+                score = 1.0
+                reason = "Reasonable response provided"
+            else:
+                score = 0.0
+                reason = "No adequate response provided"
+
+        success = score >= 0.7
+        return MetricResult("Task Completion", score, success, reason)
+
+    def evaluate_conversation(self, eval_item: Dict[str, Any]) -> TestResult:
         """Evaluate a single conversation item."""
         conversation = eval_item["conversation"]
         requires_tool_use = eval_item["requires_tool_use"]
+        eval_item_id = eval_item.get("id", "")
 
         # Get the initial user message
         user_message = conversation[0]["content"]
 
-        # Generate agent response (now automatically traced via @observe in agent.py)
+        # Generate agent response
         agent_conversation = self.agent.chat(user_message)
 
         # Extract expected and actual tool calls
-        if requires_tool_use:
-            expected_tools = self.extract_tools_from_conversation(conversation)
-        else:
-            # For non-tool conversations, expected tools is empty list
-            expected_tools = []
-
+        expected_tools = self.extract_expected_tools_from_conversation(conversation)
         actual_tools = self.extract_actual_tools_from_conversation(agent_conversation)
 
-        # Get the final assistant response
-        final_response = ""
-        for turn in reversed(agent_conversation):
-            if turn["role"] == "assistant":
-                final_response = turn["content"]
-                break
+        # Calculate metrics
+        metrics = []
 
-        # Create test case for DeepEval
-        test_case = LLMTestCase(
-            input=user_message,
-            actual_output=final_response,
-            expected_output="",  # Not used for tool correctness
-            tools_called=actual_tools,
-            expected_tools=expected_tools,
+        # Tool correctness (always calculated)
+        tool_correctness = self.calculate_tool_correctness(expected_tools, actual_tools)
+        metrics.append(tool_correctness)
+
+        # Argument correctness (only if tools are involved)
+        if expected_tools or actual_tools:
+            arg_correctness = self.calculate_argument_correctness(
+                expected_tools, actual_tools
+            )
+            metrics.append(arg_correctness)
+
+        # Task completion (always calculated)
+        task_completion = self.calculate_task_completion(
+            user_message, agent_conversation, requires_tool_use
         )
+        metrics.append(task_completion)
 
-        return test_case, agent_conversation
+        # Determine overall success (all metrics must pass)
+        overall_success = all(metric.success for metric in metrics)
+
+        return TestResult(
+            test_id=f"test_{eval_item_id}",
+            success=overall_success,
+            metrics=metrics,
+            agent_conversation=agent_conversation,
+            eval_item_id=eval_item_id,
+        )
 
     def run_evaluation(self, data_path: str) -> EvaluationResult:
         """Run full evaluation on the dataset."""
@@ -136,9 +293,6 @@ class AgentEvaluator:
         eval_data = self.load_evaluation_data(data_path)
 
         test_cases = []
-        agent_conversations = []
-        eval_item_ids = []
-        skipped = 0
 
         conversations_count = len(eval_data["conversations"])
         print(f"Processing {conversations_count} conversations...")
@@ -147,38 +301,20 @@ class AgentEvaluator:
             progress = f"{i + 1}/{conversations_count}"
             print(f"Processing conversation {eval_item['id']} ({progress})")
 
-            # Skip conversations that don't require tool use
-            if not eval_item["requires_tool_use"]:
-                print("  Skipped (no tools required)")
-                skipped += 1
-                continue
+            # Process all conversations (including those without tool use)
+            test_result = self.evaluate_conversation(eval_item)
+            test_cases.append(test_result)
 
-            test_case, agent_conversation = self.evaluate_conversation(eval_item)
-            test_cases.append(test_case)
-            agent_conversations.append(agent_conversation)
-            eval_item_ids.append(eval_item["id"])
-            print("  Processed (with tools)")
+            status = "✓ Pass" if test_result.success else "✗ Fail"
+            print(f"  {status}")
 
-        print(
-            f"\nEvaluating {len(test_cases)} test cases with Tool Correctness, "
-            "Argument Correctness, and Task Completion metrics..."
-        )
-        print(f"Skipped {skipped} conversations without tool calls")
+        print(f"\nEvaluation completed for {len(test_cases)} conversations")
 
-        # Run evaluation
-        result = evaluate(
-            test_cases,
-            [
-                self.tool_correctness_metric,
-                self.argument_correctness_metric,
-                self.task_completion_metric,
-            ],
-        )
+        # Create evaluation result
+        result = EvaluationResult(test_cases)
 
         # Save results to JSON file
-        self._save_results(
-            result, eval_data, data_path, agent_conversations, eval_item_ids
-        )
+        self._save_results(result, eval_data, data_path)
 
         return result
 
@@ -187,8 +323,6 @@ class AgentEvaluator:
         result: EvaluationResult,
         eval_data: Dict[str, Any],
         data_path: str,
-        agent_conversations: List[List[Dict[str, Any]]],
-        eval_item_ids: List[str],
     ):
         """Save evaluation results to JSON file."""
         # Extract language code from dataset (default to 'eng')
@@ -210,9 +344,7 @@ class AgentEvaluator:
             "model_name": self.agent.model_name,
             "language": language_code,
             "dataset_path": data_path,
-            "evaluation_results": self._serialize_evaluation_result(
-                result, agent_conversations, eval_item_ids
-            ),
+            "evaluation_results": self._serialize_evaluation_result(result),
         }
 
         # Save to file
@@ -224,8 +356,6 @@ class AgentEvaluator:
     def _serialize_evaluation_result(
         self,
         result: EvaluationResult,
-        agent_conversations: List[List[Dict[str, Any]]],
-        eval_item_ids: List[str],
     ) -> Dict[str, Any]:
         """Convert EvaluationResult to JSON-serializable dictionary."""
         # Calculate global metrics
@@ -238,13 +368,13 @@ class AgentEvaluator:
         metric_scores = {}
         metric_pass_rates = {}
         for test_result in result.test_results:
-            for metric_data in test_result.metrics_data:
-                metric_name = metric_data.name
+            for metric in test_result.metrics:
+                metric_name = metric.name
                 if metric_name not in metric_scores:
                     metric_scores[metric_name] = []
                     metric_pass_rates[metric_name] = []
-                metric_scores[metric_name].append(metric_data.score)
-                metric_pass_rates[metric_name].append(metric_data.success)
+                metric_scores[metric_name].append(metric.score)
+                metric_pass_rates[metric_name].append(metric.success)
 
         average_scores = {}
         metric_pass_rate_percentages = {}
@@ -272,26 +402,21 @@ class AgentEvaluator:
             },
             "test_results": [
                 {
-                    "name": test_result.name,
+                    "test_id": test_result.test_id,
                     "success": test_result.success,
-                    "eval_item_id": eval_item_ids[i]
-                    if i < len(eval_item_ids)
-                    else None,
-                    "agent_conversation": (
-                        agent_conversations[i] if i < len(agent_conversations) else None
-                    ),
+                    "eval_item_id": test_result.eval_item_id,
+                    "agent_conversation": test_result.agent_conversation,
                     "metrics_data": [
                         {
                             "name": metric.name,
-                            "threshold": metric.threshold,
                             "success": metric.success,
                             "score": metric.score,
                             "reason": metric.reason,
                         }
-                        for metric in test_result.metrics_data
+                        for metric in test_result.metrics
                     ],
                 }
-                for i, test_result in enumerate(result.test_results)
+                for test_result in result.test_results
             ],
         }
 

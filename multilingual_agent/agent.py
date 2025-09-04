@@ -4,7 +4,6 @@ import re
 from datetime import datetime
 from typing import Any, Dict, List
 
-from deepeval.tracing import observe
 
 from model_utils import (
     chat_responses,
@@ -159,7 +158,6 @@ class MultilingualAgent:
 
         return cleaned.strip()
 
-    @observe()
     def chat(self, user_message: str) -> List[Dict[str, Any]]:
         """
         Process user message and return full conversation.
