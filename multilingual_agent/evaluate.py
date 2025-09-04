@@ -7,7 +7,11 @@ from typing import Any, Dict, List
 import torch
 from deepeval import evaluate
 from deepeval.evaluate.types import EvaluationResult
-from deepeval.metrics import ArgumentCorrectnessMetric, ToolCorrectnessMetric
+from deepeval.metrics import (
+    ArgumentCorrectnessMetric,
+    TaskCompletionMetric,
+    ToolCorrectnessMetric,
+)
 from deepeval.test_case import LLMTestCase, ToolCall
 
 from model_utils import cleanup_model, clear_huggingface_cache
@@ -32,6 +36,9 @@ class AgentEvaluator:
         self.tool_correctness_metric = ToolCorrectnessMetric(threshold=0.7)
         self.argument_correctness_metric = ArgumentCorrectnessMetric(
             threshold=0.7, strict_mode=False
+        )
+        self.task_completion_metric = TaskCompletionMetric(
+            threshold=0.7, include_reason=True, strict_mode=False
         )
 
     def load_evaluation_data(self, data_path: str) -> Dict[str, Any]:
@@ -93,7 +100,7 @@ class AgentEvaluator:
         # Get the initial user message
         user_message = conversation[0]["content"]
 
-        # Generate agent response
+        # Generate agent response (now automatically traced via @observe in agent.py)
         agent_conversation = self.agent.chat(user_message)
 
         # Extract expected and actual tool calls
@@ -153,14 +160,19 @@ class AgentEvaluator:
             print("  Processed (with tools)")
 
         print(
-            f"\nEvaluating {len(test_cases)} test cases with Tool Correctness "
-            "and Argument Correctness metrics..."
+            f"\nEvaluating {len(test_cases)} test cases with Tool Correctness, "
+            "Argument Correctness, and Task Completion metrics..."
         )
         print(f"Skipped {skipped} conversations without tool calls")
 
         # Run evaluation
         result = evaluate(
-            test_cases, [self.tool_correctness_metric, self.argument_correctness_metric]
+            test_cases,
+            [
+                self.tool_correctness_metric,
+                self.argument_correctness_metric,
+                self.task_completion_metric,
+            ],
         )
 
         # Save results to JSON file

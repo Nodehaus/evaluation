@@ -4,6 +4,8 @@ import re
 from datetime import datetime
 from typing import Any, Dict, List
 
+from deepeval.tracing import observe
+
 from model_utils import (
     chat_responses,
     check_tool_calling_support,
@@ -13,6 +15,7 @@ from model_utils import (
 
 class ModelNotSupported(Exception):
     """Exception raised when a model does not support tool calling."""
+
     pass
 
 
@@ -144,18 +147,19 @@ class MultilingualAgent:
                 continue
 
         return tool_calls
-    
+
     def _remove_thinking_tags(self, text: str) -> str:
         """Remove <think>...</think> blocks from text."""
         # Remove <think>...</think> blocks
-        cleaned = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
-        
+        cleaned = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
+
         # Remove other common special tokens that might appear in final responses
-        cleaned = re.sub(r'<\|im_end\|>', '', cleaned)
-        cleaned = re.sub(r'<\|.*?\|>', '', cleaned)
-        
+        cleaned = re.sub(r"<\|im_end\|>", "", cleaned)
+        cleaned = re.sub(r"<\|.*?\|>", "", cleaned)
+
         return cleaned.strip()
 
+    @observe()
     def chat(self, user_message: str) -> List[Dict[str, Any]]:
         """
         Process user message and return full conversation.
