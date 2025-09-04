@@ -149,8 +149,9 @@ class AgentEvaluator:
 
         model_name_clean = self.agent.model_name.split("/")[-1]
 
-        # Create results directory
-        results_dir = "multilingual_agents/results"
+        # Create results directory with script path as prefix
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        results_dir = os.path.join(script_dir, "results")
         os.makedirs(results_dir, exist_ok=True)
 
         # Create filename
@@ -198,20 +199,18 @@ def main():
     """Main evaluation function."""
     parser = argparse.ArgumentParser(description="Evaluate Multilingual Agent Tool Use")
     parser.add_argument(
-        "--data",
-        default="data/tools_use_eng.json",
-        help="Path to evaluation data JSON file",
-    )
-
-    parser.add_argument(
         "--model", default="HuggingFaceTB/SmolLM3-3B", help="HuggingFace model name"
     )
 
     args = parser.parse_args()
 
+    # Use default data path with script directory as prefix
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(script_dir, "data", "tools_use_eng.json")
+
     # Check if data file exists
-    if not os.path.exists(args.data):
-        print(f"Error: Data file not found: {args.data}")
+    if not os.path.exists(data_path):
+        print(f"Error: Data file not found: {data_path}")
         return
 
     # Create evaluator
@@ -222,7 +221,7 @@ def main():
         return
 
     # Run evaluation
-    evaluator.run_evaluation(args.data)
+    evaluator.run_evaluation(data_path)
 
 
 if __name__ == "__main__":
