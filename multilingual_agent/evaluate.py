@@ -210,7 +210,48 @@ class AgentEvaluator:
         eval_item_ids: List[str],
     ) -> Dict[str, Any]:
         """Convert EvaluationResult to JSON-serializable dictionary."""
+        # Calculate global metrics
+        total_tests = len(result.test_results)
+        passed_tests = sum(1 for tr in result.test_results if tr.success)
+        failed_tests = total_tests - passed_tests
+        pass_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
+
+        # Calculate average scores by metric
+        metric_scores = {}
+        metric_pass_rates = {}
+        for test_result in result.test_results:
+            for metric_data in test_result.metrics_data:
+                metric_name = metric_data.name
+                if metric_name not in metric_scores:
+                    metric_scores[metric_name] = []
+                    metric_pass_rates[metric_name] = []
+                metric_scores[metric_name].append(metric_data.score)
+                metric_pass_rates[metric_name].append(metric_data.success)
+
+        average_scores = {}
+        metric_pass_rate_percentages = {}
+        for metric_name in metric_scores:
+            scores = metric_scores[metric_name]
+            passes = metric_pass_rates[metric_name]
+            average_scores[metric_name] = sum(scores) / len(scores) if scores else 0
+            metric_pass_rate_percentages[metric_name] = (
+                (sum(passes) / len(passes)) * 100 if passes else 0
+            )
+
         return {
+            "global_metrics": {
+                "total_tests": total_tests,
+                "passed_tests": passed_tests,
+                "failed_tests": failed_tests,
+                "overall_pass_rate": round(pass_rate, 2),
+                "average_scores_by_metric": {
+                    name: round(score, 4) for name, score in average_scores.items()
+                },
+                "pass_rates_by_metric": {
+                    name: round(rate, 2)
+                    for name, rate in metric_pass_rate_percentages.items()
+                },
+            },
             "test_results": [
                 {
                     "name": test_result.name,
@@ -233,7 +274,7 @@ class AgentEvaluator:
                     ],
                 }
                 for i, test_result in enumerate(result.test_results)
-            ]
+            ],
         }
 
 
