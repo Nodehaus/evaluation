@@ -1,0 +1,1792 @@
+[
+  {
+    "id": 1,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest stolica Francji?"
+      },
+      {
+        "role": "assistant",
+        "content": "Jestem botem pogodowym zaprojektowanym do pomocy w zapytaniach związanych z pogodą. W przypadku pytań o geografię, takich jak stolice, polecałbym skorzystanie z wyszukiwarki lub encyklopedii. Jednakże, jeśli chciałbyś poznać pogodę w Paryżu we Francji, chętnie pomogę!"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy możesz opowiedzieć mi żart?"
+      },
+      {
+        "role": "assistant",
+        "content": "Specjalizuję się w informacjach pogodowych i prognozach. Chociaż nie mogę opowiadać żartów, mogę podzielić się interesującymi faktami pogodowymi! Na przykład, czy wiesz, że pioruny mogą osiągać temperatury pięć razy wyższe niż powierzchnia słońca? Jeśli chciałbyś poznać pogodę dla konkretnej lokalizacji, po prostu zapytaj!"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jak ugotować makaron?"
+      },
+      {
+        "role": "assistant",
+        "content": "Jestem asystentem pogodowym, więc nie mogę pomóc z instrukcjami gotowania. Mogę jednak poinformować o warunkach pogodowych, jeśli planujesz grilla lub piknik na świeżym powietrzu! Po prostu powiedz mi, które miasto Cię interesuje, a mogę dostarczyć informacje pogodowe."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Która jest godzina?"
+      },
+      {
+        "role": "assistant",
+        "content": "Nie mam dostępu do aktualnych informacji o czasie, ale mogę pomóc z prognozami pogody i aktualnymi warunkami pogodowymi dla dowolnego miasta. Czy jest konkretne miejsce, dla którego chciałbyś poznać pogodę?"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Ile to jest 2 + 2?"
+      },
+      {
+        "role": "assistant",
+        "content": "Jestem zaprojektowany do pomocy w kwestiach związanych z pogodą, a nie z problemami matematycznymi. Jeśli potrzebujesz informacji pogodowych dla jakiegoś miasta lub chcesz wiedzieć o nadchodzących warunkach pogodowych, jestem tutaj, aby pomóc!"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest pogoda w Nowym Jorku 07/15/2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "New York City",
+                "date": "2024-07-15"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Nowym Jorku 15 lipca 2024 roku pokazuje przyjemny letni dzień z temperaturą 25°C. Wilgotność będzie wynosić 75%, przez co będzie nieco duszno, a wiatr będzie lekki o prędkości 15 km/h. To świetny dzień na aktywności na świeżym powietrzu, choć należy pamiętać o odpowiednim nawodnieniu ze względu na wilgotność."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest pogoda w Londynie 25 grudnia 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "London",
+                "date": "2024-12-25"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Londynie w Boże Narodzenie, 25 grudnia 2024 roku, będzie typową zimową pogodą z temperaturą 10°C. Wilgotność będzie wynosić 70% przy umiarkowanym wietrze o prędkości 18 km/h. To chłodny zimowy dzień, więc ubierz się ciepło, jeśli wychodzisz na świąteczne uroczystości!"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Opowiedz mi o pogodzie w Tokio 1 kwietnia 2024"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Tokyo",
+                "date": "2024-04-01"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 22, \"humidity\": 75, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Tokio 1 kwietnia 2024 roku będzie piękną wiosenną pogodą z temperaturą 22°C. Wilgotność wyniesie 75% przy delikatnym wietrze o prędkości 13 km/h. To idealna pogoda na kwitnienie wiśni - doskonała na hanami (podziwianie kwiatów) i aktywności na świeżym powietrzu w łagodnych wiosennych warunkach!"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka będzie pogoda w São Paulo 10 stycznia 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "São Paulo",
+                "date": "2024-01-10"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 24, \"humidity\": 85, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w São Paulo 10 stycznia 2024 roku będzie ciepłą letnią pogodą z temperaturą 24°C. Wilgotność będzie dość wysoka na poziomie 85%, a wiatr będzie lekki o prędkości 12 km/h. Ponieważ na półkuli południowej jest lato, spodziewaj się wilgotnego i ciepłego dnia - idealnego na aktywności w pomieszczeniach z klimatyzacją lub pływanie na świeżym powietrzu!"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy możesz sprawdzić pogodę dla Berlina 15 września 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Berlin",
+                "date": "2024-09-15"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Berlinie 15 września 2024 roku będzie chłodną jesienną pogodą z temperaturą 14°C. Wilgotność wyniesie 70% przy umiarkowanym wietrze o prędkości 15 km/h. To typowa wczesna jesienna pogoda w Niemczech - będziesz chciał założyć lekką kurtkę lub sweter, gdy wyjdziesz na zewnątrz."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest pogoda w Rzymie 20/03/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Rome",
+                "date": "2024-03-20"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 18, \"humidity\": 65, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Rzymie 20 marca 2024 roku będzie przyjemną wiosenną pogodą z temperaturą 18°C. Wilgotność będzie umiarkowana na poziomie 65% przy lekkim wietrze o prędkości 11 km/h. Świetny czas na odkrywanie rzymskich zabytków w wiosennym słońcu!"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest pogoda w Sztokholmie 05/11/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Stockholm",
+                "date": "2024-11-05"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 8, \"humidity\": 78, \"wind_speed\": 17}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Sztokholmie 5 listopada 2024 roku będzie chłodną zimową pogodą z temperaturą 8°C. Wilgotność będzie wysoka na poziomie 78% przy mocnym wietrze o prędkości 17 km/h. Typowa skandynawska późna jesień - koniecznie ubierz się ciepło!"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy możesz sprawdzić pogodę w Paryżu 12-09-2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Paris",
+                "date": "2024-09-12"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 65, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Paryżu 12 września 2024 roku będzie miłą jesiennią pogodą z temperaturą 19°C. Wilgotność będzie umiarkowana na poziomie 65% przy delikatnym wietrze o prędkości 12 km/h. Idealna pogoda do zwiedzania miasta - nie za gorąco ani za zimno!"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest pogoda w Dubaju 14.08.2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Dubai",
+                "date": "2024-08-14"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 39, \"humidity\": 45, \"wind_speed\": 8}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Dubaju 14 sierpnia 2024 roku będzie bardzo gorącą pustynną pogodą z temperaturą 39°C! Wilgotność będzie jednak rozsądna na poziomie 45% przy lekkim wietrze o prędkości 8 km/h. Typowy arabski letni dzień - trzymaj się w chłodzie z klimatyzacją i pij dużo wody."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka będzie pogoda w Sydney 18/02/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Sydney",
+                "date": "2024-02-18"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 28, \"humidity\": 72, \"wind_speed\": 16}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Sydney 18 lutego 2024 roku będzie ciepłą letnią pogodą z temperaturą 28°C. Wilgotność wyniesie 72% przy świeżym wietrze o prędkości 16 km/h. Ponieważ na półkuli południowej jest lato, to idealny dzień na plażę i aktywności na świeżym powietrzu!"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Powiedz mi o pogodzie w Moskwie 30 grudnia 2024"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Moscow",
+                "date": "2024-12-30"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": -5, \"humidity\": 82, \"wind_speed\": 19}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Moskwie 30 grudnia 2024 roku będzie zimną zimową pogodą z temperaturą -5°C. Wilgotność będzie wysoka na poziomie 82% przy mocniejszym wietrze o prędkości 19 km/h. Typowa rosyjska zima - ubierz się bardzo ciepło i uważaj na śliską drogę!"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Sprawdź pogodę w Bangkoku 3/16/24"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Bangkok",
+                "date": "2024-03-16"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 32, \"humidity\": 80, \"wind_speed\": 9}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Bangkoku 16 marca 2024 roku będzie gorącą tropikalnie wilgotną pogodą z temperaturą 32°C. Wilgotność będzie bardzo wysoka na poziomie 80% przy spokojnym wietrze o prędkości 9 km/h. Typowy tajski gorący okres - spodziewaj się gorącej i wilgotnej pogody, więc zostaw w chłodzie i pij dużo wody!"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest pogoda w Buenos Aires 04/25/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Buenos Aires",
+                "date": "2024-04-25"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 68, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Buenos Aires 25 kwietnia 2024 roku będzie przyjemną jesiennią pogodą z temperaturą 19°C. Wilgotność będzie umiarkowana na poziomie 68% przy delikatnym wietrze o prędkości 14 km/h. Ponieważ na półkuli południowej zaczyna się jesień, to idealny czas na zwiedzanie miasta - nie za gorąco ani za zimno!"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Pogoda w Mumbaju 7/22/2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Mumbai",
+                "date": "2024-07-22"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 29, \"humidity\": 88, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Mumbaju 22 lipca 2024 roku będzie gorącą i wilgotną monsunową pogodą z temperaturą 29°C. Wilgotność będzie bardzo wysoka na poziomie 88% przy lekkim wietrze o prędkości 11 km/h. Okres monsunowy - spodziewaj się częstych deszczów i bardzo wysokiej wilgotności!"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy możesz mi powiedzieć, jaka jest pogoda w Kairze 10-06-2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Cairo",
+                "date": "2024-06-10"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 33, \"humidity\": 40, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Kairze 10 czerwca 2024 roku będzie gorącą pustynną pogodą z temperaturą 33°C. Wilgotność będzie niska na poziomie 40% przy umiarkowanym wietrze o prędkości 12 km/h. Typowa egipska letnia pogoda - gorąca i sucha, więc trzymaj się w cieniu i pij dużo wody!"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy możesz sprawdzić pogodę w Toronto 14 maja 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Toronto",
+                "date": "2024-05-14"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 21, \"humidity\": 63, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Toronto 14 maja 2024 roku będzie piękną wiosenną pogodą z temperaturą 21°C. Wilgotność będzie umiarkowana na poziomie 63% przy delikatnym wietrze o prędkości 13 km/h. Idealna kanadyjska wiosenna pogoda - świetny czas na aktywności na świeżym powietrzu i zwiedzanie miasta!"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Pogoda w Kapsztadzie w RPA 5 sierpnia 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Cape Town",
+                "date": "2024-08-05"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 17}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Kapsztadzie 5 sierpnia 2024 roku będzie chłodną zimową pogodą z temperaturą 16°C. Wilgotność będzie umiarkowana na poziomie 55% przy świeżym wietrze o prędkości 17 km/h. Ponieważ na półkuli południowej jest zima, to typowa kapsztańska zimowa pogoda - łagodna i przyjemna, znacznie cieplejsza niż zima na półkuli północnej!"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Mumbaj 18/11/2024, jaka jest pogoda?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Mumbai",
+                "date": "2024-11-18"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 27, \"humidity\": 74, \"wind_speed\": 10}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Mumbaju 18 listopada 2024 roku będzie ciepła i wilgotna z temperaturą 27°C. Wilgotność będzie wysoka na poziomie 74% przy lekkim wietrze o prędkości 10 km/h. To okres po-monsunowy - nadal ciepły, ale nieco mniej wilgotny niż latem."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Pogoda w Singapurze 03.09.2024"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Singapore",
+                "date": "2024-09-03"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 30, \"humidity\": 83, \"wind_speed\": 7}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Singapurze 3 września 2024 roku będzie gorącą tropikalnie wilgotną pogodą z temperaturą 30°C. Wilgotność będzie bardzo wysoka na poziomie 83% przy spokojnym wietrze o prędkości 7 km/h. Typowa singapurska pogoda - ciągle gorąco i wilgotno przez cały rok!"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest pogoda w Miami 27 czerwca 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Miami",
+                "date": "2024-06-27"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 31, \"humidity\": 78, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Miami 27 czerwca 2024 roku będzie gorącą i wilgotną letnią pogodą z temperaturą 31°C. Wilgotność będzie wysoka na poziomie 78% przy lekkim wietrze o prędkości 13 km/h. Typowy florydzący letni dzień - idealny na plażę, ale zostaw w cieniu w południe!"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka będzie pogoda pojutrze w Tokio?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Tokyo",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 28, \"humidity\": 78, \"wind_speed\": 10}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Tokio pojutrze (13 września 2025) będzie przyjemnie ciepła z temperaturą 28°C. Wilgotność będzie dość wysoka na poziomie 78% przy lekkim wietrze o prędkości 10 km/h. Typowa późno-letnia pogoda w Tokio!"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka będzie pogoda jutro w Paryżu?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Paris",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 65, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Jutro (12 września 2025) w Paryżu będzie łagodna i przyjemna pogoda z temperaturą 19°C. Wilgotność będzie umiarkowana na poziomie 65% przy delikatnym wietrze o prędkości 12 km/h. Idealna jesienna pogoda do zwiedzania miasta!"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy możemy dziś jeść na zewnątrz w Londynie?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "London",
+                "date": "2025-09-11"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 17, \"humidity\": 72, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Londynie dziś (11 września 2025) jest łagodna z temperaturą 17°C, 72% wilgotnością i umiarkowanym wiatrem o prędkości 15 km/h. Jest całkiem odpowiednia do jedzenia na zewnątrz! Weź ze sobą lekką kurtkę na wypadek, gdyby się ochłodziło."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka będzie pogoda w przyszły wtorek w Sydney?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Sydney",
+                "date": "2025-09-16"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 22, \"humidity\": 68, \"wind_speed\": 18}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pogoda w Sydney w przyszły wtorek (16 września 2025) będzie przyjemna z temperaturą 22°C. Wilgotność będzie umiarkowana na poziomie 68% przy świeżym wietrze o prędkości 18 km/h. Świetna wiosenna pogoda dla Sydney - idealna na aktywności na świeżym powietrzu!"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy w ten weekend będzie wystarczająco ciepło na grilla w Amsterdamie?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Amsterdam",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "W sobotę tego weekendu (13 września 2025) w Amsterdamie będzie 18°C, 70% wilgotności i umiarkowany wiatr o prędkości 14 km/h. Jest nieco chłodno na grilla, ale z ciepłymi ubraniami i gorącymi napojami może być przytulnie - albo wybierz miejsce z zadaszeniem!"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaką pogodę będziemy mieć w piątek w Barcelonie?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Barcelona",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 25, \"humidity\": 62, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "W piątek (12 września 2025) w Barcelonie będzie wspaniała pogoda z temperaturą 25°C! Wilgotność będzie przyjemna na poziomie 62% przy lekkim wietrze o prędkości 11 km/h. Idealna pogoda do cieszenia się miastem i plażą!"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy powinienem wziąć parasol, gdy idę pojutrze do Berlina?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Berlin",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 16, \"humidity\": 74, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Pojutrze (13 września 2025) w Berlinie oczekiwana jest temperatura 16°C, 74% wilgotność i umiarkowany wiatr o prędkości 13 km/h. Wysoka wilgotność sugeruje możliwość opadów, więc wzięcie parasola to rozsądny pomysł. Także weź lekką kurtkę z powodu chłodniejszej temperatury."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy w przyszłą niedzielę będzie ładna pogoda w Rzymie?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Rome",
+                "date": "2025-09-14"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 26, \"humidity\": 58, \"wind_speed\": 9}"
+      },
+      {
+        "role": "assistant",
+        "content": "Tak! W przyszłą niedzielę (14 września 2025) w Rzymie będzie wspaniała pogoda z temperaturą 26°C. Wilgotność będzie przyjemnie niska na poziomie 58% przy lekkim wietrze o prędkości 9 km/h. Idealna pogoda do zwiedzania Wiecznego Miasta i cieszenia się włoskim słońcem!"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jak zimno będzie jutro w Sztokholmie?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Stockholm",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 13, \"humidity\": 76, \"wind_speed\": 16}"
+      },
+      {
+        "role": "assistant",
+        "content": "Jutro (12 września 2025) w Sztokholmie będzie całkiem chłodno z temperaturą zaledwie 13°C. Wilgotność będzie wysoka na poziomie 76% przy mocnym wietrze o prędkości 16 km/h. Typowa skandynawska jesienna pogoda - zdecydowanie ubierz się ciepło!"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy przyszły poniedziałek będzie dobrym dniem na piknik w Wiedniu?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Vienna",
+                "date": "2025-09-15"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 20, \"humidity\": 64, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Przyszły poniedziałek (15 września 2025) będzie świetny na piknik w Wiedniu z temperaturą 20°C! Wilgotność będzie wygodna na poziomie 64% przy lekkim wietrze o prędkości 11 km/h. Idealnie do cieszenia się wieńskimi parkami takimi jak Prater czy Schönbrunn."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaką pogodę możemy oczekiwać w tę sobotę w Brukseli?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Brussels",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 17, \"humidity\": 71, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "W tę sobotę (13 września 2025) w Brukseli będzie łagodna pogoda z temperaturą 17°C. Wilgotność będzie umiarkowanie wysoka na poziomie 71% przy umiarkowanym wietrze o prędkości 14 km/h. Typowa belgijska jesienna pogoda - świetna na zwiedzanie Grand Place, ale weź ze sobą kurtkę!"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jak ciepło będzie w przyszłą środę w Stambule?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Istanbul",
+                "date": "2025-09-17"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 24, \"humidity\": 63, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "W przyszłą środę (17 września 2025) w Stambule będzie przyjemnie ciepło z temperaturą 24°C. Wilgotność będzie wygodna na poziomie 63% przy lekkim wietrze o prędkości 12 km/h. Świetna pogoda do zwiedzania Bosforu i cieszenia się tureckim słońcem!"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy w czwartek w Moskwie będzie wystarczająco zimno na ciepłą kurtkę?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Moscow",
+                "date": "2025-09-11"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 11, \"humidity\": 78, \"wind_speed\": 17}"
+      },
+      {
+        "role": "assistant",
+        "content": "Tak! W czwartek (11 września 2025) w Moskwie będzie całkiem zimno z temperaturą zaledwie 11°C. Wysoka wilgotność 78% i mocny wiatr o prędkości 17 km/h sprawią, że będzie jeszcze chłodniej. Zdecydowanie weź ciepłą kurtkę - rosyjska jesień już nadchodzi!"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka będzie pogoda w przyszłą sobotę w Montrealu?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Montreal",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 18, \"humidity\": 69, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "W przyszłą sobotę (13 września 2025) w Montrealu będzie łagodna pogoda z temperaturą 18°C. Wilgotność będzie umiarkowana na poziomie 69% przy lekkim wietrze o prędkości 13 km/h. Typowa kanadyjska jesienna pogoda - idealna do podziwiania kolorowych liści!"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy przyszły wtorek będzie dobrą pogodą na spacer w Vancouver?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Vancouver",
+                "date": "2025-09-16"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 67, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Przyszły wtorek (16 września 2025) będzie świetny na spacer w Vancouver z temperaturą 19°C! Wilgotność będzie przyjemna na poziomie 67% przy lekkim wietrze o prędkości 11 km/h. Idealnie do zwiedzania Stanley Park lub spaceru wzdłuż wybrzeża."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jak zimno będzie jutro rano w Calgary?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Calgary",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 12, \"humidity\": 75, \"wind_speed\": 19}"
+      },
+      {
+        "role": "assistant",
+        "content": "Jutro rano (12 września 2025) w Calgary będzie całkiem chłodno z temperaturą 12°C. Wysoka wilgotność 75% i mocny wiatr o prędkości 19 km/h sprawią, że będzie jeszcze chłodniej. Typowe dla kanadyjskiej prérii - zdecydowanie ubierz się ciepło!"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy w niedzielę będę mógł mło siedziec na zewnątrz w Meksyku?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Mexico City",
+                "date": "2025-09-14"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 23, \"humidity\": 61, \"wind_speed\": 8}"
+      },
+      {
+        "role": "assistant",
+        "content": "Tak, idealnie! W niedzielę (14 września 2025) w Mexico City będzie wspaniała pogoda z temperaturą 23°C. Wilgotność będzie przyjemna na poziomie 61% przy lekkim wietrze o prędkości 8 km/h. Idealnie do siedzenia na zewnątrz i cieszenia się piękną pogodą!"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy w przyszły piątek będzie wystarczająco ciepło do pływania w Miami?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Miami",
+                "date": "2025-09-19"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 29, \"humidity\": 77, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "Absolutnie! W przyszły piątek (19 września 2025) w Miami będzie wspaniale ciepło z temperaturą 29°C - idealnie do pływania! Będzie wilgotno z 77% wilgotnością przy umiarkowanym wietrze o prędkości 14 km/h, ale to typowe dla Miami. Plaża i basen wzywają!"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka będzie pogoda w poniedziałek w Los Angeles?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Los Angeles",
+                "date": "2025-09-15"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 27, \"humidity\": 59, \"wind_speed\": 10}"
+      },
+      {
+        "role": "assistant",
+        "content": "W poniedziałek (15 września 2025) w Los Angeles będzie wspaniała pogoda z temperaturą 27°C! Wilgotność będzie przyjemnie niska na poziomie 59% przy lekkim wietrze o prędkości 10 km/h. Typowa piękna kalifornijska pogoda - idealna na wszystkie aktywności na świeżym powietrzu!"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Czy w tym tygodniu będzie jeszcze wystarczająco ciepło na taras w Chicago?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Chicago",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 68, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "W sobotę (13 września 2025) w Chicago będzie 19°C, 68% wilgotności i umiarkowany wiatr o prędkości 15 km/h. Jest nieco chłodno na taras, ale ze swetrem lub kurtką jest całkiem możliwe. Typowa jesienna pogoda dla Chicago - może lepiej wybierz taras z daszkiem!"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Dlaczego pada tak dużo deszczu w niektórych częściach świata?"
+      },
+      {
+        "role": "assistant",
+        "content": "Różne czynniki określają, dlaczego niektóre regiony otrzymują znacznie więcej opadów niż inne:\n\n**Strefy tropikalne**: Obszary wokół równika otrzymują dużo deszczu z powodu wznoszącego się ciepłego powietrza, które chłodzi się i kondensuje. To powoduje codzienne burze.\n\n**Regiony górskie**: Gdy wilgotne powietrze napotyka góry, jest zmuszane do wznoszenia się. To powoduje ochłodzenie i obfite opady po nawietrznej stronie gór.\n\n**Obszary nabrzeżne**: Oceany to wielkie źródła wody. Ciepłe prądy oceaniczne parują dużo wody, która opada, gdy powietrze osiąga ląd.\n\n**Monsony**: Sezonowe wzorce wiatrów przynoszą ogromne ilości wilgoci z oceanów na ląd, szczególnie w południowej Azji.\n\n**Strefy konwergencji**: Tam, gdzie różne prądy powietrzne się spotykają, powstają ruchy wznoszące, które prowadzą do obfitych opadów.\n\nKombinacja tych czynników wyjaśnia, dlaczego miejsca takie jak las amazoński, zachodnie wybrzeże Norwegii czy części Indii otrzymują tak dużo deszczu!"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jak powstają tornada?"
+      },
+      {
+        "role": "assistant",
+        "content": "Tornada to fascynujące, ale niebezpieczne zjawiska pogodowe, które powstają przez idealne połączenie warunków:\n\n**Ścinanie wiatru**: Wszystko zaczyna się od różnych prędkości wiatru na różnych wysokościach. Na dole wiatr wieje wolniej niż wysoko, co tworzy poziomo obracający się cylinder powietrza.\n\n**Pionowy wznios**: Potężne burze z silnymi prądami wznoszącymi (updrafts) podnoszą to obracające się powietrze pionowo.\n\n**Superkomórki**: Te specjalne burze mają obracający się system (mezocyklon), który zapewnia idealne środowisko dla rozwoju tornad.\n\n**Kondensacja**: Gdy obracające się powietrze osiąga ziemię i zbiera wilgoć, staje się widoczne jako słynny ląd.\n\n**Tornado Alley**: Na Great Plains w USA te warunki często się łączą: ciepłe, wilgotne powietrze z południa napotyka zimne, suche powietrze z północy.\n\n**Siła**: Prędkość wiatru może przekroczyć 400 km/h w najsilniejszych tornadach (EF5 w skali Enhanced Fujita).\n\nWiększość tornad trwa tylko kilka minut, ale może spowodować ogromne zniszczenia!"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jaka jest różnica między klimatem a pogodą?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ważne pytanie, które często się myli! Różnica leży w czasie i skali:\n\n**Pogoda** to to, co dzieje się TERAZ:\n- Codzienne warunki: temperatura, opady, wiatr\n- Krótkookresowa: dzisiaj, jutro, ten tydzień\n- Lokalna: to, co czujesz na zewnątrz\n- Przewidywalna do około 10 dni\n\n**Klimat** to długoterminowy wzorzec:\n- Średnie warunki pogodowe przez 30+ lat\n- Wzorce sezonowe i trendy\n- Regionalne do globalnego\n- Zmienia się powoli przez dekady lub wieki\n\n**Pomocne przypomnienie**: \"Klimat to to, czego oczekujesz, pogoda to to, co dostajesz.\"\n\n**Przykłady**:\n- Warszawa ma umiarkowany klimat kontynentalny (długoterminowy), ale dzisiaj może padać lub świecić słońce (pogoda)\n- Sahara ma klimat pustynny, ale nawet tam waha się codzienna pogoda\n\n**Zmiana klimatu** oznacza, że te długoterminowe wzorce się przesuwają - średnio cieplej, inne wzorce opadów, bardziej ekstremalne zjawiska pogodowe.\n\nWięc: pogodę prognozujesz, klimat opisujesz jako wzorzec!"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Dlaczego w górach jest zawsze zimniej niż w dolinie?"
+      },
+      {
+        "role": "assistant",
+        "content": "Doskonałe pytanie o jedną z najbardziej podstawowych zasad pogody!\n\n**Główny powód - Rzadkie powietrze**:\nWyżej atmosfera jest rzadsza. Mniej cząsteczek powietrza oznacza mniej energii cieplnej na metr sześcienny.\n\n**Adiabatyczne ochładzanie**:\nKiedy powietrze wznosi się wyżej, rozszerza się z powodu zmniejszonego ciśnienia. To rozszerzanie zużywa energię, powodując spadek temperatury - około 6-10°C na każde 1000 metrów wysokości.\n\n**Mniejsze zatrzymywanie ciepła**:\n- Doliny: Gęste powietrze lepiej zatrzymuje ciepło\n- Góry: Rzadkie powietrze szybciej traci ciepło\n\n**Promieniowanie słoneczne**:\n- Góry otrzymują intensywniejsze promieniowanie, ale także szybciej je tracą\n- Doliny \"chwytają\" ciepło i dłużej je zatrzymują\n\n**Wiatry katabatyczne**:\nNocy górskie powietrze szybko się ochładza, staje się cięższe i spływa jako zimny wiatr do doliny.\n\n**Praktyczny przykład**:\nSzczyt Mont Blanc (4809m) jest około 30-40°C zimniejszy niż Chamonix w dolinie (1035m) - stąd wieczny śnieg na szczycie!\n\nTo wyjaśnia, dlaczego wspinacze zawsze biorą ciepłe ubrania, niezależnie od pory roku!"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Jak dokładnie działają satelity pogodowe?"
+      },
+      {
+        "role": "assistant",
+        "content": "Satelity pogodowe to nasze oczy w kosmosie! Działają z zaawansowaną technologią:\n\n**Dwa główne typy**:\n1. **Satelity geostacjonarne**: Wisą nieruchomo nad stałym punktem na Ziemi (35 786 km wysokości), robią ciągłe zdjęcia tego samego obszaru\n2. **Satelity polarne**: Krążą wokół Ziemi od bieguna do bieguna, skanują całą planetę w ciągu 12-24 godzin\n\n**Czujniki i instrumenty**:\n- **Radiometry**: Mierzą promieniowanie podczerwone do określenia temperatury\n- **Kamery**: Robią zdjęcia widzialnego światła chmur\n- **Detektory mikrofalowe**: Patrzą przez chmury na opady\n- **Sondery**: Mierzą temperaturę i wilgotność na różnych wysokościach\n\n**Co \"widzą\"**:\n- Formacje i ruchy chmur\n- Temperatury oceanów i lądów\n- Opady i śnieg\n- Prędkości wiatrów (śledząc ruch chmur)\n- Huragany i systemy burzowe\n\n**Przetwarzanie danych**:\nSatelity wysyłają surowe dane do stacji naziemnych, gdzie komputery przetwarzają je na mapy pogodowe, prognozy i ostrzeżenia.\n\n**Znane przykłady**: Meteosat (Europa), GOES (USA), Himawari (Japonia).\n\nBez satelitów prognozy pogody byłyby głównie zgadywanką!"
+      }
+    ]
+  }
+]

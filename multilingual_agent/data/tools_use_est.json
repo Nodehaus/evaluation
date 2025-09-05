@@ -1,0 +1,1792 @@
+[
+  {
+    "id": 1,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Mis on Prantsusmaa pealinn?"
+      },
+      {
+        "role": "assistant",
+        "content": "Olen ilmabot, mis on loodud abistama ilmaga seotud päringute puhul. Geograafia küsimuste puhul nagu pealinnad soovitaksin kasutada otsingumootorít või entsüklopeediat. Kui aga soovite teada ilma Pariisis, Prantsusmaal, olen meelsasti abiks!"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas saate mulle nalja rääkida?"
+      },
+      {
+        "role": "assistant",
+        "content": "Olen spetsialiseerunud ilmainformatsioonile ja prognoosidele. Kuigi ma ei saa nalju rääkida, saan jagada huvitavaid ilmafakte! Näiteks, kas teadsite, et välgud võivad saavutada temperatuuri, mis on viis korda kuumem kui päikese pind? Kui soovite teada ilma konkreetses asukohas, lihtsalt küsige!"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas pastasid keetma?"
+      },
+      {
+        "role": "assistant",
+        "content": "Olen ilmaassistent, seega ei saa aidata toiduvalmistamise juhenditega. Siiski saan teavitada ilmaoludest, kui plaanite õues grillimist või pikniku! Öelge mulle lihtsalt, milline linn teid huvitab, ja saan anda ilmainformatsiooni."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Mis kell on?"
+      },
+      {
+        "role": "assistant",
+        "content": "Mul puudub juurdepääs praegusele kellaajale, kuid saan aidata ilmaprognoosidega ja praeguste ilmaoludega mis tahes linnas. Kas on konkreetne koht, kus soovite ilma teada?"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Mis on 2 + 2?"
+      },
+      {
+        "role": "assistant",
+        "content": "Olen loodud aitama ilmaga seotud küsimustega, mitte matemaatiliste probleemidega. Kui vajate ilmainformatsiooni mõne linna kohta või soovite teada tulevasi ilmaolusid, olen siin aitamas!"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Milline on ilm New Yorgis 07/15/2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "New York City",
+                "date": "2024-07-15"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm New Yorgis 15. juulil 2024 näitab meeldivat suvepäeva temperatuuriga 25°C. Õhuniiskus on 75%, mistõttu võib tunduda veidi läppiv, ja tuul puhub kergelt kiirusega 15 km/h. See on suurepärane päev välitegevusteks, kuigi niiskuse tõttu tasub piisavalt vedelikku tarbida."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Milline on ilm Londonis 25. detsembril 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "London",
+                "date": "2024-12-25"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Londonis jõulupäeval, 25. detsembril 2024, on tüüpiline talveilm temperatuuriga 10°C. Õhuniiskus on 70% mõõduka tuulega kiirusega 18 km/h. See on jahe talvepäev, seega riietuge soojalt, kui lähete jõulupidudele!"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Rääkige mulle Tokyo ilmast 1. aprillil 2024"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Tokyo",
+                "date": "2024-04-01"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 22, \"humidity\": 75, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Tokyos 1. aprillil 2024 on ilus kevadilm temperatuuriga 22°C. Õhuniiskus on 75% õrna tuulega kiirusega 13 km/h. See on ideaalne kirsipuu õitseaeg - suurepäne hanami jaoks (lillede vaatlemine) ja välitegevusteks mõnusates kevadtingimustes!"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Milline saab olema ilm São Paulos 10. jaanuaril 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "São Paulo",
+                "date": "2024-01-10"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 24, \"humidity\": 85, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm São Paulos 10. jaanuaril 2024 on soe suveilm temperatuuriga 24°C. Õhuniiskus on üsna kõrge 85% juures ja tuul on kerge kiirusega 12 km/h. Kuna lõunapoolkeral on suvi, oodake niisket ja sooja päeva - ideaalne sisetegevusteks koos kliimaseadmetega või ujumiseks õues!"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas saate kontrollida Berliini ilma 15. septembril 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Berlin",
+                "date": "2024-09-15"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Berliinis 15. septembril 2024 on jahe sügiseilm temperatuuriga 14°C. Õhuniiskus on 70% mõõduka tuulega kiirusega 15 km/h. See on tüüpiline varasügisene ilm Saksamaal - soovite kanda kerget jakki või sviitrit, kui lähete välja."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas on ootama Rooma ilmaga 20/03/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Rome",
+                "date": "2024-03-20"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 18, \"humidity\": 65, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Roomas 20. märtsil 2024 on meeldiv kevadilm temperatuuriga 18°C. Õhuniiskus on mõõdukas 65% ja kerge tuul puhub kiirusega 11 km/h. Suurepärane aeg Rooma vaatamisväärsuste avastamiseks kevadises päikeses!"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas on ilm Stockholmis 05/11/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Stockholm",
+                "date": "2024-11-05"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 8, \"humidity\": 78, \"wind_speed\": 17}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Stockholmis 5. novembril 2024 on külm talveilm temperatuuriga 8°C. Õhuniiskus on kõrge 78% ja tuul on tugev kiirusega 17 km/h. Tüüpiline Skandinaavia hilissügis - kindlasti riietuge soojalt!"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Võiksite kontrollida Pariisi ilma 12-09-2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Paris",
+                "date": "2024-09-12"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 65, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Pariisis 12. septembril 2024 on mõnus sügiseilm temperatuuriga 19°C. Õhuniiskus on mõõdukas 65% õrna tuulega kiirusega 12 km/h. Ideaalne ilm linna avastamiseks - ei ole liiga kuum ega liiga külm!"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Milline on ilm Dubais 14.08.2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Dubai",
+                "date": "2024-08-14"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 39, \"humidity\": 45, \"wind_speed\": 8}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Dubais 14. augustil 2024 on väga kuum kõrbeilm temperatuuriga 39°C! Õhuniiskus on siiski mõistlik 45% kerge tuulega kiirusega 8 km/h. Tüüpiline Araabia suvepäev - hoidke end jahedad kliimaseadmetega ruumides ja jooge palju vett."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas saab Sydney ilm olema 18/02/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Sydney",
+                "date": "2024-02-18"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 28, \"humidity\": 72, \"wind_speed\": 16}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Sydneys 18. veebruaril 2024 on soe suveilm temperatuuriga 28°C. Õhuniiskus on 72% värske tuulega kiirusega 16 km/h. Kuna lõunapoolkeral on suvi, on see ideaalne päev ranna- ja välitegevusteks!"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Rääkige mulle Moskva ilmast 30 detsembril 2024"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Moscow",
+                "date": "2024-12-30"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": -5, \"humidity\": 82, \"wind_speed\": 19}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Moskvas 30. detsembril 2024 on külm talveilm temperatuuriga -5°C. Õhuniiskus on kõrge 82% tugevama tuulega kiirusega 19 km/h. Tüüpiline Vene talv - riietuge väga soojalt ja olge ettevaatlik libeda tee ees!"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kontrollida Bangkoki ilma 3/16/24"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Bangkok",
+                "date": "2024-03-16"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 32, \"humidity\": 80, \"wind_speed\": 9}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Bangkokis 16. märtsil 2024 on kuum troopiliselt niiske temperatuuriga 32°C. Õhuniiskus on väga kõrge 80% vaikse tuulega kiirusega 9 km/h. Tüüpiline Tai kuumaaeg - oodake kuuma ja niisket ilma, seega jääge jahedasse ja jooge palju vett!"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Milline on ilm Buenos Aireses 04/25/24?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Buenos Aires",
+                "date": "2024-04-25"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 68, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Buenos Aireses 25. aprillil 2024 on mõnus sügiseilm temperatuuriga 19°C. Õhuniiskus on mõõdukas 68% õrna tuulega kiirusega 14 km/h. Kuna lõunapoolkeral algab sügis, on see ideaalne aeg linna külastada - ei ole liiga kuum ega külm!"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Mumbai ilm 7/22/2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Mumbai",
+                "date": "2024-07-22"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 29, \"humidity\": 88, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Mumbais 22. juulil 2024 on kuum ja niiske monsoonilm temperatuuriga 29°C. Õhuniiskus on väga kõrge 88% kerge tuulega kiirusega 11 km/h. Monsoonihooaeg - oodake sageli vihma ja väga kõrget õhuniiskust!"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas saate mulle öelda, milline on ilm Kairo 10-06-2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Cairo",
+                "date": "2024-06-10"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 33, \"humidity\": 40, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Kairos 10. juunil 2024 on kuum kõrbeilm temperatuuriga 33°C. Õhuniiskus on madal 40% mõõduka tuulega kiirusega 12 km/h. Tüüpiline Egiptuse suveilm - palav ja kuiv, seega hoidke end varju all ja jooge rohkesti vett!"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas saate kontrollida Torontoo ilma 14. mai 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Toronto",
+                "date": "2024-05-14"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 21, \"humidity\": 63, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Torontos 14. mail 2024 on ilus kevadilm temperatuuriga 21°C. Õhuniiskus on mõõdukas 63% õrna tuulega kiirusega 13 km/h. Ideaalne Kanada kevadilm - suurepäne aeg välitegevusteks ja linna avastamiseks!"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Lõuna-Aafrika Vabariik Kaplinna ilm 5. augustil 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Cape Town",
+                "date": "2024-08-05"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 17}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Kaplinnas 5. augustil 2024 on jahe talveilm temperatuuriga 16°C. Õhuniiskus on mõõdukas 55% värske tuulega kiirusega 17 km/h. Kuna lõunapoolkeral on talv, on see tüüpiline Kaplinna talveilm - mahe ja meeldiv, palju soojem kui talv põhjapoolkeral!"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Mumbai 18/11/2024, kuidas on ilm?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Mumbai",
+                "date": "2024-11-18"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 27, \"humidity\": 74, \"wind_speed\": 10}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Mumbais 18. novembril 2024 on soe ja niiske temperatuuriga 27°C. Õhuniiskus on kõrge 74% kerge tuulega kiirusega 10 km/h. See on pärast-monsoon periood - ikka veel soe, kuid veidi vähem niiske kui suvel."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Singapuri ilm 03.09.2024"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Singapore",
+                "date": "2024-09-03"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 30, \"humidity\": 83, \"wind_speed\": 7}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Singapuris 3. septembril 2024 on kuum troopiliselt niiske temperatuuriga 30°C. Õhuniiskus on väga kõrge 83% vaikse tuulega kiirusega 7 km/h. Tüüpiline Singapuri ilm - konstantselt kuum ja niiske aastaringselt!"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas on Miamis ilm 27. juunil 2024?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Miami",
+                "date": "2024-06-27"
+              }
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 31, \"humidity\": 78, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Miamis 27. juunil 2024 on kuum ja niiske suveilm temperatuuriga 31°C. Õhuniiskus on kõrge 78% kerge tuulega kiirusega 13 km/h. Tüüpiline Florida suvepäev - täiuslik rannapäev, kuid jääge varju alla kesk päeval!"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas on ilm ülehomme Tokyos?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Tokyo",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 28, \"humidity\": 78, \"wind_speed\": 10}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Tokyos ülehomme (13. september 2025) saab olema meeldivalt soe temperatuuriga 28°C. Õhuniiskus on üsna kõrge 78% kerge tuulega kiirusega 10 km/h. Tüüpiline hilis-suvine ilm Tokyos!"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Milline saab olema ilm homme Pariisis?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Paris",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 65, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Homme (12. september 2025) saab Pariisis olema mahe ja meeldiv ilm temperatuuriga 19°C. Õhuniiskus on mõõdukas 65% õrna tuulega kiirusega 12 km/h. Täiuslik sügiseilm linna avastamiseks!"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas täna saame Londonis õues süüa?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "London",
+                "date": "2025-09-11"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 17, \"humidity\": 72, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Londonis täna (11. september 2025) on mahe 17°C temperatuuriga, 72% õhuniiskusega ja mõõduka tuulega kiirusega 15 km/h. See on päris sobilik õues söömiseks! Võtke kaasa kerge jakk juhuks, kui jaheneb."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas on järgmise nädala teisipäev Sydneys?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Sydney",
+                "date": "2025-09-16"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 22, \"humidity\": 68, \"wind_speed\": 18}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilm Sydneys järgmise nädala teisipäeval (16. september 2025) saab olema meeldiv temperatuuriga 22°C. Õhuniiskus on mõõdukas 68% värske tuulega kiirusega 18 km/h. Suurepärane kevadilm Sydney jaoks - ideaalne välitegevusteks!"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas sellel nädalavahetusel on Amsterdamis grillimiseks piisavalt soe?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Amsterdam",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "Sellel nädalavahetusel laupäeval (13. september 2025) saab Amsterdamis olema 18°C, 70% õhuniiskusega ja mõõduka tuulega kiirusega 14 km/h. See on veidi jahe grillimiseks, kuid soojad riided ja kuumad joogid aitavad - või valige varjualune koht!"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Millist ilma saame reedel Barcelonas?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Barcelona",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 25, \"humidity\": 62, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Reedel (12. september 2025) saab Barcelonas olema suurepärane ilm temperatuuriga 25°C! Õhuniiskus on mõnus 62% kerge tuulega kiirusega 11 km/h. Ideaalne ilm linna ja ranna nautimiseks!"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas peaksin ülehomme Berliini minnes vihmavarju kaasa võtma?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Berlin",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 16, \"humidity\": 74, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Ülehomme (13. september 2025) Berliinis oodatakse 16°C temperatuuri, 74% õhuniiskust ja mõõdukat tuult kiirusega 13 km/h. Kõrge õhuniiskus viitab võimalikule vihmale, seega vihmavarju kaasavõtmine on mõistlik. Samuti võtke kaasa kerge jakk jahedama ilma tõttu."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas järgmise nädala pühapäev saab Roomas ilus ilm olema?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Rome",
+                "date": "2025-09-14"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 26, \"humidity\": 58, \"wind_speed\": 9}"
+      },
+      {
+        "role": "assistant",
+        "content": "Jah! Järgmise nädala pühapäeval (14. september 2025) saab Roomas olema suurepärane ilm temperatuuriga 26°C. Õhuniiskus on meeldivalt madal 58% kerge tuulega kiirusega 9 km/h. Ideaalne ilm Igavese Linna avastamiseks ja Itaalia päikese nautimiseks!"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kui külm saab homme Stockholmis olema?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Stockholm",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 13, \"humidity\": 76, \"wind_speed\": 16}"
+      },
+      {
+        "role": "assistant",
+        "content": "Homme (12. september 2025) saab Stockholmis olema üsna külm kõigest 13°C temperatuuriga. Õhuniiskus on kõrge 76% tugeva tuulega kiirusega 16 km/h. Tüüpiline Skandinaavia sügiseilm - kindlasti riietuge soojalt!"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas järgmise nädala esmaspäev sobib Viinis piknikuks?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Vienna",
+                "date": "2025-09-15"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 20, \"humidity\": 64, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Järgmise nädala esmaspäev (15. september 2025) on Viinis suurepärane piknikuilm temperatuuriga 20°C! Õhuniiskus on mugav 64% kerge tuulega kiirusega 11 km/h. Ideaalne Viini parkide nagu Prater või Schönbrunn nautimiseks."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Millist ilma võime oodata sellel nädalavahetusel laupäeval Brüsselis?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Brussels",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 17, \"humidity\": 71, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "Sellel nädalavahetusel laupäeval (13. september 2025) saab Brüsselis olema mahe ilm temperatuuriga 17°C. Õhuniiskus on mõõdukalt kõrge 71% mõõduka tuulega kiirusega 14 km/h. Tüüpiline Belgia sügiseilm - sobib Grand Place'i külastamiseks, kuid võtke jakk kaasa!"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kui soe saab järgmise nädala kolmapäev Istanbulis olema?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Istanbul",
+                "date": "2025-09-17"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 24, \"humidity\": 63, \"wind_speed\": 12}"
+      },
+      {
+        "role": "assistant",
+        "content": "Järgmise nädala kolmapäeval (17. september 2025) saab Istanbulis olema meeldivalt soe 24°C temperatuuriga. Õhuniiskus on mugav 63% kerge tuulega kiirusega 12 km/h. Suurepärane ilm Bosporuse avastamiseks ja Türgi päikese nautimiseks!"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas neljapäeval Moskvas on soe jaki jaoks piisavalt külm?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Moscow",
+                "date": "2025-09-11"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 11, \"humidity\": 78, \"wind_speed\": 17}"
+      },
+      {
+        "role": "assistant",
+        "content": "Jah! Neljapäeval (11. september 2025) saab Moskvas olema üsna külm kõigest 11°C temperatuuriga. Kõrge õhuniiskus 78% ja tugev tuul kiirusega 17 km/h muudavad selle veelgi külmemaks. Kindlasti võtke soe jakk - Vene sügis on juba käes!"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas on ilm tuleval laupäeval Montrealis?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Montreal",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 18, \"humidity\": 69, \"wind_speed\": 13}"
+      },
+      {
+        "role": "assistant",
+        "content": "Tuleval laupäeval (13. september 2025) saab Montrealis olema mahe ilm temperatuuriga 18°C. Õhuniiskus on mõõdukas 69% kerge tuulega kiirusega 13 km/h. Tüüpiline Kanada sügiseilm - ideaalne värviliste lehtede nautimiseks!"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas järgmise nädala teisipäev on Vancouveris jalutamiseks hea ilm?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Vancouver",
+                "date": "2025-09-16"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 67, \"wind_speed\": 11}"
+      },
+      {
+        "role": "assistant",
+        "content": "Järgmise nädala teisipäev (16. september 2025) on Vancouveris suurepärane jalutamisilm temperatuuriga 19°C! Õhuniiskus on meeldiv 67% kerge tuulega kiirusega 11 km/h. Ideaalne Stanley Parki avastamiseks või rannikul jalutamiseks."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kui külm saab homme hommikul Calgarys olema?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Calgary",
+                "date": "2025-09-12"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 12, \"humidity\": 75, \"wind_speed\": 19}"
+      },
+      {
+        "role": "assistant",
+        "content": "Homme hommikul (12. september 2025) saab Calgarys olema üsna külm 12°C temperatuuriga. Kõrge õhuniiskus 75% ja tugev tuul kiirusega 19 km/h muudavad selle veelgi külmemaks. Tüüpiline Kanada prääriamaade ilm - kindlasti riietuge soojalt!"
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas pühapäeval saan Mexico Citys mõnusalt õues istuda?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Mexico City",
+                "date": "2025-09-14"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 23, \"humidity\": 61, \"wind_speed\": 8}"
+      },
+      {
+        "role": "assistant",
+        "content": "Jah, täiuslikult! Pühapäeval (14. september 2025) saab Mexico Citys olema suurepärane ilm temperatuuriga 23°C. Õhuniiskus on meeldiv 61% kerge tuulega kiirusega 8 km/h. Ideaalne õues istumiseks ja ilusa ilma nautimiseks!"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas järgmise nädala reedel on Miamis ujumiseks piisavalt soe?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Miami",
+                "date": "2025-09-19"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 29, \"humidity\": 77, \"wind_speed\": 14}"
+      },
+      {
+        "role": "assistant",
+        "content": "Absoluutselt! Järgmise nädala reedel (19. september 2025) saab Miamis olema suurepäraselt soe 29°C temperatuuriga - täiuslik ujumiseks! Õhuniiskus on küll kõrge 77% mõõduka tuulega kiirusega 14 km/h, kuid see on tüüpiline Miami jaoks. Rand ja bassein kutsuvad!"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas on ilm esmaspäeval Los Angeleses?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Los Angeles",
+                "date": "2025-09-15"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 27, \"humidity\": 59, \"wind_speed\": 10}"
+      },
+      {
+        "role": "assistant",
+        "content": "Esmaspäeval (15. september 2025) saab Los Angeleses olema suurepärane ilm temperatuuriga 27°C! Õhuniiskus on meeldivalt madal 59% kerge tuulega kiirusega 10 km/h. Tüüpiline kauni California ilm - ideaalne kõigi välitegevuste jaoks!"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kas sellel nädalal on Chicagos veel terrassil istumiseks piisavalt soe?"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_current_date",
+              "arguments": {}
+            },
+            "id": "call_1"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "2025-09-11"
+      },
+      {
+        "role": "assistant",
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "weather_forecast",
+              "arguments": {
+                "city": "Chicago",
+                "date": "2025-09-13"
+              }
+            },
+            "id": "call_2"
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": 19, \"humidity\": 68, \"wind_speed\": 15}"
+      },
+      {
+        "role": "assistant",
+        "content": "Laupäeval (13. september 2025) saab Chicagos olema 19°C, 68% õhuniiskusega ja mõõduka tuulega kiirusega 15 km/h. See on veidi jahe terrassil istumiseks, kuid sviitri või jakiga on see täiesti võimalik. Tüüpiline sügiseilm Chicago jaoks - võib-olla valige katusega terrass!"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Miks sajab mõnedes maailma osades nii palju vihma?"
+      },
+      {
+        "role": "assistant",
+        "content": "Mitmed tegurid määravad, miks mõnedes piirkondades sajab palju rohkem vihma kui teistes:\n\n**Troopikavöötmed**: Ekvaatori lähedased alad saavad palju vihma tõusvate sooja õhu tõttu, mis jahtub ja kondenseerub. See tekitab igapäevaseid äikesevihmu.\n\n**Mägipiirkonnad**: Kui niiske õhk kohtab mägesid, sunnitakse see üles tõusma. See põhjustab jahtumist ja rohket vihma mägede tuulepoolsel küljel.\n\n**Rannikualad**: Ookeanid on suured veeallikad. Soojad ookeanihoovused auruvad palju vett, mis sajab maha, kui õhk jõuab maismaaale.\n\n**Monsoonid**: Hooajalised tuulemustrid toovad tohutuid niiskusekoguseid ookeanidelt maale, eriti Lõuna-Aasias.\n\n**Konvergentsitsoonis**: Kus erinevad õhuvoolu kohtuvad, tekivad tõusvad liikumised, mis põhjustavad rohkeid sademeid.\n\nNende tegurite kombinatsioon selgitab, miks kohad nagu Amazonase vihmamets, Norra läänerannik või osad India piirkonnad saavad nii palju vihma!"
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas tekivad tornaadod?"
+      },
+      {
+        "role": "assistant",
+        "content": "Tornaadod on põnevad, kuid ohtlikud ilmunähtused, mis tekivad täiusliku tormi tingimuste kokkulangemisest:\n\n**Tuule kihistumine**: Kõik algab erinevatest tuulekiirukstest eri kõrgustel. All puhub tuul aeglasemalt kui kõrgel, mis loob horisontaalselt pöörleva õhusilindri.\n\n**Vertikaalne tõus**: Võimsad äikesepilved tugeva ülesvoolu (updrafts) tõstavad selle pöörleva õhu vertikaalselt.\n\n**Superraku**: Need erilaadsed äikesepilved omavad pöörlevat süsteemi (mesocycloon), mis pakub ideaalset keskkonda tornaado arengule.\n\n**Kondensatsioon**: Kui pööriv õhk jõuab maapinnale ja kogub niiskust, muutub see nähtavaks kurikuulsa lehterina.\n\n**Tornado Alley**: USA Great Plains'is kohtuvad need tingimused sageli: soe, niiske õhk lõunast kohtub külma, kuiva õhuga põhjast.\n\n**Jõud**: Tuulekiirus võib ulatuda üle 400 km/h tugevamates tornaadodes (EF5 Enhanced Fujita skaalal).\n\nEnamik tornaadosid kestab vaid mõned minutid, kuid võivad tekitada tohutut hävitust!"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Mis vahe on kliimal ja ilmal?"
+      },
+      {
+        "role": "assistant",
+        "content": "Oluline küsimus, mida sageli segatakse! Erinevus seisneb ajas ja ulatuses:\n\n**Ilm** on see, mis toimub PRAEGU:\n- Igapäevased tingimused: temperatuur, sademed, tuul\n- Lühiajaline: täna, homme, see nädal\n- Kohalik: mida tunnete õues\n- Prognoositav kuni umbes 10 päeva\n\n**Kliima** on pikaajaline muster:\n- Keskmised ilmatingimused üle 30+ aasta\n- Hooajalised mustrid ja trendid\n- Piirkondlik kuni globaalne\n- Muutub aeglaselt aastakümnete või sajandite jooksul\n\n**Kasulik mälestusabi**: \"Kliima on see, mida ootate, ilm on see, mida saate.\"\n\n**Näited**:\n- Tallinn omab mõõdukat mereäärset kliimat (pikaajaline), kuid täna võib sadada vihma või paista päike (ilm)\n- Sahara omab kõrbe kliimat, kuid ka seal varieerub igapäevane ilm\n\n**Kliimamuutus** tähendab, et need pikaajalised mustrid nihkuvad - keskmiselt soojem, erinevad sademete mustrid, äärmuslikumad ilmasündmused.\n\nSeega: ilma prognoosid, kliimat kirjeldad mustrina!"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Miks on mägedes alati külmem kui orus?"
+      },
+      {
+        "role": "assistant",
+        "content": "Suurepärane küsimus ühest kõige põhilisemast ilmaprintsiibist!\n\n**Peamine põhjus - Õhuke õhk**:\nKõrgemal on atmosfäär hõredam. Vähem õhumolekule tähendab vähem soojusenergiat kuupmeetri kohta.\n\n**Adiabaatiline jahtumine**:\nKui õhk tõuseb kõrgemale, laieneb see õhurõhu vähenemise tõttu. See laienemine kulutab energiat, põhjustades temperatuuri langust - umbes 6-10°C iga 1000 meetri kohta.\n\n**Vähem soojuse säilitamist**:\n- Orud: Tihe õhk hoiab soojust paremini\n- Mäed: Õhuke õhk kaotab soojust kiiremini\n\n**Päikesekiirgus**:\n- Mäed saavad intensiivsemat kiirgust, kuid kaotavad selle ka kiiremini\n- Orud \"püüavad\" soojuse kinni ja hoiavad seda kauem\n\n**Katabatilised tuuled**:\nÖösel jahtub mägede õhk kiiresti, muutub raskemaks ja voolab külma tuulena orgu.\n\n**Praktiline näide**:\nMont Blanc'i tipp (4809m) on umbes 30-40°C külmem kui Chamonix orus (1035m) - seepärast igavene lumi tipul!\n\nSee selgitab, miks mägironijad võtavad alati soojad riided kaasa, olenemata aastaajast!"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "conversation": [
+      {
+        "role": "user",
+        "content": "Kuidas ilmasatelliidid täpselt töötavad?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ilmasatelliidid on meie silmad kosmoses! Nad töötavad arenenud tehnoloogiaga:\n\n**Kaks peamist tüüpi**:\n1. **Geostatsionaarsed satelliidid**: Rippuvad paigal Maa üle (35 786 km kõrgusel), teevad pidevalt samme samast piirkonnast\n2. **Polaarsed satelliidid**: Ringlevad Maad poolest pooli, skaneeriavad kogu planeedi 12-24 tunni jooksul\n\n**Sensorid ja instrumendid**:\n- **Radiomeetrid**: Mõõdavad infrapunakiirgust temperatuuri määramiseks\n- **Kaamerad**: Teevad nähtava valguse fotosid pilvedest\n- **Mikrolainedetektorid**: Näevad pilvede läbi sademeid\n- **Sondeerijad**: Mõõdavad temperatuuri ja niiskust erinevatel kõrgustel\n\n**Mida nad \"näevad\"**:\n- Pilvede kujutised ja liikumised\n- Ookeani- ja maatemperatuurid\n- Sademeid ja lund\n- Tuulekiirused (pilvede liikumist jälgides)\n- Orkaan- ja tormisüsteemid\n\n**Andmetöötlus**:\nSatelliidid saadavad toorset andmed maa-jaamadesse, kus arvutid muudavad need ilmakaartideks, prognooside ja hoiatusteks.\n\n**Tuntud näited**: Meteosat (Euroopa), GOES (USA), Himawari (Jaapan).\n\nIlma satelliitideta oleksid ilmaennustused põhiliselt arvamismäng!"
+      }
+    ]
+  }
+]
