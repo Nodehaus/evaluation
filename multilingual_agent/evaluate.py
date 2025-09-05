@@ -2,6 +2,7 @@ import gc
 import json
 import logging
 import os
+import random
 from typing import Any, Dict, List, Optional
 
 import torch
@@ -55,12 +56,14 @@ class TestResult:
         success: bool,
         metrics: List[MetricResult],
         agent_conversation: List[Dict[str, Any]],
+        expected_conversation: List[Dict[str, Any]],
         eval_item_id: Optional[str] = None,
     ):
         self.test_id = test_id
         self.success = success
         self.metrics = metrics
         self.agent_conversation = agent_conversation
+        self.expected_conversation = expected_conversation
         self.eval_item_id = eval_item_id
 
 
@@ -237,6 +240,7 @@ class AgentEvaluator:
             success=overall_success,
             metrics=metrics,
             agent_conversation=agent_conversation,
+            expected_conversation=conversation,
             eval_item_id=eval_item_id,
         )
 
@@ -245,10 +249,17 @@ class AgentEvaluator:
         print(f"Loading evaluation data from {data_path}")
         eval_data = self.load_evaluation_data(data_path)
 
+        # Shuffle data and limit to first 10 for testing
+        random.seed(42)  # For reproducible results
+        random.shuffle(eval_data)
+        eval_data = eval_data[:10]
+
         test_cases = []
 
         conversations_count = len(eval_data)
-        print(f"Processing {conversations_count} conversations...")
+        print(
+            f"Processing {conversations_count} conversations (limited for testing)..."
+        )
 
         for i, eval_item in enumerate(eval_data):
             progress = f"{i + 1}/{conversations_count}"
@@ -357,6 +368,7 @@ class AgentEvaluator:
                     "success": test_result.success,
                     "eval_item_id": test_result.eval_item_id,
                     "agent_conversation": test_result.agent_conversation,
+                    "expected_conversation": test_result.expected_conversation,
                     "metrics_data": [
                         {
                             "name": metric.name,
@@ -442,12 +454,8 @@ def main():
             logger.info(f"Evaluating model {model_name} with language {language}")
 
             # Run evaluation
-            try:
-                if evaluator is not None:
-                    evaluator.run_evaluation(data_path, language)
-            except Exception as e:
-                logger.error(f"Error evaluating {model_name} with {language}: {e}")
-                continue
+            if evaluator is not None:
+                evaluator.run_evaluation(data_path, language)
 
             # Clear model cache after each evaluation
             if evaluator is not None and hasattr(
