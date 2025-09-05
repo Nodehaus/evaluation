@@ -198,52 +198,9 @@ class AgentEvaluator:
         reason = f"Correct arguments for {correct_args}/{total_tools} tools"
         return MetricResult("Argument Correctness", score, success, reason)
 
-    def calculate_task_completion(
-        self,
-        user_message: str,
-        agent_conversation: List[Dict[str, Any]],
-        requires_tool_use: bool,
-    ) -> MetricResult:
-        """Calculate task completion metric."""
-        # Simple heuristic: task is completed if:
-        # 1. For tool-required tasks: tools were used and final response is present
-        # 2. For non-tool tasks: a reasonable response was provided
-
-        final_response = ""
-        tools_used = False
-
-        for turn in agent_conversation:
-            if turn["role"] == "assistant":
-                if "tool_calls" in turn:
-                    tools_used = True
-                if "content" in turn and turn["content"]:
-                    final_response = turn["content"]
-
-        if requires_tool_use:
-            if tools_used and final_response.strip():
-                score = 1.0
-                reason = "Tools used and response provided"
-            elif tools_used:
-                score = 0.7
-                reason = "Tools used but incomplete response"
-            else:
-                score = 0.0
-                reason = "Required tools not used"
-        else:
-            if final_response.strip() and len(final_response.strip()) > 10:
-                score = 1.0
-                reason = "Reasonable response provided"
-            else:
-                score = 0.0
-                reason = "No adequate response provided"
-
-        success = score >= 0.7
-        return MetricResult("Task Completion", score, success, reason)
-
     def evaluate_conversation(self, eval_item: Dict[str, Any]) -> TestResult:
         """Evaluate a single conversation item."""
         conversation = eval_item["conversation"]
-        requires_tool_use = eval_item["requires_tool_use"]
         eval_item_id = eval_item.get("id", "")
 
         # Get the initial user message
@@ -269,12 +226,6 @@ class AgentEvaluator:
                 expected_tools, actual_tools
             )
             metrics.append(arg_correctness)
-
-        # Task completion (always calculated)
-        task_completion = self.calculate_task_completion(
-            user_message, agent_conversation, requires_tool_use
-        )
-        metrics.append(task_completion)
 
         # Determine overall success (all metrics must pass)
         overall_success = all(metric.success for metric in metrics)
