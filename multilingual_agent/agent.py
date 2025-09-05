@@ -325,10 +325,13 @@ def get_current_date() -> str:
 
 
 class MultilingualAgent:
-    """Agent that can use tools and respond to user queries."""
+    """Agent that can use tools and respond to user queries in multiple languages."""
 
-    def __init__(self, model_name: str = "HuggingFaceTB/SmolLM3-3B"):
+    def __init__(
+        self, model_name: str = "HuggingFaceTB/SmolLM3-3B", language: str = "eng"
+    ):
         self.model_name = model_name
+        self.language = language
         self.model = None
         self.tokenizer = None
 
@@ -339,6 +342,84 @@ class MultilingualAgent:
         self.supports_tools = check_tool_calling_support(self.tokenizer)
         if not self.supports_tools:
             raise ModelNotSupported(f"Model {model_name} does not support tool calling")
+        
+        # Initialize translations
+        self._init_translations()
+
+    def _init_translations(self):
+        """Initialize translation dictionaries for system prompts and error messages."""
+        self.system_prompts = {
+            "eng": (
+                "You are a bot that responds to weather queries. Your final answer "
+                "to the user question must be in natural language."
+            ),
+            "deu": (
+                "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endgültige "
+                "Antwort auf die Benutzerfrage muss in natürlicher Sprache erfolgen."
+            ),
+            "fra": (
+                "Vous êtes un bot qui répond aux requêtes météorologiques. Votre "
+                "réponse finale à la question de l'utilisateur doit être en "
+                "langage naturel."
+            ),
+            "por": (
+                "Você é um bot que responde a consultas meteorológicas. Sua resposta "
+                "final à pergunta do usuário deve ser em linguagem natural."
+            ),
+            "nld": (
+                "U bent een bot die reageert op weervragen. Uw eindantwoord op de "
+                "vraag van de gebruiker moet in natuurlijke taal zijn."
+            ),
+            "pol": (
+                "Jesteś botem, który odpowiada na zapytania pogodowe. Twoja ostateczna "
+                "odpowiedź na pytanie użytkownika musi być w języku naturalnym."
+            ),
+            "est": (
+                "Olete bot, mis vastab ilmapäringutele. Teie lõplik vastus kasutaja "
+                "küsimusele peab olema loomulik keel."
+            ),
+        }
+        
+        self.error_messages = {
+            "eng": {
+                "cannot_answer": "Sorry, I could not answer your question.",
+                "unknown_tool": "Sorry, I cannot answer your question.",
+            },
+            "deu": {
+                "cannot_answer": (
+                    "Entschuldigung, ich konnte Ihre Frage nicht beantworten."
+                ),
+                "unknown_tool": (
+                    "Entschuldigung, ich kann Ihre Frage nicht beantworten."
+                ),
+            },
+            "fra": {
+                "cannot_answer": "Désolé, je n'ai pas pu répondre à votre question.",
+                "unknown_tool": "Désolé, je ne peux pas répondre à votre question.",
+            },
+            "por": {
+                "cannot_answer": "Desculpe, não consegui responder à sua pergunta.",
+                "unknown_tool": "Desculpe, não posso responder à sua pergunta.",
+            },
+            "nld": {
+                "cannot_answer": "Sorry, ik kon uw vraag niet beantwoorden.",
+                "unknown_tool": "Sorry, ik kan uw vraag niet beantwoorden.",
+            },
+            "pol": {
+                "cannot_answer": (
+                    "Przepraszam, nie mogłem odpowiedzieć na Twoje pytanie."
+                ),
+                "unknown_tool": (
+                    "Przepraszam, nie mogę odpowiedzieć na Twoje pytanie."
+                ),
+            },
+            "est": {
+                "cannot_answer": (
+                    "Vabandust, ma ei saanud teie küsimusele vastata."
+                ),
+                "unknown_tool": "Vabandust, ma ei saa teie küsimusele vastata.",
+            },
+        }
 
     def _load_model(self):
         """Load the model and tokenizer."""
@@ -418,9 +499,8 @@ class MultilingualAgent:
         conversation = [
             {
                 "role": "system",
-                "content": (
-                    "You are a bot that responds to weather queries. Your final answer "
-                    "to the user question must be in natural language."
+                "content": self.system_prompts.get(
+                    self.language, self.system_prompts["eng"]
                 ),
             },
             {"role": "user", "content": user_message},
@@ -441,7 +521,9 @@ class MultilingualAgent:
             response_text = (
                 responses[0]
                 if responses
-                else "Sorry, I could not answer your question."
+                else self.error_messages.get(self.language, self.error_messages["eng"])[
+                    "cannot_answer"
+                ]
             )
 
             # Extract tool calls from response text
@@ -483,7 +565,9 @@ class MultilingualAgent:
                     conversation.append(
                         {
                             "role": "assistant",
-                            "content": "Sorry, I cannot answer your question.",
+                            "content": self.error_messages.get(
+                                self.language, self.error_messages["eng"]
+                            )["unknown_tool"],
                         }
                     )
                     break
@@ -505,10 +589,16 @@ def main():
         "--model", default="HuggingFaceTB/SmolLM3-3B", help="HuggingFace model name"
     )
     parser.add_argument("--message", required=True, help="User message")
+    parser.add_argument(
+        "--language",
+        default="eng",
+        choices=["eng", "deu", "fra", "por", "nld", "pol", "est"],
+        help="Language code for the agent responses",
+    )
 
     args = parser.parse_args()
 
-    agent = MultilingualAgent(model_name=args.model)
+    agent = MultilingualAgent(model_name=args.model, language=args.language)
 
     conversation = agent.chat(args.message)
     print("\n=== JSON Output ===")

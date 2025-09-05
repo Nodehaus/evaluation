@@ -10,7 +10,7 @@ import torch
 from model_utils import cleanup_model, clear_huggingface_cache
 from multilingual_agent.agent import ModelNotSupported, MultilingualAgent
 
-LANGUAGES = ["eng"]
+LANGUAGES = ["eng", "deu"]  # , "fra", "por", "nld", "pol", "est"]
 MODELS = {
     "HuggingFaceTB/SmolLM3-3B": {},
     "Qwen/Qwen3-4B": {},
@@ -77,8 +77,13 @@ class EvaluationResult:
 class AgentEvaluator:
     """Evaluator for the multilingual agent using custom metrics."""
 
-    def __init__(self, model_name: str = "HuggingFaceTB/SmolLM3-3B"):
-        self.agent = MultilingualAgent(model_name=model_name)
+    def __init__(
+        self,
+        model_name: str = "HuggingFaceTB/SmolLM3-3B",
+        language: str = "eng",
+    ):
+        self.agent = MultilingualAgent(model_name=model_name, language=language)
+        self.language = language
 
     def load_evaluation_data(self, data_path: str) -> List[Dict[str, Any]]:
         """Load evaluation dataset from JSON file."""
@@ -174,18 +179,23 @@ class AgentEvaluator:
             # Calculate order correctness by comparing sequences
             min_length = min(len(expected_names), len(actual_names))
             correct_positions = 0
-            
+
             for i in range(min_length):
                 if expected_names[i] == actual_names[i]:
                     correct_positions += 1
-            
-            order_score = correct_positions / len(expected_names) if expected_names else 0.0
+
+            order_score = (
+                correct_positions / len(expected_names) if expected_names else 0.0
+            )
 
         # Combined score: 50% tools + 50% order
         score = (tools_score * 0.5) + (order_score * 0.5)
         success = score >= 0.7  # 70% threshold
 
-        reason = f"Called {correct_tools}/{total_expected} expected tools, order score: {order_score:.2f}"
+        reason = (
+            f"Called {correct_tools}/{total_expected} expected tools, "
+            f"order score: {order_score:.2f}"
+        )
         return MetricResult("Tool Correctness", score, success, reason)
 
     def calculate_argument_correctness(
@@ -420,12 +430,6 @@ def main():
 
     # Use default data path with script directory as prefix
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    data_path = os.path.join(script_dir, "data", "tools_use_eng.json")
-
-    # Check if data file exists
-    if not os.path.exists(data_path):
-        print(f"Error: Data file not found: {data_path}")
-        return
 
     current_model_name = ""
     evaluator: Optional[AgentEvaluator] = None
@@ -459,7 +463,7 @@ def main():
 
                 # Create new evaluator
                 try:
-                    evaluator = AgentEvaluator(actual_model_name)
+                    evaluator = AgentEvaluator(actual_model_name, language)
                     current_model_name = actual_model_name
                 except ModelNotSupported:
                     logger.warning(
@@ -470,6 +474,7 @@ def main():
 
             logger.info(f"Evaluating model {model_name} with language {language}")
 
+            data_path = os.path.join(script_dir, "data", f"tools_use_{language}.json")
             # Run evaluation
             if evaluator is not None:
                 evaluator.run_evaluation(data_path, language)
