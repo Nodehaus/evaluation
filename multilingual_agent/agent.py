@@ -1,9 +1,7 @@
 import json
-import random
 import re
 from datetime import datetime
 from typing import Any, Dict, List
-
 
 from model_utils import (
     chat_responses,
@@ -32,26 +30,277 @@ def weather_forecast(city: str, date: str) -> Dict[str, int]:
     """
     # Generate realistic weather data based on city and season
     weather_patterns = {
-        "New York City": {"base_temp": 20, "temp_range": 15, "humidity_base": 65},
-        "London": {"base_temp": 15, "temp_range": 10, "humidity_base": 80},
-        "San Francisco": {"base_temp": 18, "temp_range": 8, "humidity_base": 70},
-        "Denver": {"base_temp": 22, "temp_range": 20, "humidity_base": 45},
-        "Seattle": {"base_temp": 16, "temp_range": 12, "humidity_base": 85},
-        "Miami": {"base_temp": 28, "temp_range": 8, "humidity_base": 75},
-        "Chicago": {"base_temp": 18, "temp_range": 18, "humidity_base": 70},
+        # North America
+        "New York City": {
+            "base_temp": 20,
+            "temp_range": 15,
+            "humidity_base": 65,
+            "hemisphere": "northern",
+        },
+        "San Francisco": {
+            "base_temp": 18,
+            "temp_range": 8,
+            "humidity_base": 70,
+            "hemisphere": "northern",
+        },
+        "Denver": {
+            "base_temp": 22,
+            "temp_range": 20,
+            "humidity_base": 45,
+            "hemisphere": "northern",
+        },
+        "Seattle": {
+            "base_temp": 16,
+            "temp_range": 12,
+            "humidity_base": 85,
+            "hemisphere": "northern",
+        },
+        "Miami": {
+            "base_temp": 28,
+            "temp_range": 8,
+            "humidity_base": 75,
+            "hemisphere": "northern",
+        },
+        "Chicago": {
+            "base_temp": 18,
+            "temp_range": 18,
+            "humidity_base": 70,
+            "hemisphere": "northern",
+        },
+        # Europe
+        "London": {
+            "base_temp": 15,
+            "temp_range": 10,
+            "humidity_base": 80,
+            "hemisphere": "northern",
+        },
+        "Paris": {
+            "base_temp": 16,
+            "temp_range": 12,
+            "humidity_base": 75,
+            "hemisphere": "northern",
+        },
+        "Berlin": {
+            "base_temp": 14,
+            "temp_range": 14,
+            "humidity_base": 70,
+            "hemisphere": "northern",
+        },
+        "Rome": {
+            "base_temp": 21,
+            "temp_range": 10,
+            "humidity_base": 65,
+            "hemisphere": "northern",
+        },
+        "Madrid": {
+            "base_temp": 19,
+            "temp_range": 12,
+            "humidity_base": 55,
+            "hemisphere": "northern",
+        },
+        "Amsterdam": {
+            "base_temp": 13,
+            "temp_range": 8,
+            "humidity_base": 85,
+            "hemisphere": "northern",
+        },
+        "Stockholm": {
+            "base_temp": 9,
+            "temp_range": 16,
+            "humidity_base": 75,
+            "hemisphere": "northern",
+        },
+        # Asia
+        "Tokyo": {
+            "base_temp": 18,
+            "temp_range": 14,
+            "humidity_base": 70,
+            "hemisphere": "northern",
+        },
+        "Beijing": {
+            "base_temp": 17,
+            "temp_range": 18,
+            "humidity_base": 60,
+            "hemisphere": "northern",
+        },
+        "Mumbai": {
+            "base_temp": 30,
+            "temp_range": 6,
+            "humidity_base": 80,
+            "hemisphere": "northern",
+        },
+        "Bangkok": {
+            "base_temp": 32,
+            "temp_range": 4,
+            "humidity_base": 75,
+            "hemisphere": "northern",
+        },
+        "Seoul": {
+            "base_temp": 16,
+            "temp_range": 16,
+            "humidity_base": 65,
+            "hemisphere": "northern",
+        },
+        "Singapore": {
+            "base_temp": 30,
+            "temp_range": 3,
+            "humidity_base": 85,
+            "hemisphere": "northern",
+        },
+        "Dubai": {
+            "base_temp": 32,
+            "temp_range": 8,
+            "humidity_base": 45,
+            "hemisphere": "northern",
+        },
+        # South America
+        "São Paulo": {
+            "base_temp": 21,
+            "temp_range": 8,
+            "humidity_base": 75,
+            "hemisphere": "southern",
+        },
+        "Buenos Aires": {
+            "base_temp": 18,
+            "temp_range": 10,
+            "humidity_base": 70,
+            "hemisphere": "southern",
+        },
+        "Rio de Janeiro": {
+            "base_temp": 26,
+            "temp_range": 6,
+            "humidity_base": 80,
+            "hemisphere": "southern",
+        },
+        "Lima": {
+            "base_temp": 19,
+            "temp_range": 6,
+            "humidity_base": 85,
+            "hemisphere": "southern",
+        },
+        "Bogotá": {
+            "base_temp": 15,
+            "temp_range": 4,
+            "humidity_base": 75,
+            "hemisphere": "northern",
+        },
+        "Santiago": {
+            "base_temp": 16,
+            "temp_range": 12,
+            "humidity_base": 60,
+            "hemisphere": "southern",
+        },
+        "Caracas": {
+            "base_temp": 25,
+            "temp_range": 4,
+            "humidity_base": 70,
+            "hemisphere": "northern",
+        },
+        # Africa
+        "Cairo": {
+            "base_temp": 28,
+            "temp_range": 10,
+            "humidity_base": 40,
+            "hemisphere": "northern",
+        },
+        "Lagos": {
+            "base_temp": 29,
+            "temp_range": 4,
+            "humidity_base": 85,
+            "hemisphere": "northern",
+        },
+        "Cape Town": {
+            "base_temp": 20,
+            "temp_range": 8,
+            "humidity_base": 65,
+            "hemisphere": "southern",
+        },
+        "Nairobi": {
+            "base_temp": 22,
+            "temp_range": 6,
+            "humidity_base": 60,
+            "hemisphere": "southern",
+        },
+        "Casablanca": {
+            "base_temp": 21,
+            "temp_range": 8,
+            "humidity_base": 70,
+            "hemisphere": "northern",
+        },
+        "Addis Ababa": {
+            "base_temp": 18,
+            "temp_range": 6,
+            "humidity_base": 55,
+            "hemisphere": "northern",
+        },
+        "Johannesburg": {
+            "base_temp": 19,
+            "temp_range": 10,
+            "humidity_base": 50,
+            "hemisphere": "southern",
+        },
     }
 
     # Default pattern for unknown cities
     pattern = weather_patterns.get(
-        city, {"base_temp": 20, "temp_range": 15, "humidity_base": 65}
+        city,
+        {
+            "base_temp": 20,
+            "temp_range": 15,
+            "humidity_base": 65,
+            "hemisphere": "northern",
+        },
     )
 
-    # Add some randomness
-    temperature = pattern["base_temp"] + random.randint(
-        -pattern["temp_range"] // 2, pattern["temp_range"] // 2
-    )
-    humidity = pattern["humidity_base"] + random.randint(-15, 15)
-    wind_speed = random.randint(5, 35)
+    # Parse date to determine season for seasonal adjustments
+    try:
+        date_obj = datetime.strptime(date, "%Y-%m-%d")
+        month = date_obj.month
+    except (ValueError, TypeError):
+        month = datetime.now().month  # fallback to current month
+
+    # Determine season (Northern Hemisphere as default)
+    # For Southern Hemisphere cities, we'll flip the seasons
+    is_southern = pattern.get("hemisphere") == "southern"
+
+    if is_southern:
+        # Flip seasons for Southern Hemisphere
+        if month in [12, 1, 2]:  # Summer in Southern Hemisphere
+            season_temp_modifier = pattern["temp_range"] // 3
+            season_humidity_modifier = 10
+        elif month in [3, 4, 5]:  # Autumn in Southern Hemisphere
+            season_temp_modifier = 0
+            season_humidity_modifier = 0
+        elif month in [6, 7, 8]:  # Winter in Southern Hemisphere
+            season_temp_modifier = -pattern["temp_range"] // 2
+            season_humidity_modifier = -10
+        else:  # Spring in Southern Hemisphere (9, 10, 11)
+            season_temp_modifier = pattern["temp_range"] // 4
+            season_humidity_modifier = 5
+    else:
+        # Northern Hemisphere seasons
+        if month in [12, 1, 2]:  # Winter
+            season_temp_modifier = -pattern["temp_range"] // 2
+            season_humidity_modifier = -10
+        elif month in [3, 4, 5]:  # Spring
+            season_temp_modifier = pattern["temp_range"] // 4
+            season_humidity_modifier = 5
+        elif month in [6, 7, 8]:  # Summer
+            season_temp_modifier = pattern["temp_range"] // 3
+            season_humidity_modifier = 10
+        else:  # Autumn (9, 10, 11)
+            season_temp_modifier = 0
+            season_humidity_modifier = 0
+
+    # Apply seasonal adjustments
+    temperature = pattern["base_temp"] + season_temp_modifier
+    humidity = pattern["humidity_base"] + season_humidity_modifier
+
+    # Wind speed based on season (higher in winter/stormy seasons)
+    if month in [11, 12, 1, 2, 3]:  # Storm season
+        wind_speed = 15 + (pattern["temp_range"] // 3)
+    else:
+        wind_speed = 10 + (pattern["temp_range"] // 4)
 
     # Ensure reasonable bounds
     temperature = max(-10, min(45, temperature))
