@@ -321,7 +321,7 @@ def get_current_date() -> str:
     Returns:
         Current date in YYYY-MM-DD format
     """
-    return datetime.now().strftime("%Y-%m-%d")
+    return "2025-09-11"  # Day of the presentation
 
 
 class MultilingualAgent:
@@ -474,7 +474,9 @@ class MultilingualAgent:
                     if isinstance(result, str):
                         conversation.append({"role": "tool", "content": result})
                     else:
-                        conversation.append({"role": "tool", "content": json.dumps(result)})
+                        conversation.append(
+                            {"role": "tool", "content": json.dumps(result)}
+                        )
 
                 # If unknown tool was called, return error message
                 if unknown_tool_called:
