@@ -77,7 +77,7 @@ class AgentEvaluator:
     def __init__(self, model_name: str = "HuggingFaceTB/SmolLM3-3B"):
         self.agent = MultilingualAgent(model_name=model_name)
 
-    def load_evaluation_data(self, data_path: str) -> Dict[str, Any]:
+    def load_evaluation_data(self, data_path: str) -> List[Dict[str, Any]]:
         """Load evaluation dataset from JSON file."""
         with open(data_path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -93,8 +93,8 @@ class AgentEvaluator:
                 for tool_call in turn["tool_calls"]:
                     tools.append(
                         ToolCall(
-                            name=tool_call["name"],
-                            arguments=tool_call["arguments"],
+                            name=tool_call["function"]["name"],
+                            arguments=tool_call["function"]["arguments"],
                         )
                     )
 
@@ -204,6 +204,8 @@ class AgentEvaluator:
         eval_item_id = eval_item.get("id", "")
 
         # Get the initial user message
+        if conversation[0]["role"] != "user":
+            raise ValueError("First message in conversation is not a user messsage.S")
         user_message = conversation[0]["content"]
 
         # Generate agent response
@@ -238,17 +240,17 @@ class AgentEvaluator:
             eval_item_id=eval_item_id,
         )
 
-    def run_evaluation(self, data_path: str) -> EvaluationResult:
+    def run_evaluation(self, data_path: str, language_code: str) -> EvaluationResult:
         """Run full evaluation on the dataset."""
         print(f"Loading evaluation data from {data_path}")
         eval_data = self.load_evaluation_data(data_path)
 
         test_cases = []
 
-        conversations_count = len(eval_data["conversations"])
+        conversations_count = len(eval_data)
         print(f"Processing {conversations_count} conversations...")
 
-        for i, eval_item in enumerate(eval_data["conversations"]):
+        for i, eval_item in enumerate(eval_data):
             progress = f"{i + 1}/{conversations_count}"
             print(f"Processing conversation {eval_item['id']} ({progress})")
 
@@ -265,19 +267,17 @@ class AgentEvaluator:
         result = EvaluationResult(test_cases)
 
         # Save results to JSON file
-        self._save_results(result, eval_data, data_path)
+        self._save_results(result, language_code, data_path)
 
         return result
 
     def _save_results(
         self,
         result: EvaluationResult,
-        eval_data: Dict[str, Any],
+        language_code: str,
         data_path: str,
     ):
         """Save evaluation results to JSON file."""
-        # Extract language code from dataset (default to 'eng')
-        language_code = eval_data.get("dataset", {}).get("language", "eng")
 
         model_name_clean = self.agent.model_name.split("/")[-1]
 
@@ -399,7 +399,7 @@ def main():
         return
 
     current_model_name = ""
-    evaluator = None
+    evaluator: Optional[AgentEvaluator] = None
 
     for model_name, language_variants in MODELS.items():
         for language in LANGUAGES:
@@ -443,13 +443,16 @@ def main():
 
             # Run evaluation
             try:
-                evaluator.run_evaluation(data_path)
+                if evaluator is not None:
+                    evaluator.run_evaluation(data_path, language)
             except Exception as e:
                 logger.error(f"Error evaluating {model_name} with {language}: {e}")
                 continue
 
             # Clear model cache after each evaluation
-            if hasattr(evaluator.agent.model, "past_key_values"):
+            if evaluator is not None and hasattr(
+                evaluator.agent.model, "past_key_values"
+            ):
                 evaluator.agent.model.past_key_values = None
             gc.collect()
             torch.cuda.empty_cache()

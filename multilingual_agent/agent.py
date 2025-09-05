@@ -471,7 +471,10 @@ class MultilingualAgent:
                         break
 
                     # Add tool result to conversation
-                    conversation.append({"role": "tool", "content": json.dumps(result)})
+                    if isinstance(result, str):
+                        conversation.append({"role": "tool", "content": result})
+                    else:
+                        conversation.append({"role": "tool", "content": json.dumps(result)})
 
                 # If unknown tool was called, return error message
                 if unknown_tool_called:
