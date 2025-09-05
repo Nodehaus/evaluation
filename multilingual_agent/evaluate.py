@@ -154,10 +154,11 @@ class AgentEvaluator:
                 f"Expected {len(expected_tools)} tools but none were called",
             )
 
-        # Check tool names match
+        # Check tool names match and order
         expected_names = [tool.name for tool in expected_tools]
         actual_names = [tool.name for tool in actual_tools]
 
+        # Score for correct tools (50% of total score)
         correct_tools = 0
         total_expected = len(expected_tools)
 
@@ -165,10 +166,26 @@ class AgentEvaluator:
             if expected_name in actual_names:
                 correct_tools += 1
 
-        score = correct_tools / total_expected if total_expected > 0 else 0.0
+        tools_score = correct_tools / total_expected if total_expected > 0 else 0.0
+
+        # Score for correct order (50% of total score)
+        order_score = 0.0
+        if expected_names and actual_names:
+            # Calculate order correctness by comparing sequences
+            min_length = min(len(expected_names), len(actual_names))
+            correct_positions = 0
+            
+            for i in range(min_length):
+                if expected_names[i] == actual_names[i]:
+                    correct_positions += 1
+            
+            order_score = correct_positions / len(expected_names) if expected_names else 0.0
+
+        # Combined score: 50% tools + 50% order
+        score = (tools_score * 0.5) + (order_score * 0.5)
         success = score >= 0.7  # 70% threshold
 
-        reason = f"Called {correct_tools}/{total_expected} expected tools"
+        reason = f"Called {correct_tools}/{total_expected} expected tools, order score: {order_score:.2f}"
         return MetricResult("Tool Correctness", score, success, reason)
 
     def calculate_argument_correctness(
