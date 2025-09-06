@@ -4,24 +4,24 @@
   "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_eng.json",
   "evaluation_results": {
     "global_metrics": {
-      "total_tests": 10,
-      "passed_tests": 7,
-      "failed_tests": 3,
-      "overall_pass_rate": 70.0,
+      "total_tests": 50,
+      "passed_tests": 46,
+      "failed_tests": 4,
+      "overall_pass_rate": 92.0,
       "average_scores_by_metric": {
         "Tool Correctness": 1.0,
-        "Argument Correctness": 0.8125
+        "Argument Correctness": 0.95
       },
       "pass_rates_by_metric": {
         "Tool Correctness": 100.0,
-        "Argument Correctness": 62.5
+        "Argument Correctness": 90.0
       }
     },
     "test_results": [
       {
-        "test_id": "test_26",
-        "success": false,
-        "eval_item_id": 26,
+        "test_id": "test_1",
+        "success": true,
+        "eval_item_id": 1,
         "agent_conversation": [
           {
             "role": "system",
@@ -29,7 +29,192 @@
           },
           {
             "role": "user",
-            "content": "What's the weather like in London today?"
+            "content": "What's the capital of France?"
+          },
+          {
+            "role": "assistant",
+            "content": "I don't have access to geographic information or a function to retrieve capital cities. Would you like me to help with weather forecasts or date-related queries instead?"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the capital of France?"
+          },
+          {
+            "role": "assistant",
+            "content": "I'm a weather bot designed to help with weather-related queries. For questions about geography like capitals, I'd recommend using a search engine or encyclopedia. However, if you'd like to know about the weather in Paris, France, I'd be happy to help with that!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_2",
+        "success": true,
+        "eval_item_id": 2,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Can you tell me a joke?"
+          },
+          {
+            "role": "assistant",
+            "content": "I'm sorry, but I can't tell jokes. However, I can help you with weather-related queries! Let me know if you need a forecast for a specific city or date."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Can you tell me a joke?"
+          },
+          {
+            "role": "assistant",
+            "content": "I'm specialized in weather information and forecasts. While I can't tell jokes, I can tell you interesting weather facts! For example, did you know that lightning can reach temperatures five times hotter than the sun's surface? If you'd like to know the weather for any specific location, just ask!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_3",
+        "success": true,
+        "eval_item_id": 3,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "How do I cook pasta?"
+          },
+          {
+            "role": "assistant",
+            "content": "I don't have access to cooking instructions or recipes. For pasta cooking tips, I recommend checking a cooking website, recipe platform, or watching a cooking tutorial video. Would you like me to help with something else?"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "How do I cook pasta?"
+          },
+          {
+            "role": "assistant",
+            "content": "I'm a weather assistant, so I can't help with cooking instructions. However, I can tell you about weather conditions if you're planning an outdoor barbecue or picnic! Just let me know what city you're interested in and I can provide weather information."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_4",
+        "success": true,
+        "eval_item_id": 4,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What time is it?"
+          },
+          {
+            "role": "assistant",
+            "content": "I don't have access to real-time clock functionality, but I can tell you the current date or check the weather forecast for you! Would you like me to show you either of those instead?"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What time is it?"
+          },
+          {
+            "role": "assistant",
+            "content": "I don't have access to current time information, but I can help you with weather forecasts and current weather conditions for any city. Is there a specific location where you'd like to know the weather?"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_5",
+        "success": true,
+        "eval_item_id": 5,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's 2 + 2?"
+          },
+          {
+            "role": "assistant",
+            "content": "2 + 2 equals 4."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's 2 + 2?"
+          },
+          {
+            "role": "assistant",
+            "content": "I'm designed to help with weather-related questions rather than math problems. If you need weather information for any city or want to know about upcoming weather conditions, I'm here to help!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_6",
+        "success": true,
+        "eval_item_id": 6,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the weather in New York City on 07/15/2024?"
           },
           {
             "role": "assistant",
@@ -37,64 +222,112 @@
               {
                 "type": "function",
                 "function": {
-                  "name": "get_current_date",
-                  "arguments": {}
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York City",
+                    "date": "2024-07-15"
+                  }
                 },
                 "id": "call_1"
-              },
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in New York City on 2024-07-15 is as follows:  \n- **Temperature**: 25\u00b0C  \n- **Humidity**: 75%  \n- **Wind Speed**: 13 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the weather in New York City on 07/15/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York City",
+                    "date": "2024-07-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in New York City on July 15th, 2024 shows a pleasant summer day with a temperature of 25\u00b0C. The humidity will be at 75%, making it feel a bit muggy, and there will be light winds at 15 km/h. It's a great day for outdoor activities, though you might want to stay hydrated due to the humidity."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_7",
+        "success": true,
+        "eval_item_id": 7,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "How's the weather in London on December 25th, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
               {
                 "type": "function",
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "London",
-                    "date": "2023-10-05"
+                    "date": "2024-12-25"
                   }
                 },
-                "id": "call_2"
+                "id": "call_1"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-05"
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
           },
           {
             "role": "assistant",
-            "content": "Today's weather in London is 15\u00b0C with 80% humidity and a wind speed of 12 km/h. It looks like a mild but breezy day!"
+            "content": "On December 25th, 2024, in London, the weather is expected to be 10\u00b0C with 70% humidity and a wind speed of 18 km/h."
           }
         ],
-        "metrics_data": [
-          {
-            "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 2/2 expected tools"
-          },
-          {
-            "name": "Argument Correctness",
-            "success": false,
-            "score": 0.5,
-            "reason": "Correct arguments for 1/2 tools"
-          }
-        ]
-      },
-      {
-        "test_id": "test_24",
-        "success": true,
-        "eval_item_id": 24,
-        "agent_conversation": [
-          {
-            "role": "system",
-            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
-          },
+        "expected_conversation": [
           {
             "role": "user",
-            "content": "Amsterdam weather for 2024-03-12"
+            "content": "How's the weather in London on December 25th, 2024?"
           },
           {
             "role": "assistant",
@@ -104,8 +337,8 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Amsterdam",
-                    "date": "2024-03-12"
+                    "city": "London",
+                    "date": "2024-12-25"
                   }
                 },
                 "id": "call_1"
@@ -114,11 +347,11 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 15, \"humidity\": 90, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
           },
           {
             "role": "assistant",
-            "content": "The weather forecast for Amsterdam on 2024-03-12 is as follows:  \n- **Temperature**: 15\u00b0C  \n- **Humidity**: 90%  \n- **Wind Speed**: 17 km/h  \n\nIt looks like a cool day with high humidity and breezy conditions!"
+            "content": "The weather in London on Christmas Day, December 25th, 2024 will be typical winter weather with a temperature of 10\u00b0C. Humidity will be at 70% with moderate winds at 18 km/h. It's a cool winter day, so you'll want to bundle up if you're going out for Christmas celebrations!"
           }
         ],
         "metrics_data": [
@@ -126,7 +359,1003 @@
             "name": "Tool Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Called 1/1 expected tools"
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_8",
+        "success": true,
+        "eval_item_id": 8,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Tell me about the weather in Tokyo on April 1st, 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2024-04-01"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "On April 1st, 2024, in Tokyo, the temperature will be 21\u00b0C, humidity at 75%, and wind speed of 13 km/h. Expect mild weather."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Tell me about the weather in Tokyo on April 1st, 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2024-04-01"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 22, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Tokyo on April 1st, 2024 will be lovely spring weather with a temperature of 22\u00b0C. Humidity will be at 75% with gentle winds at 13 km/h. This is perfect cherry blossom season weather - ideal for hanami (flower viewing) and enjoying outdoor activities in the mild spring conditions!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_9",
+        "success": true,
+        "eval_item_id": 9,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What will the weather be like in S\u00e3o Paulo on 01-10-2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "S\u00e3o Paulo",
+                    "date": "2024-01-10"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 23, \"humidity\": 85, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "On January 10, 2024, in S\u00e3o Paulo, the weather forecast is:  \n\ud83c\udf21\ufe0f Temperature: 23\u00b0C  \n\ud83d\udca7 Humidity: 85%  \n\ud83c\udf2c\ufe0f Wind Speed: 17 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What will the weather be like in S\u00e3o Paulo on 01-10-2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "S\u00e3o Paulo",
+                    "date": "2024-01-10"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 24, \"humidity\": 85, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in S\u00e3o Paulo on January 10th, 2024 will be warm summer weather with a temperature of 24\u00b0C. Humidity will be quite high at 85%, and winds will be light at 12 km/h. Since it's summer in the Southern Hemisphere, expect a humid and warm day - perfect for indoor activities with air conditioning or outdoor swimming!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_10",
+        "success": true,
+        "eval_item_id": 10,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Can you check the weather for Berlin on September 15th, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2024-09-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather forecast for Berlin on September 15th, 2024, shows a temperature of **14\u00b0C**, humidity at **70%**, and wind speeds of **13 km/h**. It looks like a mild and comfortable day!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Can you check the weather for Berlin on September 15th, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2024-09-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Berlin on September 15th, 2024 will be cool autumn weather with a temperature of 14\u00b0C. Humidity will be at 70% with moderate winds at 15 km/h. It's typical early fall weather in Germany - you'll want to wear a light jacket or sweater when going outside."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_11",
+        "success": true,
+        "eval_item_id": 11,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Weather forecast for Miami on June 20th, 2024, please"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2024-06-20"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather forecast for Miami on June 20th, 2024, is as follows:  \n- **Temperature**: 30\u00b0C  \n- **Humidity**: 85%  \n- **Wind Speed**: 12 km/h  \n\nLet me know if you need further details! \ud83c\udf34"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Weather forecast for Miami on June 20th, 2024, please"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2024-06-20"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 85, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather forecast for Miami on June 20th, 2024 shows hot and humid summer conditions with a temperature of 31\u00b0C. Humidity will be high at 85% with light winds at 12 km/h. It's typical Miami summer weather - very warm and humid, perfect for beach activities but you'll want to stay hydrated and take breaks in air conditioning!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_12",
+        "success": true,
+        "eval_item_id": 12,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "I need the weather for Bangkok on 3/18/24"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather forecast for Bangkok on 2024-03-18 is as follows:  \n- **Temperature**: 33\u00b0C  \n- **Humidity**: 80%  \n- **Wind Speed**: 16 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "I need the weather for Bangkok on 3/18/24"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Bangkok on March 8th, 2024 will be hot and humid with a temperature of 33\u00b0C. Humidity will be at 80% with light winds at 11 km/h. This is typical hot season weather for Bangkok - very warm and humid conditions, so make sure to dress lightly, stay hydrated, and seek air-conditioned spaces when possible."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_13",
+        "success": true,
+        "eval_item_id": 13,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Show me the weather in Sydney for 03.11.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sydney",
+                    "date": "2024-11-03"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "On 03.11.2024 in Sydney, the weather forecast is 20\u00b0C, 65% humidity, and a wind speed of 20 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Show me the weather in Sydney for 03.11.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sydney",
+                    "date": "2024-11-03"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Sydney on November 3rd, 2024 will be pleasant spring weather with a temperature of 20\u00b0C. Humidity will be comfortable at 65% with moderate winds at 15 km/h. Since it's spring in the Southern Hemisphere, this is lovely weather for outdoor activities and sightseeing around Sydney!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_14",
+        "success": true,
+        "eval_item_id": 14,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's it like in Cairo on August 12, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cairo",
+                    "date": "2024-08-12"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 50, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "On August 12, 2024, in Cairo, the weather is expected to be warm with a temperature of 31\u00b0C. The humidity will be at 50%, and the wind speed is forecasted to be 12 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's it like in Cairo on August 12, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cairo",
+                    "date": "2024-08-12"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 50, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Cairo on August 12th, 2024 will be hot summer weather with a temperature of 31\u00b0C. Humidity will be moderate at 50% with light winds at 13 km/h. This is typical hot, dry summer weather for Cairo - quite warm but with lower humidity than many other hot climates, making it more bearable."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_15",
+        "success": true,
+        "eval_item_id": 15,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Weather conditions in Vancouver on 2024/05/25?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2024-05-25"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 23, \"humidity\": 70, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "On May 25, 2024, in Vancouver, the weather forecast is as follows:  \n- Temperature: 23\u00b0C  \n- Humidity: 70%  \n- Wind Speed: 13 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Weather conditions in Vancouver on 2024/05/25?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2024-05-25"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather conditions in Vancouver on May 25th, 2024 will be mild spring weather with a temperature of 20\u00b0C. Humidity will be at 65% with moderate winds at 15 km/h. This is lovely late spring weather in Vancouver - perfect for exploring the city's outdoor attractions and parks!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_16",
+        "success": true,
+        "eval_item_id": 16,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "How about Rome on October 14th, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2024-10-14"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "On October 14th, 2024 in Rome, the weather forecast predicts a temperature of 21\u00b0C, humidity at 65%, and a wind speed of 12 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "How about Rome on October 14th, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2024-10-14"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Rome on October 14th, 2024 will be pleasant autumn weather with a temperature of 21\u00b0C. Humidity will be comfortable at 65% with moderate winds at 15 km/h. This is ideal weather for sightseeing in Rome - not too hot, not too cold, perfect for walking around the historic sites and enjoying outdoor dining!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_17",
+        "success": true,
+        "eval_item_id": 17,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Check Dubai weather for 18/2/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "On February 18, 2024 in Dubai, the weather forecast is as follows:  \n- Temperature: 28\u00b0C  \n- Humidity: 35%  \n- Wind Speed: 17 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Check Dubai weather for 18/2/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Dubai on February 18th, 2024 will be warm and pleasant with a temperature of 27\u00b0C. Humidity will be low at 35% with moderate winds at 18 km/h. This is perfect winter weather in Dubai - warm but not too hot, with low humidity making it very comfortable for outdoor activities and sightseeing!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_18",
+        "success": true,
+        "eval_item_id": 18,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What about Singapore on July 30, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2024-07-30"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 95, \"wind_speed\": 10}"
+          },
+          {
+            "role": "assistant",
+            "content": "On July 30, 2024, in Singapore, the weather forecast is as follows:  \n- **Temperature**: 31\u00b0C  \n- **Humidity**: 95% (very high, expect muggy conditions)  \n- **Wind Speed**: 10 km/h  \n\nPack an umbrella and stay hydrated in the heat! \ud83c\udf27\ufe0f"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What about Singapore on July 30, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2024-07-30"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 95, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Singapore on July 30th, 2024 will be hot and very humid with a temperature of 31\u00b0C. Humidity will be very high at 95% with light winds at 11 km/h. This is typical tropical weather for Singapore - very warm and extremely humid, so you'll definitely want to stay in air-conditioned spaces and stay well-hydrated if you're outdoors!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_19",
+        "success": true,
+        "eval_item_id": 19,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Let me know about Chicago weather on 2024-01-22"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2024-01-22"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+          },
+          {
+            "role": "assistant",
+            "content": "On 2024-01-22 in Chicago, the weather forecast is as follows:  \n- Temperature: 9\u00b0C  \n- Humidity: 60%  \n- Wind Speed: 21 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Let me know about Chicago weather on 2024-01-22"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2024-01-22"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Chicago on January 22nd, 2024 will be cold winter weather with a temperature of 9\u00b0C. Humidity will be at 60% with strong winds at 21 km/h. This is typical Chicago winter weather - cold and windy, so you'll need warm clothing and should be prepared for the wind chill effect that will make it feel even colder!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
@@ -147,7 +1376,7 @@
           },
           {
             "role": "user",
-            "content": "Stockholm weather on 2024-06-15, please"
+            "content": "Stockholm weather on 15-06-2024, please"
           },
           {
             "role": "assistant",
@@ -171,36 +1400,13 @@
           },
           {
             "role": "assistant",
-            "content": "The weather forecast for Stockholm on 2024-06-15 is as follows:  \n- **Temperature**: 14\u00b0C  \n- **Humidity**: 85%  \n- **Wind Speed**: 14 km/h  \n\nLet me know if you need further details!"
+            "content": "The weather forecast for Stockholm on 2024-06-15 shows a temperature of 14\u00b0C, humidity at 85%, and wind speeds of 14 km/h."
           }
         ],
-        "metrics_data": [
-          {
-            "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools"
-          },
-          {
-            "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
-          }
-        ]
-      },
-      {
-        "test_id": "test_12",
-        "success": true,
-        "eval_item_id": 12,
-        "agent_conversation": [
-          {
-            "role": "system",
-            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
-          },
+        "expected_conversation": [
           {
             "role": "user",
-            "content": "I need the weather for Bangkok on 2024-03-08"
+            "content": "Stockholm weather on 15-06-2024, please"
           },
           {
             "role": "assistant",
@@ -210,8 +1416,8 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Bangkok",
-                    "date": "2024-03-08"
+                    "city": "Stockholm",
+                    "date": "2024-06-15"
                   }
                 },
                 "id": "call_1"
@@ -220,11 +1426,11 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 13}"
           },
           {
             "role": "assistant",
-            "content": "The weather forecast for Bangkok on 2024-03-08 shows a temperature of 33\u00b0C, humidity at 80%, and a wind speed of 16 km/h."
+            "content": "The weather in Stockholm on June 15th, 2024 will be mild summer weather with a temperature of 14\u00b0C. Humidity will be high at 85% with gentle winds at 13 km/h. This is typical early summer weather for Stockholm - pleasantly mild but with high humidity, perfect for enjoying the long daylight hours of the Swedish summer!"
           }
         ],
         "metrics_data": [
@@ -232,7 +1438,7 @@
             "name": "Tool Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Called 1/1 expected tools"
+            "reason": "Called 1/1 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
@@ -243,9 +1449,9 @@
         ]
       },
       {
-        "test_id": "test_5",
+        "test_id": "test_21",
         "success": true,
-        "eval_item_id": 5,
+        "eval_item_id": 21,
         "agent_conversation": [
           {
             "role": "system",
@@ -253,11 +1459,61 @@
           },
           {
             "role": "user",
-            "content": "What's 2 + 2?"
+            "content": "I want to know about Seoul on 27.04.2024"
           },
           {
             "role": "assistant",
-            "content": "2 + 2 equals 4. Let me know if you need help with anything else!"
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Seoul",
+                    "date": "2024-04-27"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 14}"
+          },
+          {
+            "role": "assistant",
+            "content": "On 27 April 2024 in Seoul, the weather forecast shows a temperature of 20\u00b0C, humidity at 70%, and wind speeds of 14 km/h. Let me know if you'd like additional details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "I want to know about Seoul on 27.04.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Seoul",
+                    "date": "2024-04-27"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Seoul on April 27th, 2024 will be pleasant spring weather with a temperature of 20\u00b0C. Humidity will be at 70% with moderate winds at 15 km/h. This is lovely spring weather in Seoul - perfect for enjoying cherry blossoms if they're still blooming, and great for outdoor activities around the city!"
           }
         ],
         "metrics_data": [
@@ -265,14 +1521,20 @@
             "name": "Tool Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "No tools expected or called"
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
           }
         ]
       },
       {
-        "test_id": "test_46",
+        "test_id": "test_22",
         "success": true,
-        "eval_item_id": 46,
+        "eval_item_id": 22,
         "agent_conversation": [
           {
             "role": "system",
@@ -280,11 +1542,61 @@
           },
           {
             "role": "user",
-            "content": "What's the difference between weather and climate?"
+            "content": "Cape Town weather on Aug 5, 2024?"
           },
           {
             "role": "assistant",
-            "content": "Weather refers to short-term atmospheric conditions in a specific place and time, such as temperature, humidity, or precipitation on a given day. Climate describes the average weather patterns and trends over a much longer period (typically 30+ years) for a region, including seasonal variations and typical conditions. For example, a single rainstorm is weather, while a region's tendency to have wet summers is part of its climate."
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cape Town",
+                    "date": "2024-08-05"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather forecast for Cape Town on August 5, 2024, is as follows:  \n- **Temperature**: 16\u00b0C  \n- **Humidity**: 55%  \n- **Wind Speed**: 12 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Cape Town weather on Aug 5, 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cape Town",
+                    "date": "2024-08-05"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Cape Town on August 5th, 2024 will be cool winter weather with a temperature of 16\u00b0C. Humidity will be moderate at 55% with moderate winds at 17 km/h. Since it's winter in the Southern Hemisphere, this is typical Cape Town winter weather - mild and pleasant, much warmer than winter in the Northern Hemisphere!"
           }
         ],
         "metrics_data": [
@@ -292,13 +1604,385 @@
             "name": "Tool Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "No tools expected or called"
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_23",
+        "success": true,
+        "eval_item_id": 23,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Mumbai on 11/18/2024, what's the weather like?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Mumbai",
+                    "date": "2024-11-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "On November 18, 2024, the weather in Mumbai is expected to be warm with a temperature of 30\u00b0C. Humidity will be high at 80%, and there will be a gentle breeze with wind speeds reaching 17 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Mumbai on 11/18/2024, what's the weather like?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Mumbai",
+                    "date": "2024-11-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Mumbai on November 18th, 2024 will be warm and humid with a temperature of 30\u00b0C. Humidity will be high at 80% with light winds at 12 km/h. This is post-monsoon weather in Mumbai - still quite warm and humid, but generally more comfortable than the peak summer months."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_24",
+        "success": true,
+        "eval_item_id": 24,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Amsterdam weather for 12/23/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Amsterdam",
+                    "date": "2024-12-23"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Amsterdam on December 23, 2024 will be 9\u00b0C with 75% humidity and a wind speed of 17 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Amsterdam weather for 12/23/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Amsterdam",
+                    "date": "2024-12-23"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 90, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Amsterdam on March 12th, 2024 will be cool spring weather with a temperature of 14\u00b0C. Humidity will be very high at 90% with light winds at 12 km/h. This is typical early spring weather for Amsterdam - cool and quite humid, so you might want to carry an umbrella as there's likely to be some moisture in the air!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_25",
+        "success": true,
+        "eval_item_id": 25,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the weather like in San Francisco on 9/22/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "San Francisco",
+                    "date": "2024-09-22"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "On September 22, 2024, San Francisco will have a temperature of 18\u00b0C, with 70% humidity and a wind speed of 12 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the weather like in San Francisco on 9/22/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "San Francisco",
+                    "date": "2024-09-22"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in San Francisco on September 2nd, 2024 will be mild with a temperature of 18\u00b0C. Humidity will be at 70% with light winds at 12 km/h. This is typical San Francisco weather - cool and comfortable, perfect for layering clothes as the temperature can vary throughout the day in different parts of the city!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_26",
+        "success": true,
+        "eval_item_id": 26,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the weather like in London today?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in London on 2025-09-11 is as follows:  \n- Temperature: 15\u00b0C  \n- Humidity: 80%  \n- Wind speed: 12 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the weather like in London today?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in London today (September 11th, 2025) is mild autumn weather with a temperature of 10\u00b0C. Humidity is at 70% with moderate winds at 18 km/h. It's a typical autumn day in London - cool and damp, so you'll want to bundle up with a light jacket and perhaps carry an umbrella!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
           }
         ]
       },
       {
         "test_id": "test_27",
-        "success": false,
+        "success": true,
         "eval_item_id": 27,
         "agent_conversation": [
           {
@@ -324,7 +2008,7 @@
           },
           {
             "role": "tool",
-            "content": "2025-09-05"
+            "content": "2025-09-11"
           },
           {
             "role": "assistant",
@@ -335,7 +2019,7 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Tokyo",
-                    "date": "2025-09-05"
+                    "date": "2025-09-11"
                   }
                 },
                 "id": "call_1"
@@ -348,36 +2032,30 @@
           },
           {
             "role": "assistant",
-            "content": "The current weather in Tokyo on 2025-09-05 is 18\u00b0C with 70% humidity and a wind speed of 13 km/h."
+            "content": "The current weather in Tokyo is 18\u00b0C with 70% humidity and a wind speed of 13 km/h."
           }
         ],
-        "metrics_data": [
-          {
-            "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 2/2 expected tools"
-          },
-          {
-            "name": "Argument Correctness",
-            "success": false,
-            "score": 0.5,
-            "reason": "Correct arguments for 1/2 tools"
-          }
-        ]
-      },
-      {
-        "test_id": "test_10",
-        "success": true,
-        "eval_item_id": 10,
-        "agent_conversation": [
-          {
-            "role": "system",
-            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
-          },
+        "expected_conversation": [
           {
             "role": "user",
-            "content": "Can you check the weather for Berlin on 2024-09-15?"
+            "content": "How's the weather in Tokyo right now?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
           },
           {
             "role": "assistant",
@@ -387,8 +2065,78 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Berlin",
-                    "date": "2024-09-15"
+                    "city": "Tokyo",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 11, \"humidity\": 60, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Tokyo right now (September 11th, 2025) is mild autumn weather with a temperature of 11\u00b0C. Humidity is moderate at 60% with winds at 18 km/h. It's a pleasant Tokyo autumn day - cool and comfortable, so you'll need a light jacket, and the moderate humidity makes it quite pleasant!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_28",
+        "success": true,
+        "eval_item_id": 28,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Tell me today's weather in New York City"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York City",
+                    "date": "2025-09-11"
                   }
                 },
                 "id": "call_1"
@@ -397,11 +2145,58 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
           },
           {
             "role": "assistant",
-            "content": "The weather forecast for Berlin on 2024-09-15 shows:\n- **Temperature**: 14\u00b0C  \n- **Humidity**: 70%  \n- **Wind Speed**: 13 km/h  \n\nLet me know if you need further details! \ud83c\udf24\ufe0f"
+            "content": "Today's weather in New York City (2025-09-11) is as follows:  \n- **Temperature**: 20\u00b0C  \n- **Humidity**: 65%  \n- **Wind Speed**: 13 km/h  \n\nLet me know if you need further details! \ud83c\udf24\ufe0f"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Tell me today's weather in New York City"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York City",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 11, \"humidity\": 55, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "Today's weather in New York City (September 11th, 2025) is pleasant autumn weather with a temperature of 25\u00b0C. Humidity is at 75% with moderate winds at 15 km/h. It's a beautiful early fall day in NYC - perfect weather for outdoor activities and exploring the city!"
           }
         ],
         "metrics_data": [
@@ -409,19 +2204,136 @@
             "name": "Tool Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Called 1/1 expected tools"
+            "reason": "Called 2/2 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_29",
+        "success": true,
+        "eval_item_id": 29,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's today's weather in Miami?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 75, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Today's weather in Miami (2025-09-11) is as follows:  \n- **Temperature**: 28\u00b0C  \n- **Humidity**: 75%  \n- **Wind Speed**: 12 km/h  \n\nThe weather looks pleasant and mild! \ud83c\udf34"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's today's weather in Miami?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 24, \"humidity\": 65, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "Today's weather in Miami (September 11th, 2025) is warm and pleasant with a temperature of 24\u00b0C. Humidity is comfortable at 65% with moderate winds at 17 km/h. It's lovely late summer weather in Miami - warm and comfortable, perfect for outdoor activities and enjoying the beach!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
           }
         ]
       },
       {
         "test_id": "test_30",
-        "success": false,
+        "success": true,
         "eval_item_id": 30,
         "agent_conversation": [
           {
@@ -442,14 +2354,70 @@
                   "arguments": {}
                 },
                 "id": "call_1"
-              },
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
               {
                 "type": "function",
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Paris",
-                    "date": "2023-10-05"
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The current weather in Paris on 2025-09-11 is as follows:  \n- **Temperature**: 16\u00b0C  \n- **Humidity**: 75%  \n- **Wind Speed**: 13 km/h  \n\nLet me know if you need further details! \ud83d\ude0a"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Current weather in Paris, please"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Paris",
+                    "date": "2025-09-11"
                   }
                 },
                 "id": "call_2"
@@ -458,15 +2426,11 @@
           },
           {
             "role": "tool",
-            "content": "2025-09-05"
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 10, \"humidity\": 65, \"wind_speed\": 18}"
           },
           {
             "role": "assistant",
-            "content": "The current weather in Paris on 2025-09-05 is as follows:  \n- **Temperature**: 16\u00b0C  \n- **Humidity**: 75%  \n- **Wind Speed**: 13 km/h  \n\nLet me know if you need further details!"
+            "content": "The current weather in Paris (September 11th, 2025) is mild autumn weather with a temperature of 10\u00b0C. Humidity is at 65% with moderate winds at 18 km/h. It's a typical Parisian autumn day - cool and damp, so you'll want to dress warmly with layers and perhaps carry an umbrella!"
           }
         ],
         "metrics_data": [
@@ -474,20 +2438,20 @@
             "name": "Tool Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Called 2/2 expected tools"
+            "reason": "Called 2/2 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
-            "success": false,
-            "score": 0.5,
-            "reason": "Correct arguments for 1/2 tools"
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
           }
         ]
       },
       {
-        "test_id": "test_17",
+        "test_id": "test_31",
         "success": true,
-        "eval_item_id": 17,
+        "eval_item_id": 31,
         "agent_conversation": [
           {
             "role": "system",
@@ -495,7 +2459,492 @@
           },
           {
             "role": "user",
-            "content": "Check Dubai weather for 2024-02-18"
+            "content": "What's the weather like in Berlin today?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "Today's weather in Berlin is 14\u00b0C with 70% humidity and a wind speed of 13 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the weather like in Berlin today?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 7, \"humidity\": 60, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Berlin today (September 11th, 2025) is cool autumn weather with a temperature of 7\u00b0C. Humidity is at 60% with strong winds at 20 km/h. It's a cool and windy autumn day in Berlin, so you'll definitely need warm clothing and should be prepared for the wind chill!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_32",
+        "success": true,
+        "eval_item_id": 32,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "How's the weather in Bangkok right now?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 32, \"humidity\": 75, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "The current weather in Bangkok (as of 2025-09-11) is **32\u00b0C**, with **75% humidity** and a **wind speed of 11 km/h**. It looks quite warm and humid today! \ud83c\udf24\ufe0f"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "How's the weather in Bangkok right now?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 27, \"humidity\": 65, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Bangkok right now (September 11th, 2025) is warm and pleasant with a temperature of 27\u00b0C. Humidity is moderate at 65% with light winds at 13 km/h. This is excellent late rainy season weather for Bangkok - warm but not too hot or humid, perfect for sightseeing and outdoor activities!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_33",
+        "success": true,
+        "eval_item_id": 33,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Weather in Sydney today?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sydney",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Sydney on 2025-09-11 is as follows:  \n- **Temperature**: 20\u00b0C  \n- **Humidity**: 65%  \n- **Wind Speed**: 13 km/h  \n\nLet me know if you'd like further details! \ud83d\ude0a"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Weather in Sydney today?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sydney",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 23, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Sydney today (September 11th, 2025) is mild spring weather with a temperature of 23\u00b0C. Humidity is at 75% with light winds at 13 km/h. It's a beautiful spring day in Sydney - mild and pleasant, perfect for enjoying the outdoors and early spring activities!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_34",
+        "success": true,
+        "eval_item_id": 34,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the weather like in Cairo now?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cairo",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 40, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The current weather in Cairo (as of 2025-09-11) is **28\u00b0C**, with **40% humidity** and a **wind speed of 12 km/h**. It looks like a pleasant day with mild conditions!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the weather like in Cairo now?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cairo",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 23, \"humidity\": 30, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Cairo now (September 11th, 2025) is warm late summer weather with a temperature of 23\u00b0C. Humidity is low at 30% with moderate winds at 18 km/h. It's pleasant late summer weather in Cairo - warm and dry, becoming more comfortable as we transition from the hot summer months!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_35",
+        "success": true,
+        "eval_item_id": 35,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "I need today's weather for Dubai"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
           },
           {
             "role": "assistant",
@@ -506,7 +2955,7 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Dubai",
-                    "date": "2024-02-18"
+                    "date": "2025-09-11"
                   }
                 },
                 "id": "call_1"
@@ -515,11 +2964,58 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 32, \"humidity\": 45, \"wind_speed\": 12}"
           },
           {
             "role": "assistant",
-            "content": "The weather forecast for Dubai on **2024-02-18** is as follows:  \n- **Temperature**: 28\u00b0C  \n- **Humidity**: 35%  \n- **Wind Speed**: 17 km/h  \n\nA pleasant day with mild conditions\u2014perfect for outdoor plans! \ud83c\udf1e"
+            "content": "Here's the weather forecast for Dubai on 2025-09-11:\n- Temperature: 32\u00b0C\n- Humidity: 45%\n- Wind speed: 12 km/h\n\nLet me know if you need additional details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "I need today's weather for Dubai"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Today's weather in Dubai (September 11th, 2025) is warm and pleasant with a temperature of 27\u00b0C. Humidity is low at 35% with moderate winds at 18 km/h. It's pleasant late summer weather in Dubai - warm and comfortable with low humidity, ideal for outdoor activities and sightseeing!"
           }
         ],
         "metrics_data": [
@@ -527,13 +3023,1383 @@
             "name": "Tool Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Called 1/1 expected tools"
+            "reason": "Called 2/2 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_36",
+        "success": true,
+        "eval_item_id": 36,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the weather like in S\u00e3o Paulo tomorrow?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "S\u00e3o Paulo",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 23, \"humidity\": 80, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in S\u00e3o Paulo tomorrow (2025-09-12) is expected to be 23\u00b0C with 80% humidity and a wind speed of 12 km/h. Let me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the weather like in S\u00e3o Paulo tomorrow?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "S\u00e3o Paulo",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 24, \"humidity\": 85, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in S\u00e3o Paulo tomorrow (September 12th, 2025) will be mild spring weather with a temperature of 24\u00b0C. Humidity will be high at 85% with light winds at 12 km/h. It's typical spring weather for S\u00e3o Paulo - mild and quite humid, so you might want to dress in layers for the changing temperatures throughout the day!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_37",
+        "success": true,
+        "eval_item_id": 37,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Can you tell me the weather in Rome next Monday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2025-09-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Next Monday in Rome, the weather will be:\n\ud83c\udf24\ufe0f **Temperature**: 21\u00b0C  \n\ud83d\udca7 **Humidity**: 65%  \n\ud83c\udf2c\ufe0f **Wind Speed**: 12 km/h  \n\nLet me know if you need further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Can you tell me the weather in Rome next Monday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2025-09-15"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Rome next Monday (January 20th, 2025) will be cool winter weather with a temperature of 16\u00b0C. Humidity will be moderate at 55% with strong winds at 20 km/h. It's mild winter weather for Rome - cool but not too cold, though you'll want to dress warmly due to the wind!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_38",
+        "success": true,
+        "eval_item_id": 38,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What will the weather be like in Stockholm this Saturday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 14}"
+          },
+          {
+            "role": "assistant",
+            "content": "This Saturday in Stockholm, the weather forecast indicates a temperature of 9\u00b0C, with 75% humidity and a wind speed of 14 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What will the weather be like in Stockholm this Saturday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": -1, \"humidity\": 65, \"wind_speed\": 21}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Stockholm this Saturday (September 13th, 2025) will be cool autumn weather with a temperature of -1\u00b0C. Humidity will be at 65% with strong winds at 21 km/h. It's unusually cold early autumn weather - chilly and windy with temperatures near freezing, so you'll need warm clothing and should be prepared for the cool conditions!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_39",
+        "success": false,
+        "eval_item_id": 39,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Weather in Chennai next Tuesday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-17"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather forecast for Chennai on next Tuesday, September 17, 2025, is as follows:  \n- **Temperature**: 20\u00b0C  \n- **Humidity**: 65%  \n- **Wind Speed**: 13 km/h  \n\nLet me know if you need further details! \ud83d\ude0a"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Weather in Chennai next Tuesday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-16"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Chennai next Tuesday (January 21st, 2025) will be pleasant with a temperature of 20\u00b0C. Humidity will be moderate at 65% with moderate winds at 15 km/h. This is comfortable winter weather for Chennai - warm but not too hot, perfect for outdoor activities and sightseeing!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_40",
+        "success": true,
+        "eval_item_id": 40,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the weather going to be like in Chicago this weekend?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2025-09-14"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
+          },
+          {
+            "role": "assistant",
+            "content": "Here's the weather forecast for Chicago this weekend:\n\n**Saturday, September 13, 2025**  \n\ud83c\udf21\ufe0f Temperature: 18\u00b0C  \n\ud83d\udca7 Humidity: 70%  \n\ud83c\udf2c\ufe0f Wind Speed: 14 km/h  \n\n**Sunday, September 14, 2025**  \n\ud83c\udf21\ufe0f Temperature: 18\u00b0C  \n\ud83d\udca7 Humidity: 70%  \n\ud83c\udf2c\ufe0f Wind Speed: 14 km/h  \n\nThe weather looks similar both days\u2014mild temperatures with comfortable humidity and light winds. Let me know if you'd like further details!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the weather going to be like in Chicago this weekend?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Chicago this weekend (Saturday, September 13th, 2025) will be cool autumn weather with a temperature of 9\u00b0C. Humidity will be at 60% with strong winds at 21 km/h. It's typical crisp Chicago autumn weather - cool and very windy, so bundle up and be prepared for significant wind chill that will make it feel much colder!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_41",
+        "success": false,
+        "eval_item_id": 41,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "How will the weather be in London next Friday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Next Friday in London (2025-09-12) will have a mild temperature of 15\u00b0C, with 80% humidity and a moderate wind speed of 12 km/h. You may want to carry an umbrella due to the high humidity!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "How will the weather be in London next Friday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-19"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in London next Friday (September 19th, 2025) will be mild autumn weather with a temperature of 10\u00b0C. Humidity will be at 70% with moderate winds at 18 km/h. It's typical September weather for London - cool and damp, so you'll want to dress warmly and possibly carry an umbrella for potential drizzle!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_42",
+        "success": true,
+        "eval_item_id": 42,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What about the weather in Vancouver this Sunday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2025-09-14"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Vancouver on Sunday, September 14, 2025, is expected to be 20\u00b0C with 65% humidity and a wind speed of 13 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What about the weather in Vancouver this Sunday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2025-09-14"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Vancouver this Sunday (January 19th, 2025) will be mild winter weather with a temperature of 20\u00b0C. Humidity will be at 65% with moderate winds at 15 km/h. This is unusually warm for January in Vancouver - quite pleasant winter weather that's perfect for outdoor activities and exploring the city!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_43",
+        "success": false,
+        "eval_item_id": 43,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Weather in Singapore next Wednesday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2025-09-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 10}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Singapore on next Wednesday, 2025-09-18, is expected to be 30\u00b0C with 85% humidity and a wind speed of 10 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Weather in Singapore next Wednesday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2025-09-17"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 95, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Singapore next Wednesday (September 17th, 2025) will be hot and very humid with a temperature of 30\u00b0C. Humidity will be extremely high at 95% with light winds at 11 km/h. It's typical tropical weather for Singapore - hot, humid, and sticky, so you'll want to stay hydrated and spend time in air-conditioned areas!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_44",
+        "success": true,
+        "eval_item_id": 44,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "How's the weather going to be in Buenos Aires next Thursday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Buenos Aires",
+                    "date": "2025-09-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 75, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Next Thursday in Buenos Aires, the weather is expected to be mild with a temperature of 20\u00b0C, 75% humidity, and a wind speed of 12 km/h. It should be a comfortable day overall!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "How's the weather going to be in Buenos Aires next Thursday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Buenos Aires",
+                    "date": "2025-09-18"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 80, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Buenos Aires next Thursday (September 18th, 2025) will be mild spring weather with a temperature of 21\u00b0C. Humidity will be high at 80% with light winds at 13 km/h. It's pleasant spring weather for Buenos Aires - mild but not too hot, though the high humidity might make it feel a bit muggy."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_45",
+        "success": false,
+        "eval_item_id": 45,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What will the weather be like in Madrid next Saturday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Madrid",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 19, \"humidity\": 55, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "Next Saturday in Madrid (2025-09-13), the weather will be 19\u00b0C with 55% humidity and a wind speed of 13 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What will the weather be like in Madrid next Saturday?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Madrid",
+                    "date": "2025-09-20"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 45, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather in Madrid next Saturday (September 20th, 2025) will be cool winter weather with a temperature of 14\u00b0C. Humidity will be low at 45% with strong winds at 20 km/h. It's typical Madrid winter weather - cool and dry with strong winds, so you'll want to dress warmly and be prepared for the wind!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_46",
+        "success": true,
+        "eval_item_id": 46,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the difference between weather and climate?"
+          },
+          {
+            "role": "assistant",
+            "content": "The difference between weather and climate lies in their time scales and scope:\n\n- **Weather** refers to short-term atmospheric conditions (e.g., temperature, rain, wind) in a specific place at a specific time. It changes hourly or daily (e.g., \"It\u2019s raining today\").\n\n- **Climate** describes the average weather patterns in a region over a long period (typically 30+ years). It includes trends and typical conditions (e.g., \"This area has a Mediterranean climate with hot, dry summers\").\n\nIn short, weather is what you experience on a given day, while climate is the broader pattern of weather over decades."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What's the difference between weather and climate?"
+          },
+          {
+            "role": "assistant",
+            "content": "Weather refers to short-term atmospheric conditions in a specific place at a specific time - like temperature, humidity, and precipitation over days or weeks. Climate, on the other hand, is the long-term average of weather patterns in a region over many years or decades. For example, I can tell you today's weather in any city, but climate describes what that city is typically like throughout the year. Would you like me to check the current weather conditions for a specific location?"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_47",
+        "success": true,
+        "eval_item_id": 47,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Why is it always humid in tropical places?"
+          },
+          {
+            "role": "assistant",
+            "content": "The high humidity in tropical regions is primarily due to a combination of factors. First, these areas receive intense solar radiation year-round, leading to high temperatures. Warm air can hold more moisture, so when the sun heats the Earth's surface (including oceans and vegetation), water evaporates more readily. Additionally, tropical regions often have dense vegetation that contributes to transpiration (plant-based evaporation). The warm, moist air near the surface rises, cools, and condenses, creating frequent rainfall cycles. This cycle maintains high humidity levels. Finally, proximity to warm ocean currents and the lack of cold air masses to reduce moisture content also contribute to persistent humidity. \n\nSince this is a general meteorological question, I cannot use the provided tools to answer it directly. Let me know if you'd like weather data for a specific location!"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Why is it always humid in tropical places?"
+          },
+          {
+            "role": "assistant",
+            "content": "Tropical regions are consistently humid because they're located near the equator where temperatures are warm year-round. Warm air can hold much more moisture than cold air, and the constant heat causes more water to evaporate from oceans, rivers, and plants. This creates a cycle where there's always a lot of water vapor in the air. Cities like Bangkok, Singapore, and Miami experience this tropical humidity. If you'd like to know the current humidity levels in any tropical city, I can check that for you!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_48",
+        "success": true,
+        "eval_item_id": 48,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Do mountains affect local weather patterns?"
+          },
+          {
+            "role": "assistant",
+            "content": "The tools I have access to allow me to provide specific weather forecasts for cities on particular dates or retrieve the current date. However, they do not include functionality to explain general meteorological concepts like the impact of mountains on weather patterns. For such questions, I recommend consulting a meteorology resource or textbook, which would explain phenomena like orographic lift, rain shadows, and temperature inversions caused by mountainous terrain. Would you like a weather forecast for a specific city instead?"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Do mountains affect local weather patterns?"
+          },
+          {
+            "role": "assistant",
+            "content": "Yes, mountains significantly affect local weather! They create what's called orographic effects - when air masses hit mountains, they're forced upward, cooling as they rise and often creating clouds and precipitation on the windward side. The leeward side often experiences a 'rain shadow' effect with drier conditions. Mountains also create temperature variations due to elevation changes. Cities like Denver experience unique weather patterns due to the Rocky Mountains nearby. Would you like me to check the current weather conditions in any mountainous region?"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_49",
+        "success": true,
+        "eval_item_id": 49,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What causes wind?"
+          },
+          {
+            "role": "assistant",
+            "content": "The available tools are designed for retrieving weather forecasts and the current date, but they cannot explain the causes of weather phenomena like wind. \n\nTo answer your question: Wind is caused by differences in air pressure across the Earth's surface. When air moves from areas of high pressure to areas of low pressure, it creates wind. This movement is driven by uneven heating of the Earth by the sun, which causes air to rise in warm regions and sink in cooler regions, setting up pressure gradients. The Coriolis effect, due to the Earth's rotation, also influences wind direction."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "What causes wind?"
+          },
+          {
+            "role": "assistant",
+            "content": "Wind is caused by differences in air pressure, which result from uneven heating of the Earth's surface by the sun. When air heats up, it becomes less dense and rises, creating low pressure areas. Cooler, denser air then moves in to fill that space, creating wind. The Earth's rotation also affects wind patterns through the Coriolis effect. Local factors like mountains, bodies of water, and urban heat islands can create their own wind patterns too. If you'd like to know the current wind conditions in any specific city, I can check that for you!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_50",
+        "success": true,
+        "eval_item_id": 50,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Is it true that no two snowflakes are identical?"
+          },
+          {
+            "role": "assistant",
+            "content": "The idea that no two snowflakes are identical is a popular scientific notion. While it's true that snowflakes form under varying temperature and humidity conditions as they fall through the atmosphere, leading to unique crystal structures, there is no definitive proof that *every single* snowflake is entirely distinct. However, the probability of two snowflakes being identical is astronomically low due to the infinite variables in their formation. \n\nSince your question doesn\u2019t require weather data or date checks, I\u2019ll note that the tools provided aren\u2019t applicable here. Let me know if you\u2019d like further clarification! \u2744\ufe0f"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Is it true that no two snowflakes are identical?"
+          },
+          {
+            "role": "assistant",
+            "content": "It's extremely unlikely that two snowflakes are identical, though not technically impossible. Each snowflake forms under slightly different atmospheric conditions as it falls - different temperatures, humidity levels, and air currents create unique crystal patterns. The more complex the snowflake, the less likely it is to be duplicated. However, simple snow crystals might occasionally be similar. Wilson Bentley, who photographed thousands of snowflakes in the early 1900s, never found two that were exactly alike. If you're curious about snowy weather conditions in any particular city, I'd be happy to check that for you!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
           }
         ]
       }
