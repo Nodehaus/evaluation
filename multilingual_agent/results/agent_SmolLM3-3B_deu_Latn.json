@@ -1,0 +1,888 @@
+{
+  "model_name": "HuggingFaceTB/SmolLM3-3B",
+  "language": "deu",
+  "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_deu.json",
+  "evaluation_results": {
+    "global_metrics": {
+      "total_tests": 10,
+      "passed_tests": 6,
+      "failed_tests": 4,
+      "overall_pass_rate": 60.0,
+      "average_scores_by_metric": {
+        "Tool Correctness": 0.9,
+        "Argument Correctness": 0.6875
+      },
+      "pass_rates_by_metric": {
+        "Tool Correctness": 90.0,
+        "Argument Correctness": 50.0
+      }
+    },
+    "test_results": [
+      {
+        "test_id": "test_26",
+        "success": false,
+        "eval_item_id": 26,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Wie ist das Wetter heute in London?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2023-09-23"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Heute in London ist es 15 Grad Celsius warm mit einer Luftfeuchtigkeit von 80 % und einer Windgeschwindigkeit von 12 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Wie ist das Wetter heute in London?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in London heute (15. Januar 2025) ist kaltes Winterwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% mit m\u00e4\u00dfigen Winden von 18 km/h. Es ist ein typischer Wintertag in London - kalt und feucht, also sollten Sie sich mit einem warmen Mantel einpacken und vielleicht einen Regenschirm mitnehmen!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_24",
+        "success": true,
+        "eval_item_id": 24,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Amsterdam-Wetter f\u00fcr den 23. Dezember 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Amsterdam",
+                    "date": "2024-12-23"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Amsterdam\", \"date\": \"2024-12-23\"}}"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Amsterdam-Wetter f\u00fcr den 23. Dezember 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Amsterdam",
+                    "date": "2024-12-23"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 8, \"humidity\": 75, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Amsterdam am 23. Dezember 2024 wird k\u00fchles Winterwetter mit einer Temperatur von 8\u00b0C sein. Die Luftfeuchtigkeit ist sehr hoch bei 75% mit m\u00e4\u00dfigen Winden bei 15 km/h. Das ist typisches Winterwetter f\u00fcr Amsterdam - k\u00fchl und ziemlich feucht, also sollten Sie einen Regenschirm mitnehmen, da wahrscheinlich Feuchtigkeit in der Luft liegt!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_20",
+        "success": true,
+        "eval_item_id": 20,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Stockholm-Wetter am 15. Juni 2024, bitte"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2024-06-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 14}"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2024-06-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 14}"
+          },
+          {
+            "role": "assistant",
+            "content": "The weather forecast for Stockholm on 15 June 2024 is expected to be 14\u00b0C with 85% humidity and 14 km/h wind speed."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Stockholm-Wetter am 15. Juni 2024, bitte"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2024-06-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Stockholm am 15. Juni 2024 wird mildes Sommerwetter mit einer Temperatur von 14\u00b0C sein. Die Luftfeuchtigkeit ist hoch bei 85% mit sanften Winden bei 13 km/h. Das ist typisches fr\u00fches Sommerwetter f\u00fcr Stockholm - angenehm mild aber mit hoher Luftfeuchtigkeit, perfekt um die langen Tagesstunden des schwedischen Sommers zu genie\u00dfen!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_12",
+        "success": true,
+        "eval_item_id": 12,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Ich brauche das Wetter f\u00fcr Bangkok am 18. M\u00e4rz 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Ich brauche das Wetter f\u00fcr Bangkok am 18. M\u00e4rz 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Bangkok am 18. M\u00e4rz 2024 wird hei\u00df und feucht mit einer Temperatur von 33\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 80% bei leichten Winden mit 11 km/h. Das ist typisches Wetter f\u00fcr die hei\u00dfe Jahreszeit in Bangkok - sehr warm und feuchte Bedingungen, also sorgen Sie f\u00fcr leichte Kleidung, bleiben Sie hydratisiert und suchen Sie bei M\u00f6glichkeit klimatisierte R\u00e4ume auf."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_5",
+        "success": true,
+        "eval_item_id": 5,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Was ist 2 + 2?"
+          },
+          {
+            "role": "assistant",
+            "content": "2 + 2 = 4"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Was ist 2 + 2?"
+          },
+          {
+            "role": "assistant",
+            "content": "Ich bin darauf ausgelegt, bei wetterbezogenen Fragen zu helfen, nicht bei Matheaufgaben. Wenn Sie Wetterinformationen f\u00fcr eine Stadt ben\u00f6tigen oder \u00fcber kommende Wetterbedingungen wissen m\u00f6chten, bin ich da!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_46",
+        "success": true,
+        "eval_item_id": 46,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Was ist der Unterschied zwischen Wetter und Klima?"
+          },
+          {
+            "role": "assistant",
+            "content": "The difference between Wetter and Klima (weather and climate) lies in their time scales and focus:\n\n- **Wetter (Weather):** Describes the short-term atmospheric conditions at a specific location. It includes things like temperature, precipitation, wind, and humidity for a particular day or week. Weather is **variable** and can change rapidly. For example, it might rain today but be sunny tomorrow.\n\n- **Klima (Climate):** Refers to the long-term average of weather conditions over decades or centuries. It describes patterns and trends, such as temperature averages, precipitation amounts, and seasonal changes. Climate is **stable** and provides a framework for understanding how weather behaves over time. For instance, a place might have a warm climate because its average temperatures are consistently above 20\u00b0C.\n\n### Key Takeaways:\n- **Weather** is **short-term** and **variable**, while **climate** is **long-term** and **trend-focused**.\n- Climate change refers to **long-term shifts** in weather patterns (e.g., rising temperatures), which affect both short-term weather and long-term climate systems.\n\nFor example, if a city experiences a heatwave today (weather), it's part of a larger pattern of rising temperatures in the region (climate)."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Was ist der Unterschied zwischen Wetter und Klima?"
+          },
+          {
+            "role": "assistant",
+            "content": "Wetter bezieht sich auf kurzfristige atmosph\u00e4rische Bedingungen an einem bestimmten Ort zu einer bestimmten Zeit - wie Temperatur, Luftfeuchtigkeit und Niederschlag \u00fcber Tage oder Wochen. Klima hingegen ist der langfristige Durchschnitt von Wettermustern in einer Region \u00fcber viele Jahre oder Jahrzehnte. Zum Beispiel kann ich Ihnen das heutige Wetter in jeder Stadt sagen, aber das Klima beschreibt, wie diese Stadt typischerweise das ganze Jahr \u00fcber ist. M\u00f6chten Sie, dass ich die aktuellen Wetterbedingungen f\u00fcr einen bestimmten Ort \u00fcberpr\u00fcfe?"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_27",
+        "success": false,
+        "eval_item_id": 27,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Wie ist das Wetter gerade in Tokyo?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2023-10-05"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Wie ist das Wetter gerade in Tokyo?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 11, \"humidity\": 60, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Tokyo gerade jetzt (15. Januar 2025) ist kaltes Winterwetter mit einer Temperatur von 11\u00b0C. Die Luftfeuchtigkeit ist m\u00e4\u00dfig bei 60% mit Winden von 18 km/h. Es ist ein typischer Tokyo-Wintertag - kalt und trocken, Sie brauchen also warme Kleidung, aber die niedrigere Luftfeuchtigkeit macht es angenehmer als im Sommer!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_10",
+        "success": false,
+        "eval_item_id": 10,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "K\u00f6nnen Sie das Wetter f\u00fcr Berlin am 15. September 2024 pr\u00fcfen?"
+          },
+          {
+            "role": "assistant",
+            "content": "Am 15. September 2024 in Berlin wird es eine Temperatur von 18\u00b0C haben, mit 60% relativer Luftfeuchtigkeit und Windgeschwindigkeiten von 15 km/h."
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "K\u00f6nnen Sie das Wetter f\u00fcr Berlin am 15. September 2024 pr\u00fcfen?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2024-09-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Berlin am 15. September 2024 wird k\u00fchles Herbstwetter mit einer Temperatur von 14\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 70% bei m\u00e4\u00dfigen Winden mit 15 km/h. Es ist typisches Fr\u00fchherbstwetter in Deutschland - Sie sollten eine leichte Jacke oder einen Pullover tragen, wenn Sie nach drau\u00dfen gehen."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": false,
+            "score": 0.0,
+            "reason": "Expected 1 tools but none were called"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.0,
+            "reason": "Tool mismatch"
+          }
+        ]
+      },
+      {
+        "test_id": "test_30",
+        "success": false,
+        "eval_item_id": 30,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Aktuelles Wetter in Paris, bitte"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Paris",
+                    "date": "2023-10-05"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Paris\", \"date\": \"2025-09-11\"}}"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Aktuelles Wetter in Paris, bitte"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Paris",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 65, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das aktuelle Wetter in Paris (11. September 2025) ist k\u00fchles Herbstwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 65% mit m\u00e4\u00dfigen Winden von 18 km/h. Es ist ein typischer Pariser Herbsttag - k\u00fchl und feucht, also sollten Sie sich warm mit mehreren Schichten anziehen und vielleicht einen Regenschirm mitnehmen!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_17",
+        "success": true,
+        "eval_item_id": 17,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen."
+          },
+          {
+            "role": "user",
+            "content": "Dubai-Wetter f\u00fcr den 18. Februar 2024 pr\u00fcfen"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Dubai-Wetter f\u00fcr den 18. Februar 2024 pr\u00fcfen"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Dubai am 18. Februar 2024 wird warm und angenehm mit einer Temperatur von 27\u00b0C sein. Die Luftfeuchtigkeit ist niedrig bei 35% mit m\u00e4\u00dfigen Winden bei 18 km/h. Das ist perfektes Winterwetter in Dubai - warm aber nicht zu hei\u00df, mit niedriger Luftfeuchtigkeit, was es sehr angenehm f\u00fcr Outdoor-Aktivit\u00e4ten und Sightseeing macht!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      }
+    ]
+  }
+}

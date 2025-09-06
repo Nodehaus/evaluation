@@ -1,0 +1,603 @@
+{
+  "model_name": "HuggingFaceTB/SmolLM3-3B",
+  "language": "eng",
+  "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_eng.json",
+  "evaluation_results": {
+    "global_metrics": {
+      "total_tests": 10,
+      "passed_tests": 6,
+      "failed_tests": 4,
+      "overall_pass_rate": 60.0,
+      "average_scores_by_metric": {
+        "Tool Correctness": 0.9,
+        "Argument Correctness": 0.7222
+      },
+      "pass_rates_by_metric": {
+        "Tool Correctness": 90.0,
+        "Argument Correctness": 55.56
+      }
+    },
+    "test_results": [
+      {
+        "test_id": "test_26",
+        "success": false,
+        "eval_item_id": 26,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the weather like in London today?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2023-10-05"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-05"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"London\", \"date\": \"2025-09-05\"}}  \nThe weather in London on September 5, 2025 is expected to be 15\u00b0C with a humidity of 80% and wind speeds of 12 km/h."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_24",
+        "success": true,
+        "eval_item_id": 24,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Amsterdam weather for 2024-03-12"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Amsterdam",
+                    "date": "2024-03-12"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 15, \"humidity\": 90, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Amsterdam\", \"date\": \"2024-03-12\"}}"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_20",
+        "success": true,
+        "eval_item_id": 20,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Stockholm weather on 2024-06-15, please"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2024-06-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 14}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Stockholm\", \"date\": \"2024-06-15\"}}  \n\nThe weather forecast for Stockholm on 2024-06-15 is:  \nTemperature: 14\u00b0C, Humidity: 85%, Wind Speed: 14 km/h"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_12",
+        "success": true,
+        "eval_item_id": 12,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "I need the weather for Bangkok on 2024-03-08"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-08"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_5",
+        "success": false,
+        "eval_item_id": 5,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's 2 + 2?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York",
+                    "date": "2023-10-05"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"name\": \"get_current_date\", \"arguments\": {\"city\": \"nan\", \"date\": \"2023-10-05\"}}  \nI'm unable to compute the sum of 2 + 2. Please ask about the weather or use the available tools."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": false,
+            "score": 0.0,
+            "reason": "No tools expected but 1 were called"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.0,
+            "reason": "Tool mismatch"
+          }
+        ]
+      },
+      {
+        "test_id": "test_46",
+        "success": true,
+        "eval_item_id": 46,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "What's the difference between weather and climate?"
+          },
+          {
+            "role": "assistant",
+            "content": "The difference between weather and climate lies in their time scales and focus:  \n- **Weather** describes short-term atmospheric conditions (e.g., temperature, precipitation, wind) in a specific location, typically over hours to days. It's variable and unpredictable.  \n- **Climate** is the long-term average of weather patterns in a region, usually spanning decades or centuries. It reflects trends in temperature, precipitation, and other environmental factors.  \n\nFor example, a sudden thunderstorm is weather, while the average annual rainfall in a city is climate. Climate change refers to long-term shifts in climate patterns, often driven by human activities."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_27",
+        "success": false,
+        "eval_item_id": 27,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "How's the weather in Tokyo right now?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2023-10-05"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-05"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2025-09-05"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_10",
+        "success": true,
+        "eval_item_id": 10,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Can you check the weather for Berlin on 2024-09-15?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2024-09-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_30",
+        "success": false,
+        "eval_item_id": 30,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Current weather in Paris, please"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Paris",
+                    "date": "2023-10-05"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-05"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Paris\", \"date\": \"2025-09-05\"}}"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_17",
+        "success": true,
+        "eval_item_id": 17,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "You are a bot that responds to weather queries. Your final answer to the user question must be in natural language."
+          },
+          {
+            "role": "user",
+            "content": "Check Dubai weather for 2024-02-18"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      }
+    ]
+  }
+}

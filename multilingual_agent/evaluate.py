@@ -277,9 +277,9 @@ class AgentEvaluator:
         eval_data = self.load_evaluation_data(data_path)
 
         # Shuffle data and limit to first 10 for testing
-        random.seed(42)  # For reproducible results
-        random.shuffle(eval_data)
-        eval_data = eval_data[:10]
+        # random.seed(42)  # For reproducible results
+        # random.shuffle(eval_data)
+        # eval_data = eval_data[:10]
 
         test_cases = []
 
