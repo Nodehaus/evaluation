@@ -18,7 +18,6 @@ MODELS = {
     "Qwen/Qwen3-14B": {},
     "openai/gpt-oss-20b": {},
     "mistralai/Mistral-Nemo-Instruct-2407": {},
-    "mistralai/Mistral-7B-Instruct-v0.3": {},
 }
 
 

@@ -479,17 +479,6 @@ class MultilingualAgent:
 
         return tool_calls
 
-    def _remove_thinking_tags(self, text: str) -> str:
-        """Remove <think>...</think> blocks from text."""
-        # Remove <think>...</think> blocks
-        cleaned = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
-
-        # Remove other common special tokens that might appear in final responses
-        cleaned = re.sub(r"<\|im_end\|>", "", cleaned)
-        cleaned = re.sub(r"<\|.*?\|>", "", cleaned)
-
-        return cleaned.strip()
-
     def chat(self, user_message: str) -> List[Dict[str, Any]]:
         """
         Process user message and return full conversation.
@@ -572,9 +561,9 @@ class MultilingualAgent:
                     )
                     break
             else:
-                # No tool calls, clean thinking tags and add final response
-                clean_response = self._remove_thinking_tags(response_text)
-                conversation.append({"role": "assistant", "content": clean_response})
+                conversation.append(
+                    {"role": "assistant", "content": response_text.strip()}
+                )
                 break
 
         return conversation
