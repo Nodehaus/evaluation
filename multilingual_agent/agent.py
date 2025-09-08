@@ -339,8 +339,7 @@ class MultilingualAgent:
         self._load_model()
 
         # Check tool calling support after loading tokenizer
-        self.supports_tools = check_tool_calling_support(self.tokenizer)
-        if not self.supports_tools:
+        if not check_tool_calling_support(self.tokenizer):
             raise ModelNotSupported(f"Model {model_name} does not support tool calling")
 
         # Initialize translations
@@ -508,7 +507,7 @@ class MultilingualAgent:
         ]
 
         # Pass the Python functions directly to chat template (if supported)
-        tools = [weather_forecast, get_current_date] if self.supports_tools else None
+        tools = [weather_forecast, get_current_date]
 
         # Handle multiple rounds of tool calls
         max_tool_rounds = 5  # Prevent infinite loops
@@ -530,7 +529,7 @@ class MultilingualAgent:
             # Extract tool calls from response text
             tool_calls = self._extract_tool_calls_from_text(response_text)
 
-            if self.supports_tools and tool_calls:
+            if tool_calls:
                 tool_round += 1
 
                 # Add assistant message with only tool calls (no content)

@@ -311,31 +311,33 @@ def check_tool_calling_support(tokenizer) -> bool:
     if not hasattr(tokenizer, "chat_template") or tokenizer.chat_template is None:
         return False
 
-    try:
-        # Test with a simple tool to see if it's actually supported
-        test_conversation = [{"role": "user", "content": "Hello"}]
-        test_tools = [
-            {"name": "test_tool", "description": "Test tool", "parameters": {}}
-        ]
+    def get_current_date() -> str:
+        """
+        Get the current date.
 
-        # Apply chat template with tools
-        with_tools = tokenizer.apply_chat_template(
-            test_conversation,
-            tools=test_tools,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        Returns:
+            Current date in YYYY-MM-DD format
+        """
+        return "2025-09-11"
 
-        # Apply chat template without tools
-        without_tools = tokenizer.apply_chat_template(
-            test_conversation,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+    # Test with a simple tool to see if it's actually supported
+    test_conversation = [{"role": "user", "content": "Hello"}]
+    test_tools = [get_current_date]
 
-        # If tool support exists, the templates should be different
-        return with_tools != without_tools
+    # Apply chat template with tools
+    with_tools = tokenizer.apply_chat_template(
+        test_conversation,
+        tools=test_tools,
+        tokenize=False,
+        add_generation_prompt=True,
+    )
 
-    except Exception:
-        # If tools parameter is not supported, it will raise an exception
-        return False
+    # Apply chat template without tools
+    without_tools = tokenizer.apply_chat_template(
+        test_conversation,
+        tokenize=False,
+        add_generation_prompt=True,
+    )
+
+    # If tool support exists, the templates should be different
+    return with_tools != without_tools
