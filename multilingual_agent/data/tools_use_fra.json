@@ -979,256 +979,6 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Quel temps fait-il à Berlin aujourd'hui ?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Berlin",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 7, \"humidity\": 60, \"wind_speed\": 20}"
-      },
-      {
-        "role": "assistant",
-        "content": "Le temps à Berlin aujourd'hui (11 septembre 2025) est frais avec une température de 7°C. L'humidité est à 60% avec des vents forts à 20 km/h. C'est une journée d'automne froide et venteuse à Berlin, vous aurez donc définitivement besoin de vêtements chauds et devrez être prêpaté pour le refroidissement éolien !"
-      }
-    ]
-  },
-  {
-    "id": 32,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Comment est le temps à Bangkok en ce moment ?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Bangkok",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 65, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Le temps à Bangkok en ce moment (11 septembre 2025) est chaud et agréable avec une température de 27°C. L'humidité est modérée à 65% avec des vents légers à 13 km/h. C'est un excellent temps d'automne pour Bangkok - chaud mais pas trop chaud ou humide, parfait pour faire du tourisme et des activités en plein air !"
-      }
-    ]
-  },
-  {
-    "id": 33,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Temps à Sydney aujourd'hui ?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Sydney",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 75, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Le temps à Sydney aujourd'hui (11 septembre 2025) est un temps printanier chaud avec une température de 23°C. L'humidité est à 75% avec des vents légers à 13 km/h. C'est une belle journée de printemps à Sydney - chaude et agréable, parfaite pour profiter des plages et des activités en plein air !"
-      }
-    ]
-  },
-  {
-    "id": 34,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Quel temps fait-il au Caire maintenant ?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Cairo",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 30, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Le temps au Caire maintenant (11 septembre 2025) est un temps d'automne doux avec une température de 23°C. L'humidité est faible à 30% avec des vents modérés à 18 km/h. C'est un temps d'automne agréable au Caire - chaud et sec, beaucoup plus confortable que les mois d'été chauds !"
-      }
-    ]
-  },
-  {
-    "id": 35,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "J'ai besoin du temps d'aujourd'hui pour Dubaï"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Dubai",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Le temps d'aujourd'hui à Dubaï (11 septembre 2025) est chaud et agréable avec une température de 27°C. L'humidité est faible à 35% avec des vents modérés à 18 km/h. C'est un temps d'automne parfait à Dubaï - chaud et confortable avec une faible humidité, idéal pour les activités en plein air et le tourisme !"
-      }
-    ]
-  },
-  {
-    "id": 36,
-    "conversation": [
-      {
-        "role": "user",
         "content": "Quel temps fait-il à São Paulo demain ?"
       },
       {
@@ -1275,7 +1025,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 32,
     "conversation": [
       {
         "role": "user",
@@ -1325,7 +1075,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 33,
     "conversation": [
       {
         "role": "user",
@@ -1375,7 +1125,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": 34,
     "conversation": [
       {
         "role": "user",
@@ -1425,7 +1175,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": 35,
     "conversation": [
       {
         "role": "user",
@@ -1475,7 +1225,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": 36,
     "conversation": [
       {
         "role": "user",
@@ -1525,7 +1275,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": 37,
     "conversation": [
       {
         "role": "user",
@@ -1575,7 +1325,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": 38,
     "conversation": [
       {
         "role": "user",
@@ -1625,7 +1375,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": 39,
     "conversation": [
       {
         "role": "user",
@@ -1675,7 +1425,7 @@
     ]
   },
   {
-    "id": 45,
+    "id": 40,
     "conversation": [
       {
         "role": "user",
@@ -1725,7 +1475,7 @@
     ]
   },
   {
-    "id": 46,
+    "id": 41,
     "conversation": [
       {
         "role": "user",
@@ -1738,7 +1488,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": 42,
     "conversation": [
       {
         "role": "user",
@@ -1751,7 +1501,7 @@
     ]
   },
   {
-    "id": 48,
+    "id": 43,
     "conversation": [
       {
         "role": "user",
@@ -1764,7 +1514,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": 44,
     "conversation": [
       {
         "role": "user",
@@ -1777,7 +1527,7 @@
     ]
   },
   {
-    "id": 50,
+    "id": 45,
     "conversation": [
       {
         "role": "user",

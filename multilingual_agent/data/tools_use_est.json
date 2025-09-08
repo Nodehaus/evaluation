@@ -979,256 +979,6 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Milline on tänane ilm Berliinis?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Berlin",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 7, \"humidity\": 60, \"wind_speed\": 20}"
-      },
-      {
-        "role": "assistant",
-        "content": "Ilm Berliinis täna (11. september 2025) on jahe sügiseilm temperatuuriga 7°C. Õhuniiskus on 60% juures tugeva tuulega kiirusega 20 km/h. See on jahe ja tuuline sügispäev Berliinis, seega vajate kindlasti sooja riietust ja peate olema valmis tuule külmatunde efektiks!"
-      }
-    ]
-  },
-  {
-    "id": 32,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Kuidas on praegu ilm Bangkokis?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Bangkok",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 65, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Ilm Bangkokis praegu (11. september 2025) on soe ja meeldiv temperatuuriga 27°C. Õhuniiskus on mõõdukas 65% juures kerge tuulega kiirusega 13 km/h. See on suurepärane hilise vihmahooaja ilm Bangkokis - soe, kuid mitte liiga kuum ega niiske, täiuslik vaatamisväärsustega tutvumiseks ja välitegevusteks!"
-      }
-    ]
-  },
-  {
-    "id": 33,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Ilm Sydneys täna?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Sydney",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 75, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Ilm Sydneys täna (11. september 2025) on mahe kevadilm temperatuuriga 23°C. Õhuniiskus on 75% juures kerge tuulega kiirusega 13 km/h. See on ilus kevadpäev Sydneys - mahe ja meeldiv, täiuslik õues olemiseks ja varakevadiste tegevuste nautimiseks!"
-      }
-    ]
-  },
-  {
-    "id": 34,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Milline on ilm praegu Kairos?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Cairo",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 30, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Ilm Kairos praegu (11. september 2025) on soe hilissuvine ilm temperatuuriga 23°C. Õhuniiskus on madal 30% juures mõõduka tuulega kiirusega 18 km/h. See on meeldiv hilissuvine ilm Kairos - soe ja kuiv, muutumas mugavamaks, kui ülemineku teeme kuumadelt suvekuudelt!"
-      }
-    ]
-  },
-  {
-    "id": 35,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Vajan tänaset ilma Dubai jaoks"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Dubai",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Tänane ilm Dubais (11. september 2025) on soe ja meeldiv temperatuuriga 27°C. Õhuniiskus on madal 35% juures mõõduka tuulega kiirusega 18 km/h. See on meeldiv hilissuvine ilm Dubais - soe ja mugav madalama niiskusega, ideaalne välitegevusteks ja vaatamisväärsustega tutvumiseks!"
-      }
-    ]
-  },
-  {
-    "id": 36,
-    "conversation": [
-      {
-        "role": "user",
         "content": "Milline saab olema ilm São Paulos homme?"
       },
       {
@@ -1275,7 +1025,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 32,
     "conversation": [
       {
         "role": "user",
@@ -1325,7 +1075,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 33,
     "conversation": [
       {
         "role": "user",
@@ -1375,7 +1125,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": 34,
     "conversation": [
       {
         "role": "user",
@@ -1425,7 +1175,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": 35,
     "conversation": [
       {
         "role": "user",
@@ -1475,7 +1225,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": 36,
     "conversation": [
       {
         "role": "user",
@@ -1525,7 +1275,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": 37,
     "conversation": [
       {
         "role": "user",
@@ -1575,7 +1325,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": 38,
     "conversation": [
       {
         "role": "user",
@@ -1625,7 +1375,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": 39,
     "conversation": [
       {
         "role": "user",
@@ -1675,7 +1425,7 @@
     ]
   },
   {
-    "id": 45,
+    "id": 40,
     "conversation": [
       {
         "role": "user",
@@ -1725,7 +1475,7 @@
     ]
   },
   {
-    "id": 46,
+    "id": 41,
     "conversation": [
       {
         "role": "user",
@@ -1738,7 +1488,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": 42,
     "conversation": [
       {
         "role": "user",
@@ -1751,7 +1501,7 @@
     ]
   },
   {
-    "id": 48,
+    "id": 43,
     "conversation": [
       {
         "role": "user",
@@ -1764,7 +1514,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": 44,
     "conversation": [
       {
         "role": "user",
@@ -1777,7 +1527,7 @@
     ]
   },
   {
-    "id": 50,
+    "id": 45,
     "conversation": [
       {
         "role": "user",

@@ -979,256 +979,6 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Hoe is het weer vandaag in Berlijn?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Berlin",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 7, \"humidity\": 60, \"wind_speed\": 20}"
-      },
-      {
-        "role": "assistant",
-        "content": "Het weer in Berlijn vandaag (11 september 2025) is koel herfstweer met een temperatuur van 7°C. De luchtvochtigheid is 60% met sterke wind van 20 km/u. Het is een koele en winderige herfstdag in Berlijn, dus u hebt zeker warme kleding nodig en moet voorbereid zijn op de windkil!"
-      }
-    ]
-  },
-  {
-    "id": 32,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Hoe is het weer nu in Bangkok?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Bangkok",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 65, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Het weer in Bangkok op dit moment (11 september 2025) is warm en aangenaam met een temperatuur van 27°C. De luchtvochtigheid is matig op 65% met lichte wind van 13 km/u. Dit is uitstekend laat regenseizoen weer voor Bangkok - warm maar niet te heet of vochtig, perfect voor sightseeing en buitenactiviteiten!"
-      }
-    ]
-  },
-  {
-    "id": 33,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Weer in Sydney vandaag?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Sydney",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 75, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Het weer in Sydney vandaag (11 september 2025) is mild lenteweer met een temperatuur van 23°C. De luchtvochtigheid is 75% met lichte wind van 13 km/u. Het is een prachtige lentedag in Sydney - mild en aangenaam, perfect om buiten te genieten en vroege lenteactiviteiten te ondernemen!"
-      }
-    ]
-  },
-  {
-    "id": 34,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Hoe is het weer nu in Caïro?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Cairo",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 30, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Het weer in Caïro nu (11 september 2025) is warm laat-zomerweer met een temperatuur van 23°C. De luchtvochtigheid is laag op 30% met matige wind van 18 km/u. Het is aangenaam laat-zomerweer in Caïro - warm en droog, steeds comfortabeler nu we overgaan van de hete zomermaanden!"
-      }
-    ]
-  },
-  {
-    "id": 35,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Ik heb het weer van vandaag voor Dubai nodig"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Dubai",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Het weer vandaag in Dubai (11 september 2025) is warm en aangenaam met een temperatuur van 27°C. De luchtvochtigheid is laag op 35% met matige wind van 18 km/u. Het is aangenaam laat-zomerweer in Dubai - warm en comfortabel met lage luchtvochtigheid, ideaal voor buitenactiviteiten en sightseeing!"
-      }
-    ]
-  },
-  {
-    "id": 36,
-    "conversation": [
-      {
-        "role": "user",
         "content": "Hoe wordt het weer morgen in São Paulo?"
       },
       {
@@ -1275,7 +1025,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 32,
     "conversation": [
       {
         "role": "user",
@@ -1325,7 +1075,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 33,
     "conversation": [
       {
         "role": "user",
@@ -1375,7 +1125,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": 34,
     "conversation": [
       {
         "role": "user",
@@ -1425,7 +1175,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": 35,
     "conversation": [
       {
         "role": "user",
@@ -1475,7 +1225,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": 36,
     "conversation": [
       {
         "role": "user",
@@ -1525,7 +1275,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": 37,
     "conversation": [
       {
         "role": "user",
@@ -1575,7 +1325,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": 38,
     "conversation": [
       {
         "role": "user",
@@ -1625,7 +1375,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": 39,
     "conversation": [
       {
         "role": "user",
@@ -1675,7 +1425,7 @@
     ]
   },
   {
-    "id": 45,
+    "id": 40,
     "conversation": [
       {
         "role": "user",
@@ -1725,7 +1475,7 @@
     ]
   },
   {
-    "id": 46,
+    "id": 41,
     "conversation": [
       {
         "role": "user",
@@ -1738,7 +1488,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": 42,
     "conversation": [
       {
         "role": "user",
@@ -1751,7 +1501,7 @@
     ]
   },
   {
-    "id": 48,
+    "id": 43,
     "conversation": [
       {
         "role": "user",
@@ -1764,7 +1514,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": 44,
     "conversation": [
       {
         "role": "user",
@@ -1777,7 +1527,7 @@
     ]
   },
   {
-    "id": 50,
+    "id": 45,
     "conversation": [
       {
         "role": "user",

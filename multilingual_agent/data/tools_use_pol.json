@@ -979,256 +979,6 @@
     "conversation": [
       {
         "role": "user",
-        "content": "Jaka jest dzisiaj pogoda w Berlinie?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Berlin",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 7, \"humidity\": 60, \"wind_speed\": 20}"
-      },
-      {
-        "role": "assistant",
-        "content": "Pogoda w Berlinie dzisiaj (11 września 2025) to chłodna jesienna pogoda z temperaturą 7°C. Wilgotność wynosi 60% przy silnym wietrze o prędkości 20 km/h. To chłodny i wietrzny jesienny dzień w Berlinie, więc zdecydowanie potrzebujesz ciepłej odzieży i powinieneś być przygotowany na efekt wiatru!"
-      }
-    ]
-  },
-  {
-    "id": 32,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Jaka jest teraz pogoda w Bangkoku?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Bangkok",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 65, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Pogoda w Bangkoku teraz (11 września 2025) jest ciepła i przyjemna z temperaturą 27°C. Wilgotność jest umiarkowana na poziomie 65% przy lekkim wietrze o prędkości 13 km/h. To doskonała pogoda końca pory deszczowej dla Bangkoku - ciepła, ale nie za gorąca czy wilgotna, idealna na zwiedzanie i aktywności na świeżym powietrzu!"
-      }
-    ]
-  },
-  {
-    "id": 33,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Pogoda w Sydney dzisiaj?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Sydney",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 75, \"wind_speed\": 13}"
-      },
-      {
-        "role": "assistant",
-        "content": "Pogoda w Sydney dzisiaj (11 września 2025) to łagodna wiosenna pogoda z temperaturą 23°C. Wilgotność wynosi 75% przy lekkim wietrze o prędkości 13 km/h. To piękny wiosenny dzień w Sydney - łagodny i przyjemny, idealny na korzystanie z zewnętrznych aktywności i wczesnych wiosennych atrakcji!"
-      }
-    ]
-  },
-  {
-    "id": 34,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Jaka jest teraz pogoda w Kairze?"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Cairo",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 23, \"humidity\": 30, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Pogoda w Kairze teraz (11 września 2025) to ciepła późno-letnia pogoda z temperaturą 23°C. Wilgotność jest niska na poziomie 30% przy umiarkowanym wietrze o prędkości 18 km/h. To przyjemna późno-letnia pogoda w Kairze - ciepła i sucha, stająca się bardziej komfortowa w przejściu od gorących miesięcy letnich!"
-      }
-    ]
-  },
-  {
-    "id": 35,
-    "conversation": [
-      {
-        "role": "user",
-        "content": "Potrzebuję dzisiejszej pogody dla Dubaju"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_current_date",
-              "arguments": {}
-            },
-            "id": "call_1"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "2025-09-11"
-      },
-      {
-        "role": "assistant",
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "weather_forecast",
-              "arguments": {
-                "city": "Dubai",
-                "date": "2025-09-11"
-              }
-            },
-            "id": "call_2"
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
-      },
-      {
-        "role": "assistant",
-        "content": "Dzisiejsza pogoda w Dubaju (11 września 2025) jest ciepła i przyjemna z temperaturą 27°C. Wilgotność jest niska na poziomie 35% przy umiarkowanym wietrze o prędkości 18 km/h. To przyjemna późno-letnia pogoda w Dubaju - ciepła i komfortowa z niską wilgotnością, idealna na aktywności na świeżym powietrzu i zwiedzanie!"
-      }
-    ]
-  },
-  {
-    "id": 36,
-    "conversation": [
-      {
-        "role": "user",
         "content": "Jaka będzie jutro pogoda w São Paulo?"
       },
       {
@@ -1275,7 +1025,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 32,
     "conversation": [
       {
         "role": "user",
@@ -1325,7 +1075,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 33,
     "conversation": [
       {
         "role": "user",
@@ -1375,7 +1125,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": 34,
     "conversation": [
       {
         "role": "user",
@@ -1425,7 +1175,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": 35,
     "conversation": [
       {
         "role": "user",
@@ -1475,7 +1225,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": 36,
     "conversation": [
       {
         "role": "user",
@@ -1525,7 +1275,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": 37,
     "conversation": [
       {
         "role": "user",
@@ -1575,7 +1325,7 @@
     ]
   },
   {
-    "id": 43,
+    "id": 38,
     "conversation": [
       {
         "role": "user",
@@ -1625,7 +1375,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": 39,
     "conversation": [
       {
         "role": "user",
@@ -1675,7 +1425,7 @@
     ]
   },
   {
-    "id": 45,
+    "id": 40,
     "conversation": [
       {
         "role": "user",
@@ -1725,7 +1475,7 @@
     ]
   },
   {
-    "id": 46,
+    "id": 41,
     "conversation": [
       {
         "role": "user",
@@ -1738,7 +1488,7 @@
     ]
   },
   {
-    "id": 47,
+    "id": 42,
     "conversation": [
       {
         "role": "user",
@@ -1751,7 +1501,7 @@
     ]
   },
   {
-    "id": 48,
+    "id": 43,
     "conversation": [
       {
         "role": "user",
@@ -1764,7 +1514,7 @@
     ]
   },
   {
-    "id": 49,
+    "id": 44,
     "conversation": [
       {
         "role": "user",
@@ -1777,7 +1527,7 @@
     ]
   },
   {
-    "id": 50,
+    "id": 45,
     "conversation": [
       {
         "role": "user",
