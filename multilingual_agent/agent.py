@@ -342,7 +342,7 @@ class MultilingualAgent:
         self.supports_tools = check_tool_calling_support(self.tokenizer)
         if not self.supports_tools:
             raise ModelNotSupported(f"Model {model_name} does not support tool calling")
-        
+
         # Initialize translations
         self._init_translations()
 
@@ -354,32 +354,37 @@ class MultilingualAgent:
                 "to the user question must be in natural language."
             ),
             "deu": (
-                "Sie sind ein Bot, der auf Wetteranfragen antwortet. Ihre endgültige "
-                "Antwort auf die Benutzerfrage muss in natürlicher Sprache erfolgen."
+                "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze für Städtenamen die englische Form des Namens. Deine endgültige "
+                "Antwort auf die Benutzerfrage muss in natürlicher Sprache erfolgen. "
             ),
             "fra": (
-                "Vous êtes un bot qui répond aux requêtes météorologiques. Votre "
+                "Vous êtes un bot qui répond aux requêtes météorologiques. "
+                "Utilisez la forme anglaise des noms de villes. Votre "
                 "réponse finale à la question de l'utilisateur doit être en "
                 "langage naturel."
             ),
             "por": (
-                "Você é um bot que responde a consultas meteorológicas. Sua resposta "
+                "Você é um bot que responde a consultas meteorológicas. "
+                "Use a forma inglesa dos nomes das cidades. Sua resposta "
                 "final à pergunta do usuário deve ser em linguagem natural."
             ),
             "nld": (
-                "U bent een bot die reageert op weervragen. Uw eindantwoord op de "
+                "U bent een bot die reageert op weervragen. "
+                "Gebruik de Engelse vorm van stadsnamen. Uw eindantwoord op de "
                 "vraag van de gebruiker moet in natuurlijke taal zijn."
             ),
             "pol": (
-                "Jesteś botem, który odpowiada na zapytania pogodowe. Twoja ostateczna "
+                "Jesteś botem, który odpowiada na zapytania pogodowe. "
+                "Używaj angielskiej formy nazw miast. Twoja ostateczna "
                 "odpowiedź na pytanie użytkownika musi być w języku naturalnym."
             ),
             "est": (
-                "Olete bot, mis vastab ilmapäringutele. Teie lõplik vastus kasutaja "
-                "küsimusele peab olema loomulik keel."
+                "Olete bot, mis vastab ilmapäringutele. "
+                "Kasutage linnanimetuste inglisekeelset vormi. Teie lõplik vastus "
+                "kasutaja küsimusele peab olema loomulik keel."
             ),
         }
-        
+
         self.error_messages = {
             "eng": {
                 "cannot_answer": "Sorry, I could not answer your question.",
@@ -414,9 +419,7 @@ class MultilingualAgent:
                 ),
             },
             "est": {
-                "cannot_answer": (
-                    "Vabandust, ma ei saanud teie küsimusele vastata."
-                ),
+                "cannot_answer": ("Vabandust, ma ei saanud teie küsimusele vastata."),
                 "unknown_tool": "Vabandust, ma ei saa teie küsimusele vastata.",
             },
         }
