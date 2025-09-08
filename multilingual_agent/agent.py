@@ -342,6 +342,9 @@ class MultilingualAgent:
         if not check_tool_calling_support(self.tokenizer):
             raise ModelNotSupported(f"Model {model_name} does not support tool calling")
 
+        # Set tool call pattern based on chat template
+        self.tool_call_pattern = self._get_tool_call_pattern_from_template()
+
         # Initialize translations
         self._init_translations()
 
@@ -353,7 +356,8 @@ class MultilingualAgent:
                 "to the user question must be in natural language."
             ),
             "deu": (
-                "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze für Städtenamen die englische Form des Namens. Deine endgültige "
+                "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze für "
+                "Städtenamen die englische Form des Namens. Deine endgültige "
                 "Antwort auf die Benutzerfrage muss in natürlicher Sprache erfolgen. "
             ),
             "fra": (
@@ -446,7 +450,10 @@ class MultilingualAgent:
             return r"\[TOOL_CALLS\]\[(\{.*?\})\]"
         elif "<|channel|>commentary" in template and "<|call|>" in template:
             # Pattern: <|channel|>commentary to=func_name <|message|>{...}<|call|>
-            return r"<\|channel\|>commentary to=([^<\s]+).*?<\|message\|>(\{.*?\})<\|call\|>"
+            return (
+                r"<\|channel\|>commentary to=([^<\s]+).*?"
+                r"<\|message\|>(\{.*?\})<\|call\|>"
+            )
         else:
             # Default pattern
             return r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
@@ -456,14 +463,12 @@ class MultilingualAgent:
 
         tool_calls = []
 
-        # Get pattern from chat template
-        pattern = self._get_tool_call_pattern_from_template()
-        matches = re.findall(pattern, text, re.DOTALL)
+        matches = re.findall(self.tool_call_pattern, text, re.DOTALL)
 
         for i, match in enumerate(matches):
             try:
                 # Handle different pattern formats
-                if r"<\|channel\|>commentary" in pattern:
+                if r"<\|channel\|>commentary" in self.tool_call_pattern:
                     # Commentary pattern: (func_name, json_args)
                     if isinstance(match, tuple) and len(match) == 2:
                         func_name, json_args = match
@@ -492,7 +497,7 @@ class MultilingualAgent:
                         },
                         "id": f"call_{i + 1}",
                     }
-                
+
                 tool_calls.append(tool_call)
 
             except json.JSONDecodeError:
