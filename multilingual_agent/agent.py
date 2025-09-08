@@ -447,7 +447,7 @@ class MultilingualAgent:
         elif "<function_call>" in template and "</function_call>" in template:
             # Some models might use different XML-like tags
             return r"<function_call>\s*(\{.*?\})\s*</function_call>"
-        elif "[tool_calls]" in template or "tool_calls" in template:
+        elif "[tool_calls]" in template:
             # Pattern for: [TOOL_CALLS][{"name": "func", "arguments": {}}]</s>
             return r"\[TOOL_CALLS\]\[(\{.*?\})\]"
         elif "<|channel|>commentary" in template and "<|call|>" in template:
@@ -467,7 +467,7 @@ class MultilingualAgent:
 
         matches = re.findall(self.tool_call_pattern, text, re.DOTALL)
 
-        for i, match in enumerate(matches):
+        for match in matches:
             try:
                 # Handle different pattern formats
                 if r"<\|channel\|>commentary" in self.tool_call_pattern:
@@ -579,17 +579,21 @@ class MultilingualAgent:
 
                     # Add tool result to conversation
                     if isinstance(result, str):
-                        conversation.append({
-                            "role": "tool", 
-                            "content": result,
-                            "tool_call_id": tool_call_id
-                        })
+                        conversation.append(
+                            {
+                                "role": "tool",
+                                "content": result,
+                                "tool_call_id": tool_call_id,
+                            }
+                        )
                     else:
-                        conversation.append({
-                            "role": "tool", 
-                            "content": json.dumps(result),
-                            "tool_call_id": tool_call_id
-                        })
+                        conversation.append(
+                            {
+                                "role": "tool",
+                                "content": json.dumps(result),
+                                "tool_call_id": tool_call_id,
+                            }
+                        )
 
                 # If unknown tool was called, return error message
                 if unknown_tool_called:
