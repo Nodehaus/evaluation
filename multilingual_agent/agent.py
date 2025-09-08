@@ -441,9 +441,6 @@ class MultilingualAgent:
         elif "<function_call>" in template and "</function_call>" in template:
             # Some models might use different XML-like tags
             return r"<function_call>\s*(\{.*?\})\s*</function_call>"
-        elif "```json" in template:
-            # Some models use JSON code blocks
-            return r"```json\s*(\{.*?\})\s*```"
         else:
             # Default pattern
             return r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
