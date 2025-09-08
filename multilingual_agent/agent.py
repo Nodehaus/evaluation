@@ -1,5 +1,7 @@
 import json
+import random
 import re
+import string
 from datetime import datetime
 from typing import Any, Dict, List
 
@@ -482,7 +484,11 @@ class MultilingualAgent:
                                 "name": func_name,
                                 "arguments": tool_data,
                             },
-                            "id": f"call_{i + 1}",
+                            "id": "".join(
+                                random.choices(
+                                    string.ascii_letters + string.digits, k=9
+                                )
+                            ),
                         }
                     else:
                         continue
@@ -495,7 +501,9 @@ class MultilingualAgent:
                             "name": tool_data.get("name", ""),
                             "arguments": tool_data.get("arguments", {}),
                         },
-                        "id": f"call_{i + 1}",
+                        "id": "".join(
+                            random.choices(string.ascii_letters + string.digits, k=9)
+                        ),
                     }
 
                 tool_calls.append(tool_call)
