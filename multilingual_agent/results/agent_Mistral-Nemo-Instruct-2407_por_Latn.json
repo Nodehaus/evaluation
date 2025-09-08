@@ -1,20 +1,20 @@
 {
-  "model_name": "Qwen/Qwen3-8B",
-  "language": "deu",
-  "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_deu.json",
+  "model_name": "mistralai/Mistral-Nemo-Instruct-2407",
+  "language": "por",
+  "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_por.json",
   "evaluation_results": {
     "global_metrics": {
       "total_tests": 45,
-      "passed_tests": 41,
-      "failed_tests": 4,
-      "overall_pass_rate": 91.11,
+      "passed_tests": 12,
+      "failed_tests": 33,
+      "overall_pass_rate": 26.67,
       "average_scores_by_metric": {
-        "Tool Correctness": 0.9778,
-        "Argument Correctness": 0.9333
+        "Tool Correctness": 0.7407,
+        "Argument Correctness": 0.5571
       },
       "pass_rates_by_metric": {
-        "Tool Correctness": 97.78,
-        "Argument Correctness": 88.57
+        "Tool Correctness": 51.11,
+        "Argument Correctness": 40.0
       }
     },
     "test_results": [
@@ -25,25 +25,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie lautet die Hauptstadt von Frankreich?"
+            "content": "Qual \u00e9 a capital da Fran\u00e7a?"
           },
           {
             "role": "assistant",
-            "content": "Die Hauptstadt von Frankreich ist Paris."
+            "content": "A capital da Fran\u00e7a \u00e9 Paris.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie lautet die Hauptstadt von Frankreich?"
+            "content": "Qual \u00e9 a capital da Fran\u00e7a?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin ein Wetter-Bot, der bei wetterbezogenen Anfragen hilft. F\u00fcr Fragen zur Geografie wie Hauptst\u00e4dte empfehle ich eine Suchmaschine oder Enzyklop\u00e4die. Wenn Sie jedoch das Wetter in Paris, Frankreich wissen m\u00f6chten, helfe ich gerne dabei!"
+            "content": "Sou um bot meteorol\u00f3gico projetado para ajudar com consultas relacionadas ao clima. Para perguntas sobre geografia como capitais, recomendaria usar um motor de busca ou enciclop\u00e9dia. No entanto, se quiser saber sobre o tempo em Paris, Fran\u00e7a, ficarei feliz em ajudar!"
           }
         ],
         "metrics_data": [
@@ -62,25 +62,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "K\u00f6nnen Sie mir einen Witz erz\u00e4hlen?"
+            "content": "Pode me contar uma piada?"
           },
           {
             "role": "assistant",
-            "content": "Leider kann ich keine Witze erz\u00e4hlen, aber ich kann Ihnen gerne das Wetter in einer Stadt und einem bestimmten Datum sagen! \ud83d\ude0a Wohin und wann m\u00f6chten Sie wissen?"
+            "content": "Por que os programadores preferem o sol a chover?\n\nPorque o sol \u00e9 mais f\u00e1cil de debugar!</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "K\u00f6nnen Sie mir einen Witz erz\u00e4hlen?"
+            "content": "Pode me contar uma piada?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin auf Wetterinformationen und Vorhersagen spezialisiert. Obwohl ich keine Witze erz\u00e4hlen kann, kann ich interessante Wetterfakten mitteilen! Wussten Sie zum Beispiel, dass Blitze f\u00fcnfmal hei\u00dfer werden k\u00f6nnen als die Sonnenoberfl\u00e4che? Wenn Sie das Wetter f\u00fcr einen bestimmten Ort wissen m\u00f6chten, fragen Sie einfach!"
+            "content": "Sou especializado em informa\u00e7\u00f5es e previs\u00f5es meteorol\u00f3gicas. Embora n\u00e3o possa contar piadas, posso compartilhar fatos interessantes sobre o clima! Por exemplo, voc\u00ea sabia que os raios podem atingir temperaturas cinco vezes mais quentes que a superf\u00edcie do sol? Se quiser saber o tempo para algum local espec\u00edfico, \u00e9 s\u00f3 perguntar!"
           }
         ],
         "metrics_data": [
@@ -99,25 +99,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie koche ich Pasta?"
+            "content": "Como cozinho macarr\u00e3o?"
           },
           {
             "role": "assistant",
-            "content": "Ich kann dir leider nicht dabei helfen, Pasta zu kochen, da ich keine Funktionen f\u00fcr Rezepten oder Kochanleitungen habe. Meine F\u00e4higkeiten sind auf Wetterinformationen beschr\u00e4nkt. M\u00f6chtest du wissen, wie das Wetter in einer bestimmten Stadt aussieht?"
+            "content": "Eu n\u00e3o tenho informa\u00e7\u00f5es sobre como cozinhar macarr\u00e3o. No entanto, posso fornecer informa\u00e7\u00f5es sobre o clima. Em que cidade voc\u00ea gostaria de saber sobre o clima?</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie koche ich Pasta?"
+            "content": "Como cozinho macarr\u00e3o?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin ein Wetterassistent, daher kann ich nicht bei Kochanleitungen helfen. Aber ich kann Ihnen Wetterbedingungen mitteilen, wenn Sie ein Barbecue oder Picknick im Freien planen! Sagen Sie mir einfach, f\u00fcr welche Stadt Sie sich interessieren, und ich kann Wetterinformationen liefern."
+            "content": "Sou um assistente meteorol\u00f3gico, ent\u00e3o n\u00e3o posso ajudar com instru\u00e7\u00f5es culin\u00e1rias. No entanto, posso informar sobre condi\u00e7\u00f5es clim\u00e1ticas se estiver planejando um churrasco ou piquenique ao ar livre! S\u00f3 me diga em que cidade est\u00e1 interessado e posso fornecer informa\u00e7\u00f5es meteorol\u00f3gicas."
           }
         ],
         "metrics_data": [
@@ -136,25 +136,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie sp\u00e4t ist es?"
+            "content": "Que horas s\u00e3o?"
           },
           {
             "role": "assistant",
-            "content": "Ich kann Ihnen die aktuelle Uhrzeit nicht direkt sagen, aber ich kann Ihnen das heutige Datum geben. Das heutige Datum ist 2023-10-05. M\u00f6chten Sie wissen, wie das Wetter in einer bestimmten Stadt heute oder an einem anderen Tag ist?"
+            "content": "A hora atual \u00e9 18:30 (hor\u00e1rio de Bras\u00edlia).</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie sp\u00e4t ist es?"
+            "content": "Que horas s\u00e3o?"
           },
           {
             "role": "assistant",
-            "content": "Ich habe keinen Zugriff auf aktuelle Uhrzeitinformationen, aber ich kann bei Wettervorhersagen und aktuellen Wetterbedingungen f\u00fcr jede Stadt helfen. Gibt es einen bestimmten Ort, f\u00fcr den Sie das Wetter wissen m\u00f6chten?"
+            "content": "N\u00e3o tenho acesso a informa\u00e7\u00f5es de hor\u00e1rio atual, mas posso ajudar com previs\u00f5es meteorol\u00f3gicas e condi\u00e7\u00f5es clim\u00e1ticas atuais para qualquer cidade. H\u00e1 algum local espec\u00edfico onde gostaria de saber o tempo?"
           }
         ],
         "metrics_data": [
@@ -173,25 +173,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Was ist 2 + 2?"
+            "content": "Quanto \u00e9 2 + 2?"
           },
           {
             "role": "assistant",
-            "content": "2 + 2 ist 4."
+            "content": "8</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was ist 2 + 2?"
+            "content": "Quanto \u00e9 2 + 2?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin darauf ausgelegt, bei wetterbezogenen Fragen zu helfen, nicht bei Matheaufgaben. Wenn Sie Wetterinformationen f\u00fcr eine Stadt ben\u00f6tigen oder \u00fcber kommende Wetterbedingungen wissen m\u00f6chten, bin ich da!"
+            "content": "Sou projetado para ajudar com quest\u00f5es relacionadas ao clima, n\u00e3o com problemas matem\u00e1ticos. Se precisar de informa\u00e7\u00f5es meteorol\u00f3gicas para alguma cidade ou quiser saber sobre condi\u00e7\u00f5es clim\u00e1ticas futuras, estou aqui para ajudar!"
           }
         ],
         "metrics_data": [
@@ -205,16 +205,34 @@
       },
       {
         "test_id": "test_6",
-        "success": true,
+        "success": false,
         "eval_item_id": 6,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter in New York am 15.7.2024?"
+            "content": "Como est\u00e1 o tempo em Nova York em 07/15/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "47rRzIOHG"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "47rRzIOHG"
           },
           {
             "role": "assistant",
@@ -224,27 +242,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "New York",
+                    "city": "Nova York",
                     "date": "2024-07-15"
                   }
                 },
-                "id": "call_1"
+                "id": "hSyJF7E8u"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "hSyJF7E8u"
           },
           {
             "role": "assistant",
-            "content": "Am 15. Juli 2024 wird es in New York 25 \u00b0C warm, mit einer Luftfeuchtigkeit von 75 % und einem Windgeschwindigkeits von 13 km/h. Das Wetter ist somit angenehm und leicht bew\u00f6lkt."
+            "content": "A previs\u00e3o do tempo para Nova York em 15 de julho de 2024 \u00e9 a seguinte:\n\n- Temperatura: 25 graus\n- Humidade: 75%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter in New York am 15.7.2024?"
+            "content": "Como est\u00e1 o tempo em Nova York em 07/15/2024?"
           },
           {
             "role": "assistant",
@@ -268,36 +287,54 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in New York am 15. Juli 2024 f\u00fchrt zu einen angenehmen Sommertag mit einer Temperatur von 25\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 75%, wodurch es sich etwas schw\u00fcl anf\u00fchlt, und es wird leichte Winde mit 15 km/h geben. Es ist ein gro\u00dfartiger Tag f\u00fcr Aktivit\u00e4ten im Freien, obwohl Sie bei der Luftfeuchtigkeit ausreichend trinken sollten."
+            "content": "O tempo em Nova York em 15 de julho de 2024 mostra um agrad\u00e1vel dia de ver\u00e3o com temperatura de 25\u00b0C. A umidade estar\u00e1 em 75%, deixando um pouco abafado, e haver\u00e1 ventos leves de 15 km/h. \u00c9 um \u00f3timo dia para atividades ao ar livre, embora voc\u00ea deva se manter hidratado devido \u00e0 umidade."
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_7",
-        "success": true,
+        "success": false,
         "eval_item_id": 7,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter in London am 25. Dezember 2024?"
+            "content": "Como est\u00e1 o tempo em Londres em 25 de dezembro de 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "DBGw2p7Pw"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "DBGw2p7Pw"
           },
           {
             "role": "assistant",
@@ -307,27 +344,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "London",
+                    "city": "Londres",
                     "date": "2024-12-25"
                   }
                 },
-                "id": "call_1"
+                "id": "BXcgaLoPp"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+            "content": "{\"temperature\": 12, \"humidity\": 55, \"wind_speed\": 20}",
+            "tool_call_id": "BXcgaLoPp"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London am 25. Dezember 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 10 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 18 km/h  \n\nEs wird also etwas k\u00fchler und windig sein, aber keine extremschlechten Bedingungen. \ud83d\ude0a"
+            "content": "A previs\u00e3o do tempo para Londres em 25 de dezembro de 2024 \u00e9 a seguinte:\n\n- Temperatura: 12 graus\n- Humidade: 55%\n- Velocidade do vento: 20 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter in London am 25. Dezember 2024?"
+            "content": "Como est\u00e1 o tempo em Londres em 25 de dezembro de 2024?"
           },
           {
             "role": "assistant",
@@ -351,36 +389,54 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London am Weihnachtstag, dem 25. Dezember 2024, wird typisches Winterwetter mit einer Temperatur von 10\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 70% bei m\u00e4\u00dfigen Winden mit 18 km/h. Es ist ein k\u00fchler Wintertag, also sollten Sie sich warm anziehen, wenn Sie zu Weihnachtsfeierlichkeiten hinausgehen!"
+            "content": "O tempo em Londres no Dia de Natal, 25 de dezembro de 2024, ser\u00e1 clima t\u00edpico de inverno com temperatura de 10\u00b0C. A umidade estar\u00e1 em 70% com ventos moderados de 18 km/h. \u00c9 um dia frio de inverno, ent\u00e3o vista-se bem aquecido se sair para celebra\u00e7\u00f5es natalinas!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_8",
-        "success": true,
+        "success": false,
         "eval_item_id": 8,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Erz\u00e4hle mir vom Wetter in Tokio am 1. April 2024"
+            "content": "Me conte sobre o tempo em T\u00f3quio em 1\u00ba de abril de 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "1NIIlbf2l"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "1NIIlbf2l"
           },
           {
             "role": "assistant",
@@ -394,23 +450,24 @@
                     "date": "2024-04-01"
                   }
                 },
-                "id": "call_1"
+                "id": "WDhMAoZwt"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 21, \"humidity\": 75, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 21, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "WDhMAoZwt"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Tokio am 1. April 2024 wird voraussichtlich mit einer Temperatur von 21 \u00b0C, einer Luftfeuchtigkeit von 75 % und einem Windgeschwindigkeit von 13 km/h sein."
+            "content": "The weather forecast for Tokyo on 1st April 2024 is as follows:\n\n- Temperature: 21\u00b0C\n- Humidity: 75%\n- Wind Speed: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Erz\u00e4hle mir vom Wetter in Tokio am 1. April 2024"
+            "content": "Me conte sobre o tempo em T\u00f3quio em 1\u00ba de abril de 2024"
           },
           {
             "role": "assistant",
@@ -434,15 +491,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Tokio am 1. April 2024 wird herrliches Fr\u00fchlingswetter mit einer Temperatur von 22\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 75% bei sanften Winden mit 13 km/h. Das ist perfektes Kirschbl\u00fcten-Wetter - ideal f\u00fcr Hanami (Bl\u00fctenbetrachtung) und Aktivit\u00e4ten im Freien bei den milden Fr\u00fchlingsbedingungen!"
+            "content": "O tempo em T\u00f3quio em 1\u00ba de abril de 2024 ser\u00e1 um lindo clima primaveril com temperatura de 22\u00b0C. A umidade estar\u00e1 em 75% com ventos suaves de 13 km/h. Este \u00e9 o clima perfeito para as cerejeiras - ideal para hanami (contempla\u00e7\u00e3o das flores) e atividades ao ar livre nas condi\u00e7\u00f5es amenas da primavera!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -454,16 +511,34 @@
       },
       {
         "test_id": "test_9",
-        "success": true,
+        "success": false,
         "eval_item_id": 9,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter in S\u00e3o Paulo am 01-18-2024?"
+            "content": "Como ser\u00e1 o tempo em S\u00e3o Paulo em 01-18-2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "icTuvnHLJ"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "icTuvnHLJ"
           },
           {
             "role": "assistant",
@@ -477,23 +552,24 @@
                     "date": "2024-01-18"
                   }
                 },
-                "id": "call_1"
+                "id": "MwntHe9g0"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 23, \"humidity\": 85, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 23, \"humidity\": 85, \"wind_speed\": 17}",
+            "tool_call_id": "MwntHe9g0"
           },
           {
             "role": "assistant",
-            "content": "Am 2024-01-18 in S\u00e3o Paulo wird das Wetter mit einer Temperatur von 23 \u00b0C, einer Luftfeuchtigkeit von 85 % und einer Windgeschwindigkeit von 17 km/h erwartet."
+            "content": "A previs\u00e3o do tempo para S\u00e3o Paulo em 2024-01-18 \u00e9 a seguinte:\n\n- Temperatura: 23 graus\n- Humidade: 85%\n- Velocidade do vento: 17 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter in S\u00e3o Paulo am 01-18-2024?"
+            "content": "Como ser\u00e1 o tempo em S\u00e3o Paulo em 01-18-2024?"
           },
           {
             "role": "assistant",
@@ -517,15 +593,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in S\u00e3o Paulo am 18. Januar 2024 wird warmes Sommerwetter mit einer Temperatur von 24\u00b0C sein. Die Luftfeuchtigkeit ist ziemlich hoch bei 85%, und die Winde werden leicht mit 12 km/h. Da es Sommer auf der S\u00fcdhalbkugel ist, erwarten Sie einen feuchten und warmen Tag - perfekt f\u00fcr Aktivit\u00e4ten in Innenr\u00e4umen mit Klimaanlage oder zum Schwimmen im Freien!"
+            "content": "O tempo em S\u00e3o Paulo em 18 de janeiro de 2024 ser\u00e1 clima quente de ver\u00e3o com temperatura de 24\u00b0C. A umidade estar\u00e1 bem alta em 85%, e os ventos ser\u00e3o leves a 12 km/h. Como \u00e9 ver\u00e3o no hemisf\u00e9rio sul, espere um dia \u00famido e quente - perfeito para atividades internas com ar condicionado ou nata\u00e7\u00e3o ao ar livre!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -537,16 +613,34 @@
       },
       {
         "test_id": "test_10",
-        "success": true,
+        "success": false,
         "eval_item_id": 10,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Kannst du das Wetter f\u00fcr Berlin am 15. September 2024 pr\u00fcfen?"
+            "content": "Voc\u00ea pode verificar o tempo para Berlim em 15 de setembro de 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "D9yBYP5Ha"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "D9yBYP5Ha"
           },
           {
             "role": "assistant",
@@ -556,27 +650,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Berlin",
+                    "city": "Berlim",
                     "date": "2024-09-15"
                   }
                 },
-                "id": "call_1"
+                "id": "6R3li1FcK"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "6R3li1FcK"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Berlin am 15. September 2024 wird wie folgt sein:  \n- **Temperatur**: 14 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nVorbereite dich auf einen milden, frischen Tag! \ud83c\udf2c\ufe0f"
+            "content": "A previs\u00e3o do tempo para Berlim em 15 de setembro de 2024 \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Umidade: 65%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Kannst du das Wetter f\u00fcr Berlin am 15. September 2024 pr\u00fcfen?"
+            "content": "Voc\u00ea pode verificar o tempo para Berlim em 15 de setembro de 2024?"
           },
           {
             "role": "assistant",
@@ -600,36 +695,36 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Berlin am 15. September 2024 ist k\u00fchles Herbstwetter mit einer Temperatur von 14\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% bei m\u00e4\u00dfigen Winden mit 15 km/h. Es ist typisches Fr\u00fchherbstwetter in Deutschland - Sie sollten eine leichte Jacke oder einen Pullover tragen, wenn Sie nach drau\u00dfen gehen."
+            "content": "O tempo em Berlim em 15 de setembro de 2024 ser\u00e1 clima fresco de outono com temperatura de 14\u00b0C. A umidade estar\u00e1 em 70% com ventos moderados de 15 km/h. \u00c9 clima t\u00edpico de in\u00edcio do outono na Alemanha - voc\u00ea vai querer usar uma jaqueta leve ou su\u00e9ter quando sair."
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_11",
-        "success": true,
+        "success": false,
         "eval_item_id": 11,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wettervorhersage f\u00fcr Miami am 20. Juni 2024, bitte"
+            "content": "Previs\u00e3o do tempo para Miami em 20 de junho de 2024, por favor"
           },
           {
             "role": "assistant",
@@ -637,29 +732,27 @@
               {
                 "type": "function",
                 "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Miami",
-                    "date": "2024-06-20"
-                  }
+                  "name": "get_current_date",
+                  "arguments": {}
                 },
-                "id": "call_1"
+                "id": "Cayu9XO3h"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 12}"
+            "content": "2025-09-11",
+            "tool_call_id": "Cayu9XO3h"
           },
           {
             "role": "assistant",
-            "content": "Die Wettervorhersage f\u00fcr Miami am 20. Juni 2024 zeigt folgende Bedingungen an:  \n- **Temperatur**: 30 \u00b0C  \n- **Feuchtigkeit**: 85 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDie Wetterdaten sind f\u00fcr das angegebene Datum g\u00fcltig. M\u00f6chten Sie weitere Details oder eine andere Stadt pr\u00fcfen?"
+            "content": "[{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Miami\", \"date\": \"2024-06-20\"}}]</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wettervorhersage f\u00fcr Miami am 20. Juni 2024, bitte"
+            "content": "Previs\u00e3o do tempo para Miami em 20 de junho de 2024, por favor"
           },
           {
             "role": "assistant",
@@ -683,36 +776,54 @@
           },
           {
             "role": "assistant",
-            "content": "Die Wettervorhersage f\u00fcr Miami am 20. Juni 2024 zeigt hei\u00dfe und feuchte Sommerbedingungen mit einer Temperatur von 31\u00b0C. Die Luftfeuchtigkeit wird hoch bei 85% sein mit leichten Winden bei 12 km/h. Es ist typisches Miami-Sommerwetter - sehr warm und feucht, perfekt f\u00fcr Strandaktivit\u00e4ten, aber Sie sollten ausreichend Fl\u00fcssigkeit zu sich nehmen und Pausen in klimatisierten R\u00e4umen einlegen!"
+            "content": "A previs\u00e3o do tempo para Miami em 20 de junho de 2024 mostra condi\u00e7\u00f5es quentes e \u00famidas de ver\u00e3o com temperatura de 31\u00b0C. A umidade estar\u00e1 alta em 85% com ventos leves de 12 km/h. \u00c9 o clima t\u00edpico de ver\u00e3o de Miami - muito quente e \u00famido, perfeito para atividades na praia, mas voc\u00ea vai querer se manter hidratado e fazer pausas no ar condicionado!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.0,
+            "reason": "Called 0/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/0 tools"
           }
         ]
       },
       {
         "test_id": "test_12",
-        "success": true,
+        "success": false,
         "eval_item_id": 12,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Ich brauche das Wetter f\u00fcr Bangkok am 18. M\u00e4rz 2024"
+            "content": "Preciso do tempo para Bangkok em 18/03/24"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "yJ4zOLIc8"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "yJ4zOLIc8"
           },
           {
             "role": "assistant",
@@ -726,23 +837,24 @@
                     "date": "2024-03-18"
                   }
                 },
-                "id": "call_1"
+                "id": "qtjNZTkLG"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}",
+            "tool_call_id": "qtjNZTkLG"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Bangkok am 18. M\u00e4rz 2024 wird wie folgt sein:  \n- **Temperatur**: 33 \u00b0C  \n- **Feuchte**: 80 %  \n- **Windgeschwindigkeit**: 16 km/h  \n\nM\u00f6chtest du weitere Details oder Informationen zu anderen St\u00e4dten?"
+            "content": "A previs\u00e3o do tempo para Bangkok em 18 de mar\u00e7o de 2024 \u00e9 a seguinte:\n\n- Temperatura: 33 graus\n- Umidade: 80%\n- Velocidade do vento: 16 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Ich brauche das Wetter f\u00fcr Bangkok am 18. M\u00e4rz 2024"
+            "content": "Preciso do tempo para Bangkok em 18/03/24"
           },
           {
             "role": "assistant",
@@ -766,15 +878,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Bangkok am 18. M\u00e4rz 2024 wird hei\u00df und feucht mit einer Temperatur von 33\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 80% bei leichten Winden mit 11 km/h. Das ist typisches Wetter f\u00fcr die hei\u00dfe Jahreszeit in Bangkok - sehr warm und feuchte Bedingungen, also sorgen Sie f\u00fcr leichte Kleidung, bleiben Sie hydratisiert und suchen Sie bei M\u00f6glichkeit klimatisierte R\u00e4ume auf."
+            "content": "O tempo em Bangkok em 18 de mar\u00e7o de 2024 estar\u00e1 quente e \u00famido com temperatura de 33\u00b0C. A umidade estar\u00e1 em 80% com ventos leves de 11 km/h. Este \u00e9 o clima t\u00edpico da esta\u00e7\u00e3o quente de Bangkok - condi\u00e7\u00f5es muito quentes e \u00famidas, ent\u00e3o certifique-se de se vestir levemente, manter-se hidratado e buscar espa\u00e7os com ar condicionado quando poss\u00edvel."
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -786,16 +898,34 @@
       },
       {
         "test_id": "test_13",
-        "success": true,
+        "success": false,
         "eval_item_id": 13,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Zeig mir das Wetter in Sydney f\u00fcr den 3. November 2024"
+            "content": "Mostre-me o tempo em Sydney para 03.11.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "GugEIOnYj"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "GugEIOnYj"
           },
           {
             "role": "assistant",
@@ -809,23 +939,24 @@
                     "date": "2024-11-03"
                   }
                 },
-                "id": "call_1"
+                "id": "YXwUC2On6"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 20}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 20}",
+            "tool_call_id": "YXwUC2On6"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Sydney am 3. November 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 20 \u00b0C  \n- **Feuchtigkeit**: 65 %  \n- **Windgeschwindigkeit**: 20 km/h  \n\nEs sieht so aus, als w\u00e4re das Wetter mild und angenehm! \ud83c\udf24\ufe0f"
+            "content": "The weather forecast for Sydney on 2024-11-03 is as follows:\n\n- Temperature: 20\u00b0C\n- Humidity: 65%\n- Wind Speed: 20 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Zeig mir das Wetter in Sydney f\u00fcr den 3. November 2024"
+            "content": "Mostre-me o tempo em Sydney para 03.11.2024"
           },
           {
             "role": "assistant",
@@ -849,15 +980,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Sydney am 3. November 2024 wird angenehmes Fr\u00fchlingswetter mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit ist angenehm bei 65% mit m\u00e4\u00dfigen Winden bei 15 km/h. Da es Fr\u00fchling auf der S\u00fcdhalbkugel ist, ist das herrliches Wetter f\u00fcr Outdoor-Aktivit\u00e4ten und Sightseeing in Sydney!"
+            "content": "O tempo em Sydney em 3 de novembro de 2024 ser\u00e1 um agrad\u00e1vel clima primaveril com temperatura de 20\u00b0C. A umidade estar\u00e1 confort\u00e1vel em 65% com ventos moderados de 15 km/h. Como \u00e9 primavera no hemisf\u00e9rio sul, este \u00e9 um clima lindo para atividades ao ar livre e turismo por Sydney!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -869,16 +1000,34 @@
       },
       {
         "test_id": "test_14",
-        "success": true,
+        "success": false,
         "eval_item_id": 14,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist es in Kairo am 12. August 2024?"
+            "content": "Como est\u00e1 o tempo no Cairo em 12 de agosto de 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "EQvK8iZco"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "EQvK8iZco"
           },
           {
             "role": "assistant",
@@ -892,23 +1041,24 @@
                     "date": "2024-08-12"
                   }
                 },
-                "id": "call_1"
+                "id": "HuuWebB0M"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 31, \"humidity\": 50, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 31, \"humidity\": 50, \"wind_speed\": 12}",
+            "tool_call_id": "HuuWebB0M"
           },
           {
             "role": "assistant",
-            "content": "In Kairo wird es am 12. August 2024 31 \u00b0C warm. Die Luftfeuchtigkeit betr\u00e4gt 50 % und die Windgeschwindigkeit liegt bei 12 km/h. Das Wetter wird sich also als sonnig und mild darstellen."
+            "content": "A previs\u00e3o do tempo para o Cairo em 12 de agosto de 2024 \u00e9 a seguinte:\n\n- Temperatura: 31 graus\n- Humidade: 50%\n- Velocidade do vento: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist es in Kairo am 12. August 2024?"
+            "content": "Como est\u00e1 o tempo no Cairo em 12 de agosto de 2024?"
           },
           {
             "role": "assistant",
@@ -932,15 +1082,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Kairo am 12. August 2024 wird hei\u00dfes Sommerwetter mit einer Temperatur von 31\u00b0C. Die Luftfeuchtigkeit ist m\u00e4\u00dfig bei 50% mit leichten Winden bei 13 km/h. Das ist typisches hei\u00dfes, trockenes Sommerwetter f\u00fcr Kairo - ziemlich warm, aber mit niedrigerer Luftfeuchtigkeit als viele andere hei\u00dfe Klimazonen, was es ertr\u00e4glicher macht."
+            "content": "O tempo no Cairo em 12 de agosto de 2024 ser\u00e1 clima quente de ver\u00e3o com temperatura de 31\u00b0C. A umidade estar\u00e1 moderada em 50% com ventos leves de 13 km/h. Este \u00e9 o clima t\u00edpico de ver\u00e3o quente e seco do Cairo - bem quente, mas com umidade menor que muitos outros climas quentes, tornando-o mais suport\u00e1vel."
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -952,16 +1102,34 @@
       },
       {
         "test_id": "test_15",
-        "success": true,
+        "success": false,
         "eval_item_id": 15,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wetterbedingungen in Vancouver am 25. Mai 2024?"
+            "content": "Condi\u00e7\u00f5es meteorol\u00f3gicas em Vancouver em 25/05/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "4UdW0Dy7i"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "4UdW0Dy7i"
           },
           {
             "role": "assistant",
@@ -972,26 +1140,27 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Vancouver",
-                    "date": "2024-05-25"
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "MHeymTJbE"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 23, \"humidity\": 70, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "MHeymTJbE"
           },
           {
             "role": "assistant",
-            "content": "F\u00fcr Vancouver am 25. Mai 2024 wird folgendes Wetter vorhergesagt:  \n- **Temperatur**: 23 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nDie Wetterbedingungen scheinen mild und angenehm zu sein! \ud83c\udf24\ufe0f"
+            "content": "A previs\u00e3o do tempo para Vancouver em 2025-09-11 \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 65%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wetterbedingungen in Vancouver am 25. Mai 2024?"
+            "content": "Condi\u00e7\u00f5es meteorol\u00f3gicas em Vancouver em 25/05/2024?"
           },
           {
             "role": "assistant",
@@ -1015,36 +1184,54 @@
           },
           {
             "role": "assistant",
-            "content": "Die Wetterbedingungen in Vancouver am 25. Mai 2024 werden mildes Fr\u00fchlingswetter mit einer Temperatur von 20\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 65% bei m\u00e4\u00dfigen Winden mit 15 km/h. Das ist herrliches sp\u00e4tes Fr\u00fchlingswetter in Vancouver - perfekt f\u00fcr die Erkundung der Outdoor-Attraktionen und Parks der Stadt!"
+            "content": "As condi\u00e7\u00f5es meteorol\u00f3gicas em Vancouver em 25 de maio de 2024 ser\u00e3o clima ameno de primavera com temperatura de 20\u00b0C. A umidade estar\u00e1 em 65% com ventos moderados de 15 km/h. Este \u00e9 um lindo clima de final de primavera em Vancouver - perfeito para explorar as atra\u00e7\u00f5es ao ar livre e parques da cidade!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_16",
-        "success": true,
+        "success": false,
         "eval_item_id": 16,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist es in Rom am 14. Oktober 2024?"
+            "content": "E Roma em 14 de outubro de 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "ncjWDPtau"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "ncjWDPtau"
           },
           {
             "role": "assistant",
@@ -1054,27 +1241,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Rome",
+                    "city": "roma",
                     "date": "2024-10-14"
                   }
                 },
-                "id": "call_1"
+                "id": "ohMofsrmI"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "ohMofsrmI"
           },
           {
             "role": "assistant",
-            "content": "Am 14. Oktober 2024 in Rom wird es 21 \u00b0C warm. Die Luftfeuchtigkeit betr\u00e4gt 65 %, und der Wind weht mit einer Geschwindigkeit von 12 km/h. Es wird ein mildes und angenehmes Wetter sein!"
+            "content": "A previs\u00e3o do tempo para Roma em 14 de outubro de 2024 \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 65%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist es in Rom am 14. Oktober 2024?"
+            "content": "E Roma em 14 de outubro de 2024?"
           },
           {
             "role": "assistant",
@@ -1098,36 +1286,54 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Rom am 14. Oktober 2024 wird angenehmes Herbstwetter mit einer Temperatur von 21\u00b0C. Die Luftfeuchtigkeit ist angenehm bei 65% mit m\u00e4\u00dfigen Winden bei 15 km/h. Das ist ideales Wetter f\u00fcr Sightseeing in Rom - nicht zu hei\u00df, nicht zu kalt, perfekt zum Spazierengehen zu den historischen Sehensw\u00fcrdigkeiten und zum Essen im Freien!"
+            "content": "O tempo em Roma em 14 de outubro de 2024 ser\u00e1 um agrad\u00e1vel clima de outono com temperatura de 21\u00b0C. A umidade estar\u00e1 confort\u00e1vel em 65% com ventos moderados de 15 km/h. Este \u00e9 o clima ideal para turismo em Roma - nem muito quente, nem muito frio, perfeito para caminhar pelos s\u00edtios hist\u00f3ricos e aproveitar refei\u00e7\u00f5es ao ar livre!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_17",
-        "success": true,
+        "success": false,
         "eval_item_id": 17,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Dubai-Wetter f\u00fcr den 18. Februar 2024 pr\u00fcfen"
+            "content": "Verifique o tempo em Dubai para 18/2/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "m2d8spm4A"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "m2d8spm4A"
           },
           {
             "role": "assistant",
@@ -1141,23 +1347,24 @@
                     "date": "2024-02-18"
                   }
                 },
-                "id": "call_1"
+                "id": "wLb2peS6h"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}",
+            "tool_call_id": "wLb2peS6h"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Dubai am 18. Februar 2024 wird wie folgt sein:  \n- **Temperatur**: 28 \u00b0C  \n- **Feuchtigkeit**: 35 %  \n- **Windgeschwindigkeit**: 17 km/h  \n\nDie Bedingungen deuten auf ein warmes und trockenes Wetter mit leichten Winden hin."
+            "content": "A previs\u00e3o do tempo para Dubai em 18/2/2024 \u00e9 a seguinte:\n\n- Temperatura: 28 graus\n- Humidade: 35%\n- Velocidade do vento: 17 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Dubai-Wetter f\u00fcr den 18. Februar 2024 pr\u00fcfen"
+            "content": "Verifique o tempo em Dubai para 18/2/2024"
           },
           {
             "role": "assistant",
@@ -1181,15 +1388,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Dubai am 18. Februar 2024 wird warm und angenehm mit einer Temperatur von 27\u00b0C. Die Luftfeuchtigkeit ist niedrig bei 35% mit m\u00e4\u00dfigen Winden bei 18 km/h. Das ist perfektes Winterwetter in Dubai - warm aber nicht zu hei\u00df, mit niedriger Luftfeuchtigkeit, was es sehr angenehm f\u00fcr Outdoor-Aktivit\u00e4ten und Sightseeing macht!"
+            "content": "O tempo em Dubai em 18 de fevereiro de 2024 estar\u00e1 quente e agrad\u00e1vel com temperatura de 27\u00b0C. A umidade estar\u00e1 baixa em 35% com ventos moderados de 18 km/h. Este \u00e9 o clima perfeito de inverno em Dubai - quente mas n\u00e3o muito quente, com baixa umidade tornando-o muito confort\u00e1vel para atividades ao ar livre e turismo!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1201,16 +1408,34 @@
       },
       {
         "test_id": "test_18",
-        "success": true,
+        "success": false,
         "eval_item_id": 18,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Was ist mit Singapur am 30. Juli 2024?"
+            "content": "E Singapura em 30 de julho de 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "zQUpzs2mg"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "zQUpzs2mg"
           },
           {
             "role": "assistant",
@@ -1220,27 +1445,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Singapore",
+                    "city": "Singapura",
                     "date": "2024-07-30"
                   }
                 },
-                "id": "call_1"
+                "id": "5SuiminEv"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 31, \"humidity\": 95, \"wind_speed\": 10}"
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "5SuiminEv"
           },
           {
             "role": "assistant",
-            "content": "Am 30. Juli 2024 in Singapur wird die Temperatur 31 \u00b0C betragen, die Luftfeuchtigkeit liegt bei 95 % und der Wind weht mit einer Geschwindigkeit von 10 km/h."
+            "content": "Previs\u00e3o do tempo para Singapura em 30 de julho de 2024:\n\nTemperatura: 25 graus\nHumidade: 75%\nVelocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was ist mit Singapur am 30. Juli 2024?"
+            "content": "E Singapura em 30 de julho de 2024?"
           },
           {
             "role": "assistant",
@@ -1264,36 +1490,54 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Singapur am 30. Juli 2024 wird hei\u00df und sehr feucht mit einer Temperatur von 31\u00b0C. Die Luftfeuchtigkeit wird sehr hoch bei 95% sein mit leichten Winden bei 11 km/h. Das ist typisches tropisches Wetter f\u00fcr Singapur - sehr warm und extrem feucht, also sollten Sie definitiv in klimatisierten R\u00e4umen bleiben und sich gut hydriert halten, wenn Sie drau\u00dfen sind!"
+            "content": "O tempo em Singapura em 30 de julho de 2024 estar\u00e1 quente e muito \u00famido com temperatura de 31\u00b0C. A umidade estar\u00e1 muito alta em 95% com ventos leves de 11 km/h. Este \u00e9 o clima tropical t\u00edpico de Singapura - muito quente e extremamente \u00famido, ent\u00e3o voc\u00ea vai querer ficar em espa\u00e7os com ar condicionado e se manter bem hidratado se estiver ao ar livre!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_19",
-        "success": true,
+        "success": false,
         "eval_item_id": 19,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Sag mir das Wetter in Chicago am 22. Januar 2024"
+            "content": "Me informe sobre o tempo em Chicago em 22-01-2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "5s5z9VfrM"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "5s5z9VfrM"
           },
           {
             "role": "assistant",
@@ -1307,23 +1551,24 @@
                     "date": "2024-01-22"
                   }
                 },
-                "id": "call_1"
+                "id": "PP2OK7yLb"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}",
+            "tool_call_id": "PP2OK7yLb"
           },
           {
             "role": "assistant",
-            "content": "Am 22. Januar 2024 in Chicago erwarten sie eine Temperatur von 9\u00b0C, eine Luftfeuchtigkeit von 60% und eine Windgeschwindigkeit von 21 km/h."
+            "content": "A previs\u00e3o do tempo para Chicago em 22-01-2024 \u00e9 a seguinte:\n\n- Temperatura: 9 graus\n- Humidade: 60%\n- Velocidade do vento: 21 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Sag mir das Wetter in Chicago am 22. Januar 2024"
+            "content": "Me informe sobre o tempo em Chicago em 22-01-2024"
           },
           {
             "role": "assistant",
@@ -1347,15 +1592,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Chicago am 22. Januar 2024 wird kaltes Winterwetter mit einer Temperatur von 9\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 60% bei starken Winden mit 21 km/h. Das ist typisches Chicago-Winterwetter - kalt und windig, also brauchen Sie warme Kleidung und sollten auf den Windchill-Effekt vorbereitet sein, der es noch k\u00e4lter erscheinen l\u00e4sst!"
+            "content": "O tempo em Chicago em 22 de janeiro de 2024 ser\u00e1 clima frio de inverno com temperatura de 9\u00b0C. A umidade estar\u00e1 em 60% com ventos fortes de 21 km/h. Este \u00e9 o clima t\u00edpico de inverno de Chicago - frio e ventoso, ent\u00e3o voc\u00ea precisar\u00e1 de roupas quentes e deve estar preparado para o efeito do vento frio que far\u00e1 parecer ainda mais gelado!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1367,16 +1612,34 @@
       },
       {
         "test_id": "test_20",
-        "success": true,
+        "success": false,
         "eval_item_id": 20,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Stockholm-Wetter am 15. Juni 2024, bitte"
+            "content": "Tempo em Estocolmo em 15-06-2024, por favor"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "BCx4sNiGX"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "BCx4sNiGX"
           },
           {
             "role": "assistant",
@@ -1386,27 +1649,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Stockholm",
+                    "city": "Estocolmo",
                     "date": "2024-06-15"
                   }
                 },
-                "id": "call_1"
+                "id": "mQsn5Jb2A"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 14}"
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "mQsn5Jb2A"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am 15. Juni 2024 wird wie folgt sein:  \nTemperatur: 14 \u00b0C  \nFeuchtigkeit: 85 %  \nWindgeschwindigkeit: 14 km/h  \n\nViel Spa\u00df bei der Planung deiner Aktivit\u00e4ten! \ud83c\udf26\ufe0f"
+            "content": "Previs\u00e3o do tempo para Estocolmo em 2024-06-15:\n\n- Temperatura: 25 graus\n- Umidade: 75%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Stockholm-Wetter am 15. Juni 2024, bitte"
+            "content": "Tempo em Estocolmo em 15-06-2024, por favor"
           },
           {
             "role": "assistant",
@@ -1430,36 +1694,54 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am 15. Juni 2024 wird mildes Sommerwetter mit einer Temperatur von 14\u00b0C. Die Luftfeuchtigkeit ist hoch bei 85% mit sanften Winden bei 13 km/h. Das ist typisches fr\u00fches Sommerwetter f\u00fcr Stockholm - angenehm mild aber mit hoher Luftfeuchtigkeit, perfekt um die langen Tagesstunden des schwedischen Sommers zu genie\u00dfen!"
+            "content": "O tempo em Estocolmo em 15 de junho de 2024 ser\u00e1 clima ameno de ver\u00e3o com temperatura de 14\u00b0C. A umidade estar\u00e1 alta em 85% com ventos suaves de 13 km/h. Este \u00e9 o clima t\u00edpico de in\u00edcio do ver\u00e3o para Estocolmo - agradavelmente ameno, mas com alta umidade, perfeito para aproveitar as longas horas de luz do ver\u00e3o sueco!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_21",
-        "success": true,
+        "success": false,
         "eval_item_id": 21,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Ich m\u00f6chte \u00fcber Seoul am 27. April 2024 wissen"
+            "content": "Quero saber sobre Seul em 27.04.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "AuK3xK3UJ"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "AuK3xK3UJ"
           },
           {
             "role": "assistant",
@@ -1473,23 +1755,24 @@
                     "date": "2024-04-27"
                   }
                 },
-                "id": "call_1"
+                "id": "jxy30oRM7"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 14}"
+            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 14}",
+            "tool_call_id": "jxy30oRM7"
           },
           {
             "role": "assistant",
-            "content": "Am 27. April 2024 in Seoul erwarten Sie folgende Wetterbedingungen:  \n- **Temperatur**: 20 \u00b0C  \n- **Luftfeuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nDas Wetter sieht moderat aus \u2013 eine gute Wahl f\u00fcr Spazierg\u00e4nge oder Outdoor-Aktivit\u00e4ten! \ud83c\udf24\ufe0f"
+            "content": "Em 27 de abril de 2024, a temperatura em Seul ser\u00e1 de 20 graus Celsius, com uma umidade de 70% e uma velocidade do vento de 14 km/h. Posso ajudar em mais alguma coisa?</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Ich m\u00f6chte \u00fcber Seoul am 27. April 2024 wissen"
+            "content": "Quero saber sobre Seul em 27.04.2024"
           },
           {
             "role": "assistant",
@@ -1513,15 +1796,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Seoul am 27. April 2024 wird angenehmes Fr\u00fchlingswetter mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% bei m\u00e4\u00dfigen Winden mit 15 km/h. Das ist herrliches Fr\u00fchlingswetter in Seoul - perfekt um Kirschbl\u00fcten zu genie\u00dfen, falls sie noch bl\u00fchen, und gro\u00dfartig f\u00fcr Outdoor-Aktivit\u00e4ten in der Stadt!"
+            "content": "O tempo em Seul em 27 de abril de 2024 ser\u00e1 um agrad\u00e1vel clima primaveril com temperatura de 20\u00b0C. A umidade estar\u00e1 em 70% com ventos moderados de 15 km/h. Este \u00e9 um lindo clima de primavera em Seul - perfeito para aproveitar as cerejeiras se ainda estiverem florindo, e \u00f3timo para atividades ao ar livre pela cidade!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1533,16 +1816,34 @@
       },
       {
         "test_id": "test_22",
-        "success": true,
+        "success": false,
         "eval_item_id": 22,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Kapstadt-Wetter am 5. August 2024?"
+            "content": "Tempo na Cidade do Cabo em 5 de agosto de 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "os6mjLuKu"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "os6mjLuKu"
           },
           {
             "role": "assistant",
@@ -1552,27 +1853,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Cape Town",
+                    "city": "Cidade do Cabo",
                     "date": "2024-08-05"
                   }
                 },
-                "id": "call_1"
+                "id": "SgpVW2FBA"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "SgpVW2FBA"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in **Cape Town** am **5. August 2024** wird wie folgt sein:  \n- **Temperatur**: 16 \u00b0C  \n- **Feuchtigkeit**: 55 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDas Wetter erscheint mild und angenehm. M\u00f6chtest du weitere Details oder Informationen zu anderen Daten? \ud83d\ude0a"
+            "content": "A previs\u00e3o do tempo para Cidade do Cabo em 5 de agosto de 2024 \u00e9 a seguinte:\n\nTemperatura: 25 graus\nHumidade: 75%\nVelocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Kapstadt-Wetter am 5. August 2024?"
+            "content": "Tempo na Cidade do Cabo em 5 de agosto de 2024?"
           },
           {
             "role": "assistant",
@@ -1596,36 +1898,54 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Kapstadt am 5. August 2024 wird k\u00fchles Winterwetter mit einer Temperatur von 16\u00b0C. Die Luftfeuchtigkeit ist m\u00e4\u00dfig bei 55% mit m\u00e4\u00dfigen Winden bei 17 km/h. Da es Winter auf der S\u00fcdhalbkugel ist, ist das typisches Kapstadt-Winterwetter - mild und angenehm, viel w\u00e4rmer als Winter auf der Nordhalbkugel!"
+            "content": "O tempo na Cidade do Cabo em 5 de agosto de 2024 ser\u00e1 clima fresco de inverno com temperatura de 16\u00b0C. A umidade estar\u00e1 moderada em 55% com ventos moderados de 17 km/h. Como \u00e9 inverno no hemisf\u00e9rio sul, este \u00e9 o clima t\u00edpico de inverno da Cidade do Cabo - ameno e agrad\u00e1vel, muito mais quente que o inverno no hemisf\u00e9rio norte!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_23",
-        "success": true,
+        "success": false,
         "eval_item_id": 23,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Mumbai am 18. November 2024, wie ist das Wetter?"
+            "content": "Mumbai em 18/11/2024, como est\u00e1 o tempo?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "E60tyqRgv"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "E60tyqRgv"
           },
           {
             "role": "assistant",
@@ -1639,23 +1959,24 @@
                     "date": "2024-11-18"
                   }
                 },
-                "id": "call_1"
+                "id": "s2FxIEH6p"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 17}",
+            "tool_call_id": "s2FxIEH6p"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Mumbai am 18. November 2024 wird wie folgt sein:  \nTemperatur: 30 \u00b0C, Luftfeuchtigkeit: 80 %, Windgeschwindigkeit: 17 km/h.  \nVorbereiten Sie sich auf eine warme und windige Tage! \ud83c\udf2c\ufe0f\ud83c\udf1e"
+            "content": "Em 18 de novembro de 2024, a temperatura em Mumbai ser\u00e1 de 30 graus Celsius, com uma umidade de 80% e uma velocidade do vento de 17 km/h.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Mumbai am 18. November 2024, wie ist das Wetter?"
+            "content": "Mumbai em 18/11/2024, como est\u00e1 o tempo?"
           },
           {
             "role": "assistant",
@@ -1679,15 +2000,15 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Mumbai am 18. November 2024 wird warm und feucht mit einer Temperatur von 30\u00b0C. Die Luftfeuchtigkeit ist hoch bei 80% mit leichten Winden bei 12 km/h. Das ist Post-Monsun-Wetter in Mumbai - immer noch ziemlich warm und feucht, aber generell angenehmer als die hei\u00dfesten Sommermonate."
+            "content": "O tempo em Mumbai em 18 de novembro de 2024 estar\u00e1 quente e \u00famido com temperatura de 30\u00b0C. A umidade estar\u00e1 alta em 80% com ventos leves de 12 km/h. Este \u00e9 o clima p\u00f3s-mon\u00e7\u00e3o em Mumbai - ainda bem quente e \u00famido, mas geralmente mais confort\u00e1vel que os meses de pico do ver\u00e3o."
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1699,16 +2020,34 @@
       },
       {
         "test_id": "test_24",
-        "success": true,
+        "success": false,
         "eval_item_id": 24,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Amsterdam-Wetter f\u00fcr den 23. Dezember 2024"
+            "content": "Tempo em Amsterd\u00e3 para 23/12/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "N1UvHBw9Y"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "N1UvHBw9Y"
           },
           {
             "role": "assistant",
@@ -1722,23 +2061,24 @@
                     "date": "2024-12-23"
                   }
                 },
-                "id": "call_1"
+                "id": "jJmMercDP"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}",
+            "tool_call_id": "jJmMercDP"
           },
           {
             "role": "assistant",
-            "content": "F\u00fcr Amsterdam am 2024-12-23 wird folgendes Wetter erwartet:  \n- **Temperatur**: 9 \u00b0C  \n- **Feuchte**: 75 %  \n- **Windgeschwindigkeit**: 17 km/h  \n\nEs wird ein k\u00fchler Tag mit leichtem Wind und moderater Luftfeuchtigkeit sein."
+            "content": "A previs\u00e3o do tempo para Amsterd\u00e3 em 23 de dezembro de 2024 \u00e9 a seguinte:\n\n- Temperatura: 9 graus\n- Humidade: 75%\n- Velocidade do vento: 17 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Amsterdam-Wetter f\u00fcr den 23. Dezember 2024"
+            "content": "Tempo em Amsterd\u00e3 para 23/12/2024"
           },
           {
             "role": "assistant",
@@ -1758,19 +2098,19 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 8, \"humidity\": 75, \"wind_speed\": 15}"
+            "content": "{\"temperature\": 14, \"humidity\": 90, \"wind_speed\": 12}"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Amsterdam am 23. Dezember 2024 wird k\u00fchles Winterwetter mit einer Temperatur von 8\u00b0C. Die Luftfeuchtigkeit ist sehr hoch bei 75% mit m\u00e4\u00dfigen Winden bei 15 km/h. Das ist typisches Winterwetter f\u00fcr Amsterdam - k\u00fchl und ziemlich feucht, also sollten Sie einen Regenschirm mitnehmen, da wahrscheinlich Feuchtigkeit in der Luft liegt!"
+            "content": "O tempo em Amsterd\u00e3 em 23 de dezembro de 2024 ser\u00e1 clima fresco de inverno com temperatura de 14\u00b0C. A umidade estar\u00e1 muito alta em 90% com ventos leves de 12 km/h. Este \u00e9 o clima t\u00edpico de inverno para Amsterd\u00e3 - fresco e bem \u00famido, ent\u00e3o voc\u00ea pode querer carregar um guarda-chuva, pois \u00e9 prov\u00e1vel que haja umidade no ar!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1782,99 +2122,16 @@
       },
       {
         "test_id": "test_25",
-        "success": true,
+        "success": false,
         "eval_item_id": 25,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter in San Francisco am 22. September 2024?"
-          },
-          {
-            "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "San Francisco",
-                    "date": "2024-09-22"
-                  }
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}"
-          },
-          {
-            "role": "assistant",
-            "content": "Das Wetter in San Francisco am 22. September 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 18 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nEs sieht wie ein mildes und windiges Wetter aus \u2013 perfekt f\u00fcr eine Spaziergang an der K\u00fcste! \ud83c\udf0a"
-          }
-        ],
-        "expected_conversation": [
-          {
-            "role": "user",
-            "content": "Wie ist das Wetter in San Francisco am 22. September 2024?"
-          },
-          {
-            "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "San Francisco",
-                    "date": "2024-09-22"
-                  }
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}"
-          },
-          {
-            "role": "assistant",
-            "content": "Das Wetter in San Francisco am 22. September 2024 wird mild mit einer Temperatur von 18\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% bei leichten Winden mit 12 km/h. Das ist typisches San Francisco-Wetter - k\u00fchl und angenehm, perfekt f\u00fcr Lagenlook, da die Temperatur in verschiedenen Teilen der Stadt \u00fcber den Tag variieren kann!"
-          }
-        ],
-        "metrics_data": [
-          {
-            "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
-          },
-          {
-            "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
-          }
-        ]
-      },
-      {
-        "test_id": "test_26",
-        "success": true,
-        "eval_item_id": 26,
-        "agent_conversation": [
-          {
-            "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
-          },
-          {
-            "role": "user",
-            "content": "Wie ist das Wetter heute in London?"
+            "content": "Como est\u00e1 o tempo em S\u00e3o Francisco em 22/9/2024?"
           },
           {
             "role": "assistant",
@@ -1885,13 +2142,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "YuXQ4wl20"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "YuXQ4wl20"
           },
           {
             "role": "assistant",
@@ -1901,8 +2159,39 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "London",
-                    "date": "2025-09-11"
+                    "city": "S\u00e3o Francisco",
+                    "date": "2024-09-22"
+                  }
+                },
+                "id": "dcfQR64W7"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "dcfQR64W7"
+          },
+          {
+            "role": "assistant",
+            "content": "A previs\u00e3o do tempo para S\u00e3o Francisco em 22 de setembro de 2024 \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 65%\n- Velocidade do vento: 13 km/h</s>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Como est\u00e1 o tempo em S\u00e3o Francisco em 22/9/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "San Francisco",
+                    "date": "2024-09-22"
                   }
                 },
                 "id": "call_1"
@@ -1911,17 +2200,89 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}"
           },
           {
             "role": "assistant",
-            "content": "Heute, dem 11. September 2025, in London erwarten Sie folgende Wetterbedingungen:  \n- **Temperatur**: 15 \u00b0C  \n- **Feuchte**: 80 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDas Wetter scheint mild und frisch zu sein! \ud83c\udf2c\ufe0f"
+            "content": "O tempo em S\u00e3o Francisco em 22 de setembro de 2024 ser\u00e1 ameno com temperatura de 18\u00b0C. A umidade estar\u00e1 em 70% com ventos leves de 12 km/h. Este \u00e9 o clima t\u00edpico de S\u00e3o Francisco - fresco e confort\u00e1vel, perfeito para usar roupas em camadas, pois a temperatura pode variar ao longo do dia em diferentes partes da cidade!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_26",
+        "success": false,
+        "eval_item_id": 26,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
+          },
+          {
+            "role": "user",
+            "content": "Como est\u00e1 o tempo em Londres hoje?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "7YrcLKaD8"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "7YrcLKaD8"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Londres",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "ngw72Ibh2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "ngw72Ibh2"
+          },
+          {
+            "role": "assistant",
+            "content": "A previs\u00e3o do tempo para Londres hoje \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 65%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter heute in London?"
+            "content": "Como est\u00e1 o tempo em Londres hoje?"
           },
           {
             "role": "assistant",
@@ -1962,7 +2323,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London heute (11. September 2025) ist mildes Herbstwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% mit m\u00e4\u00dfigen Winden von 18 km/h. Es ist ein typischer Herbsttag in London - k\u00fchl und feucht, also sollten Sie sich mit einer leichten Jacke einpacken und vielleicht einen Regenschirm mitnehmen!"
+            "content": "O tempo em Londres hoje (11 de setembro de 2025) \u00e9 clima ameno de outono com temperatura de 10\u00b0C. A umidade est\u00e1 em 70% com ventos moderados de 18 km/h. \u00c9 um dia t\u00edpico de outono em Londres - fresco e \u00famido, ent\u00e3o voc\u00ea vai querer se agasalhar com uma jaqueta leve e talvez carregar um guarda-chuva!"
           }
         ],
         "metrics_data": [
@@ -1974,24 +2335,24 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
       {
         "test_id": "test_27",
-        "success": true,
+        "success": false,
         "eval_item_id": 27,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter gerade in Tokyo?"
+            "content": "Como est\u00e1 o tempo em T\u00f3quio agora?"
           },
           {
             "role": "assistant",
@@ -2002,43 +2363,24 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "AYGyWjBPY"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "AYGyWjBPY"
           },
           {
             "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Tokyo",
-                    "date": "2025-09-11"
-                  }
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}"
-          },
-          {
-            "role": "assistant",
-            "content": "Heute in Tokyo ist die Temperatur 18 \u00b0C, die Luftfeuchtigkeit betr\u00e4gt 70 % und der Wind weht mit einer Geschwindigkeit von 13 km/h."
+            "content": "E que dia \u00e9 hoje? 2025-09-11.\n\nWhat's the weather like in Tokyo on 2025-09-11?</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter gerade in Tokyo?"
+            "content": "Como est\u00e1 o tempo em T\u00f3quio agora?"
           },
           {
             "role": "assistant",
@@ -2079,36 +2421,36 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Tokyo gerade jetzt (11. September 2025) ist mildes Herbstwetter mit einer Temperatur von 11\u00b0C. Die Luftfeuchtigkeit ist m\u00e4\u00dfig bei 60% mit Winden von 18 km/h. Es ist ein angenehmer Tokyo-Herbsttag - k\u00fchl und angenehm, Sie brauchen eine leichte Jacke, und die moderate Luftfeuchtigkeit macht es sehr angenehm!"
+            "content": "O tempo em T\u00f3quio agora (11 de setembro de 2025) \u00e9 clima ameno de outono com temperatura de 11\u00b0C. A umidade est\u00e1 moderada em 60% com ventos de 18 km/h. \u00c9 um dia agrad\u00e1vel de outono em T\u00f3quio - fresco e confort\u00e1vel, ent\u00e3o voc\u00ea precisar\u00e1 de uma jaqueta leve, e a umidade moderada torna o clima bem agrad\u00e1vel!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 2/2 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/2 expected tools, order score: 0.50"
           },
           {
             "name": "Argument Correctness",
             "success": true,
             "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "reason": "Correct arguments for 1/1 tools"
           }
         ]
       },
       {
         "test_id": "test_28",
-        "success": true,
+        "success": false,
         "eval_item_id": 28,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Sag mir das heutige Wetter in New York"
+            "content": "Me conte o tempo de hoje em Nova York"
           },
           {
             "role": "assistant",
@@ -2119,13 +2461,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "EKtr5lL1f"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "EKtr5lL1f"
           },
           {
             "role": "assistant",
@@ -2135,27 +2478,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "New York",
+                    "city": "Nova York",
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "eX1H7yScW"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "eX1H7yScW"
           },
           {
             "role": "assistant",
-            "content": "Heute, am 2025-09-11, in New York erwarten folgende Wetterbedingungen:\n- Temperatur: 20\u00b0C\n- Luftfeuchtigkeit: 65%\n- Windgeschwindigkeit: 13 km/h\n\nDas Wetter sieht mild und frisch aus, perfekt f\u00fcr eine Ausflugstage! \ud83c\udf2c\ufe0f"
+            "content": "Hoje em Nova York a temperatura \u00e9 de 20 graus, a umidade \u00e9 de 65% e a velocidade do vento \u00e9 de 13 km/h.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Sag mir das heutige Wetter in New York"
+            "content": "Me conte o tempo de hoje em Nova York"
           },
           {
             "role": "assistant",
@@ -2196,7 +2540,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das heutige Wetter in New York (11. September 2025) ist angenehmes Herbstwetter mit einer Temperatur von 11\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 55% mit m\u00e4\u00dfigen Winden von 20 km/h. Es ist ein sch\u00f6ner fr\u00fcher Herbsttag in NYC - perfektes Wetter f\u00fcr Aktivit\u00e4ten im Freien und um die Stadt zu erkunden!"
+            "content": "O tempo hoje em Nova York (11 de setembro de 2025) \u00e9 um agrad\u00e1vel clima de outono com temperatura de 11\u00b0C. A umidade est\u00e1 em 55% com ventos moderados de 20 km/h. \u00c9 um lindo dia de in\u00edcio do outono em NYC - clima perfeito para atividades ao ar livre e explorar a cidade!"
           }
         ],
         "metrics_data": [
@@ -2208,9 +2552,9 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
@@ -2221,11 +2565,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist das heutige Wetter in Miami?"
+            "content": "Qual \u00e9 o tempo de hoje em Miami?"
           },
           {
             "role": "assistant",
@@ -2236,13 +2580,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "VrxOp2jg5"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "VrxOp2jg5"
           },
           {
             "role": "assistant",
@@ -2256,23 +2601,24 @@
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "F6Zf8ioC3"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 28, \"humidity\": 75, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 28, \"humidity\": 75, \"wind_speed\": 12}",
+            "tool_call_id": "F6Zf8ioC3"
           },
           {
             "role": "assistant",
-            "content": "Heute, dem 11. September 2025, ist das Wetter in Miami wie folgt:  \n- **Temperatur**: 28 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nViel Spa\u00df beim Wettergenie\u00dfen! \ud83c\udf1e"
+            "content": "O tempo hoje em Miami est\u00e1 com uma temperatura de 28 graus, umidade de 75% e velocidade do vento de 12 km/h.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das heutige Wetter in Miami?"
+            "content": "Qual \u00e9 o tempo de hoje em Miami?"
           },
           {
             "role": "assistant",
@@ -2313,7 +2659,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das heutige Wetter in Miami (11. September 2025) ist warm und angenehm mit einer Temperatur von 24\u00b0C. Die Luftfeuchtigkeit ist komfortabel bei 65% mit m\u00e4\u00dfigen Winden von 17 km/h. Es ist herrliches Herbstwetter in Miami - warm und bequem, perfekt f\u00fcr Aktivit\u00e4ten im Freien und um den Strand zu genie\u00dfen!"
+            "content": "O tempo hoje em Miami (11 de setembro de 2025) est\u00e1 quente e agrad\u00e1vel com temperatura de 24\u00b0C. A umidade est\u00e1 confort\u00e1vel em 65% com ventos moderados de 17 km/h. \u00c9 um lindo clima de final de ver\u00e3o em Miami - quente e confort\u00e1vel, perfeito para atividades ao ar livre e aproveitar a praia!"
           }
         ],
         "metrics_data": [
@@ -2338,11 +2684,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Aktuelles Wetter in Paris, bitte"
+            "content": "Tempo atual em Paris, por favor"
           },
           {
             "role": "assistant",
@@ -2353,13 +2699,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "4HLu6qLcf"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "4HLu6qLcf"
           },
           {
             "role": "assistant",
@@ -2373,23 +2720,24 @@
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "AKzuJXvQt"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "AKzuJXvQt"
           },
           {
             "role": "assistant",
-            "content": "Das aktuelle Wetter in Paris f\u00fcr heute, den 11. September 2025, sieht wie folgt aus:\n\n- **Temperatur**: 16 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nViel Spa\u00df in der Stadt der Lichter! \ud83c\udf1f"
+            "content": "A previs\u00e3o do tempo em Paris para 2025-09-11 \u00e9 a seguinte:\n\nTemperatura: 16 graus\nHumidade: 75%\nVelocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Aktuelles Wetter in Paris, bitte"
+            "content": "Tempo atual em Paris, por favor"
           },
           {
             "role": "assistant",
@@ -2430,7 +2778,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das aktuelle Wetter in Paris (11. September 2025) ist k\u00fchles Herbstwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 65% mit m\u00e4\u00dfigen Winden von 18 km/h. Es ist ein typischer Pariser Herbsttag - k\u00fchl und feucht, also sollten Sie sich warm mit mehreren Schichten anziehen und vielleicht einen Regenschirm mitnehmen!"
+            "content": "O tempo atual em Paris (11 de setembro de 2025) \u00e9 clima ameno de outono com temperatura de 10\u00b0C. A umidade est\u00e1 em 65% com ventos moderados de 18 km/h. \u00c9 um dia t\u00edpico de outono parisiense - fresco e \u00famido, ent\u00e3o voc\u00ea vai querer se vestir aquecidamente com camadas e talvez carregar um guarda-chuva!"
           }
         ],
         "metrics_data": [
@@ -2450,16 +2798,16 @@
       },
       {
         "test_id": "test_31",
-        "success": true,
+        "success": false,
         "eval_item_id": 31,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter morgen in S\u00e3o Paulo?"
+            "content": "Como ser\u00e1 o tempo em S\u00e3o Paulo amanh\u00e3?"
           },
           {
             "role": "assistant",
@@ -2470,13 +2818,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "cjW9LFaqB"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "cjW9LFaqB"
           },
           {
             "role": "assistant",
@@ -2487,26 +2836,27 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "S\u00e3o Paulo",
-                    "date": "2025-09-12"
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "v7Y8vOS0Z"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 23, \"humidity\": 80, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 23, \"humidity\": 80, \"wind_speed\": 12}",
+            "tool_call_id": "v7Y8vOS0Z"
           },
           {
             "role": "assistant",
-            "content": "Morgen, am 2025-09-12, in S\u00e3o Paulo erwartet Sie ein Wetter mit einer Temperatur von 23 \u00b0C, einer Luftfeuchtigkeit von 80 % und einem Windgeschwindigkeit von 12 km/h."
+            "content": "A previs\u00e3o do tempo para S\u00e3o Paulo amanh\u00e3 \u00e9 de 23 graus Celsius, umidade de 80% e velocidade do vento de 12 km/h.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter morgen in S\u00e3o Paulo?"
+            "content": "Como ser\u00e1 o tempo em S\u00e3o Paulo amanh\u00e3?"
           },
           {
             "role": "assistant",
@@ -2547,7 +2897,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in S\u00e3o Paulo morgen (12. September 2025) wird warmes Fr\u00fchlingswetter mit einer Temperatur von 24\u00b0C. Die Luftfeuchtigkeit wird hoch bei 85% mit leichten Winden von 12 km/h sein. Das ist typisches Fr\u00fchlingsende-Wetter f\u00fcr S\u00e3o Paulo - warm und ziemlich feucht, also m\u00f6chten Sie vielleicht klimatisierte R\u00e4ume w\u00e4hrend der hei\u00dfesten Tageszeit aufsuchen!"
+            "content": "O tempo em S\u00e3o Paulo amanh\u00e3 (12 de setembro de 2025) ser\u00e1 clima ameno de primavera com temperatura de 24\u00b0C. A umidade estar\u00e1 alta em 85% com ventos leves de 12 km/h. \u00c9 o clima t\u00edpico de primavera para S\u00e3o Paulo - ameno e bem \u00famido, ent\u00e3o voc\u00ea pode querer se vestir em camadas para as mudan\u00e7as de temperatura ao longo do dia!"
           }
         ],
         "metrics_data": [
@@ -2559,24 +2909,24 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
       {
         "test_id": "test_32",
-        "success": true,
+        "success": false,
         "eval_item_id": 32,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Kannst du mir mir das Wetter in Rom n\u00e4chsten Montag sagen?"
+            "content": "Pode me dizer o tempo em Roma na pr\u00f3xima segunda-feira?"
           },
           {
             "role": "assistant",
@@ -2587,13 +2937,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "efz6bfa2H"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "efz6bfa2H"
           },
           {
             "role": "assistant",
@@ -2603,27 +2954,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Rome",
+                    "city": "roma",
                     "date": "2025-09-15"
                   }
                 },
-                "id": "call_1"
+                "id": "95uul7eyD"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "95uul7eyD"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Rom am n\u00e4chsten Montag (2025-09-15) wird wie folgt sein:  \n- **Temperatur**: 21 \u00b0C  \n- **Feuchtigkeit**: 65 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nViel Spa\u00df beim Besuch in Rom! \ud83d\ude0a"
+            "content": "O tempo em Roma na pr\u00f3xima segunda-feira ter\u00e1 uma temperatura de 20 graus, uma humidade de 65% e uma velocidade do vento de 13 km/h.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Kannst du mir mir das Wetter in Rom n\u00e4chsten Montag sagen?"
+            "content": "Pode me dizer o tempo em Roma na pr\u00f3xima segunda-feira?"
           },
           {
             "role": "assistant",
@@ -2664,7 +3016,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Rom n\u00e4chsten Montag (15. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 16\u00b0C. Die Luftfeuchtigkeit wird m\u00e4\u00dfig bei 55% mit starken Winden von 20 km/h sein. Es ist mildes Herbstwetter f\u00fcr Rom - k\u00fchl aber nicht zu kalt, obwohl Sie sich wegen des Windes warm anziehen sollten!"
+            "content": "O tempo em Roma na pr\u00f3xima segunda-feira (15 de setembro de 2025) ser\u00e1 clima fresco de outono com temperatura de 16\u00b0C. A umidade estar\u00e1 moderada em 55% com ventos fortes de 20 km/h. \u00c9 um clima ameno de outono para Roma - fresco mas n\u00e3o muito frio, embora voc\u00ea queira se vestir aquecidamente devido ao vento!"
           }
         ],
         "metrics_data": [
@@ -2676,24 +3028,24 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
       {
         "test_id": "test_33",
-        "success": true,
+        "success": false,
         "eval_item_id": 33,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter diesen Samstag in Stockholm?"
+            "content": "Como ser\u00e1 o tempo em Estocolmo neste s\u00e1bado?"
           },
           {
             "role": "assistant",
@@ -2704,13 +3056,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "Wonk2dkwk"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "Wonk2dkwk"
           },
           {
             "role": "assistant",
@@ -2720,27 +3073,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Stockholm",
+                    "city": "Estocolmo",
                     "date": "2025-09-13"
                   }
                 },
-                "id": "call_1"
+                "id": "159dyHdpx"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 14}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "159dyHdpx"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am kommenden Samstag, dem 2025-09-13, wird wie folgt sein:  \n- **Temperatur**: 9 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nViel Spa\u00df beim Wetterbeobachten! \ud83c\udf24\ufe0f"
+            "content": "A previs\u00e3o do tempo para Estocolmo no s\u00e1bado \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 65%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter diesen Samstag in Stockholm?"
+            "content": "Como ser\u00e1 o tempo em Estocolmo neste s\u00e1bado?"
           },
           {
             "role": "assistant",
@@ -2781,7 +3135,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm diesen Samstag (13. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von -1\u00b0C. Die Luftfeuchtigkeit wird bei 65% mit starken Winden von 21 km/h liegen. Es ist typisches schwedisches Herbstwetter - k\u00fchl und windig mit Temperaturen um den Gefrierpunkt, also brauchen Sie warme Herbstkleidung und sollten auf rutschige Bedingungen achten!"
+            "content": "O tempo em Estocolmo neste s\u00e1bado (13 de setembro de 2025) ser\u00e1 clima fresco de outono com temperatura de -1\u00b0C. A umidade estar\u00e1 em 65% com ventos fortes de 21 km/h. \u00c9 um clima inusualmente frio para in\u00edcio do outono - gelado e ventoso com temperaturas pr\u00f3ximas ao congelamento, ent\u00e3o voc\u00ea precisar\u00e1 de roupas quentes e deve estar preparado para as condi\u00e7\u00f5es frias!"
           }
         ],
         "metrics_data": [
@@ -2793,9 +3147,9 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
@@ -2806,21 +3160,60 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wetter in Chennai n\u00e4chsten Dienstag?"
+            "content": "Tempo em Chennai na pr\u00f3xima ter\u00e7a-feira?"
           },
           {
             "role": "assistant",
-            "content": "<think>\nOkay, the user is asking for the weather in Chennai on next Tuesday. Let me break this down. First, I need to figure out the date for next Tuesday. To do that, I should check the current date. The current date can be obtained using the get_current_date function. Once I have today's date, I can calculate next Tuesday's date.\n\nWait, the user mentioned \"n\u00e4chsten Dienstag,\" which is German for \"next Tuesday.\" So, I need to make sure that if today is already Tuesday, next Tuesday would be the following week. But since the user is asking in German, maybe they are in a German-speaking country, but the city is Chennai, which is in India. Anyway, the date calculation should be based on the current date regardless of the user's location.\n\nSo first step: call get_current_date to get today's date. Let's say today is October 30, 2023. Then, next Tuesday would be November 7, 2023. Wait, but if today is October 30, 2023, which is a Monday, then next Tuesday is October 31. Wait, no, October 30 is Monday, so next Tuesday is October 31? Wait, no, October 30 is Monday, so Tuesday would be October 31. But if today is, say, November 1, 2023 (Tuesday), then next Tuesday would be November 8. So the exact date depends on the current date.\n\nTherefore, the correct approach is to first get the current date, then determine what date next Tuesday is. Once I have the date, I can call the weather_forecast function with Chennai and that date. \n\nSo first, call get_current_date. Then calculate next Tuesday's date. Then use that date in the weather_forecast function. The user might not know the exact date, so the answer should provide the forecast for next Tuesday regardless of the current day. \n\nBut how to calculate next Tuesday's date? Well, the function weather_forecast requires the date in YYYY-MM-DD format. So once I have the current date, I can compute the next Tuesday. For example, if today is 2023-10-30 (Monday), next Tuesday is 2023-10-31. If today is 2023-11-07 (Tuesday), next Tuesday is 2023-11-14. So the calculation depends on the current date. \n\nTherefore, the steps are: \n1. Get current date using get_current_date.\n2. Calculate next Tuesday's date based on the current date.\n3. Call weather_forecast with Chennai and the calculated date.\n4. Return the results to the user.\n\nI need to make sure that the date calculation is accurate. But since I can't perform date calculations myself, I have to rely on the functions provided. Wait, the functions provided don't include a date calculation tool. The user has to provide the date, so I need to compute it myself based on the current date. \n\nSo, after getting the current date, I can determine next Tuesday's date. Let's say the current date is 2023-10-30 (Monday). Then next Tuesday is 2023-10-31. If the current date is 2023-11-07 (Tuesday), next Tuesday is 2023-11-14. So the logic is: find the next occurrence of Tuesday after the current date. \n\nBut how to implement this? Well, the assistant has to handle this logic. So once the current date is known, the assistant can compute the next Tuesday. For example, if today is 2023-10-30 (Monday), then adding 1 day gives Tuesday. If today is 2023-11-07 (Tuesday), then adding 7 days gives the next Tuesday. \n\nSo the assistant needs to calculate the next Tuesday's date based on the current date. Once that's done, the weather_forecast function can be called with that date. \n\nTherefore, the first tool call should be get_current_date. Then, based on the returned date, compute next Tuesday's date. Then call weather_forecast with Chennai and that date. \n\nBut since the assistant can't perform date calculations, it's up to the assistant to figure out the next Tuesday's date once the current date is known. So the steps are:\n\n1. Call get_current_date to get today's date.\n2. Determine next Tuesday's date.\n3. Call weather_forecast with city Chennai and date as next Tuesday's date.\n4. Return the weather data to the user.\n\nSo the first"
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "kmKmdJMLX"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "kmKmdJMLX"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "zUO24Vy4k"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "zUO24Vy4k"
+          },
+          {
+            "role": "assistant",
+            "content": "A previs\u00e3o do tempo em Chennai na pr\u00f3xima ter\u00e7a-feira \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 65%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wetter in Chennai n\u00e4chsten Dienstag?"
+            "content": "Tempo em Chennai na pr\u00f3xima ter\u00e7a-feira?"
           },
           {
             "role": "assistant",
@@ -2861,21 +3254,21 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Chennai n\u00e4chsten Dienstag (16. September 2025) wird angenehm mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit wird m\u00e4\u00dfig bei 65% mit m\u00e4\u00dfigen Winden von 15 km/h sein. Das ist angenehmes Herbstwetter f\u00fcr Chennai - warm aber nicht zu hei\u00df, perfekt f\u00fcr Aktivit\u00e4ten im Freien und Sightseeing!"
+            "content": "O tempo em Chennai na pr\u00f3xima ter\u00e7a-feira (16 de setembro de 2025) ser\u00e1 agrad\u00e1vel com temperatura de 20\u00b0C. A umidade estar\u00e1 moderada em 65% com ventos moderados de 15 km/h. Este \u00e9 um clima confort\u00e1vel p\u00f3s-mon\u00e7\u00e3o para Chennai - quente mas n\u00e3o muito quente, perfeito para atividades ao ar livre e turismo!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": false,
-            "score": 0.0,
-            "reason": "Expected 2 tools but none were called"
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
             "success": false,
-            "score": 0.0,
-            "reason": "Tool mismatch"
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
@@ -2886,11 +3279,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter dieses Wochenende in Chicago?"
+            "content": "Como ser\u00e1 o tempo em Chicago neste fim de semana?"
           },
           {
             "role": "assistant",
@@ -2901,58 +3294,24 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "0778CZ0jS"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "0778CZ0jS"
           },
           {
             "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Chicago",
-                    "date": "2025-09-13"
-                  }
-                },
-                "id": "call_1"
-              },
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Chicago",
-                    "date": "2025-09-14"
-                  }
-                },
-                "id": "call_2"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
-          },
-          {
-            "role": "assistant",
-            "content": "Das Wetter in Chicago dieses Wochenende (Samstag, 2025-09-13 und Sonntag, 2025-09-14) wird wie folgt sein:  \n- **Temperatur**: 18 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nDas Wetter ist beide Tage gleich bleibend."
+            "content": "[TOOL_CALLS][{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Chicago\", \"date\": \"2025-09-12\"}}, {\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Chicago\", \"date\": \"2025-09-13\"}}]</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter dieses Wochenende in Chicago?"
+            "content": "Como ser\u00e1 o tempo em Chicago neste fim de semana?"
           },
           {
             "role": "assistant",
@@ -3008,21 +3367,21 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Chicago dieses Wochenende (Samstag, 13. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 9\u00b0C. Die Luftfeuchtigkeit wird bei 60% mit starken Winden von 21 km/h liegen. Es ist typisches raues Chicago-Herbstwetter - k\u00fchl und sehr windig, also packen Sie sich warm ein und seien Sie auf erhebliche Windk\u00e4lte vorbereitet, die es viel k\u00e4lter erscheinen l\u00e4sst!"
+            "content": "O tempo em Chicago neste fim de semana (s\u00e1bado, 13 de setembro de 2025) ser\u00e1 clima fresco de outono com temperatura de 9\u00b0C. A umidade estar\u00e1 em 60% com ventos fortes de 21 km/h. \u00c9 o clima t\u00edpico de outono vigoroso de Chicago - fresco e muito ventoso, ent\u00e3o agasalhe-se bem e esteja preparado para o vento significativo que far\u00e1 parecer muito mais frio!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 3/3 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.3333333333333333,
+            "reason": "Called 1/3 expected tools, order score: 0.33"
           },
           {
             "name": "Argument Correctness",
-            "success": false,
-            "score": 0.6666666666666666,
-            "reason": "Correct arguments for 2/3 tools"
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
           }
         ]
       },
@@ -3033,11 +3392,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Freitag in London?"
+            "content": "Como ser\u00e1 o tempo em Londres na pr\u00f3xima sexta-feira?"
           },
           {
             "role": "assistant",
@@ -3048,13 +3407,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "I7BNKOh4O"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "I7BNKOh4O"
           },
           {
             "role": "assistant",
@@ -3064,27 +3424,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "London",
+                    "city": "Londres",
                     "date": "2025-09-12"
                   }
                 },
-                "id": "call_1"
+                "id": "XG50anxze"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "XG50anxze"
           },
           {
             "role": "assistant",
-            "content": "Next Friday, September 12, 2025, in London, the weather is expected to have a temperature of 15\u00b0C, humidity at 80%, and wind speeds of 12 km/h. You might want to carry a light jacket due to the cooler and breezy conditions!"
+            "content": "A previs\u00e3o do tempo para Londres na pr\u00f3xima sexta-feira \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 65%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Freitag in London?"
+            "content": "Como ser\u00e1 o tempo em Londres na pr\u00f3xima sexta-feira?"
           },
           {
             "role": "assistant",
@@ -3125,7 +3486,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London n\u00e4chsten Freitag (19. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit wird bei 70% mit m\u00e4\u00dfigen Winden von 18 km/h liegen. Es ist typisches September-Wetter f\u00fcr London - k\u00fchl und feucht, also sollten Sie sich warm anziehen und m\u00f6glicherweise einen Regenschirm f\u00fcr m\u00f6glichen Nieselregen mitnehmen!"
+            "content": "O tempo em Londres na pr\u00f3xima sexta-feira (19 de setembro de 2025) ser\u00e1 clima ameno de outono com temperatura de 10\u00b0C. A umidade estar\u00e1 em 70% com ventos moderados de 18 km/h. \u00c9 o clima t\u00edpico de setembro para Londres - fresco e \u00famido, ent\u00e3o voc\u00ea vai querer se vestir aquecidamente e possivelmente carregar um guarda-chuva para poss\u00edveis garoas!"
           }
         ],
         "metrics_data": [
@@ -3145,16 +3506,16 @@
       },
       {
         "test_id": "test_37",
-        "success": true,
+        "success": false,
         "eval_item_id": 37,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie w\u00e4re es mit dem Wetter in Vancouver diesen Sonntag?"
+            "content": "E o tempo em Vancouver neste domingo?"
           },
           {
             "role": "assistant",
@@ -3165,13 +3526,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "sZnjeMTw5"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "sZnjeMTw5"
           },
           {
             "role": "assistant",
@@ -3182,26 +3544,27 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Vancouver",
-                    "date": "2025-09-14"
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "OYVJ7R8CI"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "OYVJ7R8CI"
           },
           {
             "role": "assistant",
-            "content": "Der Wetterbericht f\u00fcr Vancouver am kommenden Sonntag (2025-09-14) zeigt folgende Bedingungen:\n- Temperatur: 20 \u00b0C\n- Luftfeuchtigkeit: 65 %\n- Windgeschwindigkeit: 13 km/h\n\nDie Wetterbedingungen sehen mild und angenehm aus, perfekt f\u00fcr einen Ausflug!"
+            "content": "O tempo em Vancouver neste domingo vai ter uma temperatura de 20 graus, umidade de 65% e velocidade do vento de 13 km/h.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie w\u00e4re es mit dem Wetter in Vancouver diesen Sonntag?"
+            "content": "E o tempo em Vancouver neste domingo?"
           },
           {
             "role": "assistant",
@@ -3242,7 +3605,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Vancouver diesen Sonntag (14. September 2025) wird mildes Herbstwetter mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit wird bei 65% mit m\u00e4\u00dfigen Winden von 15 km/h liegen. Das ist sehr angenehmes Herbstwetter f\u00fcr Vancouver - ziemlich mild und sch\u00f6n, perfekt f\u00fcr Aktivit\u00e4ten im Freien und um die Stadt zu erkunden!"
+            "content": "O tempo em Vancouver neste domingo (14 de setembro de 2025) ser\u00e1 clima ameno de outono com temperatura de 20\u00b0C. A umidade estar\u00e1 em 65% com ventos moderados de 15 km/h. Este \u00e9 um agrad\u00e1vel clima de outono em Vancouver - ameno e confort\u00e1vel, perfeito para atividades ao ar livre e explorar a cidade!"
           }
         ],
         "metrics_data": [
@@ -3254,24 +3617,24 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
       {
         "test_id": "test_38",
-        "success": true,
+        "success": false,
         "eval_item_id": 38,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wetter in Singapur n\u00e4chsten Mittwoch?"
+            "content": "Tempo em Singapura na pr\u00f3xima quarta-feira?"
           },
           {
             "role": "assistant",
@@ -3282,13 +3645,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "SSFUmNPno"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "SSFUmNPno"
           },
           {
             "role": "assistant",
@@ -3298,27 +3662,28 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Singapore",
-                    "date": "2025-09-17"
+                    "city": "Singapura",
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "oyVfD6kIY"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 10}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "oyVfD6kIY"
           },
           {
             "role": "assistant",
-            "content": "Der Wetterbericht f\u00fcr Singapur am n\u00e4chsten Mittwoch (2025-09-17) zeigt eine Temperatur von 30 \u00b0C, eine Luftfeuchtigkeit von 85 % und eine Windgeschwindigkeit von 10 km/h."
+            "content": "Previs\u00e3o do tempo em Singapura na quarta-feira, 11 de setembro de 2025:\n\nTemperatura: 20 graus\nHumidade: 65%\nVelocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wetter in Singapur n\u00e4chsten Mittwoch?"
+            "content": "Tempo em Singapura na pr\u00f3xima quarta-feira?"
           },
           {
             "role": "assistant",
@@ -3359,7 +3724,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Singapur n\u00e4chsten Mittwoch (17. September 2025) wird hei\u00df und sehr feucht mit einer Temperatur von 30\u00b0C. Die Luftfeuchtigkeit wird extrem hoch bei 95% mit leichten Winden von 11 km/h sein. Es ist typisches tropisches Wetter f\u00fcr Singapur - hei\u00df, feucht und schw\u00fcl, also sollten Sie viel trinken und Zeit in klimatisierten Bereichen verbringen!"
+            "content": "O tempo em Singapura na pr\u00f3xima quarta-feira (17 de setembro de 2025) estar\u00e1 quente e muito \u00famido com temperatura de 30\u00b0C. A umidade estar\u00e1 extremamente alta em 95% com ventos leves de 11 km/h. \u00c9 o clima tropical t\u00edpico de Singapura - quente, \u00famido e abafado, ent\u00e3o voc\u00ea vai querer se manter hidratado e passar tempo em \u00e1reas com ar condicionado!"
           }
         ],
         "metrics_data": [
@@ -3371,24 +3736,24 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
       {
         "test_id": "test_39",
-        "success": true,
+        "success": false,
         "eval_item_id": 39,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Donnerstag in Buenos Aires?"
+            "content": "Como ser\u00e1 o tempo em Buenos Aires na pr\u00f3xima quinta-feira?"
           },
           {
             "role": "assistant",
@@ -3399,13 +3764,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "eZkruu2cN"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "eZkruu2cN"
           },
           {
             "role": "assistant",
@@ -3416,26 +3782,27 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Buenos Aires",
-                    "date": "2025-09-18"
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "OdFmDhxTR"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 75, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 20, \"humidity\": 75, \"wind_speed\": 12}",
+            "tool_call_id": "OdFmDhxTR"
           },
           {
             "role": "assistant",
-            "content": "Next Thursday, September 18, 2025, in Buenos Aires, the weather is expected to have a temperature of 20\u00b0C, humidity at 75%, and a wind speed of 12 km/h."
+            "content": "A previs\u00e3o do tempo para Buenos Aires na pr\u00f3xima quinta-feira \u00e9 a seguinte:\n\n- Temperatura: 20 graus\n- Humidade: 75%\n- Velocidade do vento: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Donnerstag in Buenos Aires?"
+            "content": "Como ser\u00e1 o tempo em Buenos Aires na pr\u00f3xima quinta-feira?"
           },
           {
             "role": "assistant",
@@ -3476,7 +3843,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Buenos Aires n\u00e4chsten Donnerstag (18. September 2025) wird warmes Fr\u00fchlingswetter mit einer Temperatur von 21\u00b0C. Die Luftfeuchtigkeit wird hoch bei 80% mit leichten Winden von 13 km/h. Es ist angenehmes Fr\u00fchlingsende-Wetter f\u00fcr Buenos Aires - warm aber nicht zu hei\u00df, obwohl die hohe Luftfeuchtigkeit es etwas schw\u00fcl erscheinen lassen k\u00f6nnte."
+            "content": "O tempo em Buenos Aires na pr\u00f3xima quinta-feira (18 de setembro de 2025) ser\u00e1 clima ameno de primavera com temperatura de 21\u00b0C. A umidade estar\u00e1 alta em 80% com ventos leves de 13 km/h. \u00c9 um agrad\u00e1vel clima de primavera para Buenos Aires - ameno mas n\u00e3o muito quente, embora a alta umidade possa deixar um pouco abafado."
           }
         ],
         "metrics_data": [
@@ -3488,9 +3855,9 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
@@ -3501,11 +3868,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Samstag in Madrid?"
+            "content": "Como ser\u00e1 o tempo em Madri no pr\u00f3ximo s\u00e1bado?"
           },
           {
             "role": "assistant",
@@ -3516,13 +3883,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "H4pBxUKX6"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "H4pBxUKX6"
           },
           {
             "role": "assistant",
@@ -3536,23 +3904,24 @@
                     "date": "2025-09-13"
                   }
                 },
-                "id": "call_1"
+                "id": "2i1tj1Jy2"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 19, \"humidity\": 55, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 19, \"humidity\": 55, \"wind_speed\": 13}",
+            "tool_call_id": "2i1tj1Jy2"
           },
           {
             "role": "assistant",
-            "content": "Next Saturday, September 13, 2025, in Madrid, the weather is expected to have a temperature of 19\u00b0C, humidity at 55%, and a wind speed of 13 km/h. This suggests mild and comfortable conditions! \ud83c\udf24\ufe0f"
+            "content": "A previs\u00e3o do tempo para Madrid no pr\u00f3ximo s\u00e1bado ser\u00e1:\n\n- Temperatura: 19 graus\n- Humidade: 55%\n- Velocidade do vento: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Samstag in Madrid?"
+            "content": "Como ser\u00e1 o tempo em Madri no pr\u00f3ximo s\u00e1bado?"
           },
           {
             "role": "assistant",
@@ -3593,7 +3962,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Madrid n\u00e4chsten Samstag (20. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 14\u00b0C sein. Die Luftfeuchtigkeit wird niedrig bei 45% mit starken Winden von 20 km/h sein. Es ist typisches Madrid-Herbstwetter - k\u00fchl und trocken mit starken Winden, also sollten Sie sich warm anziehen und auf den Wind vorbereitet sein!"
+            "content": "O tempo em Madri no pr\u00f3ximo s\u00e1bado (20 de setembro de 2025) ser\u00e1 clima fresco de outono com temperatura de 14\u00b0C. A umidade estar\u00e1 baixa em 45% com ventos fortes de 20 km/h. \u00c9 o clima t\u00edpico de outono de Madri - fresco e seco com ventos fortes, ent\u00e3o voc\u00ea vai querer se vestir aquecidamente e estar preparado para o vento!"
           }
         ],
         "metrics_data": [
@@ -3618,25 +3987,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Was ist der Unterschied zwischen Wetter und Klima?"
+            "content": "Qual \u00e9 a diferen\u00e7a entre tempo e clima?"
           },
           {
             "role": "assistant",
-            "content": "Der Unterschied zwischen Wetter und Klima liegt in der Zeitperspektive und den Messgr\u00f6\u00dfen:  \n- **Wetter** beschreibt die kurzfristigen atmosph\u00e4rischen Zust\u00e4nde (z. B. Temperatur, Niederschlag, Wind) an einem bestimmten Ort und Zeitpunkt. Es ist dynamisch und kann sich innerhalb von Stunden oder Tagen stark ver\u00e4ndern.  \n- **Klima** bezieht sich auf die langfristigen Durchschnittswerte und Trends der Wetterbedingungen \u00fcber viele Jahre (meist 30 Jahre oder mehr). Es charakterisiert die typischen Wettermuster eines Gebiets, z. B. ein feuchtes Klima oder ein trockenes Klima.  \n\nBeispiel: Wenn es heute regnet, ist das Wetter. Wenn eine Region im Durchschnitt mehrere Monate pro Jahr regnet, spricht man vom Klima."
+            "content": "Tempo e clima s\u00e3o dois conceitos relacionados, mas diferentes, que descrevem as condi\u00e7\u00f5es atmosf\u00e9ricas em uma determinada \u00e1rea.\n\nO tempo se refere \u00e0s condi\u00e7\u00f5es atmosf\u00e9ricas em um local espec\u00edfico em um momento espec\u00edfico. Ele pode variar rapidamente e incluir fatores como temperatura, precipita\u00e7\u00e3o, vento e humidade. Por exemplo, pode estar chovendo agora, mas pode fazer sol daqui a pouco.\n\nO clima, por outro lado, se refere \u00e0s tend\u00eancias m\u00e9dias das condi\u00e7\u00f5es atmosf\u00e9ricas em uma \u00e1rea ao longo de um per\u00edodo de tempo mais longo, geralmente medido em d\u00e9cadas. Ele leva em considera\u00e7\u00e3o padr\u00f5es sazonais e varia\u00e7\u00f5es anuais e pode ser influenciado por fatores como a localiza\u00e7\u00e3o geogr\u00e1fica, a topografia e os corpos de \u00e1gua pr\u00f3ximos. Por exemplo, o clima de uma cidade pode ser classificado como temperado, tropical ou polar.\n\nEm resumo, enquanto o tempo se refere \u00e0s condi\u00e7\u00f5es atmosf\u00e9ricas atuais, o clima se refere \u00e0s tend\u00eancias m\u00e9dias das condi\u00e7\u00f5es atmosf\u00e9ricas em uma \u00e1rea ao longo do tempo.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was ist der Unterschied zwischen Wetter und Klima?"
+            "content": "Qual \u00e9 a diferen\u00e7a entre tempo e clima?"
           },
           {
             "role": "assistant",
-            "content": "Wetter bezieht sich auf kurzfristige atmosph\u00e4rische Bedingungen an einem bestimmten Ort zu einer bestimmten Zeit - wie Temperatur, Luftfeuchtigkeit und Niederschlag \u00fcber Tage oder Wochen. Klima hingegen ist der langfristige Durchschnitt von Wettermustern in einer Region \u00fcber viele Jahre oder Jahrzehnte. Zum Beispiel kann ich Ihnen das heutige Wetter in jeder Stadt sagen, aber das Klima beschreibt, wie diese Stadt typischerweise das ganze Jahr \u00fcber ist. M\u00f6chten Sie, dass ich die aktuellen Wetterbedingungen f\u00fcr einen bestimmten Ort \u00fcberpr\u00fcfe?"
+            "content": "Tempo refere-se \u00e0s condi\u00e7\u00f5es atmosf\u00e9ricas de curto prazo em um local espec\u00edfico em um momento espec\u00edfico - como temperatura, umidade e precipita\u00e7\u00e3o ao longo de dias ou semanas. Clima, por outro lado, \u00e9 a m\u00e9dia de longo prazo dos padr\u00f5es meteorol\u00f3gicos em uma regi\u00e3o ao longo de muitos anos ou d\u00e9cadas. Por exemplo, posso te dizer o tempo de hoje em qualquer cidade, mas clima descreve como essa cidade \u00e9 tipicamente ao longo do ano. Gostaria que eu verificasse as condi\u00e7\u00f5es meteorol\u00f3gicas atuais para algum local espec\u00edfico?"
           }
         ],
         "metrics_data": [
@@ -3655,25 +4024,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Warum ist es in tropischen Gebieten immer feucht?"
+            "content": "Por que \u00e9 sempre \u00famido em lugares tropicais?"
           },
           {
             "role": "assistant",
-            "content": "Die hohe Feuchtigkeit in tropischen Gebieten h\u00e4ngt vor allem von der konstanten Sonneneinstrahlung und den damit verbundenen klimatischen Bedingungen ab. In diesen Regionen, die sich nahe dem \u00c4quator befinden, erw\u00e4rmt die Sonne die Erdoberfl\u00e4che st\u00e4ndig, was zu intensiver Verdunstung von Wasser aus Ozeanen, Seen und Fl\u00fcssen f\u00fchrt. Das aufsteigende, warme und feuchte Luftmass wird durch die hohe Luftfeuchtigkeit unterst\u00fctzt, da warme Luft mehr Wasserstoff aufnehmen kann. Zudem tragen Pflanzen durch Transpiration (Wasserabgabe \u00fcber Bl\u00e4tter) zur Feuchtigkeit bei. Diese Kombination aus starker Sonneneinstrahlung, hoher Verdunstung und begrenzter Luftbewegung f\u00fchrt zu den charakteristischen feuchten und warmen Bedingungen in tropischen Zonen."
+            "content": "Lugares tropicais s\u00e3o \u00famidos porque a temperatura alta faz com que a \u00e1gua evapore rapidamente das superf\u00edcies, como oceanos, rios e solo. Isso faz com que a umidade no ar aumente, resultando em um ambiente mais \u00famido. Al\u00e9m disso, a alta umidade tamb\u00e9m pode ser atribu\u00edda \u00e0 falta de esta\u00e7\u00f5es do ano bem definidas em regi\u00f5es tropicais, o que significa que a precipita\u00e7\u00e3o pode ocorrer durante todo o ano.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Warum ist es in tropischen Gebieten immer feucht?"
+            "content": "Por que \u00e9 sempre \u00famido em lugares tropicais?"
           },
           {
             "role": "assistant",
-            "content": "Tropische Regionen sind durchgehend feucht, weil sie sich n\u00e4he des \u00c4quators befinden, wo die Temperaturen das ganze Jahr \u00fcber warm sind. Warme Luft kann viel mehr Feuchtigkeit aufnehmen als kalte Luft, und die konstante W\u00e4rme l\u00e4sst mehr Wasser aus Ozeanen, Fl\u00fcssen und Pflanzen verdunsten. Das schafft einen Kreislauf, in dem immer viel Wasserdampf in der Luft ist. St\u00e4dte wie Bangkok, Singapur und Miami erleben diese tropische Luftfeuchtigkeit. Wenn Sie die aktuellen Luftfeuchtigkeitswerte in einer tropischen Stadt wissen m\u00f6chten, kann ich das f\u00fcr Sie \u00fcberpr\u00fcfen!"
+            "content": "As regi\u00f5es tropicais s\u00e3o consistentemente \u00famidas porque est\u00e3o localizadas perto do equador, onde as temperaturas s\u00e3o quentes o ano todo. O ar quente pode reter muito mais umidade que o ar frio, e o calor constante faz com que mais \u00e1gua evapore dos oceanos, rios e plantas. Isso cria um ciclo onde sempre h\u00e1 muito vapor d'\u00e1gua no ar. Cidades como Bangkok, Singapura e Miami experimentam essa umidade tropical. Se quiser saber os n\u00edveis atuais de umidade em alguma cidade tropical, posso verificar para voc\u00ea!"
           }
         ],
         "metrics_data": [
@@ -3692,25 +4061,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Beeinflussen Berge lokale Wettermuster?"
+            "content": "As montanhas afetam os padr\u00f5es meteorol\u00f3gicos locais?"
           },
           {
             "role": "assistant",
-            "content": "Berge beeinflussen lokale Wettermuster durch einen Effekt namens \"Orographische L\u00fcftung\". Wenn feuchte Luft auf einen Berg st\u00f6\u00dft, wird sie aufgestiegen, abgek\u00fchlt und oft zu Niederschlag f\u00fchren. Dies erzeugt auf der windabgekehrten Seite h\u00e4ufig trockene Bedingungen. Solche Ph\u00e4nomene k\u00f6nnen lokale Klimaunterschiede wie feuchte T\u00e4ler oder trockene H\u00e4nge verursachen."
+            "content": "Sim, as montanhas podem afetar os padr\u00f5es meteorol\u00f3gicos locais. Eles podem influenciar a quantidade de precipita\u00e7\u00e3o, as temperaturas e os ventos em uma \u00e1rea.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Beeinflussen Berge lokale Wettermuster?"
+            "content": "As montanhas afetam os padr\u00f5es meteorol\u00f3gicos locais?"
           },
           {
             "role": "assistant",
-            "content": "Ja, Berge beeinflussen das lokale Wetter erheblich! Sie erzeugen sogenannte orographische Effekte - wenn Luftmassen auf Berge treffen, werden sie nach oben gedr\u00e4ngt, k\u00fchlen beim Aufsteigen ab und erzeugen oft Wolken und Niederschlag auf der windw\u00e4rtigen Seite. Die lee-seitige Seite erlebt oft einen 'Regenschatten'-Effekt mit trockeneren Bedingungen. Berge erzeugen auch Temperaturvariationen aufgrund von H\u00f6hen\u00e4nderungen. St\u00e4dte wie Denver erleben einzigartige Wettermuster aufgrund der nahen Rocky Mountains. M\u00f6chten Sie, dass ich die aktuellen Wetterbedingungen in einer bergigen Region \u00fcberpr\u00fcfe?"
+            "content": "Sim, as montanhas afetam significativamente o tempo local! Elas criam o que se chama de efeitos orogr\u00e1ficos - quando as massas de ar encontram montanhas, s\u00e3o for\u00e7adas para cima, esfriando conforme sobem e frequentemente criando nuvens e precipita\u00e7\u00e3o no lado de barlavento. O lado de sotavento frequentemente experimenta um efeito de 'sombra de chuva' com condi\u00e7\u00f5es mais secas. As montanhas tamb\u00e9m criam varia\u00e7\u00f5es de temperatura devido \u00e0s mudan\u00e7as de altitude. Cidades como Denver experimentam padr\u00f5es meteorol\u00f3gicos \u00fanicos devido \u00e0s Montanhas Rochosas pr\u00f3ximas. Gostaria que eu verificasse as condi\u00e7\u00f5es meteorol\u00f3gicas atuais em alguma regi\u00e3o montanhosa?"
           }
         ],
         "metrics_data": [
@@ -3729,25 +4098,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Was verursacht Wind?"
+            "content": "O que causa o vento?"
           },
           {
             "role": "assistant",
-            "content": "Die Wind entsteht durch Unterschiede in der Luftdruckverteilung. Wenn warme Luft aufsteigt und ein Bereich mit niedrigem Druck schafft, str\u00f6mt k\u00fchle Luft aus umliegenden Bereichen hinzu, um den Druck auszugleichen. Diese Bewegung der Luft wird als Wind wahrgenommen. \n\nDa keine Wettervorhersage oder Datum ben\u00f6tigt wird, k\u00f6nnen die bereitgestellten Tools nicht genutzt werden, um diese Frage zu beantworten."
+            "content": "O vento \u00e9 causado pela diferen\u00e7a de press\u00e3o do ar em diferentes lugares da Terra. Quando o ar quente sobe, deixa um espa\u00e7o vazio acima da superf\u00edcie da Terra, e o ar mais frio e denso \u00e9 atra\u00eddo para preencher esse espa\u00e7o. Isso causa um movimento de ar que chamamos de vento. A dire\u00e7\u00e3o e a for\u00e7a do vento s\u00e3o influenciadas por v\u00e1rios fatores, como a localiza\u00e7\u00e3o geogr\u00e1fica, a topografia do terreno e os padr\u00f5es de press\u00e3o atmosf\u00e9rica.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was verursacht Wind?"
+            "content": "O que causa o vento?"
           },
           {
             "role": "assistant",
-            "content": "Wind wird durch Luftdruckunterschiede verursacht, die aus ungleichm\u00e4\u00dfiger Erw\u00e4rmung der Erdoberfl\u00e4che durch die Sonne resultieren. Wenn Luft sich erw\u00e4rmt, wird sie weniger dicht und steigt auf, wodurch Niederdruckgebiete entstehen. K\u00fchlere, dichtere Luft bewegt sich dann hinein, um diesen Raum zu f\u00fcllen, wodurch Wind entsteht. Die Erdrotation beeinflusst Windmuster auch durch den Coriolis-Effekt. Lokale Faktoren wie Berge, Gew\u00e4sser und st\u00e4dtische W\u00e4rmeinseln k\u00f6nnen ihre eigenen Windmuster schaffen. Wenn Sie die aktuellen Windbedingungen in einer bestimmten Stadt wissen m\u00f6chten, kann ich das f\u00fcr Sie \u00fcberpr\u00fcfen!"
+            "content": "O vento \u00e9 causado por diferen\u00e7as na press\u00e3o atmosf\u00e9rica, que resultam do aquecimento desigual da superf\u00edcie terrestre pelo sol. Quando o ar se aquece, ele fica menos denso e sobe, criando \u00e1reas de baixa press\u00e3o. O ar mais frio e denso ent\u00e3o se move para preencher esse espa\u00e7o, criando vento. A rota\u00e7\u00e3o da Terra tamb\u00e9m afeta os padr\u00f5es de vento atrav\u00e9s do efeito Coriolis. Fatores locais como montanhas, corpos d'\u00e1gua e ilhas de calor urbano tamb\u00e9m podem criar seus pr\u00f3prios padr\u00f5es de vento. Se quiser saber as condi\u00e7\u00f5es atuais de vento em alguma cidade espec\u00edfica, posso verificar para voc\u00ea!"
           }
         ],
         "metrics_data": [
@@ -3766,25 +4135,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Voc\u00ea \u00e9 um bot que responde a consultas meteorol\u00f3gicas. Use a forma inglesa dos nomes das cidades. Sua resposta final \u00e0 pergunta do usu\u00e1rio deve ser em linguagem natural."
           },
           {
             "role": "user",
-            "content": "Stimmt es, dass keine zwei Schneeflocken identisch sind?"
+            "content": "\u00c9 verdade que n\u00e3o existem dois flocos de neve id\u00eanticos?"
           },
           {
             "role": "assistant",
-            "content": "Nein, es ist nicht wahr, dass **keine zwei Schneeflocken identisch** sind. Tats\u00e4chlich sind die meisten Schneeflocken einzigartig, da ihre Form durch komplexe Kristallisationsprozesse unter verschiedenen atmosph\u00e4rischen Bedingungen (Temperatur, Feuchtigkeit) entsteht. Jede Schneeflocke hat eine einzigartige Musterung, \u00e4hnlich wie ein Fingerabdruck. Allerdings gibt es unter bestimmten Bedingungen (z. B. extrem stabile Umweltbedingungen) theoretische M\u00f6glichkeiten, dass zwei Schneeflocken sehr \u00e4hnlich aussehen. Die Aussage \"keine zwei Schneeflocken sind identisch\" ist daher eine vereinfachte, popul\u00e4re Darstellung."
+            "content": "Sim, \u00e9 verdade que n\u00e3o existem dois flocos de neve id\u00eanticos. Cada floco de neve tem uma forma \u00fanica devido \u00e0s condi\u00e7\u00f5es clim\u00e1ticas e ambientais espec\u00edficas em que se forma. Esta caracter\u00edstica \u00fanica dos flocos de neve \u00e9 um fen\u00f4meno interessante da natureza.</s>"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Stimmt es, dass keine zwei Schneeflocken identisch sind?"
+            "content": "\u00c9 verdade que n\u00e3o existem dois flocos de neve id\u00eanticos?"
           },
           {
             "role": "assistant",
-            "content": "Es ist \u00e4u\u00dferst unwahrscheinlich, dass zwei Schneeflocken identisch sind, obwohl es technisch nicht unm\u00f6glich ist. Jede Schneeflocke bildet sich unter leicht unterschiedlichen atmosph\u00e4rischen Bedingungen w\u00e4hrend des Falls - verschiedene Temperaturen, Luftfeuchtigkeitswerte und Luftstr\u00f6mungen erzeugen einzigartige Kristallmuster. Je komplexer die Schneeflocke, desto unwahrscheinlicher ist es, dass sie dupliziert wird. Einfache Schneekristalle k\u00f6nnten gelegentlich \u00e4hnlich sein. Wilson Bentley, der Anfang des 20. Jahrhunderts Tausende von Schneeflocken fotografierte, fand nie zwei, die genau gleich waren. Wenn Sie neugierig auf schneereiche Wetterbedingungen in einer bestimmten Stadt sind, \u00fcberpr\u00fcfe ich das gerne f\u00fcr Sie!"
+            "content": "\u00c9 extremamente improv\u00e1vel que dois flocos de neve sejam id\u00eanticos, embora n\u00e3o seja tecnicamente imposs\u00edvel. Cada floco de neve se forma sob condi\u00e7\u00f5es atmosf\u00e9ricas ligeiramente diferentes conforme cai - diferentes temperaturas, n\u00edveis de umidade e correntes de ar criam padr\u00f5es de cristal \u00fanicos. Quanto mais complexo o floco de neve, menos prov\u00e1vel \u00e9 que seja duplicado. No entanto, cristais de neve simples podem ocasionalmente ser similares. Wilson Bentley, que fotografou milhares de flocos de neve no in\u00edcio dos anos 1900, nunca encontrou dois que fossem exatamente iguais. Se tem curiosidade sobre condi\u00e7\u00f5es de neve em alguma cidade espec\u00edfica, ficaria feliz em verificar para voc\u00ea!"
           }
         ],
         "metrics_data": [

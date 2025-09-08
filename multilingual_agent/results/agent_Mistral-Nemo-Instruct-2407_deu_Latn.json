@@ -1,20 +1,20 @@
 {
-  "model_name": "Qwen/Qwen3-8B",
+  "model_name": "mistralai/Mistral-Nemo-Instruct-2407",
   "language": "deu",
   "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_deu.json",
   "evaluation_results": {
     "global_metrics": {
       "total_tests": 45,
-      "passed_tests": 41,
-      "failed_tests": 4,
-      "overall_pass_rate": 91.11,
+      "passed_tests": 16,
+      "failed_tests": 29,
+      "overall_pass_rate": 35.56,
       "average_scores_by_metric": {
-        "Tool Correctness": 0.9778,
-        "Argument Correctness": 0.9333
+        "Tool Correctness": 0.7407,
+        "Argument Correctness": 0.7639
       },
       "pass_rates_by_metric": {
-        "Tool Correctness": 97.78,
-        "Argument Correctness": 88.57
+        "Tool Correctness": 51.11,
+        "Argument Correctness": 66.67
       }
     },
     "test_results": [
@@ -33,7 +33,7 @@
           },
           {
             "role": "assistant",
-            "content": "Die Hauptstadt von Frankreich ist Paris."
+            "content": "Die Hauptstadt von Frankreich ist Paris.</s>"
           }
         ],
         "expected_conversation": [
@@ -70,7 +70,7 @@
           },
           {
             "role": "assistant",
-            "content": "Leider kann ich keine Witze erz\u00e4hlen, aber ich kann Ihnen gerne das Wetter in einer Stadt und einem bestimmten Datum sagen! \ud83d\ude0a Wohin und wann m\u00f6chten Sie wissen?"
+            "content": "Klar, hier ist einer f\u00fcr Sie:\n\nWas ist ein Piratens Lieblingsbuch?\n\n\"Treasure Island\"</s>"
           }
         ],
         "expected_conversation": [
@@ -107,7 +107,7 @@
           },
           {
             "role": "assistant",
-            "content": "Ich kann dir leider nicht dabei helfen, Pasta zu kochen, da ich keine Funktionen f\u00fcr Rezepten oder Kochanleitungen habe. Meine F\u00e4higkeiten sind auf Wetterinformationen beschr\u00e4nkt. M\u00f6chtest du wissen, wie das Wetter in einer bestimmten Stadt aussieht?"
+            "content": "Um Pasta zu kochen, f\u00fclle einen Topf mit Wasser und bringe es zum Kochen. F\u00fcge dann die Pasta hinzu und koche sie, bis sie al dente ist. Du kannst die Pasta abgie\u00dfen und mit deiner Lieblingsso\u00dfe servieren.</s>"
           }
         ],
         "expected_conversation": [
@@ -131,7 +131,7 @@
       },
       {
         "test_id": "test_4",
-        "success": true,
+        "success": false,
         "eval_item_id": 4,
         "agent_conversation": [
           {
@@ -144,7 +144,25 @@
           },
           {
             "role": "assistant",
-            "content": "Ich kann Ihnen die aktuelle Uhrzeit nicht direkt sagen, aber ich kann Ihnen das heutige Datum geben. Das heutige Datum ist 2023-10-05. M\u00f6chten Sie wissen, wie das Wetter in einer bestimmten Stadt heute oder an einem anderen Tag ist?"
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "jNzLM2jJM"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "jNzLM2jJM"
+          },
+          {
+            "role": "assistant",
+            "content": "Es ist 11. September 2025.</s>"
           }
         ],
         "expected_conversation": [
@@ -160,9 +178,15 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "No tools expected or called"
+            "success": false,
+            "score": 0.0,
+            "reason": "No tools expected but 1 were called"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.0,
+            "reason": "Tool mismatch"
           }
         ]
       },
@@ -181,7 +205,7 @@
           },
           {
             "role": "assistant",
-            "content": "2 + 2 ist 4."
+            "content": "4</s>"
           }
         ],
         "expected_conversation": [
@@ -205,7 +229,7 @@
       },
       {
         "test_id": "test_6",
-        "success": true,
+        "success": false,
         "eval_item_id": 6,
         "agent_conversation": [
           {
@@ -222,23 +246,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "5jHUhDEDB"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "5jHUhDEDB"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "New York",
                     "date": "2024-07-15"
                   }
                 },
-                "id": "call_1"
+                "id": "Fd2Vsbdt1"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "Fd2Vsbdt1"
           },
           {
             "role": "assistant",
-            "content": "Am 15. Juli 2024 wird es in New York 25 \u00b0C warm, mit einer Luftfeuchtigkeit von 75 % und einem Windgeschwindigkeits von 13 km/h. Das Wetter ist somit angenehm und leicht bew\u00f6lkt."
+            "content": "Das Wetter in New York am 15.7.2024:\n\nTemperatur: 25 Grad\nLuftfeuchtigkeit: 75%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -274,9 +317,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -288,7 +331,7 @@
       },
       {
         "test_id": "test_7",
-        "success": true,
+        "success": false,
         "eval_item_id": 7,
         "agent_conversation": [
           {
@@ -305,23 +348,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "JCqKC8uIJ"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "JCqKC8uIJ"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "London",
                     "date": "2024-12-25"
                   }
                 },
-                "id": "call_1"
+                "id": "9qJn3Z87D"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}",
+            "tool_call_id": "9qJn3Z87D"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London am 25. Dezember 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 10 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 18 km/h  \n\nEs wird also etwas k\u00fchler und windig sein, aber keine extremschlechten Bedingungen. \ud83d\ude0a"
+            "content": "Das Wetter in London am 25. Dezember 2024:\n\nTemperatur: 10 \u00b0C\nLuftfeuchtigkeit: 70%\nWindgeschwindigkeit: 18 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -357,9 +419,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -371,7 +433,7 @@
       },
       {
         "test_id": "test_8",
-        "success": true,
+        "success": false,
         "eval_item_id": 8,
         "agent_conversation": [
           {
@@ -388,23 +450,42 @@
               {
                 "type": "function",
                 "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Tokyo",
-                    "date": "2024-04-01"
-                  }
+                  "name": "get_current_date",
+                  "arguments": {}
                 },
-                "id": "call_1"
+                "id": "jfhkKRtgX"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 21, \"humidity\": 75, \"wind_speed\": 13}"
+            "content": "2025-09-11",
+            "tool_call_id": "jfhkKRtgX"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Tokio am 1. April 2024 wird voraussichtlich mit einer Temperatur von 21 \u00b0C, einer Luftfeuchtigkeit von 75 % und einem Windgeschwindigkeit von 13 km/h sein."
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokio",
+                    "date": "2024-04-01"
+                  }
+                },
+                "id": "AwIr7LZ97"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 23, \"humidity\": 70, \"wind_speed\": 13}",
+            "tool_call_id": "AwIr7LZ97"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Tokio am 1. April 2024 wird eine Temperatur von 23 Grad Celsius, eine Luftfeuchtigkeit von 70% und eine Windgeschwindigkeit von 13 km/h haben.</s>"
           }
         ],
         "expected_conversation": [
@@ -440,21 +521,21 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_9",
-        "success": true,
+        "success": false,
         "eval_item_id": 9,
         "agent_conversation": [
           {
@@ -471,23 +552,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "lgoqjc91W"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "lgoqjc91W"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "S\u00e3o Paulo",
                     "date": "2024-01-18"
                   }
                 },
-                "id": "call_1"
+                "id": "JX0jkarTq"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 23, \"humidity\": 85, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 23, \"humidity\": 85, \"wind_speed\": 17}",
+            "tool_call_id": "JX0jkarTq"
           },
           {
             "role": "assistant",
-            "content": "Am 2024-01-18 in S\u00e3o Paulo wird das Wetter mit einer Temperatur von 23 \u00b0C, einer Luftfeuchtigkeit von 85 % und einer Windgeschwindigkeit von 17 km/h erwartet."
+            "content": "Die Wettervorhersage f\u00fcr S\u00e3o Paulo am 18.01.2024:\n\nTemperatur: 23 \u00b0C\nLuftfeuchtigkeit: 85%\nWindgeschwindigkeit: 17 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -523,9 +623,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -537,7 +637,7 @@
       },
       {
         "test_id": "test_10",
-        "success": true,
+        "success": false,
         "eval_item_id": 10,
         "agent_conversation": [
           {
@@ -554,23 +654,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "koGN0GzdZ"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "koGN0GzdZ"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Berlin",
                     "date": "2024-09-15"
                   }
                 },
-                "id": "call_1"
+                "id": "uNsmpkSuO"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}",
+            "tool_call_id": "uNsmpkSuO"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Berlin am 15. September 2024 wird wie folgt sein:  \n- **Temperatur**: 14 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nVorbereite dich auf einen milden, frischen Tag! \ud83c\udf2c\ufe0f"
+            "content": "Das Wetter in Berlin am 15. September 2024 wird wie folgt sein:\n\nTemperatur: 14 Grad Celsius\nLuftfeuchtigkeit: 70%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -606,9 +725,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -620,7 +739,7 @@
       },
       {
         "test_id": "test_11",
-        "success": true,
+        "success": false,
         "eval_item_id": 11,
         "agent_conversation": [
           {
@@ -637,23 +756,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "7drY0ymjX"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "7drY0ymjX"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Miami",
                     "date": "2024-06-20"
                   }
                 },
-                "id": "call_1"
+                "id": "N8AXnjIs1"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 12}",
+            "tool_call_id": "N8AXnjIs1"
           },
           {
             "role": "assistant",
-            "content": "Die Wettervorhersage f\u00fcr Miami am 20. Juni 2024 zeigt folgende Bedingungen an:  \n- **Temperatur**: 30 \u00b0C  \n- **Feuchtigkeit**: 85 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDie Wetterdaten sind f\u00fcr das angegebene Datum g\u00fcltig. M\u00f6chten Sie weitere Details oder eine andere Stadt pr\u00fcfen?"
+            "content": "Die Wettervorhersage f\u00fcr Miami am 20. Juni 2024:\n\nTemperatur: 30 Grad\nLuftfeuchtigkeit: 85%\nWindgeschwindigkeit: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -689,9 +827,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -703,7 +841,7 @@
       },
       {
         "test_id": "test_12",
-        "success": true,
+        "success": false,
         "eval_item_id": 12,
         "agent_conversation": [
           {
@@ -720,23 +858,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "pQ8cblzot"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "pQ8cblzot"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Bangkok",
                     "date": "2024-03-18"
                   }
                 },
-                "id": "call_1"
+                "id": "2GS16gZ8c"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}"
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}",
+            "tool_call_id": "2GS16gZ8c"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Bangkok am 18. M\u00e4rz 2024 wird wie folgt sein:  \n- **Temperatur**: 33 \u00b0C  \n- **Feuchte**: 80 %  \n- **Windgeschwindigkeit**: 16 km/h  \n\nM\u00f6chtest du weitere Details oder Informationen zu anderen St\u00e4dten?"
+            "content": "Die Wettervorhersage f\u00fcr Bangkok am 18. M\u00e4rz 2024:\n\nTemperatur: 33 \u00b0C\nLuftfeuchtigkeit: 80%\nWindgeschwindigkeit: 16 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -772,9 +929,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -786,7 +943,7 @@
       },
       {
         "test_id": "test_13",
-        "success": true,
+        "success": false,
         "eval_item_id": 13,
         "agent_conversation": [
           {
@@ -803,23 +960,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "tA2MYvOhY"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "tA2MYvOhY"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Sydney",
                     "date": "2024-11-03"
                   }
                 },
-                "id": "call_1"
+                "id": "2k6yGL6IB"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 20}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 20}",
+            "tool_call_id": "2k6yGL6IB"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Sydney am 3. November 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 20 \u00b0C  \n- **Feuchtigkeit**: 65 %  \n- **Windgeschwindigkeit**: 20 km/h  \n\nEs sieht so aus, als w\u00e4re das Wetter mild und angenehm! \ud83c\udf24\ufe0f"
+            "content": "Das Wetter in Sydney am 3. November 2024 wird eine Temperatur von 20 Grad Celsius, eine Luftfeuchtigkeit von 65% und eine Windgeschwindigkeit von 20 km/h haben.</s>"
           }
         ],
         "expected_conversation": [
@@ -855,9 +1031,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -869,7 +1045,7 @@
       },
       {
         "test_id": "test_14",
-        "success": true,
+        "success": false,
         "eval_item_id": 14,
         "agent_conversation": [
           {
@@ -886,23 +1062,42 @@
               {
                 "type": "function",
                 "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Cairo",
-                    "date": "2024-08-12"
-                  }
+                  "name": "get_current_date",
+                  "arguments": {}
                 },
-                "id": "call_1"
+                "id": "Rfi6JYgPe"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 31, \"humidity\": 50, \"wind_speed\": 12}"
+            "content": "2025-09-11",
+            "tool_call_id": "Rfi6JYgPe"
           },
           {
             "role": "assistant",
-            "content": "In Kairo wird es am 12. August 2024 31 \u00b0C warm. Die Luftfeuchtigkeit betr\u00e4gt 50 % und die Windgeschwindigkeit liegt bei 12 km/h. Das Wetter wird sich also als sonnig und mild darstellen."
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Kairo",
+                    "date": "2024-08-12"
+                  }
+                },
+                "id": "wHY4q3FnJ"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "wHY4q3FnJ"
+          },
+          {
+            "role": "assistant",
+            "content": "Am 12. August 2024 in Kairo wird es 25 Grad warm sein, die Luftfeuchtigkeit betr\u00e4gt 75% und die Windgeschwindigkeit liegt bei 13 km/h.</s>"
           }
         ],
         "expected_conversation": [
@@ -938,21 +1133,21 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_15",
-        "success": true,
+        "success": false,
         "eval_item_id": 15,
         "agent_conversation": [
           {
@@ -969,23 +1164,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "ZnCs1Wzek"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "ZnCs1Wzek"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Vancouver",
                     "date": "2024-05-25"
                   }
                 },
-                "id": "call_1"
+                "id": "oB8KAt7ab"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 23, \"humidity\": 70, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 23, \"humidity\": 70, \"wind_speed\": 13}",
+            "tool_call_id": "oB8KAt7ab"
           },
           {
             "role": "assistant",
-            "content": "F\u00fcr Vancouver am 25. Mai 2024 wird folgendes Wetter vorhergesagt:  \n- **Temperatur**: 23 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nDie Wetterbedingungen scheinen mild und angenehm zu sein! \ud83c\udf24\ufe0f"
+            "content": "Die Wetterbedingungen in Vancouver am 25. Mai 2024 werden wie folgt sein:\n\nTemperatur: 23 Grad Celsius\nLuftfeuchtigkeit: 70%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1021,9 +1235,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1035,7 +1249,7 @@
       },
       {
         "test_id": "test_16",
-        "success": true,
+        "success": false,
         "eval_item_id": 16,
         "agent_conversation": [
           {
@@ -1052,23 +1266,42 @@
               {
                 "type": "function",
                 "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Rome",
-                    "date": "2024-10-14"
-                  }
+                  "name": "get_current_date",
+                  "arguments": {}
                 },
-                "id": "call_1"
+                "id": "nHh1g49IR"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}"
+            "content": "2025-09-11",
+            "tool_call_id": "nHh1g49IR"
           },
           {
             "role": "assistant",
-            "content": "Am 14. Oktober 2024 in Rom wird es 21 \u00b0C warm. Die Luftfeuchtigkeit betr\u00e4gt 65 %, und der Wind weht mit einer Geschwindigkeit von 12 km/h. Es wird ein mildes und angenehmes Wetter sein!"
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rom",
+                    "date": "2024-10-14"
+                  }
+                },
+                "id": "AvuZ7j6J2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "AvuZ7j6J2"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Rom am 14. Oktober 2024:\n\nTemperatur: 20 Grad\nLuftfeuchtigkeit: 65%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1104,21 +1337,21 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_17",
-        "success": true,
+        "success": false,
         "eval_item_id": 17,
         "agent_conversation": [
           {
@@ -1135,23 +1368,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "pk2N9iKhE"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "pk2N9iKhE"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Dubai",
                     "date": "2024-02-18"
                   }
                 },
-                "id": "call_1"
+                "id": "flJP5K1NF"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}",
+            "tool_call_id": "flJP5K1NF"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Dubai am 18. Februar 2024 wird wie folgt sein:  \n- **Temperatur**: 28 \u00b0C  \n- **Feuchtigkeit**: 35 %  \n- **Windgeschwindigkeit**: 17 km/h  \n\nDie Bedingungen deuten auf ein warmes und trockenes Wetter mit leichten Winden hin."
+            "content": "Das Wetter in Dubai am 18. Februar 2024:\n\nTemperatur: 28 Grad Celsius\nLuftfeuchtigkeit: 35%\nWindgeschwindigkeit: 17 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1187,9 +1439,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1201,7 +1453,7 @@
       },
       {
         "test_id": "test_18",
-        "success": true,
+        "success": false,
         "eval_item_id": 18,
         "agent_conversation": [
           {
@@ -1218,23 +1470,42 @@
               {
                 "type": "function",
                 "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Singapore",
-                    "date": "2024-07-30"
-                  }
+                  "name": "get_current_date",
+                  "arguments": {}
                 },
-                "id": "call_1"
+                "id": "HwXi80rWw"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 31, \"humidity\": 95, \"wind_speed\": 10}"
+            "content": "2025-09-11",
+            "tool_call_id": "HwXi80rWw"
           },
           {
             "role": "assistant",
-            "content": "Am 30. Juli 2024 in Singapur wird die Temperatur 31 \u00b0C betragen, die Luftfeuchtigkeit liegt bei 95 % und der Wind weht mit einer Geschwindigkeit von 10 km/h."
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapur",
+                    "date": "2024-07-30"
+                  }
+                },
+                "id": "Yfi47d8Nv"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "Yfi47d8Nv"
+          },
+          {
+            "role": "assistant",
+            "content": "Am 30. Juli 2024 in Singapur wird es 25 Grad warm sein, die Luftfeuchtigkeit betr\u00e4gt 75%, und die Windgeschwindigkeit liegt bei 13 km/h.</s>"
           }
         ],
         "expected_conversation": [
@@ -1270,21 +1541,21 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
       {
         "test_id": "test_19",
-        "success": true,
+        "success": false,
         "eval_item_id": 19,
         "agent_conversation": [
           {
@@ -1301,23 +1572,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "lENNqBvy9"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "lENNqBvy9"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Chicago",
                     "date": "2024-01-22"
                   }
                 },
-                "id": "call_1"
+                "id": "zFg8q6aEp"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}",
+            "tool_call_id": "zFg8q6aEp"
           },
           {
             "role": "assistant",
-            "content": "Am 22. Januar 2024 in Chicago erwarten sie eine Temperatur von 9\u00b0C, eine Luftfeuchtigkeit von 60% und eine Windgeschwindigkeit von 21 km/h."
+            "content": "Das Wetter in Chicago am 22. Januar 2024 wird wie folgt sein:\n\nTemperatur: 9 \u00b0C\nLuftfeuchtigkeit: 60%\nWindgeschwindigkeit: 21 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1353,9 +1643,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1367,7 +1657,7 @@
       },
       {
         "test_id": "test_20",
-        "success": true,
+        "success": false,
         "eval_item_id": 20,
         "agent_conversation": [
           {
@@ -1384,23 +1674,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "TLArRXlwU"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "TLArRXlwU"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Stockholm",
                     "date": "2024-06-15"
                   }
                 },
-                "id": "call_1"
+                "id": "CX4ggAhi4"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 14}"
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 14}",
+            "tool_call_id": "CX4ggAhi4"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am 15. Juni 2024 wird wie folgt sein:  \nTemperatur: 14 \u00b0C  \nFeuchtigkeit: 85 %  \nWindgeschwindigkeit: 14 km/h  \n\nViel Spa\u00df bei der Planung deiner Aktivit\u00e4ten! \ud83c\udf26\ufe0f"
+            "content": "Am 15. Juni 2024 wird das Wetter in Stockholm wie folgt sein:\n\nTemperatur: 14 Grad Celsius\nLuftfeuchtigkeit: 85%\nWindgeschwindigkeit: 14 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1436,9 +1745,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1450,7 +1759,7 @@
       },
       {
         "test_id": "test_21",
-        "success": true,
+        "success": false,
         "eval_item_id": 21,
         "agent_conversation": [
           {
@@ -1467,23 +1776,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "d8umoovcY"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "d8umoovcY"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Seoul",
                     "date": "2024-04-27"
                   }
                 },
-                "id": "call_1"
+                "id": "oPwj2wVfh"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 14}"
+            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 14}",
+            "tool_call_id": "oPwj2wVfh"
           },
           {
             "role": "assistant",
-            "content": "Am 27. April 2024 in Seoul erwarten Sie folgende Wetterbedingungen:  \n- **Temperatur**: 20 \u00b0C  \n- **Luftfeuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nDas Wetter sieht moderat aus \u2013 eine gute Wahl f\u00fcr Spazierg\u00e4nge oder Outdoor-Aktivit\u00e4ten! \ud83c\udf24\ufe0f"
+            "content": "Am 27. April 2024 wird die Temperatur in Seoul 20 Grad Celsius betragen, die Luftfeuchtigkeit 70 % und die Windgeschwindigkeit 14 km/h.</s>"
           }
         ],
         "expected_conversation": [
@@ -1519,9 +1847,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1533,7 +1861,7 @@
       },
       {
         "test_id": "test_22",
-        "success": true,
+        "success": false,
         "eval_item_id": 22,
         "agent_conversation": [
           {
@@ -1550,23 +1878,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "EWHvLQmbb"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "EWHvLQmbb"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Cape Town",
                     "date": "2024-08-05"
                   }
                 },
-                "id": "call_1"
+                "id": "Q5CVwBgTE"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 12}",
+            "tool_call_id": "Q5CVwBgTE"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in **Cape Town** am **5. August 2024** wird wie folgt sein:  \n- **Temperatur**: 16 \u00b0C  \n- **Feuchtigkeit**: 55 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDas Wetter erscheint mild und angenehm. M\u00f6chtest du weitere Details oder Informationen zu anderen Daten? \ud83d\ude0a"
+            "content": "Das Wetter in Kapstadt am 5. August 2024:\n\nTemperatur: 16 \u00b0C\nLuftfeuchtigkeit: 55%\nWindgeschwindigkeit: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1602,9 +1949,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1616,7 +1963,7 @@
       },
       {
         "test_id": "test_23",
-        "success": true,
+        "success": false,
         "eval_item_id": 23,
         "agent_conversation": [
           {
@@ -1633,23 +1980,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "CPcaeY3bH"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "CPcaeY3bH"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Mumbai",
                     "date": "2024-11-18"
                   }
                 },
-                "id": "call_1"
+                "id": "4ufoN6jxg"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 17}",
+            "tool_call_id": "4ufoN6jxg"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Mumbai am 18. November 2024 wird wie folgt sein:  \nTemperatur: 30 \u00b0C, Luftfeuchtigkeit: 80 %, Windgeschwindigkeit: 17 km/h.  \nVorbereiten Sie sich auf eine warme und windige Tage! \ud83c\udf2c\ufe0f\ud83c\udf1e"
+            "content": "Das Wetter in Mumbai am 18. November 2024:\n\nTemperatur: 30 Grad Celsius\nLuftfeuchtigkeit: 80%\nWindgeschwindigkeit: 17 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1685,9 +2051,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1699,7 +2065,7 @@
       },
       {
         "test_id": "test_24",
-        "success": true,
+        "success": false,
         "eval_item_id": 24,
         "agent_conversation": [
           {
@@ -1716,23 +2082,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "NPJtQPCc7"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "NPJtQPCc7"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Amsterdam",
                     "date": "2024-12-23"
                   }
                 },
-                "id": "call_1"
+                "id": "FUzKY0pqn"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}"
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}",
+            "tool_call_id": "FUzKY0pqn"
           },
           {
             "role": "assistant",
-            "content": "F\u00fcr Amsterdam am 2024-12-23 wird folgendes Wetter erwartet:  \n- **Temperatur**: 9 \u00b0C  \n- **Feuchte**: 75 %  \n- **Windgeschwindigkeit**: 17 km/h  \n\nEs wird ein k\u00fchler Tag mit leichtem Wind und moderater Luftfeuchtigkeit sein."
+            "content": "Amsterdam-Wetter f\u00fcr den 23. Dezember 2024:\n\nTemperatur: 9 \u00b0C\nLuftfeuchtigkeit: 75%\nWindgeschwindigkeit: 17 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1768,9 +2153,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1782,7 +2167,7 @@
       },
       {
         "test_id": "test_25",
-        "success": true,
+        "success": false,
         "eval_item_id": 25,
         "agent_conversation": [
           {
@@ -1799,23 +2184,42 @@
               {
                 "type": "function",
                 "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "KMNJvvGO7"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "KMNJvvGO7"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "San Francisco",
                     "date": "2024-09-22"
                   }
                 },
-                "id": "call_1"
+                "id": "LL3F2ajnE"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}",
+            "tool_call_id": "LL3F2ajnE"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in San Francisco am 22. September 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 18 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nEs sieht wie ein mildes und windiges Wetter aus \u2013 perfekt f\u00fcr eine Spaziergang an der K\u00fcste! \ud83c\udf0a"
+            "content": "Das Wetter in San Francisco am 22. September 2024:\n\nTemperatur: 18 Grad Celsius\nLuftfeuchtigkeit: 70%\nWindgeschwindigkeit: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -1851,9 +2255,9 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 1/1 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/1 expected tools, order score: 0.00"
           },
           {
             "name": "Argument Correctness",
@@ -1885,13 +2289,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "OCAD2Yayr"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "OCAD2Yayr"
           },
           {
             "role": "assistant",
@@ -1905,17 +2310,18 @@
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "JlcE10I5z"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}",
+            "tool_call_id": "JlcE10I5z"
           },
           {
             "role": "assistant",
-            "content": "Heute, dem 11. September 2025, in London erwarten Sie folgende Wetterbedingungen:  \n- **Temperatur**: 15 \u00b0C  \n- **Feuchte**: 80 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDas Wetter scheint mild und frisch zu sein! \ud83c\udf2c\ufe0f"
+            "content": "Heute in London ist es 15 Grad Celsius, die Luftfeuchtigkeit betr\u00e4gt 80% und die Windgeschwindigkeit liegt bei 12 km/h.</s>"
           }
         ],
         "expected_conversation": [
@@ -2002,13 +2408,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "KRSJA52I9"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "KRSJA52I9"
           },
           {
             "role": "assistant",
@@ -2022,17 +2429,18 @@
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "iyr2to0Dc"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}",
+            "tool_call_id": "iyr2to0Dc"
           },
           {
             "role": "assistant",
-            "content": "Heute in Tokyo ist die Temperatur 18 \u00b0C, die Luftfeuchtigkeit betr\u00e4gt 70 % und der Wind weht mit einer Geschwindigkeit von 13 km/h."
+            "content": "Das Wetter in Tokyo am 2025-09-11:\n\n- Temperatur: 18 Grad\n- Luftfeuchtigkeit: 70%\n- Windgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2119,13 +2527,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "PdtUfwVni"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "PdtUfwVni"
           },
           {
             "role": "assistant",
@@ -2139,17 +2548,18 @@
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "nhBndr4UV"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "nhBndr4UV"
           },
           {
             "role": "assistant",
-            "content": "Heute, am 2025-09-11, in New York erwarten folgende Wetterbedingungen:\n- Temperatur: 20\u00b0C\n- Luftfeuchtigkeit: 65%\n- Windgeschwindigkeit: 13 km/h\n\nDas Wetter sieht mild und frisch aus, perfekt f\u00fcr eine Ausflugstage! \ud83c\udf2c\ufe0f"
+            "content": "Das heutige Wetter in New York:\n\n- Temperatur: 20 \u00b0C\n- Luftfeuchtigkeit: 65%\n- Windgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2236,13 +2646,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "kRuEt3JEy"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "kRuEt3JEy"
           },
           {
             "role": "assistant",
@@ -2256,17 +2667,18 @@
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "Dcc0rBhLV"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 28, \"humidity\": 75, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 28, \"humidity\": 75, \"wind_speed\": 12}",
+            "tool_call_id": "Dcc0rBhLV"
           },
           {
             "role": "assistant",
-            "content": "Heute, dem 11. September 2025, ist das Wetter in Miami wie folgt:  \n- **Temperatur**: 28 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nViel Spa\u00df beim Wettergenie\u00dfen! \ud83c\udf1e"
+            "content": "Das Wetter in Miami am 11. September 2025:\n\nTemperatur: 28 Grad\nLuftfeuchtigkeit: 75%\nWindgeschwindigkeit: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2353,13 +2765,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "qDFrMIj31"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "qDFrMIj31"
           },
           {
             "role": "assistant",
@@ -2373,17 +2786,18 @@
                     "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "C4sAmJ5Wz"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "C4sAmJ5Wz"
           },
           {
             "role": "assistant",
-            "content": "Das aktuelle Wetter in Paris f\u00fcr heute, den 11. September 2025, sieht wie folgt aus:\n\n- **Temperatur**: 16 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nViel Spa\u00df in der Stadt der Lichter! \ud83c\udf1f"
+            "content": "Das aktuelle Wetter in Paris am 2025-09-11:\n\n- Temperatur: 16 Grad\n- Luftfeuchtigkeit: 75%\n- Windgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2450,7 +2864,7 @@
       },
       {
         "test_id": "test_31",
-        "success": true,
+        "success": false,
         "eval_item_id": 31,
         "agent_conversation": [
           {
@@ -2470,13 +2884,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "GSZYYfzC8"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "GSZYYfzC8"
           },
           {
             "role": "assistant",
@@ -2487,20 +2902,21 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "S\u00e3o Paulo",
-                    "date": "2025-09-12"
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "6kYFN4lyX"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 23, \"humidity\": 80, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 23, \"humidity\": 80, \"wind_speed\": 12}",
+            "tool_call_id": "6kYFN4lyX"
           },
           {
             "role": "assistant",
-            "content": "Morgen, am 2025-09-12, in S\u00e3o Paulo erwartet Sie ein Wetter mit einer Temperatur von 23 \u00b0C, einer Luftfeuchtigkeit von 80 % und einem Windgeschwindigkeit von 12 km/h."
+            "content": "Die Wettervorhersage f\u00fcr S\u00e3o Paulo am 2025-09-11:\n\n- Temperatur: 23 \u00b0C\n- Luftfeuchtigkeit: 80%\n- Windgeschwindigkeit: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2559,15 +2975,15 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
       {
         "test_id": "test_32",
-        "success": true,
+        "success": false,
         "eval_item_id": 32,
         "agent_conversation": [
           {
@@ -2587,13 +3003,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "EzrWCNhMZ"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "EzrWCNhMZ"
           },
           {
             "role": "assistant",
@@ -2603,21 +3020,22 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Rome",
+                    "city": "Rom",
                     "date": "2025-09-15"
                   }
                 },
-                "id": "call_1"
+                "id": "zrW4EuzRa"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "zrW4EuzRa"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Rom am n\u00e4chsten Montag (2025-09-15) wird wie folgt sein:  \n- **Temperatur**: 21 \u00b0C  \n- **Feuchtigkeit**: 65 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nViel Spa\u00df beim Besuch in Rom! \ud83d\ude0a"
+            "content": "Das Wetter in Rom am 15. September 2025 wird wie folgt sein:\n\nTemperatur: 20 Grad\nLuftfeuchtigkeit: 65%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2676,9 +3094,9 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
@@ -2704,13 +3122,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "671GHvCgb"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "671GHvCgb"
           },
           {
             "role": "assistant",
@@ -2724,17 +3143,18 @@
                     "date": "2025-09-13"
                   }
                 },
-                "id": "call_1"
+                "id": "BDI23hM2z"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 14}"
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 14}",
+            "tool_call_id": "BDI23hM2z"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am kommenden Samstag, dem 2025-09-13, wird wie folgt sein:  \n- **Temperatur**: 9 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nViel Spa\u00df beim Wetterbeobachten! \ud83c\udf24\ufe0f"
+            "content": "Das Wetter in Stockholm am Samstag, den 13. September 2025 wird wie folgt sein:\n\nTemperatur: 9 Grad Celsius\nLuftfeuchtigkeit: 75%\nWindgeschwindigkeit: 14 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2814,7 +3234,46 @@
           },
           {
             "role": "assistant",
-            "content": "<think>\nOkay, the user is asking for the weather in Chennai on next Tuesday. Let me break this down. First, I need to figure out the date for next Tuesday. To do that, I should check the current date. The current date can be obtained using the get_current_date function. Once I have today's date, I can calculate next Tuesday's date.\n\nWait, the user mentioned \"n\u00e4chsten Dienstag,\" which is German for \"next Tuesday.\" So, I need to make sure that if today is already Tuesday, next Tuesday would be the following week. But since the user is asking in German, maybe they are in a German-speaking country, but the city is Chennai, which is in India. Anyway, the date calculation should be based on the current date regardless of the user's location.\n\nSo first step: call get_current_date to get today's date. Let's say today is October 30, 2023. Then, next Tuesday would be November 7, 2023. Wait, but if today is October 30, 2023, which is a Monday, then next Tuesday is October 31. Wait, no, October 30 is Monday, so next Tuesday is October 31? Wait, no, October 30 is Monday, so Tuesday would be October 31. But if today is, say, November 1, 2023 (Tuesday), then next Tuesday would be November 8. So the exact date depends on the current date.\n\nTherefore, the correct approach is to first get the current date, then determine what date next Tuesday is. Once I have the date, I can call the weather_forecast function with Chennai and that date. \n\nSo first, call get_current_date. Then calculate next Tuesday's date. Then use that date in the weather_forecast function. The user might not know the exact date, so the answer should provide the forecast for next Tuesday regardless of the current day. \n\nBut how to calculate next Tuesday's date? Well, the function weather_forecast requires the date in YYYY-MM-DD format. So once I have the current date, I can compute the next Tuesday. For example, if today is 2023-10-30 (Monday), next Tuesday is 2023-10-31. If today is 2023-11-07 (Tuesday), next Tuesday is 2023-11-14. So the calculation depends on the current date. \n\nTherefore, the steps are: \n1. Get current date using get_current_date.\n2. Calculate next Tuesday's date based on the current date.\n3. Call weather_forecast with Chennai and the calculated date.\n4. Return the results to the user.\n\nI need to make sure that the date calculation is accurate. But since I can't perform date calculations myself, I have to rely on the functions provided. Wait, the functions provided don't include a date calculation tool. The user has to provide the date, so I need to compute it myself based on the current date. \n\nSo, after getting the current date, I can determine next Tuesday's date. Let's say the current date is 2023-10-30 (Monday). Then next Tuesday is 2023-10-31. If the current date is 2023-11-07 (Tuesday), next Tuesday is 2023-11-14. So the logic is: find the next occurrence of Tuesday after the current date. \n\nBut how to implement this? Well, the assistant has to handle this logic. So once the current date is known, the assistant can compute the next Tuesday. For example, if today is 2023-10-30 (Monday), then adding 1 day gives Tuesday. If today is 2023-11-07 (Tuesday), then adding 7 days gives the next Tuesday. \n\nSo the assistant needs to calculate the next Tuesday's date based on the current date. Once that's done, the weather_forecast function can be called with that date. \n\nTherefore, the first tool call should be get_current_date. Then, based on the returned date, compute next Tuesday's date. Then call weather_forecast with Chennai and that date. \n\nBut since the assistant can't perform date calculations, it's up to the assistant to figure out the next Tuesday's date once the current date is known. So the steps are:\n\n1. Call get_current_date to get today's date.\n2. Determine next Tuesday's date.\n3. Call weather_forecast with city Chennai and date as next Tuesday's date.\n4. Return the weather data to the user.\n\nSo the first"
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "orVvG8Fj3"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "orVvG8Fj3"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "NQPHkzN9Q"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "NQPHkzN9Q"
+          },
+          {
+            "role": "assistant",
+            "content": "Das Wetter in Chennai am Dienstag, den 11. September 2025 wird wie folgt sein:\n\nTemperatur: 20 Grad\nLuftfeuchtigkeit: 65%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -2867,15 +3326,15 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": false,
-            "score": 0.0,
-            "reason": "Expected 2 tools but none were called"
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
             "success": false,
-            "score": 0.0,
-            "reason": "Tool mismatch"
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
@@ -2901,52 +3360,18 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "ymNM7kMlw"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "ymNM7kMlw"
           },
           {
             "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Chicago",
-                    "date": "2025-09-13"
-                  }
-                },
-                "id": "call_1"
-              },
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Chicago",
-                    "date": "2025-09-14"
-                  }
-                },
-                "id": "call_2"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}"
-          },
-          {
-            "role": "assistant",
-            "content": "Das Wetter in Chicago dieses Wochenende (Samstag, 2025-09-13 und Sonntag, 2025-09-14) wird wie folgt sein:  \n- **Temperatur**: 18 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nDas Wetter ist beide Tage gleich bleibend."
+            "content": "[TOOL_CALLS][{\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Chicago\", \"date\": \"2025-09-12\"}}, {\"name\": \"weather_forecast\", \"arguments\": {\"city\": \"Chicago\", \"date\": \"2025-09-13\"}}]</s>"
           }
         ],
         "expected_conversation": [
@@ -3014,15 +3439,15 @@
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 3/3 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.3333333333333333,
+            "reason": "Called 1/3 expected tools, order score: 0.33"
           },
           {
             "name": "Argument Correctness",
-            "success": false,
-            "score": 0.6666666666666666,
-            "reason": "Correct arguments for 2/3 tools"
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
           }
         ]
       },
@@ -3048,13 +3473,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "Ui6Zm5NxA"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "Ui6Zm5NxA"
           },
           {
             "role": "assistant",
@@ -3068,17 +3494,18 @@
                     "date": "2025-09-12"
                   }
                 },
-                "id": "call_1"
+                "id": "4j0AmSSZN"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}",
+            "tool_call_id": "4j0AmSSZN"
           },
           {
             "role": "assistant",
-            "content": "Next Friday, September 12, 2025, in London, the weather is expected to have a temperature of 15\u00b0C, humidity at 80%, and wind speeds of 12 km/h. You might want to carry a light jacket due to the cooler and breezy conditions!"
+            "content": "Das Wetter in London am Freitag, den 12. September 2025 wird wie folgt sein:\n\nTemperatur: 15 Grad\nLuftfeuchtigkeit: 80%\nWindgeschwindigkeit: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -3165,13 +3592,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "IoyZs9awc"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "IoyZs9awc"
           },
           {
             "role": "assistant",
@@ -3185,17 +3613,18 @@
                     "date": "2025-09-14"
                   }
                 },
-                "id": "call_1"
+                "id": "x0jnYa6GW"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "x0jnYa6GW"
           },
           {
             "role": "assistant",
-            "content": "Der Wetterbericht f\u00fcr Vancouver am kommenden Sonntag (2025-09-14) zeigt folgende Bedingungen:\n- Temperatur: 20 \u00b0C\n- Luftfeuchtigkeit: 65 %\n- Windgeschwindigkeit: 13 km/h\n\nDie Wetterbedingungen sehen mild und angenehm aus, perfekt f\u00fcr einen Ausflug!"
+            "content": "Das Wetter in Vancouver am 14. September 2025 wird wie folgt sein:\n\nTemperatur: 20 \u00b0C\nLuftfeuchtigkeit: 65%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -3262,7 +3691,7 @@
       },
       {
         "test_id": "test_38",
-        "success": true,
+        "success": false,
         "eval_item_id": 38,
         "agent_conversation": [
           {
@@ -3282,13 +3711,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "88Nrk7ywj"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "88Nrk7ywj"
           },
           {
             "role": "assistant",
@@ -3298,21 +3728,22 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Singapore",
-                    "date": "2025-09-17"
+                    "city": "Singapur",
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "55MhtU9lh"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 10}"
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "55MhtU9lh"
           },
           {
             "role": "assistant",
-            "content": "Der Wetterbericht f\u00fcr Singapur am n\u00e4chsten Mittwoch (2025-09-17) zeigt eine Temperatur von 30 \u00b0C, eine Luftfeuchtigkeit von 85 % und eine Windgeschwindigkeit von 10 km/h."
+            "content": "Das Wetter in Singapur am 11. September 2025 wird wie folgt sein:\n\nTemperatur: 20 \u00b0C\nLuftfeuchtigkeit: 65%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -3371,15 +3802,15 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
       {
         "test_id": "test_39",
-        "success": true,
+        "success": false,
         "eval_item_id": 39,
         "agent_conversation": [
           {
@@ -3399,13 +3830,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "tyJfjwYgj"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "tyJfjwYgj"
           },
           {
             "role": "assistant",
@@ -3416,20 +3848,21 @@
                   "name": "weather_forecast",
                   "arguments": {
                     "city": "Buenos Aires",
-                    "date": "2025-09-18"
+                    "date": "2025-09-11"
                   }
                 },
-                "id": "call_1"
+                "id": "FXSKubse0"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 20, \"humidity\": 75, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 20, \"humidity\": 75, \"wind_speed\": 12}",
+            "tool_call_id": "FXSKubse0"
           },
           {
             "role": "assistant",
-            "content": "Next Thursday, September 18, 2025, in Buenos Aires, the weather is expected to have a temperature of 20\u00b0C, humidity at 75%, and a wind speed of 12 km/h."
+            "content": "Das Wetter in Buenos Aires am Donnerstag, den 11. September 2025 wird wie folgt sein:\n\nTemperatur: 20 Grad\nLuftfeuchtigkeit: 75%\nWindgeschwindigkeit: 12 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -3488,9 +3921,9 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
           }
         ]
       },
@@ -3516,13 +3949,14 @@
                   "name": "get_current_date",
                   "arguments": {}
                 },
-                "id": "call_1"
+                "id": "cJyvMvHjb"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "2025-09-11"
+            "content": "2025-09-11",
+            "tool_call_id": "cJyvMvHjb"
           },
           {
             "role": "assistant",
@@ -3536,17 +3970,18 @@
                     "date": "2025-09-13"
                   }
                 },
-                "id": "call_1"
+                "id": "AzAzWa76r"
               }
             ]
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 19, \"humidity\": 55, \"wind_speed\": 13}"
+            "content": "{\"temperature\": 19, \"humidity\": 55, \"wind_speed\": 13}",
+            "tool_call_id": "AzAzWa76r"
           },
           {
             "role": "assistant",
-            "content": "Next Saturday, September 13, 2025, in Madrid, the weather is expected to have a temperature of 19\u00b0C, humidity at 55%, and a wind speed of 13 km/h. This suggests mild and comfortable conditions! \ud83c\udf24\ufe0f"
+            "content": "Das Wetter in Madrid am 13. September 2025 wird wie folgt sein:\n\nTemperatur: 19 Grad\nLuftfeuchtigkeit: 55%\nWindgeschwindigkeit: 13 km/h</s>"
           }
         ],
         "expected_conversation": [
@@ -3626,7 +4061,7 @@
           },
           {
             "role": "assistant",
-            "content": "Der Unterschied zwischen Wetter und Klima liegt in der Zeitperspektive und den Messgr\u00f6\u00dfen:  \n- **Wetter** beschreibt die kurzfristigen atmosph\u00e4rischen Zust\u00e4nde (z. B. Temperatur, Niederschlag, Wind) an einem bestimmten Ort und Zeitpunkt. Es ist dynamisch und kann sich innerhalb von Stunden oder Tagen stark ver\u00e4ndern.  \n- **Klima** bezieht sich auf die langfristigen Durchschnittswerte und Trends der Wetterbedingungen \u00fcber viele Jahre (meist 30 Jahre oder mehr). Es charakterisiert die typischen Wettermuster eines Gebiets, z. B. ein feuchtes Klima oder ein trockenes Klima.  \n\nBeispiel: Wenn es heute regnet, ist das Wetter. Wenn eine Region im Durchschnitt mehrere Monate pro Jahr regnet, spricht man vom Klima."
+            "content": "Wetter bezieht sich auf die kurzfristigen Wetterbedingungen an einem bestimmten Ort und zu einem bestimmten Zeitpunkt, w\u00e4hrend das Klima die langfristigen Wetterbedingungen in einem bestimmten Gebiet \u00fcber einen l\u00e4ngeren Zeitraum beschreibt.</s>"
           }
         ],
         "expected_conversation": [
@@ -3663,7 +4098,7 @@
           },
           {
             "role": "assistant",
-            "content": "Die hohe Feuchtigkeit in tropischen Gebieten h\u00e4ngt vor allem von der konstanten Sonneneinstrahlung und den damit verbundenen klimatischen Bedingungen ab. In diesen Regionen, die sich nahe dem \u00c4quator befinden, erw\u00e4rmt die Sonne die Erdoberfl\u00e4che st\u00e4ndig, was zu intensiver Verdunstung von Wasser aus Ozeanen, Seen und Fl\u00fcssen f\u00fchrt. Das aufsteigende, warme und feuchte Luftmass wird durch die hohe Luftfeuchtigkeit unterst\u00fctzt, da warme Luft mehr Wasserstoff aufnehmen kann. Zudem tragen Pflanzen durch Transpiration (Wasserabgabe \u00fcber Bl\u00e4tter) zur Feuchtigkeit bei. Diese Kombination aus starker Sonneneinstrahlung, hoher Verdunstung und begrenzter Luftbewegung f\u00fchrt zu den charakteristischen feuchten und warmen Bedingungen in tropischen Zonen."
+            "content": "In tropischen Gebieten ist es immer feucht, weil die Luft dort viel warmer ist und daher mehr Feuchtigkeit aufnehmen kann. Wenn die Luft mit Feuchtigkeit ges\u00e4ttigt ist, kondensiert sie und bildet Wolken und Regen.</s>"
           }
         ],
         "expected_conversation": [
@@ -3700,7 +4135,7 @@
           },
           {
             "role": "assistant",
-            "content": "Berge beeinflussen lokale Wettermuster durch einen Effekt namens \"Orographische L\u00fcftung\". Wenn feuchte Luft auf einen Berg st\u00f6\u00dft, wird sie aufgestiegen, abgek\u00fchlt und oft zu Niederschlag f\u00fchren. Dies erzeugt auf der windabgekehrten Seite h\u00e4ufig trockene Bedingungen. Solche Ph\u00e4nomene k\u00f6nnen lokale Klimaunterschiede wie feuchte T\u00e4ler oder trockene H\u00e4nge verursachen."
+            "content": "Ja, Berge k\u00f6nnen das lokale Wetter beeinflussen. Sie k\u00f6nnen die Luftstr\u00f6mung blockieren und dazu f\u00fchren, dass die Luft aufsteigt, was zu Wolkenbildung und Niederschlag f\u00fchren kann. Auf der leew\u00e4rtigen Seite der Berge kann es trockener sein, da die aufsteigende Luft die Feuchtigkeit verloren hat.</s>"
           }
         ],
         "expected_conversation": [
@@ -3737,7 +4172,7 @@
           },
           {
             "role": "assistant",
-            "content": "Die Wind entsteht durch Unterschiede in der Luftdruckverteilung. Wenn warme Luft aufsteigt und ein Bereich mit niedrigem Druck schafft, str\u00f6mt k\u00fchle Luft aus umliegenden Bereichen hinzu, um den Druck auszugleichen. Diese Bewegung der Luft wird als Wind wahrgenommen. \n\nDa keine Wettervorhersage oder Datum ben\u00f6tigt wird, k\u00f6nnen die bereitgestellten Tools nicht genutzt werden, um diese Frage zu beantworten."
+            "content": "Wind wird durch die unregelm\u00e4\u00dfige Erw\u00e4rmung der Erdoberfl\u00e4che durch die Sonne verursacht. Diese unregelm\u00e4\u00dfige Erw\u00e4rmung f\u00fchrt zu Druckunterschieden in der Atmosph\u00e4re, die den Wind verursachen.</s>"
           }
         ],
         "expected_conversation": [
@@ -3774,7 +4209,7 @@
           },
           {
             "role": "assistant",
-            "content": "Nein, es ist nicht wahr, dass **keine zwei Schneeflocken identisch** sind. Tats\u00e4chlich sind die meisten Schneeflocken einzigartig, da ihre Form durch komplexe Kristallisationsprozesse unter verschiedenen atmosph\u00e4rischen Bedingungen (Temperatur, Feuchtigkeit) entsteht. Jede Schneeflocke hat eine einzigartige Musterung, \u00e4hnlich wie ein Fingerabdruck. Allerdings gibt es unter bestimmten Bedingungen (z. B. extrem stabile Umweltbedingungen) theoretische M\u00f6glichkeiten, dass zwei Schneeflocken sehr \u00e4hnlich aussehen. Die Aussage \"keine zwei Schneeflocken sind identisch\" ist daher eine vereinfachte, popul\u00e4re Darstellung."
+            "content": "Ja, das stimmt. Es ist eine Tatsache, dass keine zwei Schneeflocken identisch sind. Jede Schneeflocke hat eine einzigartige Form und Struktur, die von Faktoren wie Temperatur, Feuchtigkeit und Luftstr\u00f6mung beeinflusst wird. Diese Unikats sind so winzig, dass sie mit dem blo\u00dfen Auge nicht wahrgenommen werden k\u00f6nnen.</s>"
           }
         ],
         "expected_conversation": [

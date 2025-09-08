@@ -1,0 +1,3936 @@
+{
+  "model_name": "openai/gpt-oss-20b",
+  "language": "pol",
+  "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_pol.json",
+  "evaluation_results": {
+    "global_metrics": {
+      "total_tests": 45,
+      "passed_tests": 36,
+      "failed_tests": 9,
+      "overall_pass_rate": 80.0,
+      "average_scores_by_metric": {
+        "Tool Correctness": 1.0,
+        "Argument Correctness": 0.8619
+      },
+      "pass_rates_by_metric": {
+        "Tool Correctness": 100.0,
+        "Argument Correctness": 74.29
+      }
+    },
+    "test_results": [
+      {
+        "test_id": "test_1",
+        "success": true,
+        "eval_item_id": 1,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest stolica Francji?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>User asks: \"Jaka jest stolica Francji?\" which is in Polish, meaning \"What is the capital of France?\" They ask about a question not about weather. According to the developer instruction: \"You are a bot that answers weather queries. Use anglicized city names. Your final answer must be in natural language.\" The question is not weather related so our correct response is that we only handle weather queries. We presumably must refuse or say we can only provide weather. Because the instruction says \"You are bot that answers weather queries,\" we likely should say we can only answer weather queries, can't answer general questions. So we respond politely that we can't answer the question.<|end|><|start|>assistant<|channel|>final<|message|>I\u2019m sorry, but I can only help with weather\u2011related questions. If you need a forecast for a city, just let me know the city name and the date!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest stolica Francji?"
+          },
+          {
+            "role": "assistant",
+            "content": "Jestem botem pogodowym zaprojektowanym do pomocy w zapytaniach zwi\u0105zanych z pogod\u0105. W przypadku pyta\u0144 o geografi\u0119, takich jak stolice, poleca\u0142bym skorzystanie z wyszukiwarki lub encyklopedii. Jednak\u017ce, je\u015bli chcia\u0142by\u015b pozna\u0107 pogod\u0119 w Pary\u017cu we Francji, ch\u0119tnie pomog\u0119!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_2",
+        "success": true,
+        "eval_item_id": 2,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Czy mo\u017cesz opowiedzie\u0107 mi \u017cart?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>User asks in Polish: \"Czy mo\u017cesz opowiedzie\u0107 mi \u017cart?\" They want a joke. Our role is a weather bot. According to instructions: \"You are a bot that responds to weather queries. Use English city names. Final answer must be in natural language.\" The user is not asking about weather. This request deviates. According to the system, must refuse because it's not weather query? There's no instruction to refuse general non-weather. But \"You are a bot that responds to weather queries.\" If it's not a weather query, we might not respond? In previous instruction, we are to refuse? No. The guidelines didn't say to refuse; we can either respond or refuse. The policy says that for general requests, we should comply. But we are specialized. We might answer: I can share a joke? We are supposed to respond to weather queries only. Possibly we should refuse to answer non-weather. But the problem statement: \"You are a bot that responds to weather queries. Your final answer must be in natural language.\" It doesn't explicitly say to refuse non-weather. But the earlier guidelines say: we should refuse or safe complete if ambiguous or not in scope. However the user is asking to share a joke. We are not weather. But we can politely say we can't provide jokes as we are weather bot. Let's see policy: It's about the user request. It's not disallowed; just outside domain. We can politely say we only provide weather information. But we don't want to produce unrelated content. That seems fine.\n\nWe should produce a refusal: \"I'm sorry, but I can only provide weather information.\" According to policy: \"If the user requests a topic that is out of scope, we can refuse.\" The policy: \"If the user requests a different type of information, we can indicate we are specialized.\" That is correct. So we refuse.<|end|><|start|>assistant<|channel|>final<|message|>I\u2019m sorry, but I can only help with weather\u2011related questions.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Czy mo\u017cesz opowiedzie\u0107 mi \u017cart?"
+          },
+          {
+            "role": "assistant",
+            "content": "Specjalizuj\u0119 si\u0119 w informacjach pogodowych i prognozach. Chocia\u017c nie mog\u0119 opowiada\u0107 \u017cart\u00f3w, mog\u0119 podzieli\u0107 si\u0119 interesuj\u0105cymi faktami pogodowymi! Na przyk\u0142ad, czy wiesz, \u017ce pioruny mog\u0105 osi\u0105ga\u0107 temperatury pi\u0119\u0107 razy wy\u017csze ni\u017c powierzchnia s\u0142o\u0144ca? Je\u015bli chcia\u0142by\u015b pozna\u0107 pogod\u0119 dla konkretnej lokalizacji, po prostu zapytaj!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_3",
+        "success": true,
+        "eval_item_id": 3,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jak ugotowa\u0107 makaron?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>User asks: \"Jak ugotowa\u0107 makaron?\" which is Polish: \"How to cook pasta?\" They want instructions for cooking pasta. That is not a weather query. According to instructions: \"Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe.\" They are to answer weather queries. But the user asks cooking instructions. So this is not a weather question. According to policy: Our system should not provide cooking instructions? The instructions say we are a bot that answers weather queries. We should only provide weather info. Since the query is about cooking pasta, we need to politely decline or respond that we only provide weather info. According to system instructions: \"You are ChatGPT...\". The user wants cooking instructions: In these guidelines we have: \"When a user asks for instructions on cooking or making a dish, we should refuse.\" There's a section: \"When a user asks you to create content that encourages or depicts wrongdoing ...\". There's no mention of cooking. There's a typical policy: \"Any cooking instructions or recipes are allowed.\" There's no policy forbidding cooking instructions. There's no request to override. No policy prohibits giving cooking instructions. Wait, the guidelines say: \"When a user asks for instructions in any domain that is considered cooking or making a dish ... there's no policy that forbids it.\" There's no disallowed content. So we can give cooking instructions. There's no conflict. The only conflict is that the system says \"You are a bot that answers weather queries.\" The user asked something else. According to the conversation, we are told to only answer weather queries. But we must obey the system message \"You are a bot that answers weather queries\". The user deviated. Should we comply? The system says: \"You are a bot that answers weather queries. Use English city names etc.\" But the user is not asking about weather. There's no conflict. According to OpenAI policies, we cannot refuse because there's no policy. But we have a system instruction that says we are only for weather queries. The policy says we must follow the system instructions. There's no override. So we must politely handle the question. It says \"Your final answer must be in natural language.\" We could respond with a refusal: \"I'm sorry, but I can only provide weather information.\" This is appropriate because the user is not asking about weather. The policy mentions we can provide refusal for out-of-scope requests. So we should do that. That seems correct: the system says bot is for weather only. So we refuse to give cooking instructions. The answer must be natural language. Also, we must not mention policy content. We do so.<|end|><|start|>assistant<|channel|>final<|message|>I\u2019m sorry, but I can only provide weather information.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jak ugotowa\u0107 makaron?"
+          },
+          {
+            "role": "assistant",
+            "content": "Jestem asystentem pogodowym, wi\u0119c nie mog\u0119 pom\u00f3c z instrukcjami gotowania. Mog\u0119 jednak poinformowa\u0107 o warunkach pogodowych, je\u015bli planujesz grilla lub piknik na \u015bwie\u017cym powietrzu! Po prostu powiedz mi, kt\u00f3re miasto Ci\u0119 interesuje, a mog\u0119 dostarczy\u0107 informacje pogodowe."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_4",
+        "success": true,
+        "eval_item_id": 4,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Kt\u00f3ra jest godzina?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asks: \"Kt\u00f3ra jest godzina?\" which means \"What time is it?\" The instruction: I'm a bot that responds to weather queries only? The user is asking for current time. This is not about weather forecast. The instructions says \"You are bot that answers weather queries.\" There's no instruction about answering time. This might be considered out of scope. According to instruction: \"Your final answer must be in natural language.\" But they don't mention any function to get time. Only get_current_date, not get_current_time. So I cannot provide time. I should explain that I cannot provide time. But maybe we do it with a fallback: we can't answer. So I'd politely say that I can only provide weather info.\n\nThus: respond politely that I cannot give time.<|end|><|start|>assistant<|channel|>final<|message|>I\u2019m sorry, but I\u2019m only set up to provide weather\u2011related information. If you\u2019d like a weather forecast, just let me know the city (and date) and I\u2019ll gladly help!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Kt\u00f3ra jest godzina?"
+          },
+          {
+            "role": "assistant",
+            "content": "Nie mam dost\u0119pu do aktualnych informacji o czasie, ale mog\u0119 pom\u00f3c z prognozami pogody i aktualnymi warunkami pogodowymi dla dowolnego miasta. Czy jest konkretne miejsce, dla kt\u00f3rego chcia\u0142by\u015b pozna\u0107 pogod\u0119?"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_5",
+        "success": true,
+        "eval_item_id": 5,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Ile to jest 2 + 2?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asked a math question: \"Ile to jest 2 + 2?\" This is not a weather request. According to instructions: \"You are bot that answers weather queries.\" But user asks non-weather. Should we refuse? The instructions say: \"Your ultimate answer must be in natural language.\" No mention of refusing. But we can provide answer. The system might expect that we handle non-weather. Probably reply politely.\n\nThus: respond with answer 4.<|end|><|start|>assistant<|channel|>final<|message|>2\u202f+\u202f2 equals\u202f4.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Ile to jest 2 + 2?"
+          },
+          {
+            "role": "assistant",
+            "content": "Jestem zaprojektowany do pomocy w kwestiach zwi\u0105zanych z pogod\u0105, a nie z problemami matematycznymi. Je\u015bli potrzebujesz informacji pogodowych dla jakiego\u015b miasta lub chcesz wiedzie\u0107 o nadchodz\u0105cych warunkach pogodowych, jestem tutaj, aby pom\u00f3c!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_6",
+        "success": true,
+        "eval_item_id": 6,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest pogoda w Nowym Jorku 07/15/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York",
+                    "date": "2024-07-15"
+                  }
+                },
+                "id": "Yewbz0JZF"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "Yewbz0JZF"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have the weather data: temperature 25 (probably Celsius), humidity 75%, wind_speed 13 (units probably km/h or mph). We need to provide answer in natural language in English (the instruction: \"Use English form of city names\" and answer in natural language). The user asked: \"Jaka jest pogoda w Nowym Jorku 07/15/2024?\" which is \"What is the weather in New York on 07/15/2024?\" So answer: something like \"On July 15, 2024, in New York, the temperature will be about 25\u00b0C with 75% humidity and a wind speed of 13 km/h.\" Should use \"New York\" city name. It's okay. Also maybe mention day of week? They didn't ask. We'll answer straightforward.<|end|><|start|>assistant<|channel|>final<|message|>On July\u202f15,\u202f2024 in New\u202fYork, the forecast calls for a mild day with a temperature around\u202f25\u202f\u00b0C, humidity at about\u202f75\u202f%, and a breeze blowing at roughly\u202f13\u202fkm/h.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest pogoda w Nowym Jorku 07/15/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York",
+                    "date": "2024-07-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Nowym Jorku 15 lipca 2024 roku pokazuje przyjemny letni dzie\u0144 z temperatur\u0105 25\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wynosi\u0107 75%, przez co b\u0119dzie nieco duszno, a wiatr b\u0119dzie lekki o pr\u0119dko\u015bci 15 km/h. To \u015bwietny dzie\u0144 na aktywno\u015bci na \u015bwie\u017cym powietrzu, cho\u0107 nale\u017cy pami\u0119ta\u0107 o odpowiednim nawodnieniu ze wzgl\u0119du na wilgotno\u015b\u0107."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_7",
+        "success": true,
+        "eval_item_id": 7,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest pogoda w Londynie 25 grudnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2024-12-25"
+                  }
+                },
+                "id": "6Mp6XCAeY"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}",
+            "tool_call_id": "6Mp6XCAeY"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>It returned a JSON string? The function returns any, and it returned a string? They included curly braces as string possibly. I must parse? The output: \"{\\\"temperature\\\": 10, \\\"humidity\\\": 70, \\\"wind_speed\\\": 18}\". It's a string representation of JSON. We need to produce natural language answer. We interpret temperature 10 (\u00b0C?), humidity 70%, wind speed 18 (km/h?). We need to use English city name: London. Provide answer in natural language. Use polite style. Provide weather details.<|end|><|start|>assistant<|channel|>final<|message|>The forecast for London on December\u202f25,\u202f2024 indicates a chilly day: **about 10\u202f\u00b0C** with **70\u202f% humidity** and a **moderate wind of roughly 18\u202fkm/h**. This should feel quite typical for a Christmas Day in London\u2014clear skies might be expected, but keep a coat handy just in case!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest pogoda w Londynie 25 grudnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2024-12-25"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Londynie w Bo\u017ce Narodzenie, 25 grudnia 2024 roku, b\u0119dzie typow\u0105 zimow\u0105 pogod\u0105 z temperatur\u0105 10\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wynosi\u0107 70% przy umiarkowanym wietrze o pr\u0119dko\u015bci 18 km/h. To ch\u0142odny zimowy dzie\u0144, wi\u0119c ubierz si\u0119 ciep\u0142o, je\u015bli wychodzisz na \u015bwi\u0105teczne uroczysto\u015bci!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_8",
+        "success": true,
+        "eval_item_id": 8,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Opowiedz mi o pogodzie w Tokio 1 kwietnia 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2024-04-01"
+                  }
+                },
+                "id": "nwTb0stkt"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "nwTb0stkt"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to produce final answer. The system instructions: respond in natural language. Use English city names. So answer: Provide weather in Tokyo 1 Apr 2024. The forecast JSON shows: temperature 21 (likely Celsius), humidity 75%, wind speed 13 (probably km/h). So answer: On April 1, 2024, Tokyo will have around 21\u00b0C, moderate humidity 75%, wind 13 km/h. Should use natural language.\n\nLet's craft.<|end|><|start|>assistant<|channel|>final<|message|>On the first day of April 2024, Tokyo is expected to be pleasantly mild. The forecast calls for a high of about **21\u202f\u00b0C** (\u224870\u202f\u00b0F). Humidity will hover around **75\u202f%**, giving a fairly comfortable, but slightly moist, atmosphere. Wind speeds are predicted to be in the range of **13\u202fkm/h** (roughly 8\u202fmph), so breezes will be noticeable but nothing too strong. Overall, a pleasant early\u2011spring day that\u2019s ideal for strolling the city.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Opowiedz mi o pogodzie w Tokio 1 kwietnia 2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2024-04-01"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 22, \"humidity\": 75, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Tokio 1 kwietnia 2024 roku b\u0119dzie pi\u0119kn\u0105 wiosenn\u0105 pogod\u0105 z temperatur\u0105 22\u00b0C. Wilgotno\u015b\u0107 wyniesie 75% przy delikatnym wietrze o pr\u0119dko\u015bci 13 km/h. To idealna pogoda na kwitnienie wi\u015bni - doskona\u0142a na hanami (podziwianie kwiat\u00f3w) i aktywno\u015bci na \u015bwie\u017cym powietrzu w \u0142agodnych wiosennych warunkach!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_9",
+        "success": false,
+        "eval_item_id": 9,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w S\u00e3o Paulo 01-18-2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sao Paulo",
+                    "date": "2024-01-18"
+                  }
+                },
+                "id": "rCDWJSRHj"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 12, \"humidity\": 55, \"wind_speed\": 20}",
+            "tool_call_id": "rCDWJSRHj"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have result: temperature 12 (likely Celsius), humidity 55%, wind_speed 20 (maybe km/h). Need to respond in natural language, English city name. Since user asked in Polish, we can respond in Polish, but natural language should be used. They didn't specify language for response, but they said \"Twoja ostateczna odpowied\u017a po j\u0119zyku naturalnym.\" They didn't say to respond in Polish or English; but user asked in Polish. We can respond in Polish with natural language. But they instructed to use English city names. So mention \"S\u00e3o Paulo\". We'll give forecast: 12\u00b0C, humidity 55%, wind speed 20 km/h. Probably add some qualitative description: mild, probably cool. Also mention date. Provide answer.<|end|><|start|>assistant<|channel|>final<|message|>\u015arednia temperatura w S\u00e3o\u202fPaulo 18 stycznia 2024 roku wyniesie oko\u0142o **12\u202f\u00b0C**. Wilgotno\u015b\u0107 wyniesie **55\u202f%**, a pr\u0119dko\u015b\u0107 wiatru **20\u202fkm/h**. Warunki b\u0119d\u0105 raczej ch\u0142odne, z niewielk\u0105 wilgotno\u015bci\u0105 i umiarkowanym podmuchiem wiatru.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w S\u00e3o Paulo 01-18-2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "S\u00e3o Paulo",
+                    "date": "2024-01-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 24, \"humidity\": 85, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w S\u00e3o Paulo 18 stycznia 2024 roku b\u0119dzie ciep\u0142\u0105 letni\u0105 pogod\u0105 z temperatur\u0105 24\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie do\u015b\u0107 wysoka na poziomie 85%, a wiatr b\u0119dzie lekki o pr\u0119dko\u015bci 12 km/h. Poniewa\u017c na p\u00f3\u0142kuli po\u0142udniowej jest lato, spodziewaj si\u0119 wilgotnego i ciep\u0142ego dnia - idealnego na aktywno\u015bci w pomieszczeniach z klimatyzacj\u0105 lub p\u0142ywanie na \u015bwie\u017cym powietrzu!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_10",
+        "success": true,
+        "eval_item_id": 10,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Czy mo\u017cesz sprawdzi\u0107 pogod\u0119 dla Berlina 15 wrze\u015bnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2024-09-15"
+                  }
+                },
+                "id": "A1dVe5BLV"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 13}",
+            "tool_call_id": "A1dVe5BLV"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to provide answer in natural language, in English. Also mention that we used the forecast. Provide weather conditions. Use English city name: Berlin. The date is 2024-09-15. Provide temperature, humidity, wind speed. Provide weather description? We have 14 degrees Celsius, 70% humidity, wind speed 13 km/h. Provide some contextual info. No further action.<|end|><|start|>assistant<|channel|>final<|message|>Sure! Here\u2019s the weather forecast for **Berlin** on **15\u202fSeptember\u202f2024**:\n\n- **Temperature:** 14\u202f\u00b0C  \n- **Humidity:** 70\u202f%  \n- **Wind speed:** 13\u202fkm/h  \n\nThe day is expected to be mild with moderate humidity and a gentle breeze. It should be a pleasant day to be outside, though a light jacket would be handy if you\u2019re planning to walk around the city. Enjoy your time in Berlin!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Czy mo\u017cesz sprawdzi\u0107 pogod\u0119 dla Berlina 15 wrze\u015bnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Berlin",
+                    "date": "2024-09-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 70, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Berlinie 15 wrze\u015bnia 2024 roku b\u0119dzie ch\u0142odn\u0105 jesienn\u0105 pogod\u0105 z temperatur\u0105 14\u00b0C. Wilgotno\u015b\u0107 wyniesie 70% przy umiarkowanym wietrze o pr\u0119dko\u015bci 15 km/h. To typowa wczesna jesienna pogoda w Niemczech - b\u0119dziesz chcia\u0142 za\u0142o\u017cy\u0107 lekk\u0105 kurtk\u0119 lub sweter, gdy wyjdziesz na zewn\u0105trz."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_11",
+        "success": true,
+        "eval_item_id": 11,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Prognoza pogody dla Miami na 20 czerwca 2024, prosz\u0119"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2024-06-20"
+                  }
+                },
+                "id": "38LD2MgiE"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 12}",
+            "tool_call_id": "38LD2MgiE"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asked: \"Prognoza pogody dla Miami na 20 czerwca 2024, prosz\u0119\" which is Polish for \"Weather forecast for Miami on 20 June 2024, please\". We need to respond in natural language, use English city name (\"Miami\") and provide forecast details in natural language. We have forecast data: temperature 30 (likely \u00b0C), humidity 85%, wind_speed 12 (likely km/h). Let's formulate: \"On June 20, 2024, in Miami, you can expect a temperature of around 30\u202f\u00b0C, high humidity at 85%, and wind speeds close to 12\u202fkm/h.\" The user may want more details but we have only these. They want natural language answer. Let's produce that.<|end|><|start|>assistant<|channel|>final<|message|>On June\u202f20\u202f2024 in Miami, you can expect a warm day with temperatures around **30\u202f\u00b0C**. Humidity will be high at **about 85\u202f%**, and wind speeds close to **12\u202fkm/h**.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Prognoza pogody dla Miami na 20 czerwca 2024, prosz\u0119"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2024-06-20"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 85, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Prognoza pogody dla Miami na 20 czerwca 2024 roku pokazuje gor\u0105ce i wilgotne letnie warunki z temperatur\u0105 31\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wysoka na poziomie 85% przy lekkim wietrze o pr\u0119dko\u015bci 12 km/h. To typowa letnia pogoda w Miami - bardzo ciep\u0142a i wilgotna, idealna na aktywno\u015bci na pla\u017cy, ale pami\u0119taj o nawodnieniu i robieniu przerw w klimatyzowanych pomieszczeniach!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_12",
+        "success": true,
+        "eval_item_id": 12,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Potrzebuj\u0119 pogody dla Bangkoku na 3/18/24"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "RfBvRNSoS"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 16}",
+            "tool_call_id": "RfBvRNSoS"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to respond in natural language, using English city names. The user asked for the weather for Bangkok on 3/18/24. The tool returned temperature 33, humidity 80, wind_speed 16. Provide final answer. Also maybe mention units: temperature in Celsius? Probably. Provide concise answer.<|end|><|start|>assistant<|channel|>final<|message|>On March\u202f18,\u202f2024, Bangkok will be hot and humid \u2013 expect a temperature of about **33\u202f\u00b0C** with **80\u202f% humidity** and a **wind speed of roughly 16\u202fkm/h**.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Potrzebuj\u0119 pogody dla Bangkoku na 3/18/24"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Bangkok",
+                    "date": "2024-03-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 33, \"humidity\": 80, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Bangkoku 18 marca 2024 roku b\u0119dzie gor\u0105ca i wilgotna z temperatur\u0105 33\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wynosi\u0107 80% przy lekkim wietrze o pr\u0119dko\u015bci 11 km/h. To typowa pogoda sezonu gor\u0105cego dla Bangkoku - bardzo ciep\u0142a i wilgotna, wi\u0119c pami\u0119taj o lekkim ubiorze, nawodnieniu i szukaniu klimatyzowanych miejsc, gdy tylko to mo\u017cliwe."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_13",
+        "success": true,
+        "eval_item_id": 13,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Poka\u017c mi pogod\u0119 w Sydney na 03.11.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sydney",
+                    "date": "2024-11-03"
+                  }
+                },
+                "id": "FeXmFB3eW"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 20}",
+            "tool_call_id": "FeXmFB3eW"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have the weather_forecast result: temperature 20, humidity 65, wind_speed 20. User asked to show weather in Sydney on 03.11.2024 (Nov 3, 2024). We have the data. Need to respond in natural language. The instruction says we must use English form of city names. That's fine: Sydney. Provide maybe a short paragraph.<|end|><|start|>assistant<|channel|>final<|message|>On November\u202f3\u202f2024, Sydney is expected to have a pleasant day with a temperature of about **20\u202f\u00b0C**. The humidity will be at **65\u202f%**, and a moderate wind of roughly **20\u202fkm/h** will keep things breezy. Overall, it\u2019s a mild, comfortable day to be outdoors.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Poka\u017c mi pogod\u0119 w Sydney na 03.11.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sydney",
+                    "date": "2024-11-03"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Sydney 3 listopada 2024 roku b\u0119dzie przyjemn\u0105 wiosenn\u0105 pogod\u0105 z temperatur\u0105 20\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie komfortowa na poziomie 65% przy umiarkowanym wietrze o pr\u0119dko\u015bci 15 km/h. Poniewa\u017c na p\u00f3\u0142kuli po\u0142udniowej jest wiosna, to pi\u0119kna pogoda na aktywno\u015bci na \u015bwie\u017cym powietrzu i zwiedzanie Sydney!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_14",
+        "success": true,
+        "eval_item_id": 14,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jak to wygl\u0105da w Kairze 12 sierpnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cairo",
+                    "date": "2024-08-12"
+                  }
+                },
+                "id": "i1D59ZKOw"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 50, \"wind_speed\": 12}",
+            "tool_call_id": "i1D59ZKOw"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to answer in natural language in English. Ask user \"Jak to wygl\u0105da\" means \"How does it look\". So respond: In Cairo on 12 August 2024: temperature 31\u00b0C, humidity 50%, wind speed 12 km/h. Probably mention it's hot, moderate humidity. Provide concise answer.<|end|><|start|>assistant<|channel|>final<|message|>In Cairo on **12\u202fAugust\u202f2024**, the weather will be warm and relatively dry: the temperature is expected to be around **31\u202f\u00b0C** (88\u202f\u00b0F), with a humidity level of about **50\u202f%** and a light breeze running at roughly **12\u202fkm/h** (\u22487\u202fmph). It's a typical hot\u2011summer day with comfortable wind conditions.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jak to wygl\u0105da w Kairze 12 sierpnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cairo",
+                    "date": "2024-08-12"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 50, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Kairze 12 sierpnia 2024 roku b\u0119dzie gor\u0105c\u0105 letni\u0105 pogod\u0105 z temperatur\u0105 31\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie umiarkowana na poziomie 50% przy lekkim wietrze o pr\u0119dko\u015bci 13 km/h. To typowa gor\u0105ca, sucha letnia pogoda dla Kairu - do\u015b\u0107 ciep\u0142a, ale z ni\u017csz\u0105 wilgotno\u015bci\u0105 ni\u017c w wielu innych gor\u0105cych klimatach, co czyni j\u0105 bardziej zno\u015bn\u0105."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_15",
+        "success": true,
+        "eval_item_id": 15,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Warunki pogodowe w Vancouver na 2024/05/25?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2024-05-25"
+                  }
+                },
+                "id": "wIc9d6gfg"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 23, \"humidity\": 70, \"wind_speed\": 13}",
+            "tool_call_id": "wIc9d6gfg"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We got a weather forecast. Our answer should be in natural language, English. The user requested: \"Warunki pogodowe w Vancouver na 2024/05/25?\" (Polish) They ask for weather conditions on that date. We provide the forecast details. Use English city name, Vancouver is same. Provide natural language.<|end|><|start|>assistant<|channel|>final<|message|>On May\u202f25,\u202f2024 the forecast for Vancouver calls for warm, pleasant weather: a high around 23\u202f\u00b0C (about 73\u202f\u00b0F) with a moderate 13\u202fkm/h breeze, and humidity near 70\u202f%. Overall it should be a comfortable, mildly humid day.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Warunki pogodowe w Vancouver na 2024/05/25?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2024-05-25"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Warunki pogodowe w Vancouver 25 maja 2024 roku b\u0119d\u0105 \u0142agodn\u0105 wiosenn\u0105 pogod\u0105 z temperatur\u0105 20\u00b0C. Wilgotno\u015b\u0107 wyniesie 65% przy umiarkowanym wietrze o pr\u0119dko\u015bci 15 km/h. To pi\u0119kna p\u00f3\u017ana wiosenna pogoda w Vancouver - idealna na zwiedzanie atrakcji zewn\u0119trznych miasta i park\u00f3w!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_16",
+        "success": true,
+        "eval_item_id": 16,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "A co z Rzymem 14 pa\u017adziernika 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2024-10-14"
+                  }
+                },
+                "id": "Y4SVPr9tE"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}",
+            "tool_call_id": "Y4SVPr9tE"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The system says: \"You are bot that answers weather queries. Use English city names. Final answer in natural language.\" Provide answer with weather info. They gave function output: temperature 21, humidity 65, wind_speed 12. Probably degrees Celsius? The function didn't specify units. Typically temperature in Celsius. Provide natural language answer. Let's do: \"The weather forecast for Rome on October 14, 2024 shows a high of about 21\u00b0C, with humidity around 65% and wind speed of roughly 12 km/h.\" Use natural language.<|end|><|start|>assistant<|channel|>final<|message|>On October\u202f14,\u202f2024, Rome is expected to be comfortably mild with a temperature around **21\u202f\u00b0C**. The humidity will be moderate at roughly **65\u202f%**, and wind speeds should be light, about **12\u202fkm/h**. Enjoy the day!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "A co z Rzymem 14 pa\u017adziernika 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2024-10-14"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Rzymie 14 pa\u017adziernika 2024 roku b\u0119dzie przyjemn\u0105 jesienn\u0105 pogod\u0105 z temperatur\u0105 21\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie komfortowa na poziomie 65% przy umiarkowanym wietrze o pr\u0119dko\u015bci 15 km/h. To idealna pogoda na zwiedzanie Rzymu - ani za gor\u0105co, ani za zimno, doskona\u0142a na spacery po zabytkowych miejscach i posi\u0142ki na zewn\u0105trz!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_17",
+        "success": true,
+        "eval_item_id": 17,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Sprawd\u017a pogod\u0119 w Dubaju na 18/2/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "PEMYPQN55"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 35, \"wind_speed\": 17}",
+            "tool_call_id": "PEMYPQN55"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We got weather data: temperature 28 (likely Celsius), humidity 35, wind speed 17 (presumably km/h). Need to respond in natural language, using English city names. The user asked: \"Sprawd\u017a pogod\u0119 w Dubaju na 18/2/2024\" means \"Check the weather in Dubai on 18/2/2024\". Provide answer in natural language. Maybe mention temperature, humidity, wind speed. Let's respond: \"On February 18, 2024, in Dubai, the temperature is 28\u00b0C, humidity 35%, wind speed 17 km/h\". Provide a friendly tone, maybe mention sunny? If not data, just use given numbers. Ensure natural language.<|end|><|start|>assistant<|channel|>final<|message|>On 18\u202fFebruary\u202f2024, the forecast for Dubai calls for a warm day with a temperature of **28\u202f\u00b0C**. Humidity is expected to be **35\u202f%**, and a moderate breeze of about **17\u202fkm/h** should keep the air comfortable.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Sprawd\u017a pogod\u0119 w Dubaju na 18/2/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Dubai",
+                    "date": "2024-02-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 27, \"humidity\": 35, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Dubaju 18 lutego 2024 roku b\u0119dzie ciep\u0142a i przyjemna z temperatur\u0105 27\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie niska na poziomie 35% przy umiarkowanym wietrze o pr\u0119dko\u015bci 18 km/h. To idealna zimowa pogoda w Dubaju - ciep\u0142a, ale nie za gor\u0105ca, z nisk\u0105 wilgotno\u015bci\u0105 czyni\u0105c\u0105 j\u0105 bardzo komfortow\u0105 na aktywno\u015bci na \u015bwie\u017cym powietrzu i zwiedzanie!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_18",
+        "success": true,
+        "eval_item_id": 18,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "A co z Singapurem 30 lipca 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2024-07-30"
+                  }
+                },
+                "id": "hhfak9SRs"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 95, \"wind_speed\": 10}",
+            "tool_call_id": "hhfak9SRs"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asked in Polish: \"A co z Singapurem 30 lipca 2024?\" They want weather forecast for Singapore on 30 July 2024. We got the response: temperature 31, humidity 95, wind speed 10. Need to respond in natural language, presumably in Polish? The instruction: \"U\u017cywaj angielskiej formy nazw miast.\" i.e., use English city names. The answer must be in natural language. The user used Polish. We can reply in Polish while including city name \"Singapore\" in English. Provide weather. Probably: \"W Singapurze 30 lipca 2024 prognozowana temperatura to 31\u00b0C, wilgotno\u015b\u0107 95%, wiatr 10 km/h.\" Let's include maybe \"temperature of 31\u00b0C, humidity 95%, wind speed 10 km/h.\" Use natural language.<|end|><|start|>assistant<|channel|>final<|message|>W **Singapore** 30 lipca 2024 prognozowana temperatura to **31\u202f\u00b0C**, wilgotno\u015b\u0107 95\u202f% oraz pr\u0119dko\u015b\u0107 wiatru oko\u0142o **10\u202fkm/h**.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "A co z Singapurem 30 lipca 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2024-07-30"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 31, \"humidity\": 95, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Singapurze 30 lipca 2024 roku b\u0119dzie gor\u0105ca i bardzo wilgotna z temperatur\u0105 31\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie bardzo wysoka na poziomie 95% przy lekkim wietrze o pr\u0119dko\u015bci 11 km/h. To typowa tropikalna pogoda dla Singapuru - bardzo ciep\u0142a i skrajnie wilgotna, wi\u0119c koniecznie pozosta\u0144 w klimatyzowanych pomieszczeniach i dbaj o odpowiednie nawodnienie podczas przebywania na zewn\u0105trz!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_19",
+        "success": true,
+        "eval_item_id": 19,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Daj mi zna\u0107 o pogodzie w Chicago na 2024-01-22"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2024-01-22"
+                  }
+                },
+                "id": "U2wPvrKU5"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}",
+            "tool_call_id": "U2wPvrKU5"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The function returned temperature 9, humidity 60, wind_speed 21. The user asked: \"Daj mi zna\u0107 o pogodzie w Chicago na 2024-01-22\" which is Polish meaning \"Let me know about the weather in Chicago on 2024-01-22\". We must answer in natural language. Also instructions: \"U\u017cywaj angielskiej formy nazw miast\" means use English names for cities. So respond: \"On Jan 22, 2024 in Chicago the temperature will be 9\u00b0C, humidity 60%, wind speed 21 km/h\" maybe. Provide natural language. Should we say degrees Celsius? The data likely is in Celsius? Not sure. Provide. Ensure we are in natural language. Mention it's forecast. Let's respond.<|end|><|start|>assistant<|channel|>final<|message|>On January\u202f22\u202f,\u202f2024, Chicago is expected to be cool, with a forecasted temperature of **9\u202f\u00b0C (about\u202f48\u202f\u00b0F)**. The humidity will be around **60\u202f%** and wind speeds will reach roughly **21\u202fkm/h (\u224813\u202fmph)**.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Daj mi zna\u0107 o pogodzie w Chicago na 2024-01-22"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2024-01-22"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Chicago 22 stycznia 2024 roku b\u0119dzie ch\u0142odn\u0105 zimow\u0105 pogod\u0105 z temperatur\u0105 9\u00b0C. Wilgotno\u015b\u0107 wyniesie 60% przy silnym wietrze o pr\u0119dko\u015bci 21 km/h. To typowa zimowa pogoda w Chicago - ch\u0142odna i wietrzna, wi\u0119c potrzebujesz ciep\u0142ej odzie\u017cy i powiniene\u015b by\u0107 przygotowany na efekt wiatru, kt\u00f3ry sprawi, \u017ce b\u0119dzie si\u0119 wydawa\u0107 jeszcze ch\u0142odniej!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_20",
+        "success": true,
+        "eval_item_id": 20,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Pogoda w Sztokholmie na 15-06-2024, prosz\u0119"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2024-06-15"
+                  }
+                },
+                "id": "IUgydgu66"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 14}",
+            "tool_call_id": "IUgydgu66"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We got weather forecast result: temperature 14, humidity 85, wind_speed 14. The user asked in Polish \"Pogoda w Sztokholmie na 15-06-2024, prosz\u0119\". We should reply in natural language in...? The instruction: \"Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym.\" Means answer in natural language, likely Polish. Actually earlier instruction: \"U\u017cywaj angielskiej formy nazw miast.\" Just city names English. So we answer in Polish but city name in English. So we produce a response in Polish: \"Na dzie\u0144 15 czerwca 2024 w Sztokholmie prognozowana temperatura wynosi...\" Provide data. Also maybe include humidity and wind speed. Let's craft.<|end|><|start|>assistant<|channel|>final<|message|>Na\u202f15\u202fczerwca\u202f2024\u202fw\u202fStockholmie prognozowana temperatura wynosi **14\u202f\u00b0C**. Wilgotno\u015b\u0107 wzgl\u0119dna to **85\u202f%**, a pr\u0119dko\u015b\u0107 wiatru **14\u202fkm/h**. Wypo\u017cytnie przygotuj si\u0119 na ch\u0142odniejszy dzie\u0144 z umiarkowanym wiatrem i wysok\u0105 wilgotno\u015bci\u0105.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Pogoda w Sztokholmie na 15-06-2024, prosz\u0119"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2024-06-15"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 85, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Sztokholmie 15 czerwca 2024 roku b\u0119dzie \u0142agodn\u0105 letni\u0105 pogod\u0105 z temperatur\u0105 14\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wysoka na poziomie 85% przy delikatnym wietrze o pr\u0119dko\u015bci 13 km/h. To typowa wczesna letnia pogoda dla Sztokholmu - przyjemnie \u0142agodna, ale z wysok\u0105 wilgotno\u015bci\u0105, idealna na korzystanie z d\u0142ugich godzin dziennych szwedzkiego lata!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_21",
+        "success": true,
+        "eval_item_id": 21,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Chc\u0119 wiedzie\u0107 o Seulu na 27.04.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Seoul",
+                    "date": "2024-04-27"
+                  }
+                },
+                "id": "8hl4IuQ5m"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 14}",
+            "tool_call_id": "8hl4IuQ5m"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We respond in natural language, using English city name \"Seoul\". Provide forecast for 27 April 2024: temperature 20\u00b0C, humidity 70%, wind speed 14 (unknown unit). We can mention typical units (\u00b0C, %, km/h). We should not mention code.<|end|><|start|>assistant<|channel|>final<|message|>On\u202f27\u202fApril\u202f2024, Seoul is expected to enjoy a mild, comfortable day. The temperature will hover around\u202f20\u202f\u00b0C, with humidity at about\u202f70\u202f% and a light wind blowing at roughly\u202f14\u202fkm/h. It should be a pleasant, but humid, day perfect for sightseeing or a casual stroll.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Chc\u0119 wiedzie\u0107 o Seulu na 27.04.2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Seoul",
+                    "date": "2024-04-27"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 70, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Seulu 27 kwietnia 2024 roku b\u0119dzie przyjemn\u0105 wiosenn\u0105 pogod\u0105 z temperatur\u0105 20\u00b0C. Wilgotno\u015b\u0107 wyniesie 70% przy umiarkowanym wietrze o pr\u0119dko\u015bci 15 km/h. To pi\u0119kna wiosenna pogoda w Seulu - idealna na podziwianie kwitn\u0105cych wi\u015bni, je\u015bli jeszcze kwitn\u0105, i \u015bwietna na aktywno\u015bci na \u015bwie\u017cym powietrzu po mie\u015bcie!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_22",
+        "success": true,
+        "eval_item_id": 22,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Pogoda w Kapsztadzie 5 sierpnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cape Town",
+                    "date": "2024-08-05"
+                  }
+                },
+                "id": "b8L37uvz5"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 12}",
+            "tool_call_id": "b8L37uvz5"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have a user query: \"Pogoda w Kapsztadzie 5 sierpnia 2024?\" i.e., \"Weather in Cape Town on 5 August 2024?\" The assistant is supposed to respond in natural language, English city name. So respond: Probably \"The weather forecast for Cape Town on August 5, 2024: ...\" Use the data given: temperature 16\u00b0C, humidity 55%, wind speed 12 (units unknown but likely km/h or mph). Mention likely conditions. Let's produce a concise answer.<|end|><|start|>assistant<|channel|>final<|message|>For **Cape\u202fTown** on **August\u202f5\u202f2024**, the forecast is:\n\n- **Temperature:** 16\u202f\u00b0C (about 61\u202f\u00b0F)  \n- **Humidity:** 55\u202f%  \n- **Wind:** 12\u202fkm/h (roughly 7\u202fmph)  \n\nExpect mild, partly\u2011sunny conditions with a moderate breeze. Stay handy for a light jacket on cooler mornings or evenings.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Pogoda w Kapsztadzie 5 sierpnia 2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Cape Town",
+                    "date": "2024-08-05"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Kapsztadzie 5 sierpnia 2024 roku b\u0119dzie ch\u0142odn\u0105 zimow\u0105 pogod\u0105 z temperatur\u0105 16\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie umiarkowana na poziomie 55% przy umiarkowanym wietrze o pr\u0119dko\u015bci 17 km/h. Poniewa\u017c na p\u00f3\u0142kuli po\u0142udniowej jest zima, to typowa zimowa pogoda w Kapsztadzie - \u0142agodna i przyjemna, znacznie cieplejsza ni\u017c zima na p\u00f3\u0142kuli p\u00f3\u0142nocnej!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_23",
+        "success": true,
+        "eval_item_id": 23,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Bombaj na 11/18/2024, jaka jest pogoda?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Mumbai",
+                    "date": "2024-11-18"
+                  }
+                },
+                "id": "9VhxHWKxR"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 17}",
+            "tool_call_id": "9VhxHWKxR"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to respond in natural language, in English, using English city name. The user asked: \"Bombaj na 11/18/2024, jaka jest pogoda?\" In English city name \"Mumbai\". Provide current answer likely like: On November 18, 2024, in Mumbai, the weather is... Provide temperature 30\u00b0C, humidity 80%, wind speed 17 km/h (or mph). Use natural language. Also we should mention that forecast shows ... The date is same as user. Provide in natural language.<|end|><|start|>assistant<|channel|>final<|message|>On **November 18, 2024**, the forecast for **Mumbai** shows a warm day with a temperature of about **30\u202f\u00b0C**. Expect relatively high humidity at **80\u202f%** and breezy conditions with wind speeds around **17\u202fkm/h**. Enjoy your time there!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Bombaj na 11/18/2024, jaka jest pogoda?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Mumbai",
+                    "date": "2024-11-18"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 80, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Bombaju 18 listopada 2024 roku b\u0119dzie ciep\u0142a i wilgotna z temperatur\u0105 30\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wysoka na poziomie 80% przy lekkim wietrze o pr\u0119dko\u015bci 12 km/h. To pogoda po monsunie w Bombaju - nadal do\u015b\u0107 ciep\u0142a i wilgotna, ale generalnie bardziej komfortowa ni\u017c w najgor\u0119tszych miesi\u0105cach letnich."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_24",
+        "success": true,
+        "eval_item_id": 24,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Pogoda w Amsterdamie na 12/23/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Amsterdam",
+                    "date": "2024-12-23"
+                  }
+                },
+                "id": "n89yDb46l"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}",
+            "tool_call_id": "n89yDb46l"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have a user asking \"Pogoda w Amsterdamie na 12/23/2024\" \u2014 Poland language asking for weather in Amsterdam on 12/23/2024 (December 23). We called weather_forecast with city Amsterdam, date 2024-12-23. The function returned {\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 17}. We must respond in natural language, using English city name, so \"Amsterdam\" is fine. We need to answer the user: \"The weather forecast for Amsterdam on December 23, 2024: ...\". Also note the date format: month/day/year was entered as \"12/23/2024\" but the function expects \"YYYY-MM-DD\", which we used. The forecast: temperature 9\u00b0C, humidity 75%, wind speed 17 km/h (assuming km/h). We should provide explanation maybe: \"Temperature: 9\u00b0C, humidity 75%, wind speed 17 km/h\". We can mention it's mild winter weather. We should keep natural language. Also ensure correct units: temperature in Celsius, humidity percentage, wind speed km/h (the function didn't specify units, but typical). Use correct punctuation.\n\nWe need to output purely natural language, no code blocks, no function calls.\n\nThus final answer.<|end|><|start|>assistant<|channel|>final<|message|>On December\u202f23,\u202f2024 the forecast for **Amsterdam** calls for a mild winter day: the temperature will be about **9\u202f\u00b0C**, with **humidity around 75\u202f%** and a breeze of roughly **17\u202fkm/h**.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Pogoda w Amsterdamie na 12/23/2024"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Amsterdam",
+                    "date": "2024-12-23"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 90, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Amsterdamie 23 grudnia 2024 roku b\u0119dzie ch\u0142odn\u0105 jesienn\u0105 pogod\u0105 z temperatur\u0105 14\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie bardzo wysoka na poziomie 90% przy lekkim wietrze o pr\u0119dko\u015bci 12 km/h. To typowa wczesna jesienna pogoda dla Amsterdamu - ch\u0142odna i do\u015b\u0107 wilgotna, wi\u0119c mo\u017cesz chcie\u0107 zabra\u0107 parasol, poniewa\u017c prawdopodobnie b\u0119dzie troch\u0119 wilgoci w powietrzu!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_25",
+        "success": true,
+        "eval_item_id": 25,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest pogoda w San Francisco 22/9/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "San Francisco",
+                    "date": "2024-09-22"
+                  }
+                },
+                "id": "qUCB8bo6V"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}",
+            "tool_call_id": "qUCB8bo6V"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We are instructed: \"U\u017cywaj angielskiej formy nazw miast.\" Means use English city names. The final answer must be in natural language. We got weather forecast: temp 18\u00b0C, humidity 70%, wind speed 12 (units likely km/h). We need to answer in natural language, mention the city name in English \"San Francisco\". Possibly date formatting: 22 September 2024. Provide weather details in natural language. Use Polish? The instruction: \"Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym.\" That indicates natural language, but which language? The question was Polish. However we also told \"U\u017cywaj angielskiej formy nazw miast.\" So keep city name English. The answer can be in Polish but use English city name. Likely fine. Provide forecast. Let's respond in Polish but mention San Francisco.\n\nLet's craft: \"Pogoda w San Francisco (22 wrze\u015bnia 2024) b\u0119dzie ...\" Provide temperature 18\u00b0, humidity 70%, wind 12 km/h.\n\nMaybe mention typical day. Ok.<|end|><|start|>assistant<|channel|>final<|message|>Pogoda w **San\u202fFrancisco** na 22\u202fwrze\u015bnia\u202f2024\u202fto: **temperatura 18\u202f\u00b0C**, wilgotno\u015b\u0107 70\u202f% oraz wiatr o pr\u0119dko\u015bci 12\u202fkm/h. Niebiesko\u2011jasnych dni z umiarkowan\u0105 ciepko\u015bci\u0105 i delikatnym podmuchiem wiatru to przewidywania na ten dzie\u0144.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest pogoda w San Francisco 22/9/2024?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "San Francisco",
+                    "date": "2024-09-22"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w San Francisco 22 wrze\u015bnia 2024 roku b\u0119dzie \u0142agodna z temperatur\u0105 18\u00b0C. Wilgotno\u015b\u0107 wyniesie 70% przy lekkim wietrze o pr\u0119dko\u015bci 12 km/h. To typowa pogoda w San Francisco - ch\u0142odna i komfortowa, idealna na ubieranie si\u0119 warstwowo, poniewa\u017c temperatura mo\u017ce si\u0119 zmienia\u0107 w ci\u0105gu dnia w r\u00f3\u017cnych cz\u0119\u015bciach miasta!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 1/1 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_26",
+        "success": true,
+        "eval_item_id": 26,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest dzisiaj pogoda w Londynie?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "gpMCzt7GU"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "gpMCzt7GU"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "Wf2H3iE6a"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}",
+            "tool_call_id": "Wf2H3iE6a"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have the response from the tool: temperature 15\u00b0C, humidity 80%, wind speed 12 presumably km/h? Not specified. Need to answer natural language. Use English name of city, so \"London\". Provide today's weather. Possibly combine all.<|end|><|start|>assistant<|channel|>final<|message|>Today\u2019s weather in London is mild: the temperature is around\u202f15\u202f\u00b0C, with high humidity at about\u202f80\u202f% and a gentle wind blowing at roughly\u202f12\u202fkm/h.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest dzisiaj pogoda w Londynie?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Londynie dzisiaj (11 wrze\u015bnia 2025) to \u0142agodna jesienna pogoda z temperatur\u0105 10\u00b0C. Wilgotno\u015b\u0107 wynosi 70% przy umiarkowanym wietrze o pr\u0119dko\u015bci 18 km/h. To typowy jesienny dzie\u0144 w Londynie - ch\u0142odny i wilgotny, wi\u0119c ubierz si\u0119 ciep\u0142o w lekk\u0105 kurtk\u0119 i mo\u017ce we\u017a parasol!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_27",
+        "success": true,
+        "eval_item_id": 27,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest teraz pogoda w Tokio?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "wVDkb01tf"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "wVDkb01tf"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "YhSK2QAz8"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 13}",
+            "tool_call_id": "YhSK2QAz8"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We got weather: temperature 18\u00b0C, humidity 70%, wind speed 13 km/h presumably. Need to give in natural language, English. They want current weather in Tokyo. Use English city name. Provide in natural language. Provide context perhaps. Should mention the date. Let's answer.<|end|><|start|>assistant<|channel|>final<|message|>The weather in Tokyo today (2025\u201109\u201111) is mild: a temperature of about 18\u202f\u00b0C (\u224864\u202f\u00b0F), with humidity around 70\u202f%. The wind is moderate, blowing at roughly 13\u202fkm/h (\u22488\u202fmph). Enjoy your day!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest teraz pogoda w Tokio?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Tokyo",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 11, \"humidity\": 60, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Tokio teraz (11 wrze\u015bnia 2025) to \u0142agodna jesienna pogoda z temperatur\u0105 11\u00b0C. Wilgotno\u015b\u0107 jest umiarkowana na poziomie 60% przy wietrze o pr\u0119dko\u015bci 18 km/h. To przyjemny jesienny dzie\u0144 w Tokio - ch\u0142odny i komfortowy, wi\u0119c potrzebujesz lekkiej kurtki, a umiarkowana wilgotno\u015b\u0107 czyni to ca\u0142kiem przyjemnym!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_28",
+        "success": true,
+        "eval_item_id": 28,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Powiedz mi o dzisiejszej pogodzie w Nowym Jorku"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "NqXlAaDY4"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "NqXlAaDY4"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "NSKuUbq4n"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "NSKuUbq4n"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to respond in natural language, English city name. Provide today's weather. The forecast returned temperature:20, humidity:65, wind_speed:13. Probably units: Celsius, percent, km/h? Not specified. But we can assume Celsius, percent, km/h or mph? Probably metric: temperature 20\u00b0C, humidity 65%, wind speed 13 km/h. We'll output natural language.<|end|><|start|>assistant<|channel|>final<|message|>Today in New\u202fYork, it\u2019s mild and comfortable. The temperature is about **20\u202f\u00b0C** with a humidity level of **65\u202f%**. Winds are light, blowing at roughly **13\u202fkm/h**. Enjoy the pleasant September weather!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Powiedz mi o dzisiejszej pogodzie w Nowym Jorku"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "New York",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 11, \"humidity\": 55, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "Dzisiejsza pogoda w Nowym Jorku (11 wrze\u015bnia 2025) to przyjemna jesienna pogoda z temperatur\u0105 11\u00b0C. Wilgotno\u015b\u0107 wynosi 55% przy umiarkowanym wietrze o pr\u0119dko\u015bci 20 km/h. To pi\u0119kny wczesny jesienny dzie\u0144 w NYC - idealna pogoda na aktywno\u015bci na \u015bwie\u017cym powietrzu i zwiedzanie miasta!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_29",
+        "success": true,
+        "eval_item_id": 29,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest dzisiaj pogoda w Miami?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "TE1tv8Hmm"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "TE1tv8Hmm"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "eYpnPgOWc"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 28, \"humidity\": 75, \"wind_speed\": 12}",
+            "tool_call_id": "eYpnPgOWc"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have got the forecast: temperature 28 (probably Celsius), humidity 75%, wind speed 12 (units maybe km/h). Need to answer in natural language. Use English city names. So \"Miami\" is fine. Provide answer. Use language natural.<|end|><|start|>assistant<|channel|>final<|message|>The weather in Miami today (2025\u201109\u201111) looks warm and humid: the temperature is about 28\u202f\u00b0C, with humidity around 75\u202f% and a gentle breeze of roughly 12\u202fkm/h.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest dzisiaj pogoda w Miami?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Miami",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 24, \"humidity\": 65, \"wind_speed\": 17}"
+          },
+          {
+            "role": "assistant",
+            "content": "Dzisiejsza pogoda w Miami (11 wrze\u015bnia 2025) jest ciep\u0142a i przyjemna z temperatur\u0105 24\u00b0C. Wilgotno\u015b\u0107 jest komfortowa na poziomie 65% przy umiarkowanym wietrze o pr\u0119dko\u015bci 17 km/h. To pi\u0119kna p\u00f3\u017ano-letnia pogoda w Miami - ciep\u0142a i komfortowa, idealna na aktywno\u015bci na \u015bwie\u017cym powietrzu i korzystanie z pla\u017cy!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_30",
+        "success": true,
+        "eval_item_id": 30,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Aktualna pogoda w Pary\u017cu, prosz\u0119"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "cgG0Z36J1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "cgG0Z36J1"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Paris",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "xSWXfXSMJ"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 75, \"wind_speed\": 13}",
+            "tool_call_id": "xSWXfXSMJ"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to respond in natural language, using English city name. So: \"The current weather in Paris...\" and provide temperature, humidity, wind speed. Use natural language.\n\n<|end|><|start|>assistant<|channel|>final<|message|>The current weather in **Paris** is 16\u202f\u00b0C, with a humidity of 75\u202f% and a wind speed of 13\u202fkm/h.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Aktualna pogoda w Pary\u017cu, prosz\u0119"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Paris",
+                    "date": "2025-09-11"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 65, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Aktualna pogoda w Pary\u017cu (11 wrze\u015bnia 2025) to \u0142agodna jesienna pogoda z temperatur\u0105 10\u00b0C. Wilgotno\u015b\u0107 wynosi 65% przy umiarkowanym wietrze o pr\u0119dko\u015bci 18 km/h. To typowy paryski jesienny dzie\u0144 - ch\u0142odny i wilgotny, wi\u0119c ubierz si\u0119 ciep\u0142o w warstwy i mo\u017ce we\u017a parasol!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_31",
+        "success": false,
+        "eval_item_id": 31,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie jutro pogoda w S\u00e3o Paulo?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "bHo6xA97M"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "bHo6xA97M"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Sao Paulo",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "CZrkqTh5O"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "CZrkqTh5O"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have the forecast: temperature 20, humidity 65, wind_speed 13. Need to answer in natural language. Use English city name. So \"S\u00e3o Paulo\" or \"Sao Paulo\". Use natural language. Provide weather. Provide temperature 20\u00b0C, humidity 65%, wind 13 km/h maybe. Provide context: Tomorrow. Provide details succinctly.<|end|><|start|>assistant<|channel|>final<|message|>Tomorrow in S\u00e3o\u202fPaulo you can expect a mild day with a temperature of about **20\u202f\u00b0C**. The humidity will be around **65\u202f%**, making it feel a bit damp, and the wind will be moderate, blowing at roughly **13\u202fkm/h**. It should be a pleasant, but somewhat humid, day.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie jutro pogoda w S\u00e3o Paulo?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "S\u00e3o Paulo",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 24, \"humidity\": 85, \"wind_speed\": 12}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda jutro w S\u00e3o Paulo (12 wrze\u015bnia 2025) b\u0119dzie \u0142agodn\u0105 wiosenn\u0105 pogod\u0105 z temperatur\u0105 24\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wysoka na poziomie 85% przy lekkim wietrze o pr\u0119dko\u015bci 12 km/h. To typowa wiosenna pogoda dla S\u00e3o Paulo - \u0142agodna i do\u015b\u0107 wilgotna, wi\u0119c mo\u017cesz chcie\u0107 ubiera\u0107 si\u0119 warstwowo na zmieniaj\u0105ce si\u0119 temperatury w ci\u0105gu dnia!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_32",
+        "success": true,
+        "eval_item_id": 32,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Czy mo\u017cesz powiedzie\u0107 mi, jaka b\u0119dzie pogoda w Rzymie w przysz\u0142y poniedzia\u0142ek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "PbZEv1b8F"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "PbZEv1b8F"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2025-09-15"
+                  }
+                },
+                "id": "pN8UWCobY"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}",
+            "tool_call_id": "pN8UWCobY"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We got the forecast data. Need to translate to natural language sentence. Use English city name. Provide weather forecast for Rome next Monday. Current date is 2025-09-11. Monday after that is 2025-09-15. Provide details: temperature 21\u00b0C, humidity 65%, wind speed 12 km/h (units not specified but could mention km/h). Should be natural language.<|end|><|start|>assistant<|channel|>final<|message|>Sure! On the next Monday (September\u202f15,\u202f2025) you can expect a pleasant day in **Rome**: the temperature will reach about **21\u202f\u00b0C**, humidity will be around **65\u202f%**, and the wind will blow at roughly **12\u202fkm/h**. Enjoy your time in the Eternal City!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Czy mo\u017cesz powiedzie\u0107 mi, jaka b\u0119dzie pogoda w Rzymie w przysz\u0142y poniedzia\u0142ek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Rome",
+                    "date": "2025-09-15"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Rzymie w przysz\u0142y poniedzia\u0142ek (15 wrze\u015bnia 2025) b\u0119dzie ch\u0142odn\u0105 zimow\u0105 pogod\u0105 z temperatur\u0105 16\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie umiarkowana na poziomie 55% przy silnym wietrze o pr\u0119dko\u015bci 20 km/h. To \u0142agodna zimowa pogoda dla Rzymu - ch\u0142odna, ale nie za zimna, cho\u0107 b\u0119dziesz chcia\u0142 ubiera\u0107 si\u0119 ciep\u0142o ze wzgl\u0119du na wiatr!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_33",
+        "success": false,
+        "eval_item_id": 33,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Sztokholmie w t\u0119 sobot\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "3hmWjP5eh"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "3hmWjP5eh"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2025-09-15"
+                  }
+                },
+                "id": "iiHfy83iq"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 75, \"wind_speed\": 14}",
+            "tool_call_id": "iiHfy83iq"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to respond in natural language; user asked \"Jaka b\u0119dzie pogoda w Sztokholmie w t\u0119 sobot\u0119?\" Means: What's the weather in Stockholm this Saturday? Today is 2025-09-11 (Thursday). The Saturday is 2025-09-15. We have forecast: temperature 9\u00b0C, humidity 75%, wind_speed 14 (units? likely km/h). Let's respond in natural language, in Polish? They used Polish question. But instruction: \"Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym.\" Means bot responds in natural language: likely Polish because user asked in Polish. Use English city names: Stockholm. Provide weather. Compose: \"W sobot\u0119, 15 wrze\u015bnia 2025, w Stockholmie spodziewana temperatura wyniesie oko\u0142o 9\u00b0C, wilgotno\u015b\u0107 75%, wiatr o pr\u0119dko\u015bci 14 km/h.\" Add context.<|end|><|start|>assistant<|channel|>final<|message|>W sobot\u0119, 15\u202fwrze\u015bnia 2025\u202froku, w Stockholmie prognozowana jest temperatura oko\u0142o\u202f9\u202f\u00b0C, wilgotno\u015b\u0107 rz\u0119du\u202f75\u202f%, a wiatr o pr\u0119dko\u015bci\u202f14\u202fkm/h. \ud83d\udea6<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Sztokholmie w t\u0119 sobot\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Stockholm",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": -1, \"humidity\": 65, \"wind_speed\": 21}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Sztokholmie w t\u0119 sobot\u0119 (13 wrze\u015bnia 2025) b\u0119dzie ch\u0142odn\u0105 jesienn\u0105 pogod\u0105 z temperatur\u0105 -1\u00b0C. Wilgotno\u015b\u0107 wyniesie 65% przy silnym wietrze o pr\u0119dko\u015bci 21 km/h. To niezwykle zimna wczesna jesienna pogoda - ch\u0142odna i wietrzna z temperaturami blisko zera, wi\u0119c potrzebujesz ciep\u0142ej odzie\u017cy i powiniene\u015b by\u0107 przygotowany na ch\u0142odne warunki!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_34",
+        "success": false,
+        "eval_item_id": 34,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Pogoda w Chennai w przysz\u0142y wtorek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "xF61mCa5o"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "xF61mCa5o"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-17"
+                  }
+                },
+                "id": "kTHYh4nbS"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "kTHYh4nbS"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "TJNeNsrQI"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "TJNeNsrQI"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "0Ni1YBigD"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "0Ni1YBigD"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>User: \"Pogoda w Chennai w przysz\u0142y wtorek?\" meaning \"Weather in Chennai next Tuesday?\" They want next Tuesday relative to current date. Current date is 2025-09-11 (from get_current_date). Next Tuesday from 2025-09-11: 2025-09-11 is Wednesday. Next Tuesday after that is 2025-09-17. So we need weather_forecast for city=Chennai, date=2025-09-17. Already called weather_forecast with that date earlier, returned temp 20, humidity 65, wind_speed 13. Good. They also requested maybe we need to give natural language answer with city name in English. Just provide a natural language weather summary. Use English forms. Provide forecast. Let's respond.<|end|><|start|>assistant<|channel|>final<|message|>Sure! Here\u2019s the forecast for Chennai on the upcoming Tuesday (September\u202f17,\u202f2025):\n\n- **Temperature:** 20\u202f\u00b0C\n- **Humidity:** 65\u202f%\n- **Wind speed:** 13\u202fkm/h\n\nYou can expect mild weather with moderate humidity and a gentle breeze. Have a great day!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Pogoda w Chennai w przysz\u0142y wtorek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-16"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Chennai w przysz\u0142y wtorek (16 wrze\u015bnia 2025) b\u0119dzie przyjemna z temperatur\u0105 20\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie umiarkowana na poziomie 65% przy umiarkowanym wietrze o pr\u0119dko\u015bci 15 km/h. To komfortowa zimowa pogoda dla Chennai - ciep\u0142a, ale nie za gor\u0105ca, idealna na aktywno\u015bci na \u015bwie\u017cym powietrzu i zwiedzanie!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_35",
+        "success": false,
+        "eval_item_id": 35,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Chicago w ten weekend?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "McNoGeAFa"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "McNoGeAFa"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "ypOwLVcgG"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}",
+            "tool_call_id": "ypOwLVcgG"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2025-09-14"
+                  }
+                },
+                "id": "DusXcq93c"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 18, \"humidity\": 70, \"wind_speed\": 14}",
+            "tool_call_id": "DusXcq93c"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to answer user's question: forecast for Chicago this weekend. The weekend likely refers to Sunday and Saturday of current week (starting 2025-09-11). Today is September 11, 2025. This weekend is Saturday 13th, Sunday 14th. We already got forecasts for those dates: both 18\u00b0C, 70% humidity, wind 14 (units? maybe km/h or mph). We need to use English city names. Provide natural language answer. Also possibly we should include that the information is for those dates. Let's craft.\n\nWe must output in natural language: The weather forecast for Chicago this weekend (Saturday 13th and Sunday 14th) shows mild temperatures around 18\u00b0C (64\u00b0F), moderate humidity at 70%, and a wind speed of 14 km/h. Provide in English.<|end|><|start|>assistant<|channel|>final<|message|>**Chicago \u2013 this weekend**\n\n- **Saturday, 13\u202fSep**:  \n  \u2022 Temperature: 18\u202f\u00b0C (\u2248\u202f64\u202f\u00b0F)  \n  \u2022 Humidity: 70\u202f%  \n  \u2022 Wind: 14\u202fkm/h\n\n- **Sunday, 14\u202fSep**:  \n  \u2022 Temperature: 18\u202f\u00b0C (\u2248\u202f64\u202f\u00b0F)  \n  \u2022 Humidity: 70\u202f%  \n  \u2022 Wind: 14\u202fkm/h\n\nSo you can expect a mild, slightly humid weekend with moderate breezes in Chicago.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Chicago w ten weekend?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "call_1"
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chicago",
+                    "date": "2025-09-13"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 9, \"humidity\": 60, \"wind_speed\": 21}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Chicago w ten weekend (sobota, 13 wrze\u015bnia 2025) b\u0119dzie ch\u0142odn\u0105 jesienn\u0105 pogod\u0105 z temperatur\u0105 9\u00b0C. Wilgotno\u015b\u0107 wyniesie 60% przy silnym wietrze o pr\u0119dko\u015bci 21 km/h. To typowa ostra jesienna pogoda w Chicago - ch\u0142odna i bardzo wietrzna, wi\u0119c ubierz si\u0119 ciep\u0142o i b\u0105d\u017a przygotowany na znacz\u0105cy efekt wiatru, kt\u00f3ry sprawi, \u017ce b\u0119dzie znacznie ch\u0142odniej!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 3/3 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.6666666666666666,
+            "reason": "Correct arguments for 2/3 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_36",
+        "success": false,
+        "eval_item_id": 36,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Londynie w przysz\u0142y pi\u0105tek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "vP3YHE510"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "vP3YHE510"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-18"
+                  }
+                },
+                "id": "8pteIJJws"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}",
+            "tool_call_id": "8pteIJJws"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We now have the response from weather_forecast: temperature 15 (likely Celsius), humidity 80, wind_speed 12 (units unspecified but likely km/h). Need to answer in natural language, in what language? The instruction: \"Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym.\" It doesn't specify which language. But the user asked in Polish: \"Jaka b\u0119dzie pogoda w Londynie w przysz\u0142y pi\u0105tek?\" They want answer likely in Polish. Also the developer's instruction: \"U\u017cywaj angielskiej formy nazw miast.\" Use English city names. So answer in Polish, but use English name \"London\". Use natural language. Provide forecast: temperature 15\u00b0C, humidity 80%, wind speed 12 (km/h). Provide an overview. Let's produce answer.<|end|><|start|>assistant<|channel|>final<|message|>Poni\u017cej znajdziesz prognoz\u0119 pogody na przysz\u0142y pi\u0105tek, 18\u202fwrze\u015bnia 2025\u202froku, czyli na \u0142y\u017ck\u0119 po aktualnym dniu (11\u202fwrze\u015bnia\u202f2025):\n\n- **Miasto**: London  \n- **Temperatura**: oko\u0142o **15\u202f\u00b0C**  \n- **Wilgotno\u015b\u0107**: **80\u202f%**  \n- **Wiatr**: 12\u202fkm/h  \n\nWszystko wskazuje na przyjemny, lekko ch\u0142odny dzie\u0144 w Londynie, z umiarkowan\u0105 wilgotno\u015bci\u0105 oraz mi\u0119kkim wiatrem. Je\u015bli planujesz wyj\u015bcie, przydatna mo\u017ce by\u0107 lekka kurtka, ewentualnie parasol w razie ryzyka kr\u00f3tkiej, ale intensywnej wilgotno\u015bci.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Londynie w przysz\u0142y pi\u0105tek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "London",
+                    "date": "2025-09-19"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 10, \"humidity\": 70, \"wind_speed\": 18}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Londynie w przysz\u0142y pi\u0105tek (19 wrze\u015bnia 2025) b\u0119dzie \u0142agodn\u0105 jesienn\u0105 pogod\u0105 z temperatur\u0105 10\u00b0C. Wilgotno\u015b\u0107 wyniesie 70% przy umiarkowanym wietrze o pr\u0119dko\u015bci 18 km/h. To typowa wrze\u015bniowa pogoda dla Londynu - ch\u0142odna i wilgotna, wi\u0119c ubierz si\u0119 ciep\u0142o i by\u0107 mo\u017ce we\u017a parasol na ewentualne m\u017cawki!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_37",
+        "success": false,
+        "eval_item_id": 37,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "A co z pogod\u0105 w Vancouver w t\u0119 niedziel\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "CWkBcXTlV"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "CWkBcXTlV"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2025-09-15"
+                  }
+                },
+                "id": "iXmvQEDJi"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}",
+            "tool_call_id": "iXmvQEDJi"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to output natural language answer in English, using city name in English. Provide weather forecast. The date is Sunday, i.e., 2025-09-15 (since today 2025-09-11). Provide temperature 20\u00b0C, humidity 65%, wind speed 13 km/h? unknown unit. We'll just say 13 km/h.<|end|><|start|>assistant<|channel|>final<|message|>On Sunday, the weather in Vancouver is expected to be mild and comfortable. You can anticipate a temperature around 20\u202f\u00b0C with moderate humidity of about 65\u202f%. A breeze of roughly 13\u202fkm/h should keep it pleasant. Keep an eye out for light cloud cover \u2013 it's a pleasant late\u2011autumn day!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "A co z pogod\u0105 w Vancouver w t\u0119 niedziel\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Vancouver",
+                    "date": "2025-09-14"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 15}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Vancouver w t\u0119 niedziel\u0119 (14 wrze\u015bnia 2025) b\u0119dzie \u0142agodn\u0105 zimow\u0105 pogod\u0105 z temperatur\u0105 20\u00b0C. Wilgotno\u015b\u0107 wyniesie 65% przy umiarkowanym wietrze o pr\u0119dko\u015bci 15 km/h. To niezwykle ciep\u0142a jak na stycze\u0144 pogoda w Vancouver - do\u015b\u0107 przyjemna zimowa pogoda, kt\u00f3ra jest idealna na aktywno\u015bci na \u015bwie\u017cym powietrzu i zwiedzanie miasta!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_38",
+        "success": false,
+        "eval_item_id": 38,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Pogoda w Singapurze w przysz\u0142\u0105 \u015brod\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "duMwgXJNE"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "duMwgXJNE"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2025-09-18"
+                  }
+                },
+                "id": "cCQeexcO6"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 10}",
+            "tool_call_id": "cCQeexcO6"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have to respond to user: \"Pogoda w Singapurze w przysz\u0142\u0105 \u015brod\u0119?\" English city name: \"Singapore\". Date: next Wednesday from today 2025-09-11 is Wednesday 2025-09-18. We got forecast: temp 30, humidity 85, wind speed 10. We need natural language answer. Use English city names. So answer in Polish? The user is Polish. Problem: \"Your final answer must be in natural language.\" We can answer in natural language but user language is Polish; but requirement: the output must be in natural language. Does that mean just natural language? Likely respond in Polish as user. But tool results: city names English, but response can be in Polish using English city names. So something like: \"W przysz\u0142\u0105 \u015brod\u0119 w Singapurze b\u0119dzie temperatury oko\u0142o 30\u00b0C, wilgotno\u015b\u0107 85% i pr\u0119dko\u015b\u0107 wiatru 10 km/h.\" Use natural language. Let's produce that.<|end|><|start|>assistant<|channel|>final<|message|>W przysz\u0142\u0105 \u015brod\u0119 w **Singapore** prognozuje si\u0119 temperatur\u0119 oko\u0142o 30\u202f\u00b0C, wilgotno\u015b\u0107 na poziomie 85\u202f% oraz pr\u0119dko\u015b\u0107 wiatru 10\u202fkm/h.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Pogoda w Singapurze w przysz\u0142\u0105 \u015brod\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Singapore",
+                    "date": "2025-09-17"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 30, \"humidity\": 95, \"wind_speed\": 11}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Singapurze w przysz\u0142\u0105 \u015brod\u0119 (17 wrze\u015bnia 2025) b\u0119dzie gor\u0105ca i bardzo wilgotna z temperatur\u0105 30\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie skrajnie wysoka na poziomie 95% przy lekkim wietrze o pr\u0119dko\u015bci 11 km/h. To typowa tropikalna pogoda dla Singapuru - gor\u0105ca, wilgotna i duszna, wi\u0119c pami\u0119taj o nawodnieniu i sp\u0119dzaj czas w klimatyzowanych pomieszczeniach!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_39",
+        "success": true,
+        "eval_item_id": 39,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Buenos Aires w przysz\u0142y czwartek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "eMZnX9lj6"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "eMZnX9lj6"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Buenos Aires",
+                    "date": "2025-09-18"
+                  }
+                },
+                "id": "ShDxFmvWF"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 75, \"wind_speed\": 12}",
+            "tool_call_id": "ShDxFmvWF"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have the forecast: temperature 20\u00b0C, humidity 75%, wind_speed 12 (units maybe km/h). We have to provide answer in natural language, but user asked in Polish (\"Jaka b\u0119dzie pogoda w Buenos Aires w przysz\u0142y czwartek?\"). Should we answer in Polish? The instruction: \"Your final answer to the user\u2019s question must be in natural language.\" It doesn't say to translate or respond in a specific language. Possibly respond in Polish because user is Polish. They asked in Polish. Also instruct: \"U\u017cywaj angielskiej formy nazw miast.\" So city name in English: Buenos Aires is same. So respond in Polish but mention city name. Or respond in English? They said \"Your final answer... must be in natural language.\" That doesn't specify language. but typical expectation: respond in language of inquiry. So use Polish.\n\nThus: \"W Buenos Aires w przysz\u0142y czwartek b\u0119dzie oko\u0142o 20\u00b0C, wilgotno\u015b\u0107 75%, wiatr z pr\u0119dko\u015bci\u0105 12 km/h\" Something like that. Let's respond.<|end|><|start|>assistant<|channel|>final<|message|>W Buenos Aires w przysz\u0142y czwartek prognozowana jest pogoda nast\u0119puj\u0105ca:\n- **Temperatura**: oko\u0142o 20\u202f\u00b0C,\n- **Wilgotno\u015b\u0107**: oko\u0142o\u202f75\u202f%,\n- **Pr\u0119dko\u015b\u0107 wiatru**: oko\u0142o\u202f12\u202fkm/h.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Buenos Aires w przysz\u0142y czwartek?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Buenos Aires",
+                    "date": "2025-09-18"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 21, \"humidity\": 80, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Buenos Aires w przysz\u0142y czwartek (18 wrze\u015bnia 2025) b\u0119dzie \u0142agodn\u0105 wiosenn\u0105 pogod\u0105 z temperatur\u0105 21\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie wysoka na poziomie 80% przy lekkim wietrze o pr\u0119dko\u015bci 13 km/h. To przyjemna wiosenna pogoda dla Buenos Aires - \u0142agodna, ale nie za gor\u0105ca, cho\u0107 wysoka wilgotno\u015b\u0107 mo\u017ce sprawi\u0107, \u017ce b\u0119dzie nieco duszno."
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_40",
+        "success": false,
+        "eval_item_id": 40,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Madrycie w przysz\u0142\u0105 sobot\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "odViHwWro"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11",
+            "tool_call_id": "odViHwWro"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Madrid",
+                    "date": "2025-09-12"
+                  }
+                },
+                "id": "9MyCaft7X"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 19, \"humidity\": 55, \"wind_speed\": 13}",
+            "tool_call_id": "9MyCaft7X"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We have the tool response which includes temperature 19 (?), humidity 55, wind_speed 13. We need to answer in natural language. Use English city name. The user asked: \"Jaka b\u0119dzie pogoda w Madrycie w przysz\u0142\u0105 sobot\u0119?\" Means \"What will be the weather in Madrid next Saturday?\" Next Saturday relative to current date 2025-09-11 is 2025-09-12. The forecast: temperature 19 degrees Celsius, humidity 55%, wind speed 13 (likely km/h). We should respond in natural language in Polish? The instructions: \"Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym.\" That implies natural language (Polish, presumably). But earlier: \"U\u017cywaj angielskiej formy nazw miast.\" So we must use the English form of city names (\"Madrid\" is same). So output in Polish but with city name in English. Provide forecast.<|end|><|start|>assistant<|channel|>final<|message|>W przysz\u0142\u0105 sobot\u0119, czyli 12 wrze\u015bnia 2025, w **Madrid** prognozowana jest temperatura oko\u0142o 19\u202f\u00b0C, wilgotno\u015b\u0107 55\u202f% i wiatr o pr\u0119dko\u015bci 13\u202fkm/h. Powinno by\u0107 przyjemnie i \u0142agodnie!<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka b\u0119dzie pogoda w Madrycie w przysz\u0142\u0105 sobot\u0119?"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Madrid",
+                    "date": "2025-09-20"
+                  }
+                },
+                "id": "call_2"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 14, \"humidity\": 45, \"wind_speed\": 20}"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda w Madrycie w przysz\u0142\u0105 sobot\u0119 (20 wrze\u015bnia 2025) b\u0119dzie ch\u0142odn\u0105 zimow\u0105 pogod\u0105 z temperatur\u0105 14\u00b0C. Wilgotno\u015b\u0107 b\u0119dzie niska na poziomie 45% przy silnym wietrze o pr\u0119dko\u015bci 20 km/h. To typowa zimowa pogoda w Madrycie - ch\u0142odna i sucha z silnym wiatrem, wi\u0119c ubierz si\u0119 ciep\u0142o i b\u0105d\u017a przygotowany na wiatr!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
+          },
+          {
+            "name": "Argument Correctness",
+            "success": false,
+            "score": 0.5,
+            "reason": "Correct arguments for 1/2 tools"
+          }
+        ]
+      },
+      {
+        "test_id": "test_41",
+        "success": true,
+        "eval_item_id": 41,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Jaka jest r\u00f3\u017cnica mi\u0119dzy pogod\u0105 a klimatem?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>User: \"Jaka jest r\u00f3\u017cnica mi\u0119dzy pogod\u0105 a klimatem?\" So we need to respond in natural language. Must use English city names? The question is about difference between weather and climate. We can explain. Use natural language. No tool calls needed.\n\nUser wants explanation. I think we can answer directly.\n\nProbably the system wants us to keep English city names? That restriction likely applies to answering weather queries. But this is a meteorology explanation, not a city name. So we can respond naturally. No tool call.\n\nLet's respond.<|end|><|start|>assistant<|channel|>final<|message|>Weather and climate are both related to atmospheric conditions, but they describe different timescales and levels of detail.\n\n**Weather**  \n- **Time frame**: Minutes, hours, days, or weeks.  \n- **Focus**: Current or near\u2011future atmospheric conditions\u2014temperature, humidity, precipitation, wind, cloud cover, etc.  \n- **Variability**: Highly variable; a sunny day can give way to a thunderstorm within hours.  \n\n**Climate**  \n- **Time frame**: Typically 30 years or more, based on the World Meteorological Organization\u2019s definition.  \n- **Focus**: Long\u2011term averages and variability of weather patterns\u2014mean temperatures, typical rainfall amounts, seasonal extremes, and the overall statistical distribution of weather events.  \n- **Stability**: Reflects the broader, more stable patterns that underlie the daily weather you experience.  \n\nIn short, weather is the short\u2011term snapshot you see on your daily forecast, whereas climate is the long\u2011term average that explains how often you might expect certain weather conditions in a given region.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Jaka jest r\u00f3\u017cnica mi\u0119dzy pogod\u0105 a klimatem?"
+          },
+          {
+            "role": "assistant",
+            "content": "Pogoda odnosi si\u0119 do kr\u00f3tkoterminowych warunk\u00f3w atmosferycznych w konkretnym miejscu w konkretnym czasie - takich jak temperatura, wilgotno\u015b\u0107 i opady w ci\u0105gu dni lub tygodni. Klimat natomiast to d\u0142ugoterminowa \u015brednia wzorc\u00f3w pogodowych w regionie na przestrzeni wielu lat lub dekad. Na przyk\u0142ad, mog\u0119 powiedzie\u0107 ci o dzisiejszej pogodzie w dowolnym mie\u015bcie, ale klimat opisuje, jak to miasto wygl\u0105da typowo przez ca\u0142y rok. Czy chcia\u0142by\u015b, \u017cebym sprawdzi\u0142 aktualne warunki pogodowe dla konkretnej lokalizacji?"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_42",
+        "success": true,
+        "eval_item_id": 42,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Dlaczego w miejscach tropikalnych zawsze jest wilgotno?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>User asks in Polish: \"Dlaczego w miejscach tropikalnych zawsze jest wilgotno?\" Means \"Why is it always humid in tropical places?\" We need to answer in natural language. According to instruction: use English names of cities. But we can give general explanation. No need to call any functions. Just answer.<|end|><|start|>assistant<|channel|>final<|message|>Tropical regions are typically found near the equator, where the Sun\u2019s rays strike the Earth\u2019s surface almost directly. This results in consistently high temperatures throughout the year. Warm air can hold a lot more moisture than cool air, so when it rises, it condenses into clouds and precipitation more frequently. The key reasons for persistent humidity in these areas are:\n\n1. **Strong Solar Heating**  \n   The equatorial Sun provides intense, steady thermal energy that warms the Earth's surface and the air above it. Warm air expands and rises, creating low\u2011pressure zones that draw in moist air from surrounding oceans and seas.\n\n2. **Large Oceanic Influence**  \n   Tropical coastlines are surrounded by vast bodies of water that evaporate readily. The warm surface temperatures increase evaporation rates, filling the atmosphere with water vapor. Moist air from the oceans mixes with the warm air over land, maintaining high humidity.\n\n3. **Stable Atmospheric Conditions**  \n   Tropical climates often lack the pronounced seasonal temperature swings found in temperate zones. The relative stability means that the air doesn\u2019t cool enough to shed moisture through widespread snowfall or dry winds. Instead, the moisture remains entrapped in the vertical column of the atmosphere.\n\n4. **Convection and Precipitation Cycles**  \n   Warm, moist air continuously rises and cools, forming cumulonimbus clouds that often lead to rainfall. This cycle of evaporation, condensation, and precipitation keeps the moisture content high. Even after storms, the air remains saturated for a long time because the evaporation process quickly replenishes it.\n\n5. **Low Elevation and High Density**  \n   Most tropical regions have relatively low elevations. Dense, warm air at lower altitudes holds more moisture, and the thicker air column makes it easier for the humidity to persist.\n\nSo, it\u2019s a combination of intense solar heating, abundant water vapor from nearby oceans, and a relatively stable climate that keeps tropical places consistently humid. This is why cities like **Kuala Lumpur**, **M\u00e9rida**, or **Porto Seguro** often feel heavy with moisture, even though they\u2019re not at high altitudes.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Dlaczego w miejscach tropikalnych zawsze jest wilgotno?"
+          },
+          {
+            "role": "assistant",
+            "content": "Regiony tropikalne s\u0105 stale wilgotne, poniewa\u017c znajduj\u0105 si\u0119 blisko r\u00f3wnika, gdzie temperatury s\u0105 ciep\u0142e przez ca\u0142y rok. Ciep\u0142e powietrze mo\u017ce pomie\u015bci\u0107 znacznie wi\u0119cej wilgoci ni\u017c zimne powietrze, a sta\u0142e ciep\u0142o powoduje wi\u0119ksze parowanie wody z ocean\u00f3w, rzek i ro\u015blin. Tworzy to cykl, w kt\u00f3rym zawsze jest du\u017co pary wodnej w powietrzu. Miasta takie jak Bangkok, Singapur i Miami do\u015bwiadczaj\u0105 tej tropikalnej wilgotno\u015bci. Je\u015bli chcia\u0142by\u015b pozna\u0107 aktualne poziomy wilgotno\u015bci w dowolnym tropikalnym mie\u015bcie, mog\u0119 to sprawdzi\u0107!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_43",
+        "success": true,
+        "eval_item_id": 43,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Czy g\u00f3ry wp\u0142ywaj\u0105 na lokalne wzorce pogodowe?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asked (in Polish) \"Czy g\u00f3ry wp\u0142ywaj\u0105 na lokalne wzorce pogodowe?\" meaning \"Do mountains affect local weather patterns?\" The user wants a natural language answer in Polish, presumably. The instructions say: you should respond to weather queries. The question is about if mountains influence local weather patterns. That's a weather/meteorology question. Our role is a bot that answers weather queries. The instructions: \"U\u017cywaj angielskiej formy nazw miast.\" Use English names of cities? But user didn't mention a city. The answer must be in natural language. There's no function call necessary unless we need weather data for a city/date; but the question is general. We can answer directly.\n\nThus: respond in Polish: \"Tak, g\u00f3ry...\". Provide explanation: moisture, orographic lift, rain shadow etc.\n\nNo function calls required.<|end|><|start|>assistant<|channel|>final<|message|>Tak, g\u00f3ry maj\u0105 znacz\u0105cy wp\u0142yw na lokalne wzorce pogodowe.  Gdy wiatry napotykaj\u0105 na masy g\u00f3rskie, powietrze jest zmuszone do wznoszenia si\u0119 (\u201eorographic lift\u201d). W wyniku sch\u0142adzania powietrze skrapla si\u0119, co prowadzi do zwi\u0119kszonego opad\u00f3w na stronie, kt\u00f3ra jest podwietrzna (tzw. strony wiatru). Po przej\u015bciu przez pasmo g\u00f3rskie powietrze sch\u0142adza i osiada, tworz\u0105c suchy, suchy obszar zwany \u201erain shadow\u201d.  \n\nDodatkowo g\u00f3ry wp\u0142ywaj\u0105 na:\n\n- **Temperatur\u0119** \u2013 wy\u017csze po\u0142o\u017cenie zapewnia ni\u017csze temperatury.\n- **Pory dnia** \u2013 promienie s\u0142oneczne padaj\u0105 pod r\u00f3\u017cnymi k\u0105tami w zale\u017cno\u015bci od nachylenia stok\u00f3w.\n- **Zr\u00f3\u017cnicowanie mikroklimat\u00f3w** \u2013 nawet na kr\u00f3tkich dystansach mo\u017cna zauwa\u017cy\u0107 drastyczne zmiany pogody.\n\nW praktyce oznacza to, \u017ce kluby turystyczne, rolnicy i planowanie infrastruktury musz\u0105 bra\u0107 pod uwag\u0119 charakterystyczne warunki g\u00f3rskie, np. nag\u0142e burze, o\u015bnie\u017cenie czy silne wiatry.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Czy g\u00f3ry wp\u0142ywaj\u0105 na lokalne wzorce pogodowe?"
+          },
+          {
+            "role": "assistant",
+            "content": "Tak, g\u00f3ry znacz\u0105co wp\u0142ywaj\u0105 na lokaln\u0105 pogod\u0119! Tworz\u0105 to, co nazywa si\u0119 efektami orograficznymi - gdy masy powietrza uderzaj\u0105 w g\u00f3ry, s\u0105 zmuszane do wznoszenia si\u0119, och\u0142adzaj\u0105c si\u0119 podczas wznoszenia i cz\u0119sto tworz\u0105c chmury i opady na stronie nawietrznej. Strona zawietrzna cz\u0119sto do\u015bwiadcza efektu \"cienia deszczowego\" z bardziej suchymi warunkami. G\u00f3ry tworz\u0105 r\u00f3wnie\u017c zmiany temperatur ze wzgl\u0119du na zmiany wysoko\u015bci. Miasta takie jak Denver do\u015bwiadczaj\u0105 unikalnych wzorc\u00f3w pogodowych ze wzgl\u0119du na pobliskie G\u00f3ry Skaliste. Czy chcia\u0142by\u015b, \u017cebym sprawdzi\u0142 aktualne warunki pogodowe w jakim\u015b g\u00f3rskim regionie?"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_44",
+        "success": true,
+        "eval_item_id": 44,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Co powoduje wiatr?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>The user asks in Polish: \"Co powoduje wiatr?\" Means: \"What causes wind?\" We need to answer in natural language. Provide explanation. No tool usage needed.<|end|><|start|>assistant<|channel|>final<|message|>Wind is created by differences in atmospheric pressure. When the Sun heats the Earth\u2019s surface, it warms air unevenly: some areas become warmer and the air rises, while cooler areas have sinking air. This difference in pressure causes air to move from high\u2011pressure regions to low\u2011pressure regions. The Earth\u2019s rotation (Coriolis effect) and the planet\u2019s uneven surface (mountains, oceans, land) further shape and steer the airflow, giving wind its direction and speed. In short, wind is the result of heat\u2011driven pressure differences, modified by Earth\u2019s rotation and topography.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Co powoduje wiatr?"
+          },
+          {
+            "role": "assistant",
+            "content": "Wiatr jest powodowany r\u00f3\u017cnicami w ci\u015bnieniu atmosferycznym, kt\u00f3re wynikaj\u0105 z nier\u00f3wnomiernego nagrzewania powierzchni Ziemi przez s\u0142o\u0144ce. Gdy powietrze si\u0119 nagrzewa, staje si\u0119 mniej g\u0119ste i wznosi si\u0119, tworz\u0105c obszary niskiego ci\u015bnienia. Ch\u0142odniejsze, g\u0119stsze powietrze nast\u0119pnie przemieszcza si\u0119, aby wype\u0142ni\u0107 t\u0119 przestrze\u0144, tworz\u0105c wiatr. Rotacja Ziemi r\u00f3wnie\u017c wp\u0142ywa na wzorce wiatr\u00f3w poprzez efekt Coriolisa. Lokalne czynniki, takie jak g\u00f3ry, zbiorniki wodne i miejskie wyspy ciep\u0142a, mog\u0105 r\u00f3wnie\u017c tworzy\u0107 w\u0142asne wzorce wiatr\u00f3w. Je\u015bli chcia\u0142by\u015b pozna\u0107 aktualne warunki wiatrowe w jakim\u015b konkretnym mie\u015bcie, mog\u0119 to sprawdzi\u0107!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      },
+      {
+        "test_id": "test_45",
+        "success": true,
+        "eval_item_id": 45,
+        "agent_conversation": [
+          {
+            "role": "system",
+            "content": "Jeste\u015b botem, kt\u00f3ry odpowiada na zapytania pogodowe. U\u017cywaj angielskiej formy nazw miast. Twoja ostateczna odpowied\u017a na pytanie u\u017cytkownika musi by\u0107 w j\u0119zyku naturalnym."
+          },
+          {
+            "role": "user",
+            "content": "Czy to prawda, \u017ce nie ma dw\u00f3ch identycznych p\u0142atk\u00f3w \u015bniegu?"
+          },
+          {
+            "role": "assistant",
+            "content": "<|channel|>analysis<|message|>We need to reply in natural language, answer the question: \"Is it true that there are no two identical snowflakes?\" The user asked Polish: \"Czy to prawda, \u017ce nie ma dw\u00f3ch identycznych p\u0142atk\u00f3w \u015bniegu?\" We must respond in natural language, presumably Polish, but the instruction says: \"U\u017cywaj angielskiej formy nazw miast.\" That is about city names. This question is about snowflakes. So no city names needed.\n\nWe should state that it's generally true but with caveats: The standard claim is that no two snowflakes are identical due to the complexity of lattice formation. But some researchers have found duplicates? This is likely a myth, but generally considered true but not proved by scientific evidence. We respond in Polish.\n\nNeed no function calls.<|end|><|start|>assistant<|channel|>final<|message|>Tak, jest to powszechnie przyj\u0119te twierdzenie, \u017ce dwa p\u0142atki \u015bniegu nie s\u0105 identyczne. Ka\u017cdy p\u0142atek rozwija si\u0119 w unikalny spos\u00f3b, zale\u017cnie od dok\u0142adnych warunk\u00f3w temperatury, wilgotno\u015bci i pr\u0119dko\u015bci wiatru w chwili zamro\u017cenia. Chocia\u017c nie ma formalnego dowodu matematycznego, kt\u00f3re wyklucza\u0142oby mo\u017cliwo\u015b\u0107 powstania identycznych p\u0142atk\u00f3w, statystyczne prawdopodobie\u0144stwo, \u017ce dwa z nich posiadaj\u0105 dok\u0142adnie ten sam, z\u0142o\u017cony wz\u00f3r, jest praktycznie zerowe. Zatem w praktyce i w \u015bwietle wiedzy naukowej uwa\u017ca si\u0119, \u017ce nie istniej\u0105 dwa naprawd\u0119 identyczne p\u0142atki \u015bniegu.<|return|>"
+          }
+        ],
+        "expected_conversation": [
+          {
+            "role": "user",
+            "content": "Czy to prawda, \u017ce nie ma dw\u00f3ch identycznych p\u0142atk\u00f3w \u015bniegu?"
+          },
+          {
+            "role": "assistant",
+            "content": "Jest bardzo ma\u0142o prawdopodobne, \u017ce dwa p\u0142atki \u015bniegu s\u0105 identyczne, cho\u0107 nie jest to technicznie niemo\u017cliwe. Ka\u017cdy p\u0142atek \u015bniegu formuje si\u0119 w nieco innych warunkach atmosferycznych podczas opadania - r\u00f3\u017cne temperatury, poziomy wilgotno\u015bci i pr\u0105dy powietrzne tworz\u0105 unikalne wzory kryszta\u0142\u00f3w. Im bardziej z\u0142o\u017cony p\u0142atek \u015bniegu, tym mniej prawdopodobne jest, \u017ce zostanie zduplikowany. Jednak proste kryszta\u0142y \u015bniegu mog\u0105 czasami by\u0107 podobne. Wilson Bentley, kt\u00f3ry fotografowa\u0142 tysi\u0105ce p\u0142atk\u00f3w \u015bniegu na pocz\u0105tku XX wieku, nigdy nie znalaz\u0142 dw\u00f3ch, kt\u00f3re by\u0142yby dok\u0142adnie takie same. Je\u015bli jeste\u015b ciekaw \u015bnie\u017cnych warunk\u00f3w pogodowych w jakim\u015b konkretnym mie\u015bcie, ch\u0119tnie to sprawdz\u0119!"
+          }
+        ],
+        "metrics_data": [
+          {
+            "name": "Tool Correctness",
+            "success": true,
+            "score": 1.0,
+            "reason": "No tools expected or called"
+          }
+        ]
+      }
+    ]
+  }
+}

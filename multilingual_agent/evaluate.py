@@ -284,9 +284,7 @@ class AgentEvaluator:
         test_cases = []
 
         conversations_count = len(eval_data)
-        print(
-            f"Processing {conversations_count} conversations (limited for testing)..."
-        )
+        print(f"Processing {conversations_count} conversations...")
 
         for i, eval_item in enumerate(eval_data):
             progress = f"{i + 1}/{conversations_count}"

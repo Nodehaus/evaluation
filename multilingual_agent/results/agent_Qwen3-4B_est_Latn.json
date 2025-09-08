@@ -1,20 +1,20 @@
 {
-  "model_name": "Qwen/Qwen3-8B",
-  "language": "deu",
-  "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_deu.json",
+  "model_name": "Qwen/Qwen3-4B",
+  "language": "est",
+  "dataset_path": "/workspace/evaluation/multilingual_agent/data/tools_use_est.json",
   "evaluation_results": {
     "global_metrics": {
       "total_tests": 45,
-      "passed_tests": 41,
-      "failed_tests": 4,
-      "overall_pass_rate": 91.11,
+      "passed_tests": 39,
+      "failed_tests": 6,
+      "overall_pass_rate": 86.67,
       "average_scores_by_metric": {
-        "Tool Correctness": 0.9778,
-        "Argument Correctness": 0.9333
+        "Tool Correctness": 0.9222,
+        "Argument Correctness": 0.8762
       },
       "pass_rates_by_metric": {
-        "Tool Correctness": 97.78,
-        "Argument Correctness": 88.57
+        "Tool Correctness": 91.11,
+        "Argument Correctness": 85.71
       }
     },
     "test_results": [
@@ -25,25 +25,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie lautet die Hauptstadt von Frankreich?"
+            "content": "Mis on Prantsusmaa pealinn?"
           },
           {
             "role": "assistant",
-            "content": "Die Hauptstadt von Frankreich ist Paris."
+            "content": "The capital of France is Paris."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie lautet die Hauptstadt von Frankreich?"
+            "content": "Mis on Prantsusmaa pealinn?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin ein Wetter-Bot, der bei wetterbezogenen Anfragen hilft. F\u00fcr Fragen zur Geografie wie Hauptst\u00e4dte empfehle ich eine Suchmaschine oder Enzyklop\u00e4die. Wenn Sie jedoch das Wetter in Paris, Frankreich wissen m\u00f6chten, helfe ich gerne dabei!"
+            "content": "Olen ilmabot, mis on loodud abistama ilmaga seotud p\u00e4ringute puhul. Geograafia k\u00fcsimuste puhul nagu pealinnad soovitaksin kasutada otsingumootor\u00edt v\u00f5i ents\u00fcklopeediat. Kui aga soovite teada ilma Pariisis, Prantsusmaal, olen meelsasti abiks!"
           }
         ],
         "metrics_data": [
@@ -62,25 +62,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "K\u00f6nnen Sie mir einen Witz erz\u00e4hlen?"
+            "content": "Kas saate mulle nalja r\u00e4\u00e4kida?"
           },
           {
             "role": "assistant",
-            "content": "Leider kann ich keine Witze erz\u00e4hlen, aber ich kann Ihnen gerne das Wetter in einer Stadt und einem bestimmten Datum sagen! \ud83d\ude0a Wohin und wann m\u00f6chten Sie wissen?"
+            "content": "V\u00f5in teie k\u00fcsimustele vastata, kuid ma ei saa nala r\u00e4\u00e4kida. Kui soovite teada, mida tuleb v\u00e4line tundidega v\u00f5i kuidas on t\u00e4nase p\u00e4ev, v\u00f5in teid aida!"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "K\u00f6nnen Sie mir einen Witz erz\u00e4hlen?"
+            "content": "Kas saate mulle nalja r\u00e4\u00e4kida?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin auf Wetterinformationen und Vorhersagen spezialisiert. Obwohl ich keine Witze erz\u00e4hlen kann, kann ich interessante Wetterfakten mitteilen! Wussten Sie zum Beispiel, dass Blitze f\u00fcnfmal hei\u00dfer werden k\u00f6nnen als die Sonnenoberfl\u00e4che? Wenn Sie das Wetter f\u00fcr einen bestimmten Ort wissen m\u00f6chten, fragen Sie einfach!"
+            "content": "Olen spetsialiseerunud ilmainformatsioonile ja prognoosidele. Kuigi ma ei saa nalju r\u00e4\u00e4kida, saan jagada huvitavaid ilmafakte! N\u00e4iteks, kas teadsite, et v\u00e4lgud v\u00f5ivad saavutada temperatuuri, mis on viis korda kuumem kui p\u00e4ikese pind? Kui soovite teada ilma konkreetses asukohas, lihtsalt k\u00fcsige!"
           }
         ],
         "metrics_data": [
@@ -99,25 +99,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie koche ich Pasta?"
+            "content": "Kuidas pastasid keetma?"
           },
           {
             "role": "assistant",
-            "content": "Ich kann dir leider nicht dabei helfen, Pasta zu kochen, da ich keine Funktionen f\u00fcr Rezepten oder Kochanleitungen habe. Meine F\u00e4higkeiten sind auf Wetterinformationen beschr\u00e4nkt. M\u00f6chtest du wissen, wie das Wetter in einer bestimmten Stadt aussieht?"
+            "content": "Olen t\u00f5esti tundlikuks, kuid ma ei saa uuringuid keetmise kohta. V\u00f5ibolla anna teada, kuidas saab teada p\u00e4rast, kuidas keetma? V\u00f5i kui soovid teada ilmaga seotud andmeid, siis anna teada linnanimet ja kuup\u00e4ev!"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie koche ich Pasta?"
+            "content": "Kuidas pastasid keetma?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin ein Wetterassistent, daher kann ich nicht bei Kochanleitungen helfen. Aber ich kann Ihnen Wetterbedingungen mitteilen, wenn Sie ein Barbecue oder Picknick im Freien planen! Sagen Sie mir einfach, f\u00fcr welche Stadt Sie sich interessieren, und ich kann Wetterinformationen liefern."
+            "content": "Olen ilmaassistent, seega ei saa aidata toiduvalmistamise juhenditega. Siiski saan teavitada ilmaoludest, kui plaanite \u00f5ues grillimist v\u00f5i pikniku! \u00d6elge mulle lihtsalt, milline linn teid huvitab, ja saan anda ilmainformatsiooni."
           }
         ],
         "metrics_data": [
@@ -136,25 +136,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie sp\u00e4t ist es?"
+            "content": "Mis kell on?"
           },
           {
             "role": "assistant",
-            "content": "Ich kann Ihnen die aktuelle Uhrzeit nicht direkt sagen, aber ich kann Ihnen das heutige Datum geben. Das heutige Datum ist 2023-10-05. M\u00f6chten Sie wissen, wie das Wetter in einer bestimmten Stadt heute oder an einem anderen Tag ist?"
+            "content": "Minu funktsioonide kaudu ei saa saada kellaaegu, kuna see ei ole toetatud. Kuid saad teada t\u00e4na kuup\u00e4evast, kui soovid."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie sp\u00e4t ist es?"
+            "content": "Mis kell on?"
           },
           {
             "role": "assistant",
-            "content": "Ich habe keinen Zugriff auf aktuelle Uhrzeitinformationen, aber ich kann bei Wettervorhersagen und aktuellen Wetterbedingungen f\u00fcr jede Stadt helfen. Gibt es einen bestimmten Ort, f\u00fcr den Sie das Wetter wissen m\u00f6chten?"
+            "content": "Mul puudub juurdep\u00e4\u00e4s praegusele kellaajale, kuid saan aidata ilmaprognoosidega ja praeguste ilmaoludega mis tahes linnas. Kas on konkreetne koht, kus soovite ilma teada?"
           }
         ],
         "metrics_data": [
@@ -173,25 +173,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Was ist 2 + 2?"
+            "content": "Mis on 2 + 2?"
           },
           {
             "role": "assistant",
-            "content": "2 + 2 ist 4."
+            "content": "2 + 2 = 4."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was ist 2 + 2?"
+            "content": "Mis on 2 + 2?"
           },
           {
             "role": "assistant",
-            "content": "Ich bin darauf ausgelegt, bei wetterbezogenen Fragen zu helfen, nicht bei Matheaufgaben. Wenn Sie Wetterinformationen f\u00fcr eine Stadt ben\u00f6tigen oder \u00fcber kommende Wetterbedingungen wissen m\u00f6chten, bin ich da!"
+            "content": "Olen loodud aitama ilmaga seotud k\u00fcsimustega, mitte matemaatiliste probleemidega. Kui vajate ilmainformatsiooni m\u00f5ne linna kohta v\u00f5i soovite teada tulevasi ilmaolusid, olen siin aitamas!"
           }
         ],
         "metrics_data": [
@@ -210,11 +210,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter in New York am 15.7.2024?"
+            "content": "Milline on ilm New Yorgis 07/15/2024?"
           },
           {
             "role": "assistant",
@@ -238,13 +238,13 @@
           },
           {
             "role": "assistant",
-            "content": "Am 15. Juli 2024 wird es in New York 25 \u00b0C warm, mit einer Luftfeuchtigkeit von 75 % und einem Windgeschwindigkeits von 13 km/h. Das Wetter ist somit angenehm und leicht bew\u00f6lkt."
+            "content": "Ilm New Yorkis 15. juuli 2024:\n\n- **Temperatuur:** 25 \u00b0C  \n- **Lundus:** 75 %  \n- **Veevool:** 13 km/h  \n\nKas soovite teavet ka teistel p\u00e4evadel v\u00f5i teistel kohal?"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter in New York am 15.7.2024?"
+            "content": "Milline on ilm New Yorgis 07/15/2024?"
           },
           {
             "role": "assistant",
@@ -268,7 +268,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in New York am 15. Juli 2024 f\u00fchrt zu einen angenehmen Sommertag mit einer Temperatur von 25\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 75%, wodurch es sich etwas schw\u00fcl anf\u00fchlt, und es wird leichte Winde mit 15 km/h geben. Es ist ein gro\u00dfartiger Tag f\u00fcr Aktivit\u00e4ten im Freien, obwohl Sie bei der Luftfeuchtigkeit ausreichend trinken sollten."
+            "content": "Ilm New Yorgis 15. juulil 2024 n\u00e4itab meeldivat suvep\u00e4eva temperatuuriga 25\u00b0C. \u00d5huniiskus on 75%, mist\u00f5ttu v\u00f5ib tunduda veidi l\u00e4ppiv, ja tuul puhub kergelt kiirusega 15 km/h. See on suurep\u00e4rane p\u00e4ev v\u00e4litegevusteks, kuigi niiskuse t\u00f5ttu tasub piisavalt vedelikku tarbida."
           }
         ],
         "metrics_data": [
@@ -293,11 +293,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter in London am 25. Dezember 2024?"
+            "content": "Milline on ilm Londonis 25. detsembril 2024?"
           },
           {
             "role": "assistant",
@@ -321,13 +321,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London am 25. Dezember 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 10 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 18 km/h  \n\nEs wird also etwas k\u00fchler und windig sein, aber keine extremschlechten Bedingungen. \ud83d\ude0a"
+            "content": "Ilm Londonis 25. detsembril 2024:  \n- **Temperatuur:** 10 \u00b0C  \n- **Lumekogunevus:** 70 %  \n- **Vee s\u00f5idu kiirus:** 18 km/h  \n\nIlm on selge ja s\u00f5iduv\u00f5imeks sobiv, kuid vajadusel v\u00f5ib olla kaitsev\u00f5ime."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter in London am 25. Dezember 2024?"
+            "content": "Milline on ilm Londonis 25. detsembril 2024?"
           },
           {
             "role": "assistant",
@@ -351,7 +351,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London am Weihnachtstag, dem 25. Dezember 2024, wird typisches Winterwetter mit einer Temperatur von 10\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 70% bei m\u00e4\u00dfigen Winden mit 18 km/h. Es ist ein k\u00fchler Wintertag, also sollten Sie sich warm anziehen, wenn Sie zu Weihnachtsfeierlichkeiten hinausgehen!"
+            "content": "Ilm Londonis j\u00f5ulup\u00e4eval, 25. detsembril 2024, on t\u00fc\u00fcpiline talveilm temperatuuriga 10\u00b0C. \u00d5huniiskus on 70% m\u00f5\u00f5duka tuulega kiirusega 18 km/h. See on jahe talvep\u00e4ev, seega riietuge soojalt, kui l\u00e4hete j\u00f5ulupidudele!"
           }
         ],
         "metrics_data": [
@@ -376,11 +376,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Erz\u00e4hle mir vom Wetter in Tokio am 1. April 2024"
+            "content": "R\u00e4\u00e4kige mulle Tokyo ilmast 1. aprillil 2024"
           },
           {
             "role": "assistant",
@@ -404,13 +404,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Tokio am 1. April 2024 wird voraussichtlich mit einer Temperatur von 21 \u00b0C, einer Luftfeuchtigkeit von 75 % und einem Windgeschwindigkeit von 13 km/h sein."
+            "content": "1. aprillil 2024 on Tokio ilm j\u00e4rgnevalt nii:  \n- **Temperatuur**: 21 \u00b0C  \n- **K\u00fclmus**: 75 %  \n- **V\u00e4lijuhik**: 13 km/h  \n\nSee on l\u00e4mabas, m\u00f5nede p\u00e4evik\u00fclmusega p\u00e4ev, mis sobib v\u00e4ikele v\u00e4lisaktiviteedile! \ud83c\udf24\ufe0f"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Erz\u00e4hle mir vom Wetter in Tokio am 1. April 2024"
+            "content": "R\u00e4\u00e4kige mulle Tokyo ilmast 1. aprillil 2024"
           },
           {
             "role": "assistant",
@@ -434,7 +434,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Tokio am 1. April 2024 wird herrliches Fr\u00fchlingswetter mit einer Temperatur von 22\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 75% bei sanften Winden mit 13 km/h. Das ist perfektes Kirschbl\u00fcten-Wetter - ideal f\u00fcr Hanami (Bl\u00fctenbetrachtung) und Aktivit\u00e4ten im Freien bei den milden Fr\u00fchlingsbedingungen!"
+            "content": "Ilm Tokyos 1. aprillil 2024 on ilus kevadilm temperatuuriga 22\u00b0C. \u00d5huniiskus on 75% \u00f5rna tuulega kiirusega 13 km/h. See on ideaalne kirsipuu \u00f5itseaeg - suurep\u00e4ne hanami jaoks (lillede vaatlemine) ja v\u00e4litegevusteks m\u00f5nusates kevadtingimustes!"
           }
         ],
         "metrics_data": [
@@ -459,11 +459,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter in S\u00e3o Paulo am 01-18-2024?"
+            "content": "Milline saab olema ilm S\u00e3o Paulos 01-18-2024?"
           },
           {
             "role": "assistant",
@@ -487,13 +487,13 @@
           },
           {
             "role": "assistant",
-            "content": "Am 2024-01-18 in S\u00e3o Paulo wird das Wetter mit einer Temperatur von 23 \u00b0C, einer Luftfeuchtigkeit von 85 % und einer Windgeschwindigkeit von 17 km/h erwartet."
+            "content": "S\u00e3o Paulos ilm 01.18.2024:  \n- **Temperatuur:** 23 \u00b0C  \n- **L\u00fclitus:** 85 %  \n- **Veevool:** 17 km/h  \n\nKas soovite teavet ka teistel p\u00e4evadel?"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter in S\u00e3o Paulo am 01-18-2024?"
+            "content": "Milline saab olema ilm S\u00e3o Paulos 01-18-2024?"
           },
           {
             "role": "assistant",
@@ -517,7 +517,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in S\u00e3o Paulo am 18. Januar 2024 wird warmes Sommerwetter mit einer Temperatur von 24\u00b0C sein. Die Luftfeuchtigkeit ist ziemlich hoch bei 85%, und die Winde werden leicht mit 12 km/h. Da es Sommer auf der S\u00fcdhalbkugel ist, erwarten Sie einen feuchten und warmen Tag - perfekt f\u00fcr Aktivit\u00e4ten in Innenr\u00e4umen mit Klimaanlage oder zum Schwimmen im Freien!"
+            "content": "Ilm S\u00e3o Paulos 18. jaanuaril 2024 on soe suveilm temperatuuriga 24\u00b0C. \u00d5huniiskus on \u00fcsna k\u00f5rge 85% juures ja tuul on kerge kiirusega 12 km/h. Kuna l\u00f5unapoolkeral on suvi, oodake niisket ja sooja p\u00e4eva - ideaalne sisetegevusteks koos kliimaseadmetega v\u00f5i ujumiseks \u00f5ues!"
           }
         ],
         "metrics_data": [
@@ -542,11 +542,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Kannst du das Wetter f\u00fcr Berlin am 15. September 2024 pr\u00fcfen?"
+            "content": "Kas saate kontrollida Berliini ilma 15. septembril 2024?"
           },
           {
             "role": "assistant",
@@ -570,13 +570,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Berlin am 15. September 2024 wird wie folgt sein:  \n- **Temperatur**: 14 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nVorbereite dich auf einen milden, frischen Tag! \ud83c\udf2c\ufe0f"
+            "content": "15. septembril 2024 Berliinis oodatakse:  \n- **Temperatuur:** 14 \u00b0C  \n- **Lumek\u00f5rgus:** 70 %  \n- **Veevoolu kiirus:** 13 km/h  \n\nSee on m\u00f5\u00f5dukas ja puhuvad tingimused! \ud83c\udf24\ufe0f"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Kannst du das Wetter f\u00fcr Berlin am 15. September 2024 pr\u00fcfen?"
+            "content": "Kas saate kontrollida Berliini ilma 15. septembril 2024?"
           },
           {
             "role": "assistant",
@@ -600,7 +600,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Berlin am 15. September 2024 ist k\u00fchles Herbstwetter mit einer Temperatur von 14\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% bei m\u00e4\u00dfigen Winden mit 15 km/h. Es ist typisches Fr\u00fchherbstwetter in Deutschland - Sie sollten eine leichte Jacke oder einen Pullover tragen, wenn Sie nach drau\u00dfen gehen."
+            "content": "Ilm Berliinis 15. septembril 2024 on jahe s\u00fcgiseilm temperatuuriga 14\u00b0C. \u00d5huniiskus on 70% m\u00f5\u00f5duka tuulega kiirusega 15 km/h. See on t\u00fc\u00fcpiline varas\u00fcgisene ilm Saksamaal - soovite kanda kerget jakki v\u00f5i sviitrit, kui l\u00e4hete v\u00e4lja."
           }
         ],
         "metrics_data": [
@@ -625,11 +625,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wettervorhersage f\u00fcr Miami am 20. Juni 2024, bitte"
+            "content": "Ilmaprognoos Miamile 20. juuniks 2024, palun"
           },
           {
             "role": "assistant",
@@ -653,13 +653,13 @@
           },
           {
             "role": "assistant",
-            "content": "Die Wettervorhersage f\u00fcr Miami am 20. Juni 2024 zeigt folgende Bedingungen an:  \n- **Temperatur**: 30 \u00b0C  \n- **Feuchtigkeit**: 85 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDie Wetterdaten sind f\u00fcr das angegebene Datum g\u00fcltig. M\u00f6chten Sie weitere Details oder eine andere Stadt pr\u00fcfen?"
+            "content": "Ilmaprognoos Miamile 20. juuniks 2024:\n- Temperatuur: 30 \u00b0C  \n- Haigus: 85 %  \n- Puidulahend: 12 km/h  \n\nKas vajad veel midagi?"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wettervorhersage f\u00fcr Miami am 20. Juni 2024, bitte"
+            "content": "Ilmaprognoos Miamile 20. juuniks 2024, palun"
           },
           {
             "role": "assistant",
@@ -683,7 +683,7 @@
           },
           {
             "role": "assistant",
-            "content": "Die Wettervorhersage f\u00fcr Miami am 20. Juni 2024 zeigt hei\u00dfe und feuchte Sommerbedingungen mit einer Temperatur von 31\u00b0C. Die Luftfeuchtigkeit wird hoch bei 85% sein mit leichten Winden bei 12 km/h. Es ist typisches Miami-Sommerwetter - sehr warm und feucht, perfekt f\u00fcr Strandaktivit\u00e4ten, aber Sie sollten ausreichend Fl\u00fcssigkeit zu sich nehmen und Pausen in klimatisierten R\u00e4umen einlegen!"
+            "content": "Ilmaprognoos Miamile 20. juuniks 2024 n\u00e4itab kuumi ja niiskeid suveolusid temperatuuriga 31\u00b0C. \u00d5huniiskus on k\u00f5rge 85% juures kerge tuulega kiirusega 12 km/h. See on t\u00fc\u00fcpiline Miami suveilm - v\u00e4ga soe ja niiske, ideaalne rannavibuse jaoks, kuid soovitav on hoida end h\u00e4sti vedelikuga varustatud ja teha pause kliimaseadmetega ruumides!"
           }
         ],
         "metrics_data": [
@@ -708,11 +708,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Ich brauche das Wetter f\u00fcr Bangkok am 18. M\u00e4rz 2024"
+            "content": "Vajan Bangkoki ilma 18/3/24 kohta"
           },
           {
             "role": "assistant",
@@ -736,13 +736,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Bangkok am 18. M\u00e4rz 2024 wird wie folgt sein:  \n- **Temperatur**: 33 \u00b0C  \n- **Feuchte**: 80 %  \n- **Windgeschwindigkeit**: 16 km/h  \n\nM\u00f6chtest du weitere Details oder Informationen zu anderen St\u00e4dten?"
+            "content": "Ilmaolud Bangkoki 18. m\u00e4rtsi 2024:\n- **Temperatuur:** 33 \u00b0C  \n- **L\u00fclitus:** 80 %  \n- **Veevool:** 16 km/h  \n\nKui vajad t\u00e4psemat teavet, kui soovid! \ud83c\udf24\ufe0f"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Ich brauche das Wetter f\u00fcr Bangkok am 18. M\u00e4rz 2024"
+            "content": "Vajan Bangkoki ilma 18/3/24 kohta"
           },
           {
             "role": "assistant",
@@ -766,7 +766,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Bangkok am 18. M\u00e4rz 2024 wird hei\u00df und feucht mit einer Temperatur von 33\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 80% bei leichten Winden mit 11 km/h. Das ist typisches Wetter f\u00fcr die hei\u00dfe Jahreszeit in Bangkok - sehr warm und feuchte Bedingungen, also sorgen Sie f\u00fcr leichte Kleidung, bleiben Sie hydratisiert und suchen Sie bei M\u00f6glichkeit klimatisierte R\u00e4ume auf."
+            "content": "Ilm Bangkokis 18. m\u00e4rtsil 2024 on kuum ja niiske temperatuuriga 33\u00b0C. \u00d5huniiskus on 80% juures kerge tuulega kiirusega 11 km/h. See on t\u00fc\u00fcpiline kuuma hooaja ilm Bangkokis - v\u00e4ga soe ja niisked olud, seega kandke kerget riietust, j\u00e4\u00e4gem h\u00e4sti niisutatud ja otsige kliimaseadmetega ruume, kui v\u00f5imalik."
           }
         ],
         "metrics_data": [
@@ -791,11 +791,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Zeig mir das Wetter in Sydney f\u00fcr den 3. November 2024"
+            "content": "N\u00e4idake mulle Sydney ilma 03.11.2024 jaoks"
           },
           {
             "role": "assistant",
@@ -819,13 +819,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Sydney am 3. November 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 20 \u00b0C  \n- **Feuchtigkeit**: 65 %  \n- **Windgeschwindigkeit**: 20 km/h  \n\nEs sieht so aus, als w\u00e4re das Wetter mild und angenehm! \ud83c\udf24\ufe0f"
+            "content": "Siin on ilmap\u00e4ringud Sydney jaoks 03.11.2024:\n\n- **Temperatuur:** 20 \u00b0C  \n- **L\u00fclitus:** 65 %  \n- **Veevool:** 20 km/h  \n\nKui vajad t\u00e4psemat teavet, kui t\u00e4psemat aegut, v\u00f5i muidu, anna teada! \u2600\ufe0f"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Zeig mir das Wetter in Sydney f\u00fcr den 3. November 2024"
+            "content": "N\u00e4idake mulle Sydney ilma 03.11.2024 jaoks"
           },
           {
             "role": "assistant",
@@ -849,7 +849,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Sydney am 3. November 2024 wird angenehmes Fr\u00fchlingswetter mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit ist angenehm bei 65% mit m\u00e4\u00dfigen Winden bei 15 km/h. Da es Fr\u00fchling auf der S\u00fcdhalbkugel ist, ist das herrliches Wetter f\u00fcr Outdoor-Aktivit\u00e4ten und Sightseeing in Sydney!"
+            "content": "Ilm Sydneys 3. novembril 2024 on meeldiv kevadilm temperatuuriga 20\u00b0C. \u00d5huniiskus on mugav 65% juures m\u00f5\u00f5duka tuulega kiirusega 15 km/h. Kuna l\u00f5unapoolkeral on kevad, on see ilus ilm v\u00e4litegevusteks ja Sydney vaatamisv\u00e4\u00e4rsustega tutvumiseks!"
           }
         ],
         "metrics_data": [
@@ -874,11 +874,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist es in Kairo am 12. August 2024?"
+            "content": "Milline on ilm Kairos 12. augustil 2024?"
           },
           {
             "role": "assistant",
@@ -902,13 +902,13 @@
           },
           {
             "role": "assistant",
-            "content": "In Kairo wird es am 12. August 2024 31 \u00b0C warm. Die Luftfeuchtigkeit betr\u00e4gt 50 % und die Windgeschwindigkeit liegt bei 12 km/h. Das Wetter wird sich also als sonnig und mild darstellen."
+            "content": "Ilm Kairos 12. augustil 2024:  \n- **Temperatuur:** 31 \u00b0C  \n- **H\u00fcdroon:** 50 %  \n- **Voolu kiirus:** 12 km/h  \n\nIlm on tugevaks, kuid temperatuur on k\u00f5rge. V\u00f5tke hoolikasult soovitavaid m\u00e4rkmeid, kui plaanite v\u00e4lja minna! \ud83c\udf1e"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist es in Kairo am 12. August 2024?"
+            "content": "Milline on ilm Kairos 12. augustil 2024?"
           },
           {
             "role": "assistant",
@@ -932,7 +932,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Kairo am 12. August 2024 wird hei\u00dfes Sommerwetter mit einer Temperatur von 31\u00b0C. Die Luftfeuchtigkeit ist m\u00e4\u00dfig bei 50% mit leichten Winden bei 13 km/h. Das ist typisches hei\u00dfes, trockenes Sommerwetter f\u00fcr Kairo - ziemlich warm, aber mit niedrigerer Luftfeuchtigkeit als viele andere hei\u00dfe Klimazonen, was es ertr\u00e4glicher macht."
+            "content": "Ilm Kairos 12. augustil 2024 on kuum suveilm temperatuuriga 31\u00b0C. \u00d5huniiskus on m\u00f5\u00f5dukas 50% juures kerge tuulega kiirusega 13 km/h. See on t\u00fc\u00fcpiline kuum ja kuiv suveilm Kairos - p\u00e4ris soe, kuid madalam niiskus kui paljudes teistes kuumades kliimades muudab selle talutavamaks."
           }
         ],
         "metrics_data": [
@@ -957,11 +957,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wetterbedingungen in Vancouver am 25. Mai 2024?"
+            "content": "Ilmaolud Vancouveris 2024/05/25?"
           },
           {
             "role": "assistant",
@@ -985,13 +985,13 @@
           },
           {
             "role": "assistant",
-            "content": "F\u00fcr Vancouver am 25. Mai 2024 wird folgendes Wetter vorhergesagt:  \n- **Temperatur**: 23 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nDie Wetterbedingungen scheinen mild und angenehm zu sein! \ud83c\udf24\ufe0f"
+            "content": "Vancouveris 2024. m\u00e4rtsi 25. (2024-05-25) olaus:  \n- **Ilmtemperatuur**: 23 \u00b0C  \n- **Ilmhuume**: 70 %  \n- **Veevoolu kiirus**: 13 km/h  \n\nSee on m\u00f5\u00f5dukas ilm, kus saab vaba aega kogeda v\u00f5i terviklikku v\u00e4rskeku."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wetterbedingungen in Vancouver am 25. Mai 2024?"
+            "content": "Ilmaolud Vancouveris 2024/05/25?"
           },
           {
             "role": "assistant",
@@ -1015,7 +1015,7 @@
           },
           {
             "role": "assistant",
-            "content": "Die Wetterbedingungen in Vancouver am 25. Mai 2024 werden mildes Fr\u00fchlingswetter mit einer Temperatur von 20\u00b0C sein. Die Luftfeuchtigkeit betr\u00e4gt 65% bei m\u00e4\u00dfigen Winden mit 15 km/h. Das ist herrliches sp\u00e4tes Fr\u00fchlingswetter in Vancouver - perfekt f\u00fcr die Erkundung der Outdoor-Attraktionen und Parks der Stadt!"
+            "content": "Ilmaolud Vancouveris 25. mail 2024 on mahe kevadilm temperatuuriga 20\u00b0C. \u00d5huniiskus on 65% juures m\u00f5\u00f5duka tuulega kiirusega 15 km/h. See on ilus hiliskevadine ilm Vancouveris - ideaalne linna v\u00e4liatraktsioonide ja parkide avastamiseks!"
           }
         ],
         "metrics_data": [
@@ -1040,11 +1040,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist es in Rom am 14. Oktober 2024?"
+            "content": "Kuidas Roomaga 14. oktoobril 2024?"
           },
           {
             "role": "assistant",
@@ -1068,13 +1068,13 @@
           },
           {
             "role": "assistant",
-            "content": "Am 14. Oktober 2024 in Rom wird es 21 \u00b0C warm. Die Luftfeuchtigkeit betr\u00e4gt 65 %, und der Wind weht mit einer Geschwindigkeit von 12 km/h. Es wird ein mildes und angenehmes Wetter sein!"
+            "content": "14. oktoobril 2024 on Roomas j\u00e4rgneva n\u00e4dalal j\u00e4rgmised ilmap\u00e4ringud:  \n- **Temperatuur:** 21 \u00b0C  \n- **H\u00fcdroon:** 65 %  \n- **Veevool:** 12 km/h  \n\nIlm on t\u00f5en\u00e4oliselt selge ja m\u00f5\u00f5dukas, kuid j\u00e4rgi ilmap\u00e4ringuid t\u00e4psustab t\u00e4psemalt."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist es in Rom am 14. Oktober 2024?"
+            "content": "Kuidas Roomaga 14. oktoobril 2024?"
           },
           {
             "role": "assistant",
@@ -1098,7 +1098,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Rom am 14. Oktober 2024 wird angenehmes Herbstwetter mit einer Temperatur von 21\u00b0C. Die Luftfeuchtigkeit ist angenehm bei 65% mit m\u00e4\u00dfigen Winden bei 15 km/h. Das ist ideales Wetter f\u00fcr Sightseeing in Rom - nicht zu hei\u00df, nicht zu kalt, perfekt zum Spazierengehen zu den historischen Sehensw\u00fcrdigkeiten und zum Essen im Freien!"
+            "content": "Ilm Roomas 14. oktoobril 2024 on meeldiv s\u00fcgiseilm temperatuuriga 21\u00b0C. \u00d5huniiskus on mugav 65% juures m\u00f5\u00f5duka tuulega kiirusega 15 km/h. See on ideaalne ilm Roomas ringi k\u00e4imiseks - ei ole liiga kuum ega liiga k\u00fclm, t\u00e4iuslik ajaloos\u00e4ilmete k\u00fclastamiseks ja \u00f5ues s\u00f6\u00f6miseks!"
           }
         ],
         "metrics_data": [
@@ -1123,11 +1123,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Dubai-Wetter f\u00fcr den 18. Februar 2024 pr\u00fcfen"
+            "content": "Kontrollige Dubai ilma 18/2/2024 kohta"
           },
           {
             "role": "assistant",
@@ -1151,13 +1151,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Dubai am 18. Februar 2024 wird wie folgt sein:  \n- **Temperatur**: 28 \u00b0C  \n- **Feuchtigkeit**: 35 %  \n- **Windgeschwindigkeit**: 17 km/h  \n\nDie Bedingungen deuten auf ein warmes und trockenes Wetter mit leichten Winden hin."
+            "content": "Here's the weather forecast for Dubai on 2024-02-18:\n\n- **Temperature**: 28\u00b0C  \n- **Humidity**: 35%  \n- **Wind speed**: 17 km/h  \n\nLet me know if you need additional details!"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Dubai-Wetter f\u00fcr den 18. Februar 2024 pr\u00fcfen"
+            "content": "Kontrollige Dubai ilma 18/2/2024 kohta"
           },
           {
             "role": "assistant",
@@ -1181,7 +1181,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Dubai am 18. Februar 2024 wird warm und angenehm mit einer Temperatur von 27\u00b0C. Die Luftfeuchtigkeit ist niedrig bei 35% mit m\u00e4\u00dfigen Winden bei 18 km/h. Das ist perfektes Winterwetter in Dubai - warm aber nicht zu hei\u00df, mit niedriger Luftfeuchtigkeit, was es sehr angenehm f\u00fcr Outdoor-Aktivit\u00e4ten und Sightseeing macht!"
+            "content": "Ilm Dubais 18. veebruaril 2024 on soe ja meeldiv temperatuuriga 27\u00b0C. \u00d5huniiskus on madal 35% juures m\u00f5\u00f5duka tuulega kiirusega 18 km/h. See on ideaalne talveilm Dubais - soe, kuid mitte liiga kuum, madal niiskusega, mis muudab selle v\u00e4ga mugavaks v\u00e4litegevusteks ja vaatamisv\u00e4\u00e4rsustega tutvumiseks!"
           }
         ],
         "metrics_data": [
@@ -1206,11 +1206,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Was ist mit Singapur am 30. Juli 2024?"
+            "content": "Aga Singapur 30. juulil 2024?"
           },
           {
             "role": "assistant",
@@ -1234,13 +1234,13 @@
           },
           {
             "role": "assistant",
-            "content": "Am 30. Juli 2024 in Singapur wird die Temperatur 31 \u00b0C betragen, die Luftfeuchtigkeit liegt bei 95 % und der Wind weht mit einer Geschwindigkeit von 10 km/h."
+            "content": "Sinna 30. juulil 2024 on ilm:  \n- Temperatuur: 31 \u00b0C  \n- Humidus: 95 %  \n- Puhuv l\u00e4bi: 10 km/h  \n\nKas soovid teavet ka teistest p\u00e4evadst? \ud83d\ude0a"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was ist mit Singapur am 30. Juli 2024?"
+            "content": "Aga Singapur 30. juulil 2024?"
           },
           {
             "role": "assistant",
@@ -1264,7 +1264,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Singapur am 30. Juli 2024 wird hei\u00df und sehr feucht mit einer Temperatur von 31\u00b0C. Die Luftfeuchtigkeit wird sehr hoch bei 95% sein mit leichten Winden bei 11 km/h. Das ist typisches tropisches Wetter f\u00fcr Singapur - sehr warm und extrem feucht, also sollten Sie definitiv in klimatisierten R\u00e4umen bleiben und sich gut hydriert halten, wenn Sie drau\u00dfen sind!"
+            "content": "Ilm Singapuris 30. juulil 2024 on kuum ja v\u00e4ga niiske temperatuuriga 31\u00b0C. \u00d5huniiskus on v\u00e4ga k\u00f5rge 95% juures kerge tuulega kiirusega 11 km/h. See on t\u00fc\u00fcpiline troopiline ilm Singapuris - v\u00e4ga soe ja \u00e4\u00e4rmiselt niiske, seega soovitav on kindlasti viibida kliimaseadmetega ruumides ja hoida end h\u00e4sti vedelikuga varustatud, kui olete \u00f5ues!"
           }
         ],
         "metrics_data": [
@@ -1289,11 +1289,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Sag mir das Wetter in Chicago am 22. Januar 2024"
+            "content": "Andke mulle teada Chicago ilmast 2024-01-22"
           },
           {
             "role": "assistant",
@@ -1317,13 +1317,13 @@
           },
           {
             "role": "assistant",
-            "content": "Am 22. Januar 2024 in Chicago erwarten sie eine Temperatur von 9\u00b0C, eine Luftfeuchtigkeit von 60% und eine Windgeschwindigkeit von 21 km/h."
+            "content": "Chicago ilm 2024-01-22:\n- Temperatuur: 9 \u00b0C\n- Humus: 60 %\n- Puhuv: 21 km/h\n\nKas soovite teavet ka teistel p\u00e4evadel v\u00f5i teistel linnadel?"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Sag mir das Wetter in Chicago am 22. Januar 2024"
+            "content": "Andke mulle teada Chicago ilmast 2024-01-22"
           },
           {
             "role": "assistant",
@@ -1347,7 +1347,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Chicago am 22. Januar 2024 wird kaltes Winterwetter mit einer Temperatur von 9\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 60% bei starken Winden mit 21 km/h. Das ist typisches Chicago-Winterwetter - kalt und windig, also brauchen Sie warme Kleidung und sollten auf den Windchill-Effekt vorbereitet sein, der es noch k\u00e4lter erscheinen l\u00e4sst!"
+            "content": "Ilm Chicagos 22. jaanuaril 2024 on k\u00fclm talveilm temperatuuriga 9\u00b0C. \u00d5huniiskus on 60% juures tugeva tuulega kiirusega 21 km/h. See on t\u00fc\u00fcpiline Chicago talveilm - k\u00fclm ja tuuline, seega vajate sooja riietust ja peate olema valmis tuule k\u00fclmatunde efektiks, mis paneb tundma veelgi k\u00fclmemana!"
           }
         ],
         "metrics_data": [
@@ -1372,11 +1372,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Stockholm-Wetter am 15. Juni 2024, bitte"
+            "content": "Stockholmi ilm 15-06-2024, palun"
           },
           {
             "role": "assistant",
@@ -1400,13 +1400,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am 15. Juni 2024 wird wie folgt sein:  \nTemperatur: 14 \u00b0C  \nFeuchtigkeit: 85 %  \nWindgeschwindigkeit: 14 km/h  \n\nViel Spa\u00df bei der Planung deiner Aktivit\u00e4ten! \ud83c\udf26\ufe0f"
+            "content": "Stockholmi ilm 15. juuni 2024:  \n- **Temperatuur:** 14 \u00b0C  \n- **Ilm:** 85 %  \n- **Veevoolu kiirus:** 14 km/h  \n\nKas need andmed on kasutusvaldne?"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Stockholm-Wetter am 15. Juni 2024, bitte"
+            "content": "Stockholmi ilm 15-06-2024, palun"
           },
           {
             "role": "assistant",
@@ -1430,7 +1430,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am 15. Juni 2024 wird mildes Sommerwetter mit einer Temperatur von 14\u00b0C. Die Luftfeuchtigkeit ist hoch bei 85% mit sanften Winden bei 13 km/h. Das ist typisches fr\u00fches Sommerwetter f\u00fcr Stockholm - angenehm mild aber mit hoher Luftfeuchtigkeit, perfekt um die langen Tagesstunden des schwedischen Sommers zu genie\u00dfen!"
+            "content": "Ilm Stockholmis 15. juunil 2024 on mahe suveilm temperatuuriga 14\u00b0C. \u00d5huniiskus on k\u00f5rge 85% juures \u00f5rna tuulega kiirusega 13 km/h. See on t\u00fc\u00fcpiline varasuvine ilm Stockholmis - meeldivalt mahe, kuid k\u00f5rge niiskusega, ideaalne Rootsi suve pikkade valgete tundide nautimiseks!"
           }
         ],
         "metrics_data": [
@@ -1455,11 +1455,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Ich m\u00f6chte \u00fcber Seoul am 27. April 2024 wissen"
+            "content": "Tahan teada Seouli kohta 27.04.2024"
           },
           {
             "role": "assistant",
@@ -1483,13 +1483,13 @@
           },
           {
             "role": "assistant",
-            "content": "Am 27. April 2024 in Seoul erwarten Sie folgende Wetterbedingungen:  \n- **Temperatur**: 20 \u00b0C  \n- **Luftfeuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nDas Wetter sieht moderat aus \u2013 eine gute Wahl f\u00fcr Spazierg\u00e4nge oder Outdoor-Aktivit\u00e4ten! \ud83c\udf24\ufe0f"
+            "content": "Siin on Seouli kohta 27.04.2024 p\u00e4eval ilmap\u00e4ringud:\n\n- **Temperatuur:** 20 \u00b0C  \n- **H\u00fcdroon:** 70 %  \n- **Veevool:** 14 km/h  \n\nKui vajad t\u00e4psemat teavet, k\u00fcsi! \ud83d\ude0a"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Ich m\u00f6chte \u00fcber Seoul am 27. April 2024 wissen"
+            "content": "Tahan teada Seouli kohta 27.04.2024"
           },
           {
             "role": "assistant",
@@ -1513,7 +1513,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Seoul am 27. April 2024 wird angenehmes Fr\u00fchlingswetter mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% bei m\u00e4\u00dfigen Winden mit 15 km/h. Das ist herrliches Fr\u00fchlingswetter in Seoul - perfekt um Kirschbl\u00fcten zu genie\u00dfen, falls sie noch bl\u00fchen, und gro\u00dfartig f\u00fcr Outdoor-Aktivit\u00e4ten in der Stadt!"
+            "content": "Ilm Seo\u00falis 27. aprillil 2024 on meeldiv kevadilm temperatuuriga 20\u00b0C. \u00d5huniiskus on 70% juures m\u00f5\u00f5duka tuulega kiirusega 15 km/h. See on ilus kevadilm Seo\u00falis - t\u00e4iuslik kirsipuu \u00f5itseaja nautimiseks, kui need veel \u00f5itsevad, ja suurep\u00e4ne v\u00e4litegevusteks linna \u00fcmbruses!"
           }
         ],
         "metrics_data": [
@@ -1533,16 +1533,16 @@
       },
       {
         "test_id": "test_22",
-        "success": true,
+        "success": false,
         "eval_item_id": 22,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Kapstadt-Wetter am 5. August 2024?"
+            "content": "Kaplinna ilm 5. augustil 2024?"
           },
           {
             "role": "assistant",
@@ -1552,7 +1552,7 @@
                 "function": {
                   "name": "weather_forecast",
                   "arguments": {
-                    "city": "Cape Town",
+                    "city": "Kaplina",
                     "date": "2024-08-05"
                   }
                 },
@@ -1562,17 +1562,17 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 16, \"humidity\": 55, \"wind_speed\": 12}"
+            "content": "{\"temperature\": 25, \"humidity\": 75, \"wind_speed\": 13}"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in **Cape Town** am **5. August 2024** wird wie folgt sein:  \n- **Temperatur**: 16 \u00b0C  \n- **Feuchtigkeit**: 55 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDas Wetter erscheint mild und angenehm. M\u00f6chtest du weitere Details oder Informationen zu anderen Daten? \ud83d\ude0a"
+            "content": "5. august 2024. Kaplina ilm:\n- Temperatuur: 25 \u00b0C  \n- Ilm: 75 %  \n- V\u00e4lijuht: 13 km/h  \n\nKas vajad veel infot?"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Kapstadt-Wetter am 5. August 2024?"
+            "content": "Kaplinna ilm 5. augustil 2024?"
           },
           {
             "role": "assistant",
@@ -1596,7 +1596,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Kapstadt am 5. August 2024 wird k\u00fchles Winterwetter mit einer Temperatur von 16\u00b0C. Die Luftfeuchtigkeit ist m\u00e4\u00dfig bei 55% mit m\u00e4\u00dfigen Winden bei 17 km/h. Da es Winter auf der S\u00fcdhalbkugel ist, ist das typisches Kapstadt-Winterwetter - mild und angenehm, viel w\u00e4rmer als Winter auf der Nordhalbkugel!"
+            "content": "Ilm Kaplinnas 5. augustil 2024 on jahe talveilm temperatuuriga 16\u00b0C. \u00d5huniiskus on m\u00f5\u00f5dukas 55% juures m\u00f5\u00f5duka tuulega kiirusega 17 km/h. Kuna l\u00f5unapoolkeral on talv, on see t\u00fc\u00fcpiline Kaplinna talveilm - mahe ja meeldiv, palju soojem kui talv p\u00f5hjapoolkeral!"
           }
         ],
         "metrics_data": [
@@ -1608,9 +1608,9 @@
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 1/1 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Correct arguments for 0/1 tools"
           }
         ]
       },
@@ -1621,11 +1621,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Mumbai am 18. November 2024, wie ist das Wetter?"
+            "content": "Mumbai 18/11/2024, milline on ilm?"
           },
           {
             "role": "assistant",
@@ -1649,13 +1649,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Mumbai am 18. November 2024 wird wie folgt sein:  \nTemperatur: 30 \u00b0C, Luftfeuchtigkeit: 80 %, Windgeschwindigkeit: 17 km/h.  \nVorbereiten Sie sich auf eine warme und windige Tage! \ud83c\udf2c\ufe0f\ud83c\udf1e"
+            "content": "18. novembris 2024 annab Mumbai:  \n- **Ilmtemperatuur:** 30 \u00b0C  \n- **Lumekogu:** 80 %  \n- **Veevoolu kiirus:** 17 km/h  \n\nKas soovite teavet ka teistel p\u00e4evadel?"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Mumbai am 18. November 2024, wie ist das Wetter?"
+            "content": "Mumbai 18/11/2024, milline on ilm?"
           },
           {
             "role": "assistant",
@@ -1679,7 +1679,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Mumbai am 18. November 2024 wird warm und feucht mit einer Temperatur von 30\u00b0C. Die Luftfeuchtigkeit ist hoch bei 80% mit leichten Winden bei 12 km/h. Das ist Post-Monsun-Wetter in Mumbai - immer noch ziemlich warm und feucht, aber generell angenehmer als die hei\u00dfesten Sommermonate."
+            "content": "Ilm Mumbais 18. novembril 2024 on soe ja niiske temperatuuriga 30\u00b0C. \u00d5huniiskus on k\u00f5rge 80% juures kerge tuulega kiirusega 12 km/h. See on p\u00e4rast-musson ilm Mumbais - endiselt \u00fcsna soe ja niiske, kuid \u00fcldiselt mugavam kui tippsuvekuudel."
           }
         ],
         "metrics_data": [
@@ -1704,11 +1704,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Amsterdam-Wetter f\u00fcr den 23. Dezember 2024"
+            "content": "Amsterdami ilm 23/12/2024 jaoks"
           },
           {
             "role": "assistant",
@@ -1732,13 +1732,13 @@
           },
           {
             "role": "assistant",
-            "content": "F\u00fcr Amsterdam am 2024-12-23 wird folgendes Wetter erwartet:  \n- **Temperatur**: 9 \u00b0C  \n- **Feuchte**: 75 %  \n- **Windgeschwindigkeit**: 17 km/h  \n\nEs wird ein k\u00fchler Tag mit leichtem Wind und moderater Luftfeuchtigkeit sein."
+            "content": "Amsterdami ilm 23.12.2024:\n- Temperatuur: 9 \u00b0C  \n- Ilm: 75 %  \n- Veevool: 17 km/h  \n\nIlm on m\u00f5\u00f5dukas, veevool on madal, kuid ilm on tugev."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Amsterdam-Wetter f\u00fcr den 23. Dezember 2024"
+            "content": "Amsterdami ilm 23/12/2024 jaoks"
           },
           {
             "role": "assistant",
@@ -1758,11 +1758,11 @@
           },
           {
             "role": "tool",
-            "content": "{\"temperature\": 8, \"humidity\": 75, \"wind_speed\": 15}"
+            "content": "{\"temperature\": 14, \"humidity\": 90, \"wind_speed\": 12}"
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Amsterdam am 23. Dezember 2024 wird k\u00fchles Winterwetter mit einer Temperatur von 8\u00b0C. Die Luftfeuchtigkeit ist sehr hoch bei 75% mit m\u00e4\u00dfigen Winden bei 15 km/h. Das ist typisches Winterwetter f\u00fcr Amsterdam - k\u00fchl und ziemlich feucht, also sollten Sie einen Regenschirm mitnehmen, da wahrscheinlich Feuchtigkeit in der Luft liegt!"
+            "content": "Ilm Amsterdamis 23. detsembril 2024 on jahe kevadilm temperatuuriga 14\u00b0C. \u00d5huniiskus on v\u00e4ga k\u00f5rge 90% juures kerge tuulega kiirusega 12 km/h. See on t\u00fc\u00fcpiline varakevadine ilm Amsterdamis - jahe ja \u00fcsna niiske, seega v\u00f5ite soovida kaasas kanda vihmavarjut, kuna \u00f5hus on t\u00f5en\u00e4oliselt niiskust!"
           }
         ],
         "metrics_data": [
@@ -1787,11 +1787,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter in San Francisco am 22. September 2024?"
+            "content": "Milline on ilm San Franciscos 22/9/2024?"
           },
           {
             "role": "assistant",
@@ -1815,13 +1815,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in San Francisco am 22. September 2024 wird folgende Bedingungen haben:  \n- **Temperatur**: 18 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nEs sieht wie ein mildes und windiges Wetter aus \u2013 perfekt f\u00fcr eine Spaziergang an der K\u00fcste! \ud83c\udf0a"
+            "content": "San Franciscos ilm 22. september 2024:  \n- **Temperatuur:** 18 \u00b0C  \n- **H\u00fcdroon:** 70 %  \n- **Voolu kiirus:** 12 km/h  \n\nIlm on t\u00f5en\u00e4oliselt selge ja siltne, kuid j\u00e4rgneb v\u00f5ib olla v\u00e4ike vool."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter in San Francisco am 22. September 2024?"
+            "content": "Milline on ilm San Franciscos 22/9/2024?"
           },
           {
             "role": "assistant",
@@ -1845,7 +1845,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in San Francisco am 22. September 2024 wird mild mit einer Temperatur von 18\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% bei leichten Winden mit 12 km/h. Das ist typisches San Francisco-Wetter - k\u00fchl und angenehm, perfekt f\u00fcr Lagenlook, da die Temperatur in verschiedenen Teilen der Stadt \u00fcber den Tag variieren kann!"
+            "content": "Ilm San Franciscos 22. septembril 2024 on mahe temperatuuriga 18\u00b0C. \u00d5huniiskus on 70% juures kerge tuulega kiirusega 12 km/h. See on t\u00fc\u00fcpiline San Francisco ilm - jahe ja mugav, t\u00e4iuslik kihistatud riietuse jaoks, kuna temperatuur v\u00f5ib linna erinevates osades p\u00e4eva jooksul varieeruda!"
           }
         ],
         "metrics_data": [
@@ -1870,11 +1870,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter heute in London?"
+            "content": "Milline on t\u00e4nane ilm Londonis?"
           },
           {
             "role": "assistant",
@@ -1915,13 +1915,13 @@
           },
           {
             "role": "assistant",
-            "content": "Heute, dem 11. September 2025, in London erwarten Sie folgende Wetterbedingungen:  \n- **Temperatur**: 15 \u00b0C  \n- **Feuchte**: 80 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nDas Wetter scheint mild und frisch zu sein! \ud83c\udf2c\ufe0f"
+            "content": "T\u00e4nane ilm Londonis on seitsmeaastane (15 \u00b0C), ilm on k\u00f5rge huumus (80 %) ja tuul k\u00f5rgub 12 km/h."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter heute in London?"
+            "content": "Milline on t\u00e4nane ilm Londonis?"
           },
           {
             "role": "assistant",
@@ -1962,7 +1962,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London heute (11. September 2025) ist mildes Herbstwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 70% mit m\u00e4\u00dfigen Winden von 18 km/h. Es ist ein typischer Herbsttag in London - k\u00fchl und feucht, also sollten Sie sich mit einer leichten Jacke einpacken und vielleicht einen Regenschirm mitnehmen!"
+            "content": "T\u00e4nane ilm Londonis (11. september 2025) on mahe s\u00fcgiseilm temperatuuriga 10\u00b0C. \u00d5huniiskus on 70% juures m\u00f5\u00f5duka tuulega kiirusega 18 km/h. See on t\u00fc\u00fcpiline s\u00fcgisp\u00e4ev Londonis - jahe ja niiske, seega tasuks riietuda soojalt kerge jakiga ja v\u00f5tta kaasa v\u00f5ib-olla vihmavarjut!"
           }
         ],
         "metrics_data": [
@@ -1987,11 +1987,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter gerade in Tokyo?"
+            "content": "Milline on praegu ilm Tokyos?"
           },
           {
             "role": "assistant",
@@ -2032,13 +2032,13 @@
           },
           {
             "role": "assistant",
-            "content": "Heute in Tokyo ist die Temperatur 18 \u00b0C, die Luftfeuchtigkeit betr\u00e4gt 70 % und der Wind weht mit einer Geschwindigkeit von 13 km/h."
+            "content": "Praegu (2025-09-11) on Tokyos ilm:  \n- **Temperatuur:** 18 \u00b0C  \n- **L\u00fclitus:** 70 %  \n- **Veevool:** 13 km/h  \n\nIlm on m\u00f5nede kohal tugevam, kuid kogu l\u00f5una-Euroopa osa on v\u00e4iksema."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter gerade in Tokyo?"
+            "content": "Milline on praegu ilm Tokyos?"
           },
           {
             "role": "assistant",
@@ -2079,7 +2079,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Tokyo gerade jetzt (11. September 2025) ist mildes Herbstwetter mit einer Temperatur von 11\u00b0C. Die Luftfeuchtigkeit ist m\u00e4\u00dfig bei 60% mit Winden von 18 km/h. Es ist ein angenehmer Tokyo-Herbsttag - k\u00fchl und angenehm, Sie brauchen eine leichte Jacke, und die moderate Luftfeuchtigkeit macht es sehr angenehm!"
+            "content": "Ilm Tokyos praegu (11. september 2025) on mahe s\u00fcgiseilm temperatuuriga 11\u00b0C. \u00d5huniiskus on m\u00f5\u00f5dukas 60% juures tuulega kiirusega 18 km/h. See on meeldiv Tokyo s\u00fcgisp\u00e4ev - jahe ja mugav, seega vajate kerget jakki, ja m\u00f5\u00f5dukas niiskus muudab selle p\u00e4ris meeldivaks!"
           }
         ],
         "metrics_data": [
@@ -2104,11 +2104,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Sag mir das heutige Wetter in New York"
+            "content": "R\u00e4\u00e4kige mulle t\u00e4nasest ilmast New Yorgis"
           },
           {
             "role": "assistant",
@@ -2149,13 +2149,13 @@
           },
           {
             "role": "assistant",
-            "content": "Heute, am 2025-09-11, in New York erwarten folgende Wetterbedingungen:\n- Temperatur: 20\u00b0C\n- Luftfeuchtigkeit: 65%\n- Windgeschwindigkeit: 13 km/h\n\nDas Wetter sieht mild und frisch aus, perfekt f\u00fcr eine Ausflugstage! \ud83c\udf2c\ufe0f"
+            "content": "T\u00e4nased p\u00fchap\u00e4ev, 11. septembris 2025, on New Yorkis j\u00e4rgnev ilm:  \n- **Temperatuur:** 20 \u00b0C  \n- **L\u00fclituse tase:** 65 %  \n- **Voolu kiirus:** 13 km/h  \n\nIlm on selge ja m\u00f5\u00f5dukas, suurep\u00e4rane p\u00e4ev! \ud83c\udf24\ufe0f"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Sag mir das heutige Wetter in New York"
+            "content": "R\u00e4\u00e4kige mulle t\u00e4nasest ilmast New Yorgis"
           },
           {
             "role": "assistant",
@@ -2196,7 +2196,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das heutige Wetter in New York (11. September 2025) ist angenehmes Herbstwetter mit einer Temperatur von 11\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 55% mit m\u00e4\u00dfigen Winden von 20 km/h. Es ist ein sch\u00f6ner fr\u00fcher Herbsttag in NYC - perfektes Wetter f\u00fcr Aktivit\u00e4ten im Freien und um die Stadt zu erkunden!"
+            "content": "T\u00e4nane ilm New Yorgis (11. september 2025) on meeldiv s\u00fcgiseilm temperatuuriga 25\u00b0C. \u00d5huniiskus on 75% juures m\u00f5\u00f5duka tuulega kiirusega 15 km/h. See on ilus varas\u00fcgisene p\u00e4ev NYC-s - t\u00e4iuslik ilm v\u00e4litegevusteks ja linna avastamiseks!"
           }
         ],
         "metrics_data": [
@@ -2221,11 +2221,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist das heutige Wetter in Miami?"
+            "content": "Milline on t\u00e4nane ilm Miamis?"
           },
           {
             "role": "assistant",
@@ -2266,13 +2266,13 @@
           },
           {
             "role": "assistant",
-            "content": "Heute, dem 11. September 2025, ist das Wetter in Miami wie folgt:  \n- **Temperatur**: 28 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nViel Spa\u00df beim Wettergenie\u00dfen! \ud83c\udf1e"
+            "content": "T\u00e4nane ilm Miamis (2025-09-11):  \n- **Temperatuur**: 28 \u00b0C  \n- **L\u00fclitus**: 75 %  \n- **Veevool**: 12 km/h  \n\nIlm on t\u00f5en\u00e4oliselt m\u00f5nep\u00e4evane, kuid j\u00e4rgnevalt v\u00f5ib olla v\u00e4iksema l\u00fclituse ja tugevam veevool."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das heutige Wetter in Miami?"
+            "content": "Milline on t\u00e4nane ilm Miamis?"
           },
           {
             "role": "assistant",
@@ -2313,7 +2313,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das heutige Wetter in Miami (11. September 2025) ist warm und angenehm mit einer Temperatur von 24\u00b0C. Die Luftfeuchtigkeit ist komfortabel bei 65% mit m\u00e4\u00dfigen Winden von 17 km/h. Es ist herrliches Herbstwetter in Miami - warm und bequem, perfekt f\u00fcr Aktivit\u00e4ten im Freien und um den Strand zu genie\u00dfen!"
+            "content": "T\u00e4nane ilm Miamis (11. september 2025) on soe ja meeldiv temperatuuriga 24\u00b0C. \u00d5huniiskus on mugav 65% juures m\u00f5\u00f5duka tuulega kiirusega 17 km/h. See on ilus hilissuvine ilm Miamis - soe ja mugav, t\u00e4iuslik v\u00e4litegevusteks ja ranna nautimiseks!"
           }
         ],
         "metrics_data": [
@@ -2338,11 +2338,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Aktuelles Wetter in Paris, bitte"
+            "content": "Praegune ilm Pariisis, palun"
           },
           {
             "role": "assistant",
@@ -2383,13 +2383,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das aktuelle Wetter in Paris f\u00fcr heute, den 11. September 2025, sieht wie folgt aus:\n\n- **Temperatur**: 16 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 13 km/h  \n\nViel Spa\u00df in der Stadt der Lichter! \ud83c\udf1f"
+            "content": "Praegune ilm Pariisis 2025-09-11:  \n- **Temperatuur:** 16 \u00b0C  \n- **Lund:** 75 %  \n- **Voolu kiirus:** 13 km/h  \n\nLoodud ilm on m\u00f5istlik, kuid tuleb hoolikaselt j\u00e4lgida lund ja voolu."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Aktuelles Wetter in Paris, bitte"
+            "content": "Praegune ilm Pariisis, palun"
           },
           {
             "role": "assistant",
@@ -2430,7 +2430,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das aktuelle Wetter in Paris (11. September 2025) ist k\u00fchles Herbstwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit betr\u00e4gt 65% mit m\u00e4\u00dfigen Winden von 18 km/h. Es ist ein typischer Pariser Herbsttag - k\u00fchl und feucht, also sollten Sie sich warm mit mehreren Schichten anziehen und vielleicht einen Regenschirm mitnehmen!"
+            "content": "Praegune ilm Pariisis (11. september 2025) on mahe s\u00fcgiseilm temperatuuriga 10\u00b0C. \u00d5huniiskus on 65% juures m\u00f5\u00f5duka tuulega kiirusega 18 km/h. See on t\u00fc\u00fcpiline Pariisi s\u00fcgisp\u00e4ev - jahe ja niiske, seega tasuks riietuda soojalt kihtidega ja v\u00f5tta kaasa v\u00f5ib-olla vihmavarjut!"
           }
         ],
         "metrics_data": [
@@ -2455,11 +2455,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie ist das Wetter morgen in S\u00e3o Paulo?"
+            "content": "Milline saab olema ilm S\u00e3o Paulos homme?"
           },
           {
             "role": "assistant",
@@ -2500,13 +2500,13 @@
           },
           {
             "role": "assistant",
-            "content": "Morgen, am 2025-09-12, in S\u00e3o Paulo erwartet Sie ein Wetter mit einer Temperatur von 23 \u00b0C, einer Luftfeuchtigkeit von 80 % und einem Windgeschwindigkeit von 12 km/h."
+            "content": "Hmm, t\u00e4na on 2025-09-11, seega on homme 2025-09-12. S\u00e3o Paulos homme ilm on:\n\n- **Temperatuur:** 23 \u00b0C  \n- **H\u00fcdroon:** 80 %  \n- **Veevool:** 12 km/h  \n\nIlm on t\u00f5en\u00e4oliselt m\u00f5nelt \u00f5huline ja l\u00f5unapoolne."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie ist das Wetter morgen in S\u00e3o Paulo?"
+            "content": "Milline saab olema ilm S\u00e3o Paulos homme?"
           },
           {
             "role": "assistant",
@@ -2547,7 +2547,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in S\u00e3o Paulo morgen (12. September 2025) wird warmes Fr\u00fchlingswetter mit einer Temperatur von 24\u00b0C. Die Luftfeuchtigkeit wird hoch bei 85% mit leichten Winden von 12 km/h sein. Das ist typisches Fr\u00fchlingsende-Wetter f\u00fcr S\u00e3o Paulo - warm und ziemlich feucht, also m\u00f6chten Sie vielleicht klimatisierte R\u00e4ume w\u00e4hrend der hei\u00dfesten Tageszeit aufsuchen!"
+            "content": "Ilm S\u00e3o Paulos homme (12. september 2025) saab olema mahe kevadilm temperatuuriga 24\u00b0C. \u00d5huniiskus on k\u00f5rge 85% juures kerge tuulega kiirusega 12 km/h. See on t\u00fc\u00fcpiline kevadilm S\u00e3o Paulo jaoks - mahe ja \u00fcsna niiske, seega v\u00f5ite soovida riietuda kihtidena temperatuuri muutuste t\u00f5ttu p\u00e4eva jooksul!"
           }
         ],
         "metrics_data": [
@@ -2567,63 +2567,26 @@
       },
       {
         "test_id": "test_32",
-        "success": true,
+        "success": false,
         "eval_item_id": 32,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Kannst du mir mir das Wetter in Rom n\u00e4chsten Montag sagen?"
+            "content": "Kas saate \u00f6elda mulle Rooma ilma j\u00e4rgmisel esmasp\u00e4eval?"
           },
           {
             "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "get_current_date",
-                  "arguments": {}
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "2025-09-11"
-          },
-          {
-            "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Rome",
-                    "date": "2025-09-15"
-                  }
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 21, \"humidity\": 65, \"wind_speed\": 12}"
-          },
-          {
-            "role": "assistant",
-            "content": "Das Wetter in Rom am n\u00e4chsten Montag (2025-09-15) wird wie folgt sein:  \n- **Temperatur**: 21 \u00b0C  \n- **Feuchtigkeit**: 65 %  \n- **Windgeschwindigkeit**: 12 km/h  \n\nViel Spa\u00df beim Besuch in Rom! \ud83d\ude0a"
+            "content": "<think>\nOkay, the user is asking if I can tell them about the weather in Rome for the coming Monday. Let me break this down.\n\nFirst, I need to confirm the date. The user mentioned \"esmasp\u00e4eval,\" which is Monday in Estonian. But I need to check what date that is. Since I don't have real-time data, I should use the get_current_date function to find out today's date. Once I have today's date, I can calculate the next Monday by adding seven days. However, maybe the user means the next Monday regardless of the current date. Wait, but the function requires the exact date in YYYY-MM-DD format. So I need to get the current date first.\n\nLet me call get_current_date to get today's date. Let's say today is October 30, 2023. Then next Monday would be November 6, 2023. But I need to make sure that the date is correctly calculated. Alternatively, maybe the user is referring to the upcoming Monday, so I should get the current date and then add seven days to it. But I should check if the current date is already past the next Monday. For example, if today is November 5, 2023, then next Monday is the 6th. But if today is November 6, then next Monday is the 13th. Wait, but the user said \"j\u00e4rgmisel esmasp\u00e4eval,\" which is \"next Monday.\" So regardless of the current date, the next Monday is the correct date.\n\nSo the steps are: first, get the current date. Then, determine the next Monday's date. But how? Well, the function get_current_date will give me today's date. Then I can calculate the next Monday by adding days. For example, if today is Wednesday, October 25, 2023, then next Monday is October 30. Wait, but that's 5 days later. Hmm, maybe I need to calculate the number of days until next Monday. Alternatively, maybe the user just wants the next Monday, so I can take today's date and add 7 days, but that might not be accurate if the current date is already past the next Monday. For example, if today is Monday, then next Monday is 7 days later. But if today is Tuesday, next Monday is 6 days later. So perhaps the correct approach is to find the next occurrence of Monday after today's date.\n\nBut since the user is asking for the next Monday, maybe I should just use the current date and add 7 days, but that might not be correct. Alternatively, maybe the user is referring to the upcoming Monday, so I need to calculate the next Monday based on the current date. However, since I can't do that without knowing the current date, I need to first get the current date using get_current_date, then compute the next Monday.\n\nBut the functions available are get_current_date and weather_forecast. The weather_forecast function requires the city and date. So first, I need to get the current date, then determine the next Monday's date. But how to compute that? Well, the user is asking for the next Monday, so perhaps the date is the current date plus (7 - (current day of the week - 1) % 7) days. Wait, maybe that's too complicated. Alternatively, since the user is asking for the next Monday, maybe the date is the next Monday regardless of the current date. But the user might not know the exact date, so I need to calculate it.\n\nBut since I can't perform calculations beyond the functions provided, perhaps the correct approach is to first get the current date, then add 7 days to it, assuming that the next Monday is 7 days from today. However, that might not be accurate if today is already past the next Monday. For example, if today is November 5 (a Sunday), then next Monday is the 6th, which is 1 day later. But adding 7 days would give November 12, which is incorrect. Therefore, this approach is flawed.\n\nAlternatively, maybe the user is referring to the upcoming Monday, which is the next occurrence of Monday after today. Therefore, I need to calculate the next Monday based on the current date. But since I can't do that without knowing the current date, I need to first get the current date, then compute the next Monday.\n\nBut given that the functions available are get_current_date and weather_forecast, I need to first get the current date, then calculate the next Monday. However, the assistant can't perform that calculation. Therefore, maybe the assistant should call get_current_date to get today's date, then determine the next Monday's date based on that. But since the assistant can't do that"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Kannst du mir mir das Wetter in Rom n\u00e4chsten Montag sagen?"
+            "content": "Kas saate \u00f6elda mulle Rooma ilma j\u00e4rgmisel esmasp\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -2664,21 +2627,21 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Rom n\u00e4chsten Montag (15. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 16\u00b0C. Die Luftfeuchtigkeit wird m\u00e4\u00dfig bei 55% mit starken Winden von 20 km/h sein. Es ist mildes Herbstwetter f\u00fcr Rom - k\u00fchl aber nicht zu kalt, obwohl Sie sich wegen des Windes warm anziehen sollten!"
+            "content": "Ilm Roomas j\u00e4rgmisel esmasp\u00e4eval (15. september 2025) saab olema jahe talveilm temperatuuriga 16\u00b0C. \u00d5huniiskus on m\u00f5\u00f5dukas 55% juures tugeva tuulega kiirusega 20 km/h. See on mahe talveilm Roomas - jahe, kuid mitte liiga k\u00fclm, kuigi tuule t\u00f5ttu tasuks riietuda soojalt!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 2/2 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.0,
+            "reason": "Expected 2 tools but none were called"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Tool mismatch"
           }
         ]
       },
@@ -2689,11 +2652,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter diesen Samstag in Stockholm?"
+            "content": "Milline saab olema ilm Stockholmis sel laup\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -2734,13 +2697,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm am kommenden Samstag, dem 2025-09-13, wird wie folgt sein:  \n- **Temperatur**: 9 \u00b0C  \n- **Feuchtigkeit**: 75 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nViel Spa\u00df beim Wetterbeobachten! \ud83c\udf24\ufe0f"
+            "content": "Ilm Stockholmis 2025-09-13 (laup\u00e4ev):  \n- **Temperatuur**: 9 \u00b0C  \n- **L\u00fclitus**: 75 %  \n- **Veevool**: 14 km/h  \n\nIlm on selge ja l\u00fchike l\u00fclitus, kuid suur veevool. Prektsioonilised andmed on kohandatud Stockholmile."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter diesen Samstag in Stockholm?"
+            "content": "Milline saab olema ilm Stockholmis sel laup\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -2781,7 +2744,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Stockholm diesen Samstag (13. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von -1\u00b0C. Die Luftfeuchtigkeit wird bei 65% mit starken Winden von 21 km/h liegen. Es ist typisches schwedisches Herbstwetter - k\u00fchl und windig mit Temperaturen um den Gefrierpunkt, also brauchen Sie warme Herbstkleidung und sollten auf rutschige Bedingungen achten!"
+            "content": "Ilm Stockholmis sel laup\u00e4eval (13. september 2025) saab olema jahe s\u00fcgiseilm temperatuuriga -1\u00b0C. \u00d5huniiskus on 65% juures tugeva tuulega kiirusega 21 km/h. See on ebatavaliselt k\u00fclm varas\u00fcgisene ilm - jahe ja tuuline k\u00fclmumispunktile l\u00e4hedaste temperatuuridega, seega vajate sooja riietust ja peate olema valmis jahedad tingimusteks!"
           }
         ],
         "metrics_data": [
@@ -2801,26 +2764,63 @@
       },
       {
         "test_id": "test_34",
-        "success": false,
+        "success": true,
         "eval_item_id": 34,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wetter in Chennai n\u00e4chsten Dienstag?"
+            "content": "Ilm Chennais j\u00e4rgmisel teisip\u00e4eval?"
           },
           {
             "role": "assistant",
-            "content": "<think>\nOkay, the user is asking for the weather in Chennai on next Tuesday. Let me break this down. First, I need to figure out the date for next Tuesday. To do that, I should check the current date. The current date can be obtained using the get_current_date function. Once I have today's date, I can calculate next Tuesday's date.\n\nWait, the user mentioned \"n\u00e4chsten Dienstag,\" which is German for \"next Tuesday.\" So, I need to make sure that if today is already Tuesday, next Tuesday would be the following week. But since the user is asking in German, maybe they are in a German-speaking country, but the city is Chennai, which is in India. Anyway, the date calculation should be based on the current date regardless of the user's location.\n\nSo first step: call get_current_date to get today's date. Let's say today is October 30, 2023. Then, next Tuesday would be November 7, 2023. Wait, but if today is October 30, 2023, which is a Monday, then next Tuesday is October 31. Wait, no, October 30 is Monday, so next Tuesday is October 31? Wait, no, October 30 is Monday, so Tuesday would be October 31. But if today is, say, November 1, 2023 (Tuesday), then next Tuesday would be November 8. So the exact date depends on the current date.\n\nTherefore, the correct approach is to first get the current date, then determine what date next Tuesday is. Once I have the date, I can call the weather_forecast function with Chennai and that date. \n\nSo first, call get_current_date. Then calculate next Tuesday's date. Then use that date in the weather_forecast function. The user might not know the exact date, so the answer should provide the forecast for next Tuesday regardless of the current day. \n\nBut how to calculate next Tuesday's date? Well, the function weather_forecast requires the date in YYYY-MM-DD format. So once I have the current date, I can compute the next Tuesday. For example, if today is 2023-10-30 (Monday), next Tuesday is 2023-10-31. If today is 2023-11-07 (Tuesday), next Tuesday is 2023-11-14. So the calculation depends on the current date. \n\nTherefore, the steps are: \n1. Get current date using get_current_date.\n2. Calculate next Tuesday's date based on the current date.\n3. Call weather_forecast with Chennai and the calculated date.\n4. Return the results to the user.\n\nI need to make sure that the date calculation is accurate. But since I can't perform date calculations myself, I have to rely on the functions provided. Wait, the functions provided don't include a date calculation tool. The user has to provide the date, so I need to compute it myself based on the current date. \n\nSo, after getting the current date, I can determine next Tuesday's date. Let's say the current date is 2023-10-30 (Monday). Then next Tuesday is 2023-10-31. If the current date is 2023-11-07 (Tuesday), next Tuesday is 2023-11-14. So the logic is: find the next occurrence of Tuesday after the current date. \n\nBut how to implement this? Well, the assistant has to handle this logic. So once the current date is known, the assistant can compute the next Tuesday. For example, if today is 2023-10-30 (Monday), then adding 1 day gives Tuesday. If today is 2023-11-07 (Tuesday), then adding 7 days gives the next Tuesday. \n\nSo the assistant needs to calculate the next Tuesday's date based on the current date. Once that's done, the weather_forecast function can be called with that date. \n\nTherefore, the first tool call should be get_current_date. Then, based on the returned date, compute next Tuesday's date. Then call weather_forecast with Chennai and that date. \n\nBut since the assistant can't perform date calculations, it's up to the assistant to figure out the next Tuesday's date once the current date is known. So the steps are:\n\n1. Call get_current_date to get today's date.\n2. Determine next Tuesday's date.\n3. Call weather_forecast with city Chennai and date as next Tuesday's date.\n4. Return the weather data to the user.\n\nSo the first"
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "get_current_date",
+                  "arguments": {}
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "2025-09-11"
+          },
+          {
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "weather_forecast",
+                  "arguments": {
+                    "city": "Chennai",
+                    "date": "2025-09-16"
+                  }
+                },
+                "id": "call_1"
+              }
+            ]
+          },
+          {
+            "role": "tool",
+            "content": "{\"temperature\": 20, \"humidity\": 65, \"wind_speed\": 13}"
+          },
+          {
+            "role": "assistant",
+            "content": "J\u00e4rgmisel teisip\u00e4eval, 16. septembril 2025, on ilm Chennais:  \n- **Temperatuur:** 20 \u00b0C  \n- **Humus:** 65 %  \n- **Veevool:** 13 km/h  \n\nLoo k\u00f5ik info t\u00e4pselt! \ud83c\udf24\ufe0f"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wetter in Chennai n\u00e4chsten Dienstag?"
+            "content": "Ilm Chennais j\u00e4rgmisel teisip\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -2861,21 +2861,21 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Chennai n\u00e4chsten Dienstag (16. September 2025) wird angenehm mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit wird m\u00e4\u00dfig bei 65% mit m\u00e4\u00dfigen Winden von 15 km/h sein. Das ist angenehmes Herbstwetter f\u00fcr Chennai - warm aber nicht zu hei\u00df, perfekt f\u00fcr Aktivit\u00e4ten im Freien und Sightseeing!"
+            "content": "Ilm Chennais j\u00e4rgmisel teisip\u00e4eval (16. september 2025) saab olema meeldiv temperatuuriga 20\u00b0C. \u00d5huniiskus on m\u00f5\u00f5dukas 65% juures m\u00f5\u00f5duka tuulega kiirusega 15 km/h. See on mugav talveilm Chennai jaoks - soe, kuid mitte liiga kuum, t\u00e4iuslik v\u00e4litegevusteks ja vaatamisv\u00e4\u00e4rsustega tutvumiseks!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": false,
-            "score": 0.0,
-            "reason": "Expected 2 tools but none were called"
+            "success": true,
+            "score": 1.0,
+            "reason": "Called 2/2 expected tools, order score: 1.00"
           },
           {
             "name": "Argument Correctness",
-            "success": false,
-            "score": 0.0,
-            "reason": "Tool mismatch"
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 2/2 tools"
           }
         ]
       },
@@ -2886,11 +2886,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter dieses Wochenende in Chicago?"
+            "content": "Milline saab olema ilm Chicagos sel n\u00e4dalavahetusel?"
           },
           {
             "role": "assistant",
@@ -2946,13 +2946,13 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Chicago dieses Wochenende (Samstag, 2025-09-13 und Sonntag, 2025-09-14) wird wie folgt sein:  \n- **Temperatur**: 18 \u00b0C  \n- **Feuchtigkeit**: 70 %  \n- **Windgeschwindigkeit**: 14 km/h  \n\nDas Wetter ist beide Tage gleich bleibend."
+            "content": "Ilm Chicagos sel n\u00e4dalavahetusel (13.\u201314. september) on j\u00e4rgnevas:  \n\n- **13. september**:  \n  - Temperatuur: 18 \u00b0C  \n  - Ilm: \u00f5hukas, 70 % humus, lumi 14 km/h.  \n\n- **14. september**:  \n  - Temperatuur: 18 \u00b0C  \n  - Ilm: \u00f5hukas, 70 % humus, lumi 14 km/h.  \n\nIlm on j\u00e4rk-j\u00e4rgult samasugune n\u00e4dalavahetustel \u2013 soojus ja v\u00e4ike lumi annavad m\u00f5\u00f5dukaks ilm."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter dieses Wochenende in Chicago?"
+            "content": "Milline saab olema ilm Chicagos sel n\u00e4dalavahetusel?"
           },
           {
             "role": "assistant",
@@ -3008,7 +3008,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Chicago dieses Wochenende (Samstag, 13. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 9\u00b0C. Die Luftfeuchtigkeit wird bei 60% mit starken Winden von 21 km/h liegen. Es ist typisches raues Chicago-Herbstwetter - k\u00fchl und sehr windig, also packen Sie sich warm ein und seien Sie auf erhebliche Windk\u00e4lte vorbereitet, die es viel k\u00e4lter erscheinen l\u00e4sst!"
+            "content": "Ilm Chicagos sel n\u00e4dalavahetusel (laup\u00e4ev, 13. september 2025) saab olema jahe s\u00fcgiseilm temperatuuriga 9\u00b0C. \u00d5huniiskus on 60% juures tugeva tuulega kiirusega 21 km/h. See on t\u00fc\u00fcpiline kr\u00f5be Chicago s\u00fcgiseilm - jahe ja v\u00e4ga tuuline, seega riietuge soojalt ja olge valmis m\u00e4rkimisv\u00e4\u00e4rse tuule k\u00fclmatunde efektiks, mis paneb tunduma palju k\u00fclmemana!"
           }
         ],
         "metrics_data": [
@@ -3033,11 +3033,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Freitag in London?"
+            "content": "Kuidas saab olema ilm Londonis j\u00e4rgmisel reedel?"
           },
           {
             "role": "assistant",
@@ -3058,33 +3058,13 @@
           },
           {
             "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "London",
-                    "date": "2025-09-12"
-                  }
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 15, \"humidity\": 80, \"wind_speed\": 12}"
-          },
-          {
-            "role": "assistant",
-            "content": "Next Friday, September 12, 2025, in London, the weather is expected to have a temperature of 15\u00b0C, humidity at 80%, and wind speeds of 12 km/h. You might want to carry a light jacket due to the cooler and breezy conditions!"
+            "content": "<think>\nOkay, the user asked about the weather in London the next day. First, I need to figure out what date that is. The current date is September 11, 2025. The next day would be September 12, 2025. So I should call the weather_forecast function with London and that date. Let me check the functions again to make sure. The weather_forecast requires city and date parameters. The date is in YYYY-MM-DD format, which the current date function provides. So I'll use the current date to add a day and then pass it to the weather function. Wait, but the user said \"j\u00e4rgmisel reedel,\" which is \"next Friday.\" Wait, September 11, 2025 is a Wednesday. So next Friday would be September 13, 2025. Wait, maybe I need to confirm the date. But the user might have meant the next day, which is a Thursday. Hmm, but the user specifically said \"j\u00e4rgmisel reedel,\" which is Friday. So maybe I should calculate the correct date. But the current date function gives me 2025-09-11. Let me check what day that is. If today is September 11, 2025 (Wednesday), then next Friday is September 13. But the user might have meant the next day, which is Thursday. Wait, maybe the user is using \"j\u00e4rgmisel reedel\" as the next day, but in Estonian, \"reedel\" is Friday. So maybe the user made a mistake. But I should follow the user's instruction. Alternatively, maybe the user wants the next Friday, regardless of the current date. But the current date is September 11, so next Friday is 13th. However, the initial tool call was to get the current date, which was 2025-09-11. Then, the user's question is about the next Friday. So I need to calculate the date for next Friday. But how? The functions available don't include a date calculation tool. So maybe I need to assume that \"j\u00e4rgmisel reedel\" is the next day, which is September 12. But in Estonian, \"j\u00e4rgmisel reedel\" would be next Friday. Wait, maybe the user is using \"reedel\" as Friday, so the next Friday. So if today is Wednesday, September 11, then next Friday is September 13. But the user might have intended the next day, which is Thursday. Hmm, this is a bit confusing. However, the initial tool call was to get the current date, which is 2025-09-11. The user's question is about the next Friday. So I should calculate the date for next Friday. But since there's no function for that, maybe I should proceed with the next day, which is September 12. Alternatively, maybe the user made a mistake and meant the next day. But the function requires a specific date. So I need to use the current date plus one day. Wait, but the user said \"j\u00e4rgmisel reedel,\" which is next Friday. So I need to find the correct date. Let me check the days. If September 11 is Wednesday, then next Friday is September 13. So the date would be 2025-09-13. Therefore, I should call the weather_forecast function with London and 2025-09-13. But how do I know that? Since the user's question is in Estonian, and \"j\u00e4rgmisel reedel\" is next Friday. Therefore, I need to calculate that date. But since the tools don't have a date calculation function, I have to rely on the current date. So if today is 2025-09-11, then next Friday is 2025-09-13. Therefore, I should use that date. But how do I know that? Well, the user might have intended that. So the correct function call would be weather_forecast with city London and date 2025-09-13. But I need to make sure. Alternatively, maybe the user meant the next day, which is Thursday. But the Estonian phrase \"j\u00e4rgmisel reedel\" is next Friday. So I think the correct approach is to use the next Friday. Therefore, the date is 2025-09-13. But since the current date is 2025-09-11, adding"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Freitag in London?"
+            "content": "Kuidas saab olema ilm Londonis j\u00e4rgmisel reedel?"
           },
           {
             "role": "assistant",
@@ -3125,21 +3105,21 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in London n\u00e4chsten Freitag (19. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 10\u00b0C. Die Luftfeuchtigkeit wird bei 70% mit m\u00e4\u00dfigen Winden von 18 km/h liegen. Es ist typisches September-Wetter f\u00fcr London - k\u00fchl und feucht, also sollten Sie sich warm anziehen und m\u00f6glicherweise einen Regenschirm f\u00fcr m\u00f6glichen Nieselregen mitnehmen!"
+            "content": "Ilm Londonis j\u00e4rgmisel reedel (19. september 2025) saab olema mahe s\u00fcgiseilm temperatuuriga 10\u00b0C. \u00d5huniiskus on 70% juures m\u00f5\u00f5duka tuulega kiirusega 18 km/h. See on t\u00fc\u00fcpiline septembri ilm Londonis - jahe ja niiske, seega tasuks riietuda soojalt ja v\u00f5imalik, et kanda vihmavarjut v\u00f5imalike vihmahoogude jaoks!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 2/2 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.5,
+            "reason": "Called 1/2 expected tools, order score: 0.50"
           },
           {
             "name": "Argument Correctness",
-            "success": false,
-            "score": 0.5,
-            "reason": "Correct arguments for 1/2 tools"
+            "success": true,
+            "score": 1.0,
+            "reason": "Correct arguments for 1/1 tools"
           }
         ]
       },
@@ -3150,11 +3130,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie w\u00e4re es mit dem Wetter in Vancouver diesen Sonntag?"
+            "content": "Aga ilm Vancouveris sel p\u00fchap\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -3195,13 +3175,13 @@
           },
           {
             "role": "assistant",
-            "content": "Der Wetterbericht f\u00fcr Vancouver am kommenden Sonntag (2025-09-14) zeigt folgende Bedingungen:\n- Temperatur: 20 \u00b0C\n- Luftfeuchtigkeit: 65 %\n- Windgeschwindigkeit: 13 km/h\n\nDie Wetterbedingungen sehen mild und angenehm aus, perfekt f\u00fcr einen Ausflug!"
+            "content": "Vancouveris sel p\u00fchap\u00e4eval (2025-09-14) oodatakse:\n- **Ilm:** 20 \u00b0C temperatuur\n- **H\u00fcdroon:** 65 % humus\n- **Vee s\u00f5idu kiirus:** 13 km/h\n\nKui soovite t\u00e4psemat infot (nt pilved, ilm\u7684\u72b6\u6001), k\u00f5nele konkreetselt! \ud83c\udf24\ufe0f"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie w\u00e4re es mit dem Wetter in Vancouver diesen Sonntag?"
+            "content": "Aga ilm Vancouveris sel p\u00fchap\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -3242,7 +3222,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Vancouver diesen Sonntag (14. September 2025) wird mildes Herbstwetter mit einer Temperatur von 20\u00b0C. Die Luftfeuchtigkeit wird bei 65% mit m\u00e4\u00dfigen Winden von 15 km/h liegen. Das ist sehr angenehmes Herbstwetter f\u00fcr Vancouver - ziemlich mild und sch\u00f6n, perfekt f\u00fcr Aktivit\u00e4ten im Freien und um die Stadt zu erkunden!"
+            "content": "Ilm Vancouveris sel p\u00fchap\u00e4eval (14. september 2025) saab olema mahe talveilm temperatuuriga 20\u00b0C. \u00d5huniiskus on 65% juures m\u00f5\u00f5duka tuulega kiirusega 15 km/h. See on ebatavaliselt soe jaanuari jaoks Vancouveris - \u00fcsna meeldiv talveilm, mis on t\u00e4iuslik v\u00e4litegevusteks ja linna avastamiseks!"
           }
         ],
         "metrics_data": [
@@ -3262,63 +3242,26 @@
       },
       {
         "test_id": "test_38",
-        "success": true,
+        "success": false,
         "eval_item_id": 38,
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wetter in Singapur n\u00e4chsten Mittwoch?"
+            "content": "Ilm Singapuris j\u00e4rgmisel kolmap\u00e4eval?"
           },
           {
             "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "get_current_date",
-                  "arguments": {}
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "2025-09-11"
-          },
-          {
-            "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Singapore",
-                    "date": "2025-09-17"
-                  }
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 30, \"humidity\": 85, \"wind_speed\": 10}"
-          },
-          {
-            "role": "assistant",
-            "content": "Der Wetterbericht f\u00fcr Singapur am n\u00e4chsten Mittwoch (2025-09-17) zeigt eine Temperatur von 30 \u00b0C, eine Luftfeuchtigkeit von 85 % und eine Windgeschwindigkeit von 10 km/h."
+            "content": "<think>\nOkay, the user is asking about the weather in Singapore for the coming Wednesday. First, I need to figure out what date that is. Since the user mentioned \"j\u00e4rgmisel kolmap\u00e4eval,\" which means \"next Wednesday\" in Estonian, I should determine the correct date.\n\nI remember that there's a function called get_current_date which returns the current date in YYYY-MM-DD format. So I should call that first to get today's date. Once I have today's date, I can calculate the next Wednesday by adding the appropriate number of days. For example, if today is Monday, next Wednesday is 2 days later. But since the user is asking for the next Wednesday, regardless of the current day, I need to compute the correct date.\n\nAlternatively, maybe the function can handle it, but since the user is asking for the next Wednesday, I need to find the date. Let me check: if today is, say, October 3rd, 2023, which is a Wednesday, then next Wednesday would be October 10th. Wait, but if today is already Wednesday, then the next Wednesday is in 7 days. But the user is asking for the coming Wednesday, so maybe they mean the next occurrence of Wednesday, which would be in 7 days if today is Wednesday. However, if today is, say, Tuesday, then next Wednesday is 1 day later. So I need to calculate the correct date.\n\nBut since the user is asking for the next Wednesday, perhaps the best approach is to get today's date, then find the next Wednesday. However, the functions provided don't include a date calculation function. So I need to use the get_current_date function to get today's date, then compute the next Wednesday manually.\n\nWait, but the user might be asking for the next Wednesday, which could be in a few days. Let me think: if today is October 3rd, 2023 (a Tuesday), then next Wednesday is October 4th. If today is October 4th (Wednesday), then next Wednesday is October 11th. So the date depends on the current day. Therefore, I need to get today's date, then calculate the next Wednesday.\n\nBut how to do that without a date calculation function? Well, maybe I can use the get_current_date function to get today's date, then determine the day of the week, and then add days accordingly. However, since the functions provided don't include a way to get the day of the week, I might need to assume that the user is referring to the next Wednesday regardless of the current day. Alternatively, maybe the user is asking for the upcoming Wednesday, which is the next occurrence of Wednesday after today.\n\nBut since the functions available are only get_current_date and weather_forecast, I need to proceed step by step. First, get the current date, then determine the next Wednesday. However, without knowing the day of the week, I can't calculate it. Wait, but maybe the user is asking for the next Wednesday, which is the same as the current date plus (7 - current day of week) days? Hmm, but without knowing the current day of the week, I can't compute that.\n\nWait, maybe the user is referring to the next Wednesday, which is the upcoming Wednesday, so if today is Wednesday, then next Wednesday is 7 days later. But if today is before Wednesday, then it's the current week's Wednesday. However, since the user is asking for the coming Wednesday, perhaps they mean the next Wednesday, regardless of the current day.\n\nBut since I don't have a function to get the day of the week, I need to use the get_current_date function to get today's date, then calculate the next Wednesday. For example, if today is 2023-10-03 (Tuesday), then next Wednesday is 2023-10-04. If today is 2023-10-04 (Wednesday), then next Wednesday is 2023-10-11. So I need to find the next Wednesday after today.\n\nBut how to do that without knowing the day of the week? Well, perhaps I can use the current date and add days until the next Wednesday. However, since the functions don't provide that, I need to find a way. Alternatively, maybe the user is asking for the next Wednesday, which is the same as the current date plus (3 - current day of week) days, but again, without knowing the day of the week, I can't compute that.\n\nWait, maybe the user is referring to the next Wednesday, which is the same as the current date plus (7 - (current day of the week - 3)) days? Not sure. Alternatively, maybe I can use the current date"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wetter in Singapur n\u00e4chsten Mittwoch?"
+            "content": "Ilm Singapuris j\u00e4rgmisel kolmap\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -3359,21 +3302,21 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Singapur n\u00e4chsten Mittwoch (17. September 2025) wird hei\u00df und sehr feucht mit einer Temperatur von 30\u00b0C. Die Luftfeuchtigkeit wird extrem hoch bei 95% mit leichten Winden von 11 km/h sein. Es ist typisches tropisches Wetter f\u00fcr Singapur - hei\u00df, feucht und schw\u00fcl, also sollten Sie viel trinken und Zeit in klimatisierten Bereichen verbringen!"
+            "content": "Ilm Singapuris j\u00e4rgmisel kolmap\u00e4eval (17. september 2025) saab olema kuum ja v\u00e4ga niiske temperatuuriga 30\u00b0C. \u00d5huniiskus on \u00e4\u00e4rmiselt k\u00f5rge 95% juures kerge tuulega kiirusega 11 km/h. See on t\u00fc\u00fcpiline troopiline ilm Singapuris - kuum, niiske ja l\u00e4ppiv, seega soovitav on hoida end h\u00e4sti vedelikuga varustatud ja veeta aega kliimaseadmetega aladel!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 2/2 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.0,
+            "reason": "Expected 2 tools but none were called"
           },
           {
             "name": "Argument Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Correct arguments for 2/2 tools"
+            "success": false,
+            "score": 0.0,
+            "reason": "Tool mismatch"
           }
         ]
       },
@@ -3384,11 +3327,11 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Donnerstag in Buenos Aires?"
+            "content": "Kuidas saab olema ilm Buenos Aireses j\u00e4rgmisel neljap\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -3429,13 +3372,13 @@
           },
           {
             "role": "assistant",
-            "content": "Next Thursday, September 18, 2025, in Buenos Aires, the weather is expected to have a temperature of 20\u00b0C, humidity at 75%, and a wind speed of 12 km/h."
+            "content": "J\u00e4rgmisel neljap\u00e4eval, 18. septembril 2025, on ilm Buenos Aireses j\u00e4rgmises:  \n- **Temperatuur:** 20 \u00b0C  \n- **Ilm:** K\u00f5rgendatud hoomi (75 %) ja v\u00e4ga v\u00e4he tuul (12 km/h).  \n\nIlm on t\u00f5en\u00e4oliselt riiuline ja m\u00f5nelt k\u00f5rgendatud, kuid tuul on v\u00e4ga v\u00e4he."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Donnerstag in Buenos Aires?"
+            "content": "Kuidas saab olema ilm Buenos Aireses j\u00e4rgmisel neljap\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -3476,7 +3419,7 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Buenos Aires n\u00e4chsten Donnerstag (18. September 2025) wird warmes Fr\u00fchlingswetter mit einer Temperatur von 21\u00b0C. Die Luftfeuchtigkeit wird hoch bei 80% mit leichten Winden von 13 km/h. Es ist angenehmes Fr\u00fchlingsende-Wetter f\u00fcr Buenos Aires - warm aber nicht zu hei\u00df, obwohl die hohe Luftfeuchtigkeit es etwas schw\u00fcl erscheinen lassen k\u00f6nnte."
+            "content": "Ilm Buenos Aireses j\u00e4rgmisel neljap\u00e4eval (18. september 2025) saab olema mahe kevadilm temperatuuriga 21\u00b0C. \u00d5huniiskus on k\u00f5rge 80% juures kerge tuulega kiirusega 13 km/h. See on meeldiv kevadilm Buenos Airese jaoks - mahe, kuid mitte liiga kuum, kuigi k\u00f5rge niiskus v\u00f5ib panna tundma pisut l\u00e4ppivana."
           }
         ],
         "metrics_data": [
@@ -3501,58 +3444,21 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Samstag in Madrid?"
+            "content": "Milline saab olema ilm Madridis j\u00e4rgmisel laup\u00e4eval?"
           },
           {
             "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "get_current_date",
-                  "arguments": {}
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "2025-09-11"
-          },
-          {
-            "role": "assistant",
-            "tool_calls": [
-              {
-                "type": "function",
-                "function": {
-                  "name": "weather_forecast",
-                  "arguments": {
-                    "city": "Madrid",
-                    "date": "2025-09-13"
-                  }
-                },
-                "id": "call_1"
-              }
-            ]
-          },
-          {
-            "role": "tool",
-            "content": "{\"temperature\": 19, \"humidity\": 55, \"wind_speed\": 13}"
-          },
-          {
-            "role": "assistant",
-            "content": "Next Saturday, September 13, 2025, in Madrid, the weather is expected to have a temperature of 19\u00b0C, humidity at 55%, and a wind speed of 13 km/h. This suggests mild and comfortable conditions! \ud83c\udf24\ufe0f"
+            "content": "<think>\nOkay, the user is asking about the weather in Madrid for the upcoming Saturday. First, I need to figure out what date that is. Since the user mentioned \"j\u00e4rgmisel laup\u00e4eval,\" which means \"next Saturday,\" I should determine the current date to calculate the correct date.\n\nI remember there's a function called get_current_date that returns the current date in YYYY-MM-DD format. Let me use that first. Once I have the current date, I can add seven days to it to find the next Saturday. Wait, but maybe the current date is already a Saturday? No, the user is asking for the next Saturday, so regardless of the current day, the next Saturday is the one after today.\n\nSo, first step: call get_current_date to get today's date. Then, add 7 days to that date to get the next Saturday. Then, use the weather_forecast function with the city as Madrid and the date calculated. But wait, maybe the current date is, say, Friday, so adding 7 days would be next Saturday. If today is Sunday, then next Saturday is 6 days later. Wait, no, the next Saturday is always the Saturday that comes after today. So if today is Monday, next Saturday is in 6 days. If today is Saturday, then next Saturday is in 7 days. So maybe the correct approach is to take the current date, find the next Saturday by checking the day of the week.\n\nBut the user is asking for the next Saturday, so perhaps the easiest way is to take the current date and add 7 days, but that might not be accurate if the current date is already a Saturday. However, the function get_current_date will give the exact date. Let me think: if today is Saturday, then the next Saturday is 7 days later. If today is Friday, then next Saturday is 1 day later. So maybe the correct way is to calculate the date of the next Saturday based on the current date.\n\nBut since the user is asking for the next Saturday, maybe the best approach is to get the current date, then compute the next Saturday. However, the functions available are get_current_date and weather_forecast. The weather_forecast requires a specific date. So I need to get the next Saturday's date.\n\nAlternatively, maybe the user is asking for the next Saturday, which is the upcoming Saturday, so regardless of the current date, the next Saturday is the one that comes after today. So, for example, if today is Monday, next Saturday is in 6 days. If today is Sunday, next Saturday is in 7 days. If today is Saturday, then next Saturday is in 7 days. So to compute that, perhaps I can take the current date, find the day of the week, and then calculate the days until next Saturday.\n\nBut since I don't have a function to calculate the day of the week, maybe I can use the get_current_date function to get today's date, then add 7 days to it, but that would be incorrect if today is already a Saturday. Wait, but if today is Saturday, adding 7 days would be next Saturday. But if today is Sunday, adding 7 days would be next Saturday? No, if today is Sunday, adding 7 days would be next Sunday, but the next Saturday is 6 days later. So that approach isn't correct.\n\nHmm, this is a bit tricky. Maybe the user is referring to the next Saturday, which is the Saturday that comes after the current date. So regardless of the current date, the next Saturday is the one that is the next occurrence. Therefore, I need to calculate the date of the next Saturday based on the current date.\n\nBut since the functions available are limited, perhaps the user expects that the next Saturday is the one that is one week from today. However, that might not be accurate. Alternatively, maybe the user is asking for the upcoming Saturday, which is the next one, so perhaps the correct date is the current date plus the number of days until the next Saturday.\n\nBut since I don't have a function to calculate the day of the week, maybe I should proceed by using the current date and adding 7 days, assuming that the next Saturday is 7 days from now. But that's not correct if today is a Saturday. However, the user is asking for the next Saturday, so if today is Saturday, then the next Saturday is 7 days later. If today is Sunday, then next Saturday is 6 days later. So maybe the correct approach is to calculate the next Saturday based on the current date.\n\nBut without a function to calculate the day of the week, perhaps the best approach is to use the current date and add 7 days, but that might not be accurate. Alternatively, maybe the user is asking for the next Saturday, which is the upcoming Saturday,"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Wie wird das Wetter n\u00e4chsten Samstag in Madrid?"
+            "content": "Milline saab olema ilm Madridis j\u00e4rgmisel laup\u00e4eval?"
           },
           {
             "role": "assistant",
@@ -3593,21 +3499,21 @@
           },
           {
             "role": "assistant",
-            "content": "Das Wetter in Madrid n\u00e4chsten Samstag (20. September 2025) wird k\u00fchles Herbstwetter mit einer Temperatur von 14\u00b0C sein. Die Luftfeuchtigkeit wird niedrig bei 45% mit starken Winden von 20 km/h sein. Es ist typisches Madrid-Herbstwetter - k\u00fchl und trocken mit starken Winden, also sollten Sie sich warm anziehen und auf den Wind vorbereitet sein!"
+            "content": "Ilm Madridis j\u00e4rgmisel laup\u00e4eval (20. september 2025) saab olema jahe talveilm temperatuuriga 14\u00b0C. \u00d5huniiskus on madal 45% juures tugeva tuulega kiirusega 20 km/h. See on t\u00fc\u00fcpiline Madridi talveilm - jahe ja kuiv tugeva tuulega, seega tasuks riietuda soojalt ja olla valmis tuuleks!"
           }
         ],
         "metrics_data": [
           {
             "name": "Tool Correctness",
-            "success": true,
-            "score": 1.0,
-            "reason": "Called 2/2 expected tools, order score: 1.00"
+            "success": false,
+            "score": 0.0,
+            "reason": "Expected 2 tools but none were called"
           },
           {
             "name": "Argument Correctness",
             "success": false,
-            "score": 0.5,
-            "reason": "Correct arguments for 1/2 tools"
+            "score": 0.0,
+            "reason": "Tool mismatch"
           }
         ]
       },
@@ -3618,25 +3524,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Was ist der Unterschied zwischen Wetter und Klima?"
+            "content": "Mis vahe on ilmal ja kliimal?"
           },
           {
             "role": "assistant",
-            "content": "Der Unterschied zwischen Wetter und Klima liegt in der Zeitperspektive und den Messgr\u00f6\u00dfen:  \n- **Wetter** beschreibt die kurzfristigen atmosph\u00e4rischen Zust\u00e4nde (z. B. Temperatur, Niederschlag, Wind) an einem bestimmten Ort und Zeitpunkt. Es ist dynamisch und kann sich innerhalb von Stunden oder Tagen stark ver\u00e4ndern.  \n- **Klima** bezieht sich auf die langfristigen Durchschnittswerte und Trends der Wetterbedingungen \u00fcber viele Jahre (meist 30 Jahre oder mehr). Es charakterisiert die typischen Wettermuster eines Gebiets, z. B. ein feuchtes Klima oder ein trockenes Klima.  \n\nBeispiel: Wenn es heute regnet, ist das Wetter. Wenn eine Region im Durchschnitt mehrere Monate pro Jahr regnet, spricht man vom Klima."
+            "content": "\"\u0130lmal\" viitab ilmaga seotud l\u00fchikese vahekrast kohtumisele (nt temperatuur, hoom, tuul), vaid \"kliimal\" on ilmaga seotud pikaajaline kujundus (nt kliima k\u00fclmus, puhastus, kliima muutused). \"Kliima\" on ilmaga seotud kogu aja kogukond, mis m\u00e4\u00e4rab kohalikke ilmametodeid. N\u00e4iteks \"kliima\" v\u00f5ib olla k\u00f5rgem, kui \"ilmal\" on v\u00e4iksem."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was ist der Unterschied zwischen Wetter und Klima?"
+            "content": "Mis vahe on ilmal ja kliimal?"
           },
           {
             "role": "assistant",
-            "content": "Wetter bezieht sich auf kurzfristige atmosph\u00e4rische Bedingungen an einem bestimmten Ort zu einer bestimmten Zeit - wie Temperatur, Luftfeuchtigkeit und Niederschlag \u00fcber Tage oder Wochen. Klima hingegen ist der langfristige Durchschnitt von Wettermustern in einer Region \u00fcber viele Jahre oder Jahrzehnte. Zum Beispiel kann ich Ihnen das heutige Wetter in jeder Stadt sagen, aber das Klima beschreibt, wie diese Stadt typischerweise das ganze Jahr \u00fcber ist. M\u00f6chten Sie, dass ich die aktuellen Wetterbedingungen f\u00fcr einen bestimmten Ort \u00fcberpr\u00fcfe?"
+            "content": "Ilm viitab l\u00fchiajalistele atmosf\u00e4\u00e4rilistele tingimustele konkreetses kohas konkreetsel ajal - nagu temperatuur, \u00f5huniiskus ja sademed p\u00e4evade v\u00f5i n\u00e4dalate jooksul. Kliima on seevastu ilmamustrite pikaajeline keskmine konkreetses piirkonnas paljude aastate v\u00f5i aastak\u00fcmnete jooksul. N\u00e4iteks saan teile \u00f6elda t\u00e4nase ilma mis tahes linnas, kuid kliima kirjeldab, milline see linn tavaliselt on kogu aasta jooksul. Kas soovite, et kontrolliksin praegusi ilmaolusid m\u00f5nes konkreetses kohas?"
           }
         ],
         "metrics_data": [
@@ -3655,25 +3561,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Warum ist es in tropischen Gebieten immer feucht?"
+            "content": "Miks on troopilistel aladel alati niiske?"
           },
           {
             "role": "assistant",
-            "content": "Die hohe Feuchtigkeit in tropischen Gebieten h\u00e4ngt vor allem von der konstanten Sonneneinstrahlung und den damit verbundenen klimatischen Bedingungen ab. In diesen Regionen, die sich nahe dem \u00c4quator befinden, erw\u00e4rmt die Sonne die Erdoberfl\u00e4che st\u00e4ndig, was zu intensiver Verdunstung von Wasser aus Ozeanen, Seen und Fl\u00fcssen f\u00fchrt. Das aufsteigende, warme und feuchte Luftmass wird durch die hohe Luftfeuchtigkeit unterst\u00fctzt, da warme Luft mehr Wasserstoff aufnehmen kann. Zudem tragen Pflanzen durch Transpiration (Wasserabgabe \u00fcber Bl\u00e4tter) zur Feuchtigkeit bei. Diese Kombination aus starker Sonneneinstrahlung, hoher Verdunstung und begrenzter Luftbewegung f\u00fchrt zu den charakteristischen feuchten und warmen Bedingungen in tropischen Zonen."
+            "content": "Tropilistal aladel (tropikaalsetel piirkondadelt) on alati niiske, kuna need asuvad l\u00e4hedal ekvaatorist ja saavad suurep\u00e4rase sunnij\u00e4\u00e4nuse. See p\u00f5hjustab:\n\n1. **Tugev emmik:** K\u00f5rged temperatuudid (\u00fcle 25 \u00b0C) tekitavad palju vee k\u00f5hutamist m\u00e4rgistest ja veekeeltestest, mis suurendab ilmniiskust.\n2. **Tugev k\u00f5hutamine:** K\u00f5rged temperatuudid v\u00f5ivad hoida rohkem vee k\u00f5hutamist, seega on ilm niiskem.\n3. **S\u00fcgav niiskus:** Tropikaalne ilm on sageli s\u00fcgavalt niisked, kuna see sisaldab palju vee k\u00f5hutamist, mis on tulemus k\u00f5hutamise ja k\u00f5hutamise t\u00f5ttu.\n4. **Tugev veevool:** Tropilistal piirkondades on sageli suurep\u00e4raseid veevoolu, mis lisab ilmniiskust.\n\nSee t\u00e4hendab, et tropilistal aladel on alati niiske, kuna need piirkonnad on tugevalt suunatud niiskuse ja k\u00f5hutamise t\u00f5ttu."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Warum ist es in tropischen Gebieten immer feucht?"
+            "content": "Miks on troopilistel aladel alati niiske?"
           },
           {
             "role": "assistant",
-            "content": "Tropische Regionen sind durchgehend feucht, weil sie sich n\u00e4he des \u00c4quators befinden, wo die Temperaturen das ganze Jahr \u00fcber warm sind. Warme Luft kann viel mehr Feuchtigkeit aufnehmen als kalte Luft, und die konstante W\u00e4rme l\u00e4sst mehr Wasser aus Ozeanen, Fl\u00fcssen und Pflanzen verdunsten. Das schafft einen Kreislauf, in dem immer viel Wasserdampf in der Luft ist. St\u00e4dte wie Bangkok, Singapur und Miami erleben diese tropische Luftfeuchtigkeit. Wenn Sie die aktuellen Luftfeuchtigkeitswerte in einer tropischen Stadt wissen m\u00f6chten, kann ich das f\u00fcr Sie \u00fcberpr\u00fcfen!"
+            "content": "Troopilistel aladel on j\u00e4rjepidevalt niiske, kuna need asuvad ekvaatori l\u00e4hedal, kus temperatuur on aastaringselt soe. Soe \u00f5hk suudab hoida palju rohkem niiskust kui k\u00fclm \u00f5hk, ja pidev kuumus p\u00f5hjustab rohkem vee aurustumist ookeanidest, j\u00f5gedest ja taimedest. See loob ts\u00fckli, kus \u00f5hus on alati palju veeauru. Linnad nagu Bangkok, Singapur ja Miami kogevad seda troopilise niiskust. Kui soovite teada praegust niiskustaset m\u00f5nes troopilises linnas, saan selle teie jaoks kontrollida!"
           }
         ],
         "metrics_data": [
@@ -3692,25 +3598,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Beeinflussen Berge lokale Wettermuster?"
+            "content": "Kas m\u00e4ed m\u00f5jutavad kohalikke ilmamustreid?"
           },
           {
             "role": "assistant",
-            "content": "Berge beeinflussen lokale Wettermuster durch einen Effekt namens \"Orographische L\u00fcftung\". Wenn feuchte Luft auf einen Berg st\u00f6\u00dft, wird sie aufgestiegen, abgek\u00fchlt und oft zu Niederschlag f\u00fchren. Dies erzeugt auf der windabgekehrten Seite h\u00e4ufig trockene Bedingungen. Solche Ph\u00e4nomene k\u00f6nnen lokale Klimaunterschiede wie feuchte T\u00e4ler oder trockene H\u00e4nge verursachen."
+            "content": "M\u00e4ed m\u00f5jutavad kohalikke ilmamustreid, eriti kui need asuvad ilmamustreid muudatama. N\u00e4iteks:\n\n1. **Puhastumine (rain shadow effect)**: Kui m\u00e4e k\u00fclge puhub k\u00f5rge ilm, v\u00f5ib see koguda kohalikku puhastumist m\u00e4e k\u00fclge (puhastumispuhastumine), kuid m\u00e4e m\u00e4e k\u00fclge v\u00f5ib olla v\u00e4iksem puhastumine. See tekitab erinevaid ilmamustreid m\u00e4e m\u00f5ju alusel.\n\n2. **Temperatuuri erinevus**: M\u00e4ed v\u00f5ivad tekitada temperatuuri erinevust, eriti kui need asuvad ilmamustreid muudatama. N\u00e4iteks v\u00f5ib m\u00e4e k\u00fclge olla kohalikult k\u00f5rgem temperatuur, kui see asub k\u00f5rgemal kohal.\n\n3. **Puhastumise suund**: M\u00e4ed v\u00f5ivad muuta puhastumise suunat, mis v\u00f5ib m\u00f5jutada kohalikke ilmamustreid, eriti kui need asuvad k\u00f5rgemal kohal.\n\nKui soovid t\u00e4psemat infot m\u00f5ne konkreetse linnas v\u00f5i kohalikust ilmamustest, anna teada!"
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Beeinflussen Berge lokale Wettermuster?"
+            "content": "Kas m\u00e4ed m\u00f5jutavad kohalikke ilmamustreid?"
           },
           {
             "role": "assistant",
-            "content": "Ja, Berge beeinflussen das lokale Wetter erheblich! Sie erzeugen sogenannte orographische Effekte - wenn Luftmassen auf Berge treffen, werden sie nach oben gedr\u00e4ngt, k\u00fchlen beim Aufsteigen ab und erzeugen oft Wolken und Niederschlag auf der windw\u00e4rtigen Seite. Die lee-seitige Seite erlebt oft einen 'Regenschatten'-Effekt mit trockeneren Bedingungen. Berge erzeugen auch Temperaturvariationen aufgrund von H\u00f6hen\u00e4nderungen. St\u00e4dte wie Denver erleben einzigartige Wettermuster aufgrund der nahen Rocky Mountains. M\u00f6chten Sie, dass ich die aktuellen Wetterbedingungen in einer bergigen Region \u00fcberpr\u00fcfe?"
+            "content": "Jah, m\u00e4ed m\u00f5jutavad kohalikku ilma m\u00e4rkimisv\u00e4\u00e4rselt! Nad loovad nn orograafilisi efekte - kui \u00f5humassid tabavad m\u00e4gesid, sunnitakse neid \u00fclespoole, jahtudes t\u00f5ustes ja tekitades sageli pilvi ja sademed tuulte poolel. Varju poolel kogevad sageli 'vihuvarju' efekti kuivematekese olustustega. M\u00e4ed loovad ka temperatuurivariatsioonineid k\u00f5rguse muutuste t\u00f5ttu. Linnad nagu Denver kogeve ainulaadseid ilmamustreid l\u00e4hedal asuvate Rocky Mountainse t\u00f5ttu. Kas soovite, et kontrolliksin praegusi ilmaolusid m\u00f5nes m\u00e4giosas piirkonnas?"
           }
         ],
         "metrics_data": [
@@ -3729,25 +3635,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Was verursacht Wind?"
+            "content": "Mis p\u00f5hjustab tuult?"
           },
           {
             "role": "assistant",
-            "content": "Die Wind entsteht durch Unterschiede in der Luftdruckverteilung. Wenn warme Luft aufsteigt und ein Bereich mit niedrigem Druck schafft, str\u00f6mt k\u00fchle Luft aus umliegenden Bereichen hinzu, um den Druck auszugleichen. Diese Bewegung der Luft wird als Wind wahrgenommen. \n\nDa keine Wettervorhersage oder Datum ben\u00f6tigt wird, k\u00f6nnen die bereitgestellten Tools nicht genutzt werden, um diese Frage zu beantworten."
+            "content": "Tuul p\u00f5hjustub ilmaga seotud r\u00f5huk\u00fclgede erinevustest. See on seotud ilmaga toimivate protsessidega, kus p\u00e4ikese soojustus aeglaselt erinevate maade ja veesilmade k\u00fclge p\u00f5hjustab ilmaga erinevaid temperatuuride. See p\u00f5hjustab ilmaga erinevaid r\u00f5huk\u00fclge, mis p\u00f5hjustab tuule. Tuul on ilmaga toimiv tegevus, kus ilm liigub k\u00fclgede vahelt, et saavutada v\u00f5rdsed r\u00f5huk\u00fclged."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Was verursacht Wind?"
+            "content": "Mis p\u00f5hjustab tuult?"
           },
           {
             "role": "assistant",
-            "content": "Wind wird durch Luftdruckunterschiede verursacht, die aus ungleichm\u00e4\u00dfiger Erw\u00e4rmung der Erdoberfl\u00e4che durch die Sonne resultieren. Wenn Luft sich erw\u00e4rmt, wird sie weniger dicht und steigt auf, wodurch Niederdruckgebiete entstehen. K\u00fchlere, dichtere Luft bewegt sich dann hinein, um diesen Raum zu f\u00fcllen, wodurch Wind entsteht. Die Erdrotation beeinflusst Windmuster auch durch den Coriolis-Effekt. Lokale Faktoren wie Berge, Gew\u00e4sser und st\u00e4dtische W\u00e4rmeinseln k\u00f6nnen ihre eigenen Windmuster schaffen. Wenn Sie die aktuellen Windbedingungen in einer bestimmten Stadt wissen m\u00f6chten, kann ich das f\u00fcr Sie \u00fcberpr\u00fcfen!"
+            "content": "Tuult p\u00f5hjustavad \u00f5hur\u00f5hu erinevused, mis tulenevad Maa pinna eba\u00fchtlasest soojendamisest p\u00e4ikese poolt. Kui \u00f5hk soojeneb, muutub see v\u00e4hem tihedaks ja t\u00f5useb, luues madala r\u00f5hu alasid. Jahedam, tihedam \u00f5hk liigub seej\u00e4rel seda ruumi t\u00e4itma, luues tuule. Maa p\u00f6\u00f6rlemine m\u00f5jutab ka tuulemustreid Corioliuse efekti kaudu. Kohalikud tegurid nagu m\u00e4ed, veekogud ja linnade soojussaarte saavad luua oma tuulemustreid. Kui soovite teada praeguseid tuuleolusid m\u00f5nes konkreetses linnas, saan selle teie jaoks kontrollida!"
           }
         ],
         "metrics_data": [
@@ -3766,25 +3672,25 @@
         "agent_conversation": [
           {
             "role": "system",
-            "content": "Du bist ein Bot, der auf Wetteranfragen antwortet. Benutze f\u00fcr St\u00e4dtenamen die englische Form des Namens. Deine endg\u00fcltige Antwort auf die Benutzerfrage muss in nat\u00fcrlicher Sprache erfolgen. "
+            "content": "Olete bot, mis vastab ilmap\u00e4ringutele. Kasutage linnanimetuste inglisekeelset vormi. Teie l\u00f5plik vastus kasutaja k\u00fcsimusele peab olema loomulik keel."
           },
           {
             "role": "user",
-            "content": "Stimmt es, dass keine zwei Schneeflocken identisch sind?"
+            "content": "Kas see on t\u00f5si, et kaks lumehelbekest ei ole identsed?"
           },
           {
             "role": "assistant",
-            "content": "Nein, es ist nicht wahr, dass **keine zwei Schneeflocken identisch** sind. Tats\u00e4chlich sind die meisten Schneeflocken einzigartig, da ihre Form durch komplexe Kristallisationsprozesse unter verschiedenen atmosph\u00e4rischen Bedingungen (Temperatur, Feuchtigkeit) entsteht. Jede Schneeflocke hat eine einzigartige Musterung, \u00e4hnlich wie ein Fingerabdruck. Allerdings gibt es unter bestimmten Bedingungen (z. B. extrem stabile Umweltbedingungen) theoretische M\u00f6glichkeiten, dass zwei Schneeflocken sehr \u00e4hnlich aussehen. Die Aussage \"keine zwei Schneeflocken sind identisch\" ist daher eine vereinfachte, popul\u00e4re Darstellung."
+            "content": "See on t\u00f5si. Lumehelbeke (aurorad) on erinevad, kuna need s\u00f5iuvad k\u00f5igepealt aurorasolemuse, kuidas aurorasolemus s\u00f5iuvad k\u00f5igepealt aurorasolemuse, kuidas aurorasolemuse. Lumehelbeke erinevad s\u00f5iuvad k\u00f5igepealt aurorasolemuse, kuidas aurorasolemuse. Lumehelbeke erinevad s\u00f5iuvad k\u00f5igepealt aurorasolemuse, kuidas aurorasolemuse."
           }
         ],
         "expected_conversation": [
           {
             "role": "user",
-            "content": "Stimmt es, dass keine zwei Schneeflocken identisch sind?"
+            "content": "Kas see on t\u00f5si, et kaks lumehelbekest ei ole identsed?"
           },
           {
             "role": "assistant",
-            "content": "Es ist \u00e4u\u00dferst unwahrscheinlich, dass zwei Schneeflocken identisch sind, obwohl es technisch nicht unm\u00f6glich ist. Jede Schneeflocke bildet sich unter leicht unterschiedlichen atmosph\u00e4rischen Bedingungen w\u00e4hrend des Falls - verschiedene Temperaturen, Luftfeuchtigkeitswerte und Luftstr\u00f6mungen erzeugen einzigartige Kristallmuster. Je komplexer die Schneeflocke, desto unwahrscheinlicher ist es, dass sie dupliziert wird. Einfache Schneekristalle k\u00f6nnten gelegentlich \u00e4hnlich sein. Wilson Bentley, der Anfang des 20. Jahrhunderts Tausende von Schneeflocken fotografierte, fand nie zwei, die genau gleich waren. Wenn Sie neugierig auf schneereiche Wetterbedingungen in einer bestimmten Stadt sind, \u00fcberpr\u00fcfe ich das gerne f\u00fcr Sie!"
+            "content": "On \u00e4\u00e4rmiselt ebat\u00f5en\u00e4oline, et kaks lumehelbekest on identsed, kuigi tehniliselt pole see v\u00f5imatu. Iga lumehelbeke moodustub veidi erinevates atmosf\u00e4\u00e4ritingimustes, kui ta langeb - erinevad temperatuurid, niiskustasemed ja \u00f5hoovoolud loovad ainulaadseid kristallimustreid. Mida keerukam lumehelbeke, seda v\u00e4iksem on t\u00f5en\u00e4osus, et see dubleeritakse. Wilson Bentley, kes 1900ndate alguses tuhandeid lumehelbekesi fotogaafis, ei leidnud kunagi kahte t\u00e4pselt \u00fchesugust. Kui olete uudishimulik lumeiste ilmaolude kohta m\u00f5nes konkreetses linnas, olen meelsasti valmis seda teie jaoks kontrollima!"
           }
         ],
         "metrics_data": [
