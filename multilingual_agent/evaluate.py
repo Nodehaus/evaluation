@@ -10,7 +10,7 @@ import torch
 from model_utils import cleanup_model, clear_huggingface_cache
 from multilingual_agent.agent import ModelNotSupported, MultilingualAgent
 
-LANGUAGES = ["eng", "deu"]  # , "fra", "por", "nld", "pol", "est"]
+LANGUAGES = ["eng", "deu", "por", "fra", "nld", "pol", "est"]
 MODELS = {
     "HuggingFaceTB/SmolLM3-3B": {},
     "Qwen/Qwen3-4B": {},
