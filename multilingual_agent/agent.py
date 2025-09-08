@@ -444,6 +444,9 @@ class MultilingualAgent:
         elif "[tool_calls]" in template or "tool_calls" in template:
             # Pattern for: [TOOL_CALLS][{"name": "func", "arguments": {}}]</s>
             return r"\[TOOL_CALLS\]\[(\{.*?\})\]"
+        elif "<|channel|>commentary" in template and "<|call|>" in template:
+            # Pattern: <|channel|>commentary to=func_name <|message|>{...}<|call|>
+            return r"<\|channel\|>commentary to=([^<\s]+).*?<\|message\|>(\{.*?\})<\|call\|>"
         else:
             # Default pattern
             return r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
@@ -459,18 +462,37 @@ class MultilingualAgent:
 
         for i, match in enumerate(matches):
             try:
-                # Parse the JSON inside tool_call tags
-                tool_data = json.loads(match)
-
-                # Convert to HuggingFace format
-                tool_call = {
-                    "type": "function",
-                    "function": {
-                        "name": tool_data.get("name", ""),
-                        "arguments": tool_data.get("arguments", {}),
-                    },
-                    "id": f"call_{i + 1}",
-                }
+                # Handle different pattern formats
+                if r"<\|channel\|>commentary" in pattern:
+                    # Commentary pattern: (func_name, json_args)
+                    if isinstance(match, tuple) and len(match) == 2:
+                        func_name, json_args = match
+                        # Extract function name after "functions."
+                        if func_name.startswith("functions."):
+                            func_name = func_name[10:]  # Remove "functions." prefix
+                        tool_data = json.loads(json_args)
+                        tool_call = {
+                            "type": "function",
+                            "function": {
+                                "name": func_name,
+                                "arguments": tool_data,
+                            },
+                            "id": f"call_{i + 1}",
+                        }
+                    else:
+                        continue
+                else:
+                    # Standard patterns: JSON with name and arguments
+                    tool_data = json.loads(match)
+                    tool_call = {
+                        "type": "function",
+                        "function": {
+                            "name": tool_data.get("name", ""),
+                            "arguments": tool_data.get("arguments", {}),
+                        },
+                        "id": f"call_{i + 1}",
+                    }
+                
                 tool_calls.append(tool_call)
 
             except json.JSONDecodeError:
