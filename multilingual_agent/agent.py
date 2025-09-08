@@ -566,6 +566,7 @@ class MultilingualAgent:
                     function_info = tool_call.get("function", {})
                     function_name = function_info.get("name")
                     function_args = function_info.get("arguments", {})
+                    tool_call_id = tool_call.get("id")
 
                     # Execute the tool
                     if function_name == "weather_forecast":
@@ -578,11 +579,17 @@ class MultilingualAgent:
 
                     # Add tool result to conversation
                     if isinstance(result, str):
-                        conversation.append({"role": "tool", "content": result})
+                        conversation.append({
+                            "role": "tool", 
+                            "content": result,
+                            "tool_call_id": tool_call_id
+                        })
                     else:
-                        conversation.append(
-                            {"role": "tool", "content": json.dumps(result)}
-                        )
+                        conversation.append({
+                            "role": "tool", 
+                            "content": json.dumps(result),
+                            "tool_call_id": tool_call_id
+                        })
 
                 # If unknown tool was called, return error message
                 if unknown_tool_called:
