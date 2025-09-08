@@ -441,6 +441,9 @@ class MultilingualAgent:
         elif "<function_call>" in template and "</function_call>" in template:
             # Some models might use different XML-like tags
             return r"<function_call>\s*(\{.*?\})\s*</function_call>"
+        elif "[tool_calls]" in template or "tool_calls" in template:
+            # Pattern for: [TOOL_CALLS][{"name": "func", "arguments": {}}]</s>
+            return r"\[TOOL_CALLS\]\[(\{.*?\})\]"
         else:
             # Default pattern
             return r"<tool_call>\s*(\{.*?\})\s*</tool_call>"
