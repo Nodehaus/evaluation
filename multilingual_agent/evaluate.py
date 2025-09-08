@@ -235,7 +235,7 @@ class AgentEvaluator:
 
         # Get the initial user message
         if conversation[0]["role"] != "user":
-            raise ValueError("First message in conversation is not a user messsage.S")
+            raise ValueError("First message in conversation is not a user messsage.")
         user_message = conversation[0]["content"]
 
         # Generate agent response
@@ -461,16 +461,15 @@ def main():
                     cleanup_model(evaluator.agent.model, evaluator.agent.tokenizer)
                     clear_huggingface_cache()
 
-                # Create new evaluator
-                try:
-                    evaluator = AgentEvaluator(actual_model_name, language)
-                    current_model_name = actual_model_name
-                except ModelNotSupported:
-                    logger.warning(
-                        f"Skipping evaluation for unsupported model: "
-                        f"{actual_model_name}"
-                    )
-                    continue
+            # Create new evaluator
+            try:
+                evaluator = AgentEvaluator(actual_model_name, language)
+                current_model_name = actual_model_name
+            except ModelNotSupported:
+                logger.warning(
+                    f"Skipping evaluation for unsupported model: {actual_model_name}"
+                )
+                continue
 
             logger.info(f"Evaluating model {model_name} with language {language}")
 

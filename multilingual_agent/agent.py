@@ -502,9 +502,7 @@ class MultilingualAgent:
         conversation = [
             {
                 "role": "system",
-                "content": self.system_prompts.get(
-                    self.language, self.system_prompts["eng"]
-                ),
+                "content": self.system_prompts.get(self.language),
             },
             {"role": "user", "content": user_message},
         ]
