@@ -11,11 +11,35 @@ from model_utils import (
     load_model_and_tokenizer,
 )
 
+from forecast_tool import get_coordinates, get_future_forecast
+
 
 class ModelNotSupported(Exception):
     """Exception raised when a model does not support tool calling."""
 
     pass
+
+
+def get_weather_forecast(city: str, forecast_date: str) -> Dict[str, int]:
+    """
+    Get weather forecast for a specific city and date.
+
+    Args:
+        city: Name of the city
+        forecast_date: Date in YYYY-MM-DD format
+
+    Returns:
+        Dictionary with temperature (Celsius), humidity (%), and wind_speed (km/h) as
+        integers
+    """
+    try:
+        city_coordinates = get_coordinates(city)
+        data = get_future_forecast(city_coordinates[0], city_coordinates[1], forecast_date)
+        return data
+    except requests.exceptions.RequestException as e:
+        return {"error": str(e)}
+
+    return {"error": "No coordinates or weather forecast found"}
 
 
 def weather_forecast(city: str, date: str) -> Dict[str, int]:
@@ -531,7 +555,7 @@ class MultilingualAgent:
         ]
 
         # Pass the Python functions directly to chat template (if supported)
-        tools = [weather_forecast, get_current_date]
+        tools = [get_weather_forecast, get_current_date]
 
         # Handle multiple rounds of tool calls
         max_tool_rounds = 5  # Prevent infinite loops
@@ -569,8 +593,8 @@ class MultilingualAgent:
                     tool_call_id = tool_call.get("id")
 
                     # Execute the tool
-                    if function_name == "weather_forecast":
-                        result = weather_forecast(**function_args)
+                    if function_name == "get_weather_forecast":
+                        result = get_weather_forecast(**function_args)
                     elif function_name == "get_current_date":
                         result = get_current_date()
                     else:
@@ -621,7 +645,7 @@ def main():
 
     parser = argparse.ArgumentParser(description="Multilingual Agent with Tool Support")
     parser.add_argument(
-        "--model", default="HuggingFaceTB/SmolLM3-3B", help="HuggingFace model name"
+        "--model", default="Qwen/Qwen3-8B", help="HuggingFace model name"
     )
     parser.add_argument("--message", required=True, help="User message")
     parser.add_argument(
