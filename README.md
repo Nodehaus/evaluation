@@ -11,26 +11,26 @@ $ uv sync
 
 ## Run belebele scripts
 
-First change to the belebele folder:
-
-```
-$ cd belebele
-```
+You need to run all scripts from the main folder of the repo.
 
 We have a simplifed Belebele evaluation runner to test individual models and learn about the behaviour:
 
 ```
-$ uv run belebele.py
+$ PYTHONPATH=. uv run belebele/belebele.py
 ```
 
 Or batched to make it faster, this will run all models and languages that are listed in the code and write the results to JSON files (if they don't exist):
 
 ```
-$ uv run belebele-batched.py
+$ PYTHONPATH=. uv run belebele/belebele-batched.py
 ```
 
-## Run analysis
+### Run analysis
 
 ```
-$ uv run streamlit run analysis.py
+$ PYTHONPATH=. uv run streamlit run belebele/analysis.py
 ```
+
+## Multilingual Agent Evaluation
+
+See README in `multilingual_agent/`.

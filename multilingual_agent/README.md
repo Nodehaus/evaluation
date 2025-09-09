@@ -9,6 +9,9 @@ PYTHONPATH=. uv run multilingual_agent/agent.py
 Run the evaluation from the main folder of the repo with:
 
 ```bash
-
 PYTHONPATH=. uv run multilingual_agent/evaluate.py
 ```
+
+## Visualization
+
+To visualize information from result files, have a look at `visualization.ipynb`
