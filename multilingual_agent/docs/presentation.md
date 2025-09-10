@@ -29,6 +29,18 @@ style: |
 
 ---
 
+# Technology souvereignity + Language diversity
+
+EU works on becoming more souvereign in technologies, development of alternatives to US + Chinese technologies
+
+“Cultural diversity is one of the world's potential sources of both sanity and fulfillment.” Ron Crocombe.
+
+The Digital Language Divide: https://www.ethnologue.com/insights/digital-language-divide/
+
+https://www.ethnologue.com/img/digital-language-support-23.jpg
+
+---
+
 # Previous work
 
 -   MAPS: A Multilingual Benchmark for Global Agent Performance and Security
@@ -38,14 +50,14 @@ style: |
 -   EuroEval: https://euroeval.com/
     -   13 Monolingual + 4 Multilingual ("European")
     -   No agentic evaluation tasks
--   Nodehaus' The Great European AI Language Championship
+-   Nodehaus: The Great European AI Language Championship
     -   https://substack.com/home/post/p-172471752
     -   Testing smaller LLMs on multiple choice question answering
     -   English, German, French, Spanish, Italian, Polish, Portuguese, Estonian
 
 ---
 
-# Multilingual LLM performance
+# Nodehaus: Multilingual LLM performance
 
 Show box plot from our blog post
 
@@ -69,11 +81,16 @@ https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2F
 
 ---
 
-# Code browsing
+# Browse code
 
 ---
 
 # Chat templates and tool calling
+
+-   Chat templates describe the format and syntax that was used in training data for LLMs
+    -   How are user and assistant messages represented, how do tool descriptions look, etc.
+-   We use transformers, so we have to apply the chat template and parse assistant answers
+-   Ollama and more high-level tools do that for you
 
 ## Qwen3-8B
 
@@ -94,9 +111,6 @@ For each function call, return a json object with function name and arguments wi
 <tool_call>
 {"name": <function-name>, "arguments": <args-json-object>}
 </tool_call><|im_end|>
-<|im_start|>user
-Hello<|im_end|>
-<|im_start|>assistant
 ```
 
 ### User message + Assistant answer
@@ -229,7 +243,7 @@ The tool call result will appear as follows in the prompt:
 
 ---
 
-Browse data + code
+# Browse data + code
 
 ---
 
@@ -240,3 +254,6 @@ Browse data + code
 ---
 
 # Summary + Outlook
+
+-   Agentic performance seems to be working well across languages, but again lesser-resourced languages have a disadvantage
+-   We will be working on simple fine-tuning of models for language + task combinations
