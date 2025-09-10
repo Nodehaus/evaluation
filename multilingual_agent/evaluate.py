@@ -2,13 +2,17 @@ import gc
 import json
 import logging
 import os
-import random
 import time
 from typing import Any, Dict, List, Optional
 
 import torch
 
-from model_utils import cleanup_model, clear_huggingface_cache
+from model_utils import (
+    cleanup_model,
+    clear_huggingface_cache,
+    get_gpu_info,
+    get_model_size_info,
+)
 from multilingual_agent.agent import ModelNotSupported, MultilingualAgent
 
 LANGUAGES = ["eng", "deu", "por", "fra", "nld", "pol", "est"]
@@ -283,15 +287,18 @@ class AgentEvaluator:
         print(f"Loading evaluation data from {data_path}")
         eval_data = self.load_evaluation_data(data_path)
 
-        # Shuffle data and limit to first 10 for testing
-        # random.seed(42)  # For reproducible results
-        # random.shuffle(eval_data)
-        # eval_data = eval_data[:10]
+        # Collect GPU and model info
+        gpu_info = get_gpu_info()
+        model_size_info = get_model_size_info(self.agent.model)
 
         test_cases = []
 
         conversations_count = len(eval_data)
         print(f"Processing {conversations_count} conversations...")
+        print(
+            f"Model: {model_size_info['model_size_billions']}B parameters "
+            f"({model_size_info['model_memory_gb']}GB)"
+        )
 
         for i, eval_item in enumerate(eval_data):
             progress = f"{i + 1}/{conversations_count}"
@@ -310,7 +317,7 @@ class AgentEvaluator:
         result = EvaluationResult(test_cases)
 
         # Save results to JSON file
-        self._save_results(result, language_code, data_path)
+        self._save_results(result, language_code, data_path, gpu_info, model_size_info)
 
         return result
 
@@ -319,6 +326,8 @@ class AgentEvaluator:
         result: EvaluationResult,
         language_code: str,
         data_path: str,
+        gpu_info: Dict[str, Any],
+        model_size_info: Dict[str, Any],
     ):
         """Save evaluation results to JSON file."""
 
@@ -338,6 +347,9 @@ class AgentEvaluator:
             "model_name": self.agent.model_name,
             "language": language_code,
             "dataset_path": data_path,
+            "gpu_info": gpu_info,
+            "model_size_billions": model_size_info["model_size_billions"],
+            "model_memory_gb": model_size_info["model_memory_gb"],
             "evaluation_results": self._serialize_evaluation_result(result),
         }
 
@@ -357,10 +369,14 @@ class AgentEvaluator:
         passed_tests = sum(1 for tr in result.test_results if tr.success)
         failed_tests = total_tests - passed_tests
         pass_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
-        
+
         # Calculate average inference time
-        total_inference_time = sum(tr.inference_time_seconds for tr in result.test_results)
-        average_inference_time = round(total_inference_time / total_tests, 3) if total_tests > 0 else 0.0
+        total_inference_time = sum(
+            tr.inference_time_seconds for tr in result.test_results
+        )
+        average_inference_time = (
+            round(total_inference_time / total_tests, 3) if total_tests > 0 else 0.0
+        )
 
         # Calculate average scores by metric
         metric_scores = {}
