@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import random
+import time
 from typing import Any, Dict, List, Optional
 
 import torch
@@ -58,6 +59,7 @@ class TestResult:
         agent_conversation: List[Dict[str, Any]],
         expected_conversation: List[Dict[str, Any]],
         eval_item_id: Optional[str] = None,
+        inference_time_seconds: float = 0.0,
     ):
         self.test_id = test_id
         self.success = success
@@ -65,6 +67,7 @@ class TestResult:
         self.agent_conversation = agent_conversation
         self.expected_conversation = expected_conversation
         self.eval_item_id = eval_item_id
+        self.inference_time_seconds = inference_time_seconds
 
 
 class EvaluationResult:
@@ -238,8 +241,11 @@ class AgentEvaluator:
             raise ValueError("First message in conversation is not a user messsage.")
         user_message = conversation[0]["content"]
 
-        # Generate agent response
+        # Generate agent response with timing
+        start_time = time.time()
         agent_conversation = self.agent.chat(user_message)
+        end_time = time.time()
+        inference_time = end_time - start_time
 
         # Extract expected and actual tool calls
         expected_tools = self.extract_expected_tools_from_conversation(conversation)
@@ -269,6 +275,7 @@ class AgentEvaluator:
             agent_conversation=agent_conversation,
             expected_conversation=conversation,
             eval_item_id=eval_item_id,
+            inference_time_seconds=round(inference_time, 3),
         )
 
     def run_evaluation(self, data_path: str, language_code: str) -> EvaluationResult:
@@ -350,6 +357,10 @@ class AgentEvaluator:
         passed_tests = sum(1 for tr in result.test_results if tr.success)
         failed_tests = total_tests - passed_tests
         pass_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
+        
+        # Calculate average inference time
+        total_inference_time = sum(tr.inference_time_seconds for tr in result.test_results)
+        average_inference_time = round(total_inference_time / total_tests, 3) if total_tests > 0 else 0.0
 
         # Calculate average scores by metric
         metric_scores = {}
@@ -379,6 +390,7 @@ class AgentEvaluator:
                 "passed_tests": passed_tests,
                 "failed_tests": failed_tests,
                 "overall_pass_rate": round(pass_rate, 2),
+                "average_inference_time_seconds": average_inference_time,
                 "average_scores_by_metric": {
                     name: round(score, 4) for name, score in average_scores.items()
                 },
@@ -394,6 +406,7 @@ class AgentEvaluator:
                     "eval_item_id": test_result.eval_item_id,
                     "agent_conversation": test_result.agent_conversation,
                     "expected_conversation": test_result.expected_conversation,
+                    "inference_time_seconds": test_result.inference_time_seconds,
                     "metrics_data": [
                         {
                             "name": metric.name,
