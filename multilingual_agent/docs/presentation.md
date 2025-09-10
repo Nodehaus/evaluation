@@ -238,12 +238,13 @@ The tool call result will appear as follows in the prompt:
     -   Prompting to create English data
     -   Human review
     -   Translate language by language
+    -   Human review
 -   Data Categories: No tool calls (10), absolute date (15), relative date (20)
 -   Metrics: Tool Correctness and Argument Correctness (direct matches)
 
 ---
 
-# Browse data + code
+# Browse data + code; or better: just show slides on Google presentation
 
 ---
 
