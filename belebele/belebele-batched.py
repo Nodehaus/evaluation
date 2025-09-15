@@ -151,9 +151,7 @@ def results_exist(model_name, language):
 def parse_choice(response):
     if len(response) == 0:
         return None
-    elif len(response) == 1:
-        return CHOICES.index(response[0]) + 1 if response[0] in CHOICES else None
-    elif response[0] in CHOICES and not response[1].isalpha():
+    elif response[0] in CHOICES:
         return CHOICES.index(response[0]) + 1
     else:
         return None
