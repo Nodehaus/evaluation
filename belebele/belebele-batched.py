@@ -10,7 +10,6 @@ from datasets import load_dataset
 from tqdm import tqdm
 
 from model_utils import (
-    MODELS,
     calculate_batch_size,
     cleanup_model,
     clear_huggingface_cache,
@@ -19,6 +18,39 @@ from model_utils import (
     get_model_size_info,
     load_model_and_tokenizer,
 )
+
+MODELS = {
+    "mistralai/Mistral-7B-v0.3": {},
+    "pbouda/finetune-cpt-test": {},
+    "mistralai/Mistral-7B-Instruct-v0.3": {},
+    "utter-project/EuroLLM-9B": {},
+    "utter-project/EuroLLM-1.7B": {},
+    "google/gemma-3-1b-pt": {},
+    "google/gemma-3-1b-it": {},
+    "google/gemma-3-4b-pt": {},
+    "google/gemma-3-4b-it": {},
+    "google/gemma-3-12b-pt": {},
+    "google/gemma-3-12b-it": {},
+    "hplt-monolingual": {
+        "deu_Latn": "HPLT/hplt2c_deu_checkpoints",
+        "fra_Latn": "HPLT/hplt2c_fra_checkpoints",
+        "spa_Latn": "HPLT/hplt2c_spa_checkpoints",
+        "ita_Latn": "HPLT/hplt2c_ita_checkpoints",
+        "pol_Latn": "HPLT/hplt2c_pol_checkpoints",
+        "por_Latn": "HPLT/hplt2c_por_checkpoints",
+        "eng_Latn": "HPLT/hplt2c_eng_checkpoints",
+        "est_Latn": "HPLT/hplt2c_est_checkpoints",
+    },
+    "allenai/OLMo-2-1124-13B-Instruct": {},
+    "allenai/OLMo-2-1124-13B": {},
+    "allenai/OLMo-2-1124-7B-Instruct": {},
+    "allenai/OLMo-2-1124-7B": {},
+    "HuggingFaceTB/SmolLM3-3B-Base": {},
+    "HuggingFaceTB/SmolLM3-3B": {},
+    "Qwen/Qwen3-4B": {},
+    "Qwen/Qwen3-8B": {},
+    "Qwen/Qwen3-14B": {},
+}
 
 torch._dynamo.config.cache_size_limit = 64
 
@@ -107,13 +139,12 @@ def write_pretty_json(file_path, data):
         json.dump(data, write_file, indent=4)
 
 
-
 def results_exist(model_name, language):
     """Check if results file already exists for a model and language combination."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     output_file_name = os.path.join(
         script_dir,
-        "results/belebe-{}_{}.json".format(model_name.split("/")[-1], language)
+        "results/belebe-{}_{}.json".format(model_name.split("/")[-1], language),
     )
     return os.path.exists(output_file_name)
 
@@ -167,7 +198,9 @@ for model_name, language_variants in MODELS.items():
         script_dir = os.path.dirname(os.path.abspath(__file__))
         output_file_name = os.path.join(
             script_dir,
-            "results/belebe-{}_{}.json".format(actual_model_name.split("/")[-1], language)
+            "results/belebe-{}_{}.json".format(
+                actual_model_name.split("/")[-1], language
+            ),
         )
 
         dataset_config = {

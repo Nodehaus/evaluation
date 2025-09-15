@@ -11,36 +11,6 @@ logger = logging.getLogger(__name__)
 
 BASE_MODELS = {"pbouda/finetune-cpt-test": "unsloth/mistral-7b-v0.3"}
 
-MODELS = {
-    "mistralai/Mistral-7B-v0.3": {},
-    "pbouda/finetune-cpt-test": {},
-    "mistralai/Mistral-7B-Instruct-v0.3": {},
-    "utter-project/EuroLLM-9B": {},
-    "utter-project/EuroLLM-1.7B": {},
-    "google/gemma-3-1b-pt": {},
-    "google/gemma-3-1b-it": {},
-    "google/gemma-3-4b-pt": {},
-    "google/gemma-3-4b-it": {},
-    "google/gemma-3-12b-pt": {},
-    "google/gemma-3-12b-it": {},
-    "hplt-monolingual": {
-        "deu_Latn": "HPLT/hplt2c_deu_checkpoints",
-        "fra_Latn": "HPLT/hplt2c_fra_checkpoints",
-        "spa_Latn": "HPLT/hplt2c_spa_checkpoints",
-        "ita_Latn": "HPLT/hplt2c_ita_checkpoints",
-        "pol_Latn": "HPLT/hplt2c_pol_checkpoints",
-        "por_Latn": "HPLT/hplt2c_por_checkpoints",
-        "eng_Latn": "HPLT/hplt2c_eng_checkpoints",
-        "est_Latn": "HPLT/hplt2c_est_checkpoints",
-    },
-    "allenai/OLMo-2-1124-13B-Instruct": {},
-    "allenai/OLMo-2-1124-13B": {},
-    "allenai/OLMo-2-1124-7B-Instruct": {},
-    "allenai/OLMo-2-1124-7B": {},
-    "HuggingFaceTB/SmolLM3-3B-Base": {},
-    "HuggingFaceTB/SmolLM3-3B": {},
-}
-
 
 def load_model_and_tokenizer(model_name: str):
     """
