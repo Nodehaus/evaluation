@@ -21,7 +21,6 @@ from model_utils import (
 
 MODELS = {
     "mistralai/Mistral-7B-v0.3": {},
-    "pbouda/finetune-cpt-test": {},
     "mistralai/Mistral-7B-Instruct-v0.3": {},
     "utter-project/EuroLLM-9B": {},
     "utter-project/EuroLLM-1.7B": {},
