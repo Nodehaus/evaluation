@@ -34,7 +34,11 @@ def load_model_and_tokenizer(model_name: str):
         tokenizer.pad_token = tokenizer.eos_token
 
     # Set left padding for decoder-only models like OLMo
-    if "olmo" in model_name.lower() or "smollm3" in model_name.lower():
+    if (
+        "olmo" in model_name.lower()
+        or "smollm3" in model_name.lower()
+        or "qwen3" in model_name.lower()
+    ):
         tokenizer.padding_side = "left"
 
     # Load model - use AutoPeftModelForCausalLM for LoRA models
