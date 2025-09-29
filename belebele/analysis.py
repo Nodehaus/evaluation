@@ -13,7 +13,7 @@ def load_results():
 
     # Define the model mapping from the evaluation script
     MODELS = {
-        "mistralai/Mistral-7B-v0.1": {},
+        "mistralai/Mistral-7B-v0.3": {},
         "mistralai/Mistral-7B-Instruct-v0.3": {},
         "utter-project/EuroLLM-9B": {},
         "utter-project/EuroLLM-1.7B": {},
@@ -39,6 +39,9 @@ def load_results():
         "allenai/OLMo-2-1124-7B": {},
         "HuggingFaceTB/SmolLM3-3B-Base": {},
         "HuggingFaceTB/SmolLM3-3B": {},
+        "Qwen/Qwen3-4B": {},
+        "Qwen/Qwen3-8B": {},
+        "Qwen/Qwen3-14B": {},
     }
 
     LANGUAGES = [
@@ -220,17 +223,19 @@ def main():
     )
     model_summary.columns = ["Mean %", "Std Dev", "Min %", "Max %", "Languages"]
     model_summary_sorted = model_summary.sort_values("Mean %", ascending=False)
-    
+
     st.dataframe(model_summary_sorted)
-    
+
     # Add download button for HTML table
-    html_table = model_summary_sorted.to_html(classes='model-summary-table', table_id='model-summary')
-    
+    html_table = model_summary_sorted.to_html(
+        classes="model-summary-table", table_id="model-summary"
+    )
+
     st.download_button(
         label="Download Table as HTML",
         data=html_table,
         file_name="model_performance_summary.html",
-        mime="text/html"
+        mime="text/html",
     )
 
 
