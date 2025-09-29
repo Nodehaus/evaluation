@@ -98,7 +98,7 @@ This challenges the assumption that English-centric training automatically trans
 
 ### Finding #2: Qwen3-8B Punches Above Its Weight Class
 
-![Model Performance Heatmap](tool_correctness_heatmap.png)
+![Model Performance Heatmap](heatmaps.png)
 
 **Qwen3-8B matched or exceeded larger models while requiring significantly less computational resources.** With performance on par with Qwen3-14B and GPT-OSS-20B, it offers the best performance-to-VRAM ratio for multilingual agent deployment.
 
@@ -109,8 +109,6 @@ This challenges the assumption that English-centric training automatically trans
 -   **GPT-OSS-20B**: 98.6% tool correctness
 
 ### Finding #3: Relative Dates Reveal Language-Specific Challenges
-
-![Category Performance Breakdown](argument_correctness_heatmap.png)
 
 **Relative temporal expressions proved the most challenging across all models and languages.** Performance patterns:
 
