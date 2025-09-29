@@ -64,7 +64,7 @@ Our 45-question evaluation dataset spans three categories:
 Unlike LLM-as-judge approaches, we use **deterministic evaluation**:
 
 -   **Tool Correctness**: Did the agent call the right tools in the right sequence?
--   **Argument Correctness**: Were the parameters (city names, dates) correctly formatted?
+-   **Argument Correctness**: Were the parameters (city names, dates) correctly formatted and did the agent calculate the correct dates for relative dates?
 
 This approach eliminates judge bias and provides reproducible results across languages.
 
@@ -104,9 +104,9 @@ This challenges the assumption that English-centric training automatically trans
 
 **Performance Highlights:**
 
--   **Qwen3-8B**: 96.7% tool correctness, 90.5% argument correctness
--   **Qwen3-14B**: 97.8% tool correctness, 86.2% argument correctness
--   **GPT-OSS-20B**: 98.6% tool correctness, 86.7% argument correctness
+-   **Qwen3-8B**: 96.7% tool correctness
+-   **Qwen3-14B**: 97.8% tool correctness
+-   **GPT-OSS-20B**: 98.6% tool correctness
 
 ### Finding #3: Relative Dates Reveal Language-Specific Challenges
 
@@ -114,11 +114,11 @@ This challenges the assumption that English-centric training automatically trans
 
 **Relative temporal expressions proved the most challenging across all models and languages.** Performance patterns:
 
--   **No Tool Calls**: 95.4% accuracy (models excel at recognizing scope boundaries)
--   **Absolute Dates**: 89.6% accuracy (straightforward parameter extraction)
--   **Relative Dates**: 84.2% accuracy (complex temporal reasoning required)
+-   **Qwen3-8B**: 90.5% argument correctness
+-   **Qwen3-14B**: 86.2% argument correctness
+-   **GPT-OSS-20B**: 86.7% argument correctness
 
-**Language-specific temporal reasoning** ("morgen" vs "tomorrow" vs "demain") adds computational overhead that affects even sophisticated models.
+**Language-specific temporal reasoning** ("morgen" vs "tomorrow" vs "demain") adds computational overhead that affects even sophisticated models. We found that specifically GPT-OSS-20B often fails in calculating the correct dates, although it correctly identifies the current date and during "thinking" the number of days between the current date and relative dates like "next Tuesday".
 
 ### Finding #4: Consistent Performance Across European Languages
 
@@ -201,4 +201,4 @@ The question isn't whether multilingual agents are ready for production deployme
 
 ---
 
-_This analysis represents our ongoing commitment to European tech sovereignty and multilingual AI accessibility. All evaluation data, analysis tools, and methodologies are available in our [GitHub repository](https://github.com/nodehaus/evaluation) for further research and validation. Together, we're building AI that serves all European communities, in all European languages._
+_This analysis represents our ongoing commitment to European tech sovereignty and multilingual AI accessibility. All evaluation data, analysis tools, and methodologies are available in our [GitHub repository](https://github.com/Nodehaus/evaluation) for further research and validation. Together, we're building AI that serves all European communities, in all European languages._
